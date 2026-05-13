@@ -7,16 +7,16 @@ export const Route = createFileRoute("/process")({
   component: ProcessPage,
   head: () => ({
     meta: [
-      { title: "Process — Afero Studio" },
+      { title: "Process - Afero Studio" },
       { name: "description", content: "Our four-phase process: Discover, Design, Build, Grow. Predictable, transparent, and on time." },
-      { property: "og:title", content: "Process — Afero Studio" },
+      { property: "og:title", content: "Process - Afero Studio" },
     ],
   }),
 });
 
 const phases = [
   { n: "01", title: "Discover", weeks: "1–2 weeks", body: "Workshops, audits and interviews to understand the business, the audience and the opportunity." },
-  { n: "02", title: "Design", weeks: "3–5 weeks", body: "Messaging, structure and visual system — refined together in fast, focused review loops." },
+  { n: "02", title: "Design", weeks: "3–5 weeks", body: "Messaging, structure and visual system - refined together in fast, focused review loops." },
   { n: "03", title: "Build", weeks: "4–8 weeks", body: "Senior engineering, accessibility-first, performance baked in. No outsourcing, no surprises." },
   { n: "04", title: "Grow", weeks: "Ongoing", body: "Measurement, iteration, content and SEO. The site keeps getting better long after launch." },
 ];

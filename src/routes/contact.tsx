@@ -7,9 +7,9 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "Contact — Afero Studio" },
+      { title: "Contact - Afero Studio" },
       { name: "description", content: "Tell us about your project. We respond within one business day." },
-      { property: "og:title", content: "Contact — Afero Studio" },
+      { property: "og:title", content: "Contact - Afero Studio" },
     ],
   }),
 });
@@ -31,11 +31,16 @@ function ContactPage() {
           <div className="mt-10 space-y-4 text-sm">
             <div>
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Email</div>
-              <a href="mailto:hello@afero.studio" className="font-serif text-2xl hover:text-coral">hello@afero.studio</a>
+              <a href="mailto:afero.tech@gmail.com" className="font-serif text-2xl hover:text-coral">afero.tech@gmail.com</a>
             </div>
             <div>
-              <div className="text-xs uppercase tracking-widest text-muted-foreground">Studio</div>
-              <div className="font-serif text-2xl">Rua das Janelas Verdes, Lisbon</div>
+              <div className="text-xs uppercase tracking-widest text-muted-foreground">Phone</div>
+              <a
+                href="tel:+917397102011"
+                className="font-serif text-2xl hover:opacity-80 transition-opacity"
+              >
+                (+91)-73971-02011
+              </a>
             </div>
           </div>
         </div>

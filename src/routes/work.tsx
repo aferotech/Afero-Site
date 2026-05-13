@@ -10,9 +10,9 @@ export const Route = createFileRoute("/work")({
   component: WorkPage,
   head: () => ({
     meta: [
-      { title: "Work — Afero Studio" },
-      { name: "description", content: "Selected projects from Afero — websites and brands built for businesses and nonprofits." },
-      { property: "og:title", content: "Work — Afero Studio" },
+      { title: "Work - Afero Studio" },
+      { name: "description", content: "Selected projects from Afero - websites and brands built for businesses and nonprofits." },
+      { property: "og:title", content: "Work - Afero Studio" },
       { property: "og:image", content: workHero },
     ],
   }),

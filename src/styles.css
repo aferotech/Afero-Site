@@ -11,6 +11,7 @@
   src: url("https://fonts.gstatic.com/s/instrumentserif/v4/jizDREVItHgc8qDIbSTKq4XKVjnDWJg.woff2") format("woff2");
   font-display: swap;
 }
+
 @font-face {
   font-family: "Instrument Serif";
   font-style: italic;
@@ -18,6 +19,7 @@
   src: url("https://fonts.gstatic.com/s/instrumentserif/v4/jizBREVItHgc8qDIbSTKq4XKVjjUTHs5jOWZ.woff2") format("woff2");
   font-display: swap;
 }
+
 @font-face {
   font-family: "DM Sans";
   font-style: normal;
@@ -115,22 +117,27 @@
   * {
     border-color: var(--color-border);
   }
+
   html {
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-feature-settings: "ss01", "cv11";
   }
+
   .font-serif {
     font-family: var(--font-serif);
     letter-spacing: -0.01em;
   }
+
   .grain {
     position: relative;
   }
+
   .grain::after {
     content: "";
     position: absolute;
@@ -141,16 +148,24 @@
     background-image: radial-gradient(rgba(0, 0, 0, 0.6) 1px, transparent 1px);
     background-size: 3px 3px;
   }
+
   .marquee {
     display: flex;
     gap: 4rem;
     animation: marquee 38s linear infinite;
     width: max-content;
   }
+
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
   }
+
   .glow-coral {
     box-shadow: 0 20px 60px -20px color-mix(in oklab, var(--coral) 55%, transparent);
   }

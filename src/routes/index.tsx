@@ -2,15 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, ArrowRight, Compass, Layers, PenTool, Code2, Sparkles, ShieldCheck, Quote } from "lucide-react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
-import workHero from "@/assets/work-hero.jpg";
+import ad from "@/assets/ad.gif";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
+import arc from "@/assets/arc.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Afero — A studio for websites that actually work" },
+      { title: "Afero - A studio for websites that actually work" },
       {
         name: "description",
         content:
@@ -22,62 +23,70 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const clients = ["NORTHWIND", "Lumen&Co", "FIELDNOTES", "Habitat+", "OAKRIDGE", "WIC", "GSGA", "Meridian"];
+const clients = [
+  "Performance",
+  "E-commerce",
+  "Web Apps",
+  "Branding",
+  "User Experience",
+  "Custom Development",
+  "Brand Strategy"
+];
 
 const services = [
   {
     icon: Compass,
     title: "Strategy",
-    body: "We figure out what you need to say before we design or write a single thing.",
-    points: ["Positioning", "Audience research", "Copy auditing", "Site architecture"],
+    body: "Technical planning and structured workflows focused on scalable digital products.",
+    points: ["Planning", "Architecture", "User flow", "Project direction"],
   },
   {
     icon: PenTool,
     title: "Content",
-    body: "Words that turn site visits into conversations with the right audience.",
-    points: ["Copywriting", "Messaging", "Storytelling", "Editorial systems"],
+    body: "Clear and structured content integration tailored for modern web experiences.",
+    points: ["Content structure", "Landing pages", "UI copy", "Content layouts"],
   },
   {
     icon: Layers,
     title: "Design",
-    body: "Custom, brand-aligned design built for your business and the humans on it.",
-    points: ["Visual systems", "Custom layouts", "Responsive design", "Accessibility"],
+    body: "Modern interface design focused on usability, responsiveness, and clean visual systems.",
+    points: ["UI systems", "Responsive layouts", "Design consistency", "Accessibility"],
   },
   {
     icon: Code2,
     title: "Development",
-    body: "Fast, secure, dependable builds from a senior engineering team.",
-    points: ["Custom development", "CMS integrations", "SEO foundations", "Performance & security"],
+    body: "Fast, scalable, and maintainable web applications built with modern technologies.",
+    points: ["Frontend", "Backend", "API integration", "Performance optimization"],
   },
   {
     icon: Sparkles,
     title: "Ongoing growth",
-    body: "Continuous improvement after launch — driven by real usage data.",
-    points: ["SEO", "Analytics", "Conversion optimization", "Content & A/B testing"],
+    body: "Continuous improvements, feature updates, and long-term product enhancements.",
+    points: ["Feature updates", "Optimization", "UI improvements", "Scalability"],
   },
   {
     icon: ShieldCheck,
     title: "Support",
-    body: "Technical and creative support so your site keeps working on your business' behalf.",
-    points: ["Hosting", "Updates", "Technical help", "Strategy partnership"],
+    body: "Reliable technical support and maintenance for stable and smooth operation.",
+    points: ["Bug fixes", "Maintenance", "Technical support", "Deployment support"],
   },
 ];
 
 const reasons = [
   {
     n: "01",
-    title: "12 years of practice.",
-    body: "Since 2013 we've delivered 180+ websites across nearly every industry. Sharp opinions earned the slow way — by shipping.",
+    title: "Scalable architecture.",
+    body: "Modern development practices focused on performance, stability, and maintainable codebases.",
   },
   {
     n: "02",
-    title: "A small, senior team.",
-    body: "No junior handoffs. The people you meet on the kickoff call are the people doing the work, all the way through.",
+    title: "Small team. Strong expertise.",
+    body: "A focused development team with strong technical knowledge, efficient collaboration, and attention to detail.",
   },
   {
     n: "03",
-    title: "On time. Always.",
-    body: "Fixed timelines, fixed budgets, no surprise invoices. In 12 years we've never missed a launch date.",
+    title: "Built to perform.",
+    body: "Responsive interfaces, smooth interactions, and optimized frontend experiences across devices.",
   },
 ];
 
@@ -90,14 +99,14 @@ function Index() {
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 pt-20 pb-16 md:pt-28 md:pb-24 text-center">
           <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium">
-            <span className="h-px w-8 bg-coral" /> Stellar websites since 2013 <span className="h-px w-8 bg-coral" />
+            <span className="h-px w-8 bg-coral" /> Modern websites for growing brands <span className="h-px w-8 bg-coral" />
           </div>
           <h1 className="font-serif mt-8 text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight">
             A studio for websites <br />
             that <em className="text-coral">actually</em> work.
           </h1>
           <p className="mx-auto mt-8 max-w-xl text-base md:text-lg text-muted-foreground">
-            Afero helps ambitious businesses and nonprofits launch websites that move them forward. Strategy-led, hand-built in Lisbon, delivered on time. 12 years and 180+ projects of doing it well.
+            Afero helps ambitious businesses and nonprofits launch websites that move them forward. Strategy-led, hand-built by experts, delivered on time. 2 years and many projects of doing it well.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Link
@@ -118,7 +127,7 @@ function Index() {
         {/* Marquee clients */}
         <div className="border-y border-border/60 bg-background">
           <div className="mx-auto max-w-7xl px-6 py-6">
-            <div className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Trusted by</div>
+            <div className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">What we do</div>
             <div className="overflow-hidden">
               <div className="marquee">
                 {[...clients, ...clients].map((c, i) => (
@@ -138,15 +147,15 @@ function Index() {
           <article className="group">
             <div className="flex items-baseline justify-between mb-3">
               <div className="flex items-baseline gap-3">
-                <span className="text-xs text-muted-foreground">01 — Nonprofit</span>
-                <h3 className="font-serif text-2xl">Habitat+ for Lisbon</h3>
+                {/* <span className="text-xs text-muted-foreground">01 — Nonprofit</span> */}
+                <h3 className="font-serif text-2xl">Tomato. - A Grocery Web App </h3>
               </div>
               <Link to="/work" className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1">
                 View project <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
             </div>
             <div className="overflow-hidden rounded-2xl border border-border bg-secondary">
-              <img src={workHero} alt="Habitat+ for Lisbon — community portrait" width={1280} height={800} className="w-full h-auto group-hover:scale-[1.01] transition-transform duration-700" />
+              <img src={ad} alt="Tomato. - A Grocery Web App" width={1280} height={800} className="w-full h-auto group-hover:scale-[1.01] transition-transform duration-700" />
             </div>
           </article>
 
@@ -200,7 +209,7 @@ function Index() {
             <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium">What we do</div>
             <h2 className="font-serif text-4xl md:text-5xl mt-4">From first idea to long after launch.</h2>
             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-              A complete offering, end-to-end. Every project includes the strategy, content, design and development needed to launch a great website — and the ongoing growth and support that keeps it working for years.
+              A complete offering, end-to-end. Every project includes the strategy, content, design and development needed to launch a great website and the ongoing growth and support that keeps it working for years.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -252,38 +261,60 @@ function Index() {
             “Afero understood our business and our audience in days, then turned it into a site that's beautiful, strategic and obvious. They went above and beyond. Highly recommend.”
           </p>
           <div className="mt-8 text-sm uppercase tracking-widest text-background/60">
-            Marin Okafor — Director, Coast Enterprise
+            Martin Richard — Director, Coast Enterprise
           </div>
         </div>
       </section>
 
       {/* TEAM / STATS */}
-      <section className="mx-auto max-w-7xl px-6 py-20 md:py-28 text-center">
-        <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium">About us</div>
-        <h2 className="font-serif text-4xl md:text-5xl mt-4">Meet the crew.</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-          A small, senior team of designers, developers, strategists and content specialists, based in Lisbon, working with established organizations across the world. The same people from kickoff to launch and well after.
-        </p>
-        <div className="mt-8">
-          <Link
-            to="/about"
-            className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-medium hover:bg-foreground hover:text-background transition-colors"
-          >
-            More about us <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
+      <section className="relative overflow-hidden mx-auto max-w-7xl px-6 py-20 md:py-28 text-center">
 
-        <div className="mt-16 grid grid-cols-3 gap-4 max-w-3xl mx-auto rounded-2xl border border-border bg-card p-8">
-          {[
-            { n: "12+", l: "Years building websites" },
-            { n: "180+", l: "Successful launches" },
-            { n: "100%", l: "On-time delivery" },
-          ].map((s) => (
-            <div key={s.l}>
-              <div className="font-serif text-4xl md:text-5xl text-coral">{s.n}</div>
-              <div className="mt-2 text-xs md:text-sm text-muted-foreground">{s.l}</div>
-            </div>
-          ))}
+        {/* Arc Image */}
+        <img
+          src={arc}
+          alt=""
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] opacity-90 pointer-events-none select-none"
+        />
+
+        <div className="relative z-10 mt-24 md:mt-32">
+          <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium">
+            About us
+          </div>
+
+          <h2 className="font-serif text-4xl md:text-5xl mt-4">
+            Meet the crew.
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+            Afero is a small team of developers and designers focused on building modern,
+            scalable, and high-performing digital experiences for growing businesses and startups.
+          </p>
+
+          <div className="mt-8">
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-medium hover:bg-foreground hover:text-background transition-colors"
+            >
+              More about us <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="mt-16 grid grid-cols-3 gap-4 max-w-3xl mx-auto rounded-2xl border border-border bg-card/80 backdrop-blur-sm p-8">
+            {[
+              { n: "10+", l: "Projects Built" },
+              { n: "24/7", l: "Technical Support" },
+              { n: "100%", l: "On-time delivery" },
+            ].map((s) => (
+              <div key={s.l}>
+                <div className="font-serif text-4xl md:text-5xl text-coral">
+                  {s.n}
+                </div>
+                <div className="mt-2 text-xs md:text-sm text-muted-foreground">
+                  {s.l}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
