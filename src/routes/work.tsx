@@ -1,64 +1,645 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
+import {
+  ArrowUpRight,
+  ArrowRight,
+  Eye,
+  Target,
+  Code2,
+  Rocket,
+  Zap,
+  Shield,
+  Sparkles,
+  Cpu,
+  Layers,
+} from "lucide-react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
-import { ArrowUpRight } from "lucide-react";
-import workHero from "@/assets/work-hero.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
+
+// Import pre-generated assets
+import groomvyImg from "@/assets/groomvy.png";
+import tripioImg from "@/assets/tripio.png";
+import eventraImg from "@/assets/eventra.png";
+import optimusImg from "@/assets/optimus.png";
+import novaImg from "@/assets/nova.png";
+import zoraImg from "@/assets/zora.png";
+import work2 from "@/assets/work-2.jpg"; // Praxis Studio
 
 export const Route = createFileRoute("/work")({
   component: WorkPage,
   head: () => ({
     meta: [
-      { title: "Work - Afero Studio" },
-      { name: "description", content: "Selected projects from Afero - websites and brands built for businesses and nonprofits." },
-      { property: "og:title", content: "Work - Afero Studio" },
-      { property: "og:image", content: workHero },
+      { title: "Selected Work — Afero Studio" },
+      {
+        name: "description",
+        content:
+          "Explore selected case studies and digital experiences designed and engineered by Afero.",
+      },
+      { property: "og:title", content: "Selected Work — Afero Studio" },
+      { property: "og:image", content: groomvyImg },
     ],
   }),
 });
 
-const projects = [
-  { tag: "Nonprofit", title: "Habitat+ for Lisbon", year: "2024", img: workHero },
-  { tag: "Architecture", title: "Praxis Studio", year: "2024", img: work2 },
-  { tag: "Editorial", title: "Meridian Daily", year: "2023", img: work3 },
-  { tag: "Hospitality", title: "Oakridge Hotels", year: "2023", img: work2 },
-  { tag: "B2B SaaS", title: "Northwind Cloud", year: "2022", img: work3 },
-  { tag: "Culture", title: "Lumen & Co", year: "2022", img: workHero },
-];
+// A lightweight, highly performant intersection observer wrapper for Framer Motion-like entrance animations
+function FadeIn({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.05, rootMargin: "0px 0px -40px 0px" }
+    );
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      } ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+}
 
 function WorkPage() {
+  const processSteps = [
+    {
+      num: "01",
+      title: "Discovery",
+      icon: Eye,
+      description:
+        "Deep diving into your brand, target audience, and business opportunities to establish a clear project foundation.",
+    },
+    {
+      num: "02",
+      title: "Strategy",
+      icon: Target,
+      description:
+        "Architecting user flows, mapping features, and defining the visual system before writing a single line of code.",
+    },
+    {
+      num: "03",
+      title: "Design & Dev",
+      icon: Code2,
+      description:
+        "Crafting premium user interfaces and building scalable frontends with absolute attention to detail.",
+    },
+    {
+      num: "04",
+      title: "Launch & Support",
+      icon: Rocket,
+      description:
+        "Ensuring a flawless launch, optimizing performance, and providing long-term engineering support.",
+    },
+  ];
+
+  const valueCards = [
+    {
+      icon: Zap,
+      title: "Fast Iteration",
+      description: "Active feedback loops and rapid prototyping to bring ideas to life quickly.",
+    },
+    {
+      icon: Cpu,
+      title: "Modern Tech Stack",
+      description: "Built with cutting-edge frameworks like React 19, Vite, and Cloudflare Pages.",
+    },
+    {
+      icon: Layers,
+      title: "Responsive Systems",
+      description: "Pixel-perfect performance across mobile, tablet, and high-res desktops.",
+    },
+    {
+      icon: Shield,
+      title: "Long-Term Support",
+      description: "Reliable post-launch maintenance, monitoring, and updates.",
+    },
+    {
+      icon: Sparkles,
+      title: "Performance Focused",
+      description: "Speed optimized with perfect lighthouse scores in mind.",
+    },
+    {
+      icon: Code2,
+      title: "Scalable Architecture",
+      description: "Clean, modular codebases designed to evolve alongside your business.",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground selection:bg-coral selection:text-coral-foreground">
       <Nav />
-      <section className="mx-auto max-w-7xl px-6 pt-20 pb-12 md:pt-28">
-        <div className="text-xs uppercase tracking-[0.2em] text-coral">Selected work</div>
-        <h1 className="font-serif text-5xl md:text-7xl mt-6 leading-[0.95]">
-          A decade of <em className="text-coral">careful</em> launches.
-        </h1>
-        <p className="mt-6 max-w-xl text-muted-foreground">
-          We pick a small number of projects each year so we can give every one our full attention. Here's a look at recent work.
-        </p>
+
+      {/* HERO SECTION */}
+      <section className="relative overflow-hidden pt-24 pb-20 md:pt-36 md:pb-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid lg:grid-cols-12 gap-8 md:gap-12 items-end">
+            <div className="lg:col-span-8">
+              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium mb-6">
+                <span className="h-px w-6 bg-coral" /> Selected Works
+              </div>
+              <h1 className="font-serif text-5xl md:text-[5.5rem] tracking-tight leading-[0.95] text-foreground">
+                Digital experiences <br />
+                crafted with <em className="text-coral italic font-normal">precision.</em>
+              </h1>
+            </div>
+            <div className="lg:col-span-4 lg:pb-3">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                We partner with startups, creators, and businesses to build scalable, high-performing digital experiences that combine strategy, design, and technology.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pb-24 grid md:grid-cols-2 gap-10">
-        {projects.map((p, i) => (
-          <article key={i} className="group">
-            <div className="overflow-hidden rounded-2xl border border-border bg-secondary">
-              <img src={p.img} alt={p.title} loading="lazy" className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-700" />
-            </div>
-            <div className="mt-4 flex items-baseline justify-between">
-              <div>
-                <div className="text-xs text-muted-foreground">{p.tag} · {p.year}</div>
-                <h3 className="font-serif text-2xl mt-1">{p.title}</h3>
+      {/* FEATURED CASE STUDIES */}
+      <section className="py-12 md:py-24 bg-card/25 border-y border-border/40">
+        <div className="mx-auto max-w-7xl px-6 space-y-24 md:space-y-36">
+          
+          {/* CASE STUDY 1: GROOMVY */}
+          <FadeIn>
+            <div className="grid md:grid-cols-12 gap-8 md:gap-16 items-center">
+              <div className="md:col-span-7 group overflow-hidden rounded-[2rem] border border-border bg-secondary shadow-sm">
+                <img
+                  src={groomvyImg}
+                  alt="Groomvy Platform Preview"
+                  className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                  loading="lazy"
+                />
               </div>
-              <Link to="/contact" className="text-xs uppercase tracking-widest text-coral inline-flex items-center gap-1 hover:underline">
-                Case study <ArrowUpRight className="h-3.5 w-3.5" />
+              <div className="md:col-span-5 flex flex-col gap-6">
+                <div className="flex items-center justify-between text-xs uppercase tracking-widest text-muted-foreground">
+                  <span>{processSteps[0].num} — Beauty / SaaS Platform</span>
+                  <span>2024</span>
+                </div>
+                <h3 className="font-serif text-3xl md:text-4xl leading-tight">
+                  Groomvy — Modern Salon Operations Platform
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  A scalable salon management platform designed to simplify appointments, billing, staff management, and customer engagement through a seamless digital experience.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Booking System", "Dashboard", "Billing", "SaaS"].map((t) => (
+                    <span
+                      key={t}
+                      className="px-3.5 py-1.5 rounded-full text-xs font-medium border border-border bg-background"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="pt-2">
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center gap-2 rounded-full bg-coral text-coral-foreground px-6 py-3 text-sm font-medium hover:bg-foreground hover:text-background transition-all duration-300 shadow-sm"
+                  >
+                    Discuss similar project <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* CASE STUDY 2: TRIPIO */}
+          <FadeIn>
+            <div className="grid md:grid-cols-12 gap-8 md:gap-16 items-center">
+              <div className="md:col-span-5 flex flex-col gap-6 md:order-1">
+                <div className="flex items-center justify-between text-xs uppercase tracking-widest text-muted-foreground">
+                  <span>02 — Travel / Hospitality</span>
+                  <span>2024</span>
+                </div>
+                <h3 className="font-serif text-3xl md:text-4xl leading-tight">
+                  Tripio — Immersive Travel Booking Experience
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  A visually rich travel platform focused on seamless destination discovery, responsive booking flows, and immersive storytelling.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Travel", "Booking", "UI/UX", "Responsive"].map((t) => (
+                    <span
+                      key={t}
+                      className="px-3.5 py-1.5 rounded-full text-xs font-medium border border-border bg-background"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="pt-2">
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center gap-2 rounded-full bg-coral text-coral-foreground px-6 py-3 text-sm font-medium hover:bg-foreground hover:text-background transition-all duration-300 shadow-sm"
+                  >
+                    Discuss similar project <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+              <div className="md:col-span-7 group overflow-hidden rounded-[2rem] border border-border bg-secondary shadow-sm md:order-2">
+                <img
+                  src={tripioImg}
+                  alt="Tripio Platform Preview"
+                  className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* CASE STUDY 3: EVENTRA */}
+          <FadeIn>
+            <div className="bg-ink text-[#FAF8F5] rounded-[2.5rem] p-6 sm:p-10 md:p-16 border border-white/5 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-coral/10 rounded-full blur-[100px] pointer-events-none" />
+              <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center relative z-10">
+                <div className="lg:col-span-7 group overflow-hidden rounded-2xl border border-white/10 bg-[#2C2420]">
+                  <img
+                    src={eventraImg}
+                    alt="Eventra Platform Preview"
+                    className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="lg:col-span-5 flex flex-col gap-6">
+                  <div className="flex items-center justify-between text-xs uppercase tracking-widest text-muted-foreground">
+                    <span className="text-coral">03 — Entertainment / Platform</span>
+                    <span className="text-white/60">2023</span>
+                  </div>
+                  <h3 className="font-serif text-3xl md:text-4xl leading-tight text-white">
+                    Eventra — Interactive Event Experience Platform
+                  </h3>
+                  <p className="text-white/70 leading-relaxed text-sm md:text-base">
+                    An immersive event platform crafted with cinematic visuals, motion-driven interactions, and modern storytelling to elevate digital experiences.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {["Motion Design", "Experience", "Branding", "Interactive UI"].map((t) => (
+                      <span
+                        key={t}
+                        className="px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/10 bg-white/5 text-white/90"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="pt-2">
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center gap-2 rounded-full bg-coral text-coral-foreground px-6 py-3 text-sm font-medium hover:bg-white hover:text-ink transition-all duration-300"
+                    >
+                      Discuss similar project <ArrowUpRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+        </div>
+      </section>
+
+      {/* STATS STRIP */}
+      <section className="py-16 bg-secondary/30">
+        <div className="mx-auto max-w-7xl px-6">
+          <FadeIn>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center md:text-left border-b border-border/40 pb-16">
+              {[
+                { stat: "10+", label: "Projects Delivered", desc: "Crafted with absolute quality" },
+                { stat: "5+", label: "Industries Served", desc: "Versatile project categories" },
+                { stat: "Fast", label: "Turnaround", desc: "No unnecessary delays" },
+                { stat: "Modern", label: "Tech Stack", desc: "Next-gen frameworks" },
+              ].map((item, idx) => (
+                <div key={idx} className="flex flex-col gap-2">
+                  <div className="font-serif text-4xl md:text-5xl lg:text-6xl text-coral tracking-tight">
+                    {item.stat}
+                  </div>
+                  <div className="font-medium text-foreground text-sm uppercase tracking-wider">
+                    {item.label}
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    {item.desc}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* BUSINESS SOLUTIONS SECTION */}
+      <section className="py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <FadeIn className="mb-14">
+            <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium mb-3">
+              Scalable Systems
+            </div>
+            <h2 className="font-serif text-4xl md:text-5xl">
+              Corporate & commerce solutions.
+            </h2>
+            <p className="text-muted-foreground mt-4 max-w-xl">
+              Clean and highly performant custom systems engineered to optimize business workflows, conversion rates, and brand engagement.
+            </p>
+          </FadeIn>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            {/* PROJECT 4 */}
+            <FadeIn delay={100}>
+              <article className="group flex flex-col gap-4">
+                <div className="overflow-hidden rounded-2xl border border-border bg-secondary shadow-sm">
+                  <img
+                    src={optimusImg}
+                    alt="Optimus Manpower Recruitment Platform"
+                    className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                      Recruitment
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-border" />
+                    <span className="text-[10px] uppercase tracking-wider text-coral">
+                      Corporate
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-2xl group-hover:text-coral transition-colors">
+                    Optimus Manpower — Recruitment Platform
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    A corporate recruitment experience focused on service clarity, trust-building, and scalable lead generation.
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {["Corporate", "SEO", "Lead Gen"].map((t) => (
+                      <span
+                        key={t}
+                        className="px-2.5 py-1 rounded-full text-[10px] font-medium border border-border bg-background"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            </FadeIn>
+
+            {/* PROJECT 5 */}
+            <FadeIn delay={200}>
+              <article className="group flex flex-col gap-4">
+                <div className="overflow-hidden rounded-2xl border border-border bg-secondary shadow-sm">
+                  <img
+                    src={novaImg}
+                    alt="Nova Commerce Platform"
+                    className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                      E-Commerce
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-border" />
+                    <span className="text-[10px] uppercase tracking-wider text-coral">
+                      Product UI
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-2xl group-hover:text-coral transition-colors">
+                    Nova Commerce — E-Commerce Experience
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    A modern commerce platform designed for seamless product discovery, responsive shopping experiences, and scalable architecture.
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {["E-Commerce", "Product UI", "Responsive"].map((t) => (
+                      <span
+                        key={t}
+                        className="px-2.5 py-1 rounded-full text-[10px] font-medium border border-border bg-background"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            </FadeIn>
+
+            {/* PROJECT 6 */}
+            <FadeIn delay={300}>
+              <article className="group flex flex-col gap-4">
+                <div className="overflow-hidden rounded-2xl border border-border bg-secondary shadow-sm">
+                  <img
+                    src={work2}
+                    alt="Praxis Studio Portfolio"
+                    className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                      Portfolio
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-border" />
+                    <span className="text-[10px] uppercase tracking-wider text-coral">
+                      Branding
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-2xl group-hover:text-coral transition-colors">
+                    Praxis Studio — Creative Portfolio Experience
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    A minimalist portfolio crafted with refined typography, visual storytelling, and thoughtful interactions.
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {["Portfolio", "Branding", "Minimal"].map((t) => (
+                      <span
+                        key={t}
+                        className="px-2.5 py-1 rounded-full text-[10px] font-medium border border-border bg-background"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* EXPERIMENTAL / PRODUCT UI SECTION */}
+      <section className="py-20 bg-secondary/20 border-t border-border/40">
+        <div className="mx-auto max-w-7xl px-6">
+          <FadeIn>
+            <div className="bg-card rounded-[2.5rem] border border-border p-6 sm:p-12 md:p-16 shadow-sm">
+              <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                <div className="lg:col-span-5 flex flex-col gap-6">
+                  <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium">
+                    <span className="h-px w-6 bg-coral" /> Experimental Lab
+                  </div>
+                  <h3 className="font-serif text-3xl md:text-5xl leading-tight">
+                    Zora — Product Showcase Experience
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    A visually immersive landing page focused on interaction design, motion, and conversion-driven storytelling for high-end physical products.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {["Product UI", "Landing Page", "Motion Design"].map((t) => (
+                      <span
+                        key={t}
+                        className="px-3.5 py-1.5 rounded-full text-xs font-medium border border-border bg-background"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="pt-2">
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-medium hover:bg-foreground hover:text-background transition-colors"
+                    >
+                      View Experiment details <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+                <div className="lg:col-span-7 group overflow-hidden rounded-2xl border border-border bg-secondary shadow-sm">
+                  <img
+                    src={zoraImg}
+                    alt="Zora Futuristic UI Showcase"
+                    className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* PROCESS SECTION */}
+      <section className="py-20 md:py-28 border-t border-border/40">
+        <div className="mx-auto max-w-7xl px-6">
+          <FadeIn className="text-center mb-16">
+            <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium mb-3">
+              How We Work
+            </div>
+            <h2 className="font-serif text-4xl md:text-5xl">
+              Collaborative process, built on trust.
+            </h2>
+            <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+              Our structured workflow ensures predictable delivery, constant communication, and exceptional engineering outcomes.
+            </p>
+          </FadeIn>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {processSteps.map((step, idx) => (
+              <FadeIn key={idx} delay={idx * 100}>
+                <div className="group h-full rounded-2xl border border-border bg-card p-8 hover:border-coral/50 hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-8">
+                      <span className="font-serif text-3xl text-coral/40 group-hover:text-coral transition-colors font-medium">
+                        {step.num}
+                      </span>
+                      <div className="h-10 w-10 rounded-xl bg-secondary text-foreground flex items-center justify-center group-hover:bg-coral group-hover:text-coral-foreground transition-all duration-300">
+                        <step.icon className="h-5 w-5" />
+                      </div>
+                    </div>
+                    <h3 className="font-serif text-2xl mb-3">{step.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE AFERO SECTION */}
+      <section className="py-20 md:py-28 bg-secondary/30 border-t border-border/40">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid lg:grid-cols-12 gap-12 items-start mb-16">
+            <div className="lg:col-span-5">
+              <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium mb-3">
+                Why Afero
+              </div>
+              <h2 className="font-serif text-4xl md:text-5xl leading-tight">
+                Built for ambitious brands.
+              </h2>
+            </div>
+            <div className="lg:col-span-7">
+              <p className="text-muted-foreground text-base md:text-lg leading-relaxed pt-2">
+                We work closely with a limited number of clients to craft digital experiences that balance creativity, performance, and scalability. Every component is designed to move your brand forward.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {valueCards.map((card, idx) => (
+              <FadeIn key={idx} delay={idx * 50}>
+                <div className="rounded-2xl border border-border bg-card p-8 h-full hover:shadow-sm hover:border-coral/30 transition-all">
+                  <div className="h-10 w-10 rounded-lg bg-coral/10 text-coral flex items-center justify-center mb-6">
+                    <card.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-serif text-xl mb-2">{card.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {card.description}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA SECTION */}
+      <section className="py-24 md:py-32 relative overflow-hidden bg-ink text-[#FAF8F5] border-t border-white/5">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(255,107,61,0.15),transparent_60%)] pointer-events-none" />
+        <div className="mx-auto max-w-3xl px-6 text-center relative z-10">
+          <FadeIn>
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium mb-6">
+              <span className="h-px w-6 bg-coral" /> Start a conversation
+            </div>
+            <h2 className="font-serif text-5xl md:text-7xl leading-tight">
+              Have an idea <br /> in mind?
+            </h2>
+            <p className="mt-6 text-white/70 max-w-xl mx-auto leading-relaxed">
+              Let’s build something exceptional together. Tell us about your goals, timeline, and scope.
+            </p>
+            <div className="mt-10">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-coral text-coral-foreground px-8 py-4 text-sm font-semibold hover:bg-white hover:text-ink transition-all duration-300 shadow-lg shadow-coral/10"
+              >
+                Start Your Project <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-          </article>
-        ))}
+          </FadeIn>
+        </div>
       </section>
+
       <Footer />
     </div>
   );
