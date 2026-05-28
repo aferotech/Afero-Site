@@ -169,6 +169,7 @@
   .glow-coral {
     box-shadow: 0 20px 60px -20px color-mix(in oklab, var(--coral) 55%, transparent);
   }
+<<<<<<< HEAD
 
   /* 3D and Parallax Redesign Helpers */
   .perspective-1000 {
@@ -243,4 +244,6 @@
   .glow-coral-lg {
     box-shadow: 0 15px 45px -10px color-mix(in oklab, var(--coral) 25%, transparent);
   }
+=======
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
 }

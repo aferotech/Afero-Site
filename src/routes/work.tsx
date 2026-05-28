@@ -8,6 +8,7 @@ import {
   Code2,
   Rocket,
   Zap,
+<<<<<<< HEAD
   Cpu,
   Layers,
   Shield,
@@ -50,18 +51,44 @@ function ParallaxImage({
     </div>
   );
 }
+=======
+  Shield,
+  Sparkles,
+  Cpu,
+  Layers,
+} from "lucide-react";
+import { Nav } from "@/components/site/Nav";
+import { Footer } from "@/components/site/Footer";
+
+// Import pre-generated assets
+import groomvyImg from "@/assets/groomvy.png";
+import tripioImg from "@/assets/tripio.png";
+import eventraImg from "@/assets/eventra.png";
+import optimusImg from "@/assets/optimus.png";
+import novaImg from "@/assets/nova.png";
+import zoraImg from "@/assets/zora.png";
+import work2 from "@/assets/work-2.jpg"; // Praxis Studio
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
 
 export const Route = createFileRoute("/work")({
   component: WorkPage,
   head: () => ({
     meta: [
+<<<<<<< HEAD
       { title: "Selected Work - Afero Studio" },
+=======
+      { title: "Selected Work — Afero Studio" },
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
       {
         name: "description",
         content:
           "Explore selected case studies and digital experiences designed and engineered by Afero.",
       },
+<<<<<<< HEAD
       { property: "og:title", content: "Selected Work - Afero Studio" },
+=======
+      { property: "og:title", content: "Selected Work — Afero Studio" },
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
       { property: "og:image", content: groomvyImg },
     ],
   }),
@@ -101,8 +128,14 @@ function FadeIn({
   return (
     <div
       ref={ref}
+<<<<<<< HEAD
       className={`transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         } ${className}`}
+=======
+      className={`transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      } ${className}`}
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -202,6 +235,7 @@ function WorkPage() {
       </section>
 
       {/* FEATURED CASE STUDIES */}
+<<<<<<< HEAD
       <section className="py-16 md:py-28 bg-card/10 border-y border-border/40 relative overflow-hidden">
         {/* Glows */}
         <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-coral/5 rounded-full blur-[100px] pointer-events-none" />
@@ -226,13 +260,42 @@ function WorkPage() {
                   Groomvy - Modern Salon Operations Platform
                 </h3>
                 <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+=======
+      <section className="py-12 md:py-24 bg-card/25 border-y border-border/40">
+        <div className="mx-auto max-w-7xl px-6 space-y-24 md:space-y-36">
+          
+          {/* CASE STUDY 1: GROOMVY */}
+          <FadeIn>
+            <div className="grid md:grid-cols-12 gap-8 md:gap-16 items-center">
+              <div className="md:col-span-7 group overflow-hidden rounded-[2rem] border border-border bg-secondary shadow-sm">
+                <img
+                  src={groomvyImg}
+                  alt="Groomvy Platform Preview"
+                  className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                  loading="lazy"
+                />
+              </div>
+              <div className="md:col-span-5 flex flex-col gap-6">
+                <div className="flex items-center justify-between text-xs uppercase tracking-widest text-muted-foreground">
+                  <span>{processSteps[0].num} — Beauty / SaaS Platform</span>
+                  <span>2024</span>
+                </div>
+                <h3 className="font-serif text-3xl md:text-4xl leading-tight">
+                  Groomvy — Modern Salon Operations Platform
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                   A scalable salon management platform designed to simplify appointments, billing, staff management, and customer engagement through a seamless digital experience.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {["Booking System", "Dashboard", "Billing", "SaaS"].map((t) => (
                     <span
                       key={t}
+<<<<<<< HEAD
                       className="px-3.5 py-1.5 rounded-full text-xs font-semibold border border-border bg-background/60 backdrop-blur-sm"
+=======
+                      className="px-3.5 py-1.5 rounded-full text-xs font-medium border border-border bg-background"
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                     >
                       {t}
                     </span>
@@ -241,7 +304,11 @@ function WorkPage() {
                 <div className="pt-2">
                   <Link
                     to="/contact"
+<<<<<<< HEAD
                     className="inline-flex items-center gap-2 rounded-full bg-coral text-coral-foreground px-6 py-3 text-sm font-semibold hover:bg-foreground hover:text-background transition-colors shadow-md"
+=======
+                    className="inline-flex items-center gap-2 rounded-full bg-coral text-coral-foreground px-6 py-3 text-sm font-medium hover:bg-foreground hover:text-background transition-all duration-300 shadow-sm"
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                   >
                     Discuss similar project <ArrowUpRight className="h-4 w-4" />
                   </Link>
@@ -255,6 +322,7 @@ function WorkPage() {
             <div className="grid md:grid-cols-12 gap-8 md:gap-16 items-center">
               <div className="md:col-span-5 flex flex-col gap-6 md:order-1">
                 <div className="flex items-center justify-between text-xs uppercase tracking-widest text-muted-foreground">
+<<<<<<< HEAD
                   <span className="text-coral font-medium">02 - Travel / Hospitality</span>
                   <span>2024</span>
                 </div>
@@ -262,13 +330,26 @@ function WorkPage() {
                   Tripio - Immersive Travel Booking Experience
                 </h3>
                 <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+=======
+                  <span>02 — Travel / Hospitality</span>
+                  <span>2024</span>
+                </div>
+                <h3 className="font-serif text-3xl md:text-4xl leading-tight">
+                  Tripio — Immersive Travel Booking Experience
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                   A visually rich travel platform focused on seamless destination discovery, responsive booking flows, and immersive storytelling.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {["Travel", "Booking", "UI/UX", "Responsive"].map((t) => (
                     <span
                       key={t}
+<<<<<<< HEAD
                       className="px-3.5 py-1.5 rounded-full text-xs font-semibold border border-border bg-background/60 backdrop-blur-sm"
+=======
+                      className="px-3.5 py-1.5 rounded-full text-xs font-medium border border-border bg-background"
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                     >
                       {t}
                     </span>
@@ -277,16 +358,30 @@ function WorkPage() {
                 <div className="pt-2">
                   <Link
                     to="/contact"
+<<<<<<< HEAD
                     className="inline-flex items-center gap-2 rounded-full bg-coral text-coral-foreground px-6 py-3 text-sm font-semibold hover:bg-foreground hover:text-background transition-colors shadow-md"
+=======
+                    className="inline-flex items-center gap-2 rounded-full bg-coral text-coral-foreground px-6 py-3 text-sm font-medium hover:bg-foreground hover:text-background transition-all duration-300 shadow-sm"
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                   >
                     Discuss similar project <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </div>
               </div>
+<<<<<<< HEAD
               <div className="md:col-span-7 md:order-2">
                 <Tilt3D maxTilt={4} scale={1.01} className="rounded-[2rem] overflow-hidden border border-border bg-secondary/50 shadow-lg">
                   <ParallaxImage src={tripioImg} alt="Tripio Platform Preview" />
                 </Tilt3D>
+=======
+              <div className="md:col-span-7 group overflow-hidden rounded-[2rem] border border-border bg-secondary shadow-sm md:order-2">
+                <img
+                  src={tripioImg}
+                  alt="Tripio Platform Preview"
+                  className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                  loading="lazy"
+                />
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
               </div>
             </div>
           </FadeIn>
@@ -296,6 +391,7 @@ function WorkPage() {
             <div className="bg-ink text-[#FAF8F5] rounded-[2.5rem] p-6 sm:p-10 md:p-16 border border-white/5 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-96 h-96 bg-coral/10 rounded-full blur-[100px] pointer-events-none" />
               <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center relative z-10">
+<<<<<<< HEAD
                 <div className="lg:col-span-7">
                   <Tilt3D maxTilt={4} scale={1.01} className="rounded-2xl overflow-hidden border border-white/10 bg-[#2C2420] shadow-lg">
                     <ParallaxImage src={eventraImg} alt="Eventra Platform Preview" />
@@ -308,6 +404,23 @@ function WorkPage() {
                   </div>
                   <h3 className="font-serif text-3xl md:text-4xl leading-tight text-white">
                     Eventra - Interactive Event Experience Platform
+=======
+                <div className="lg:col-span-7 group overflow-hidden rounded-2xl border border-white/10 bg-[#2C2420]">
+                  <img
+                    src={eventraImg}
+                    alt="Eventra Platform Preview"
+                    className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="lg:col-span-5 flex flex-col gap-6">
+                  <div className="flex items-center justify-between text-xs uppercase tracking-widest text-muted-foreground">
+                    <span className="text-coral">03 — Entertainment / Platform</span>
+                    <span className="text-white/60">2023</span>
+                  </div>
+                  <h3 className="font-serif text-3xl md:text-4xl leading-tight text-white">
+                    Eventra — Interactive Event Experience Platform
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                   </h3>
                   <p className="text-white/70 leading-relaxed text-sm md:text-base">
                     An immersive event platform crafted with cinematic visuals, motion-driven interactions, and modern storytelling to elevate digital experiences.
@@ -316,7 +429,11 @@ function WorkPage() {
                     {["Motion Design", "Experience", "Branding", "Interactive UI"].map((t) => (
                       <span
                         key={t}
+<<<<<<< HEAD
                         className="px-3.5 py-1.5 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-white/90"
+=======
+                        className="px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/10 bg-white/5 text-white/90"
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                       >
                         {t}
                       </span>
@@ -325,7 +442,11 @@ function WorkPage() {
                   <div className="pt-2">
                     <Link
                       to="/contact"
+<<<<<<< HEAD
                       className="inline-flex items-center gap-2 rounded-full bg-coral text-coral-foreground px-6 py-3 text-sm font-semibold hover:bg-white hover:text-ink transition-colors"
+=======
+                      className="inline-flex items-center gap-2 rounded-full bg-coral text-coral-foreground px-6 py-3 text-sm font-medium hover:bg-white hover:text-ink transition-all duration-300"
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                     >
                       Discuss similar project <ArrowUpRight className="h-4 w-4" />
                     </Link>
@@ -339,10 +460,17 @@ function WorkPage() {
       </section>
 
       {/* STATS STRIP */}
+<<<<<<< HEAD
       <section className="py-16 bg-secondary/10 border-b border-border/40 relative">
         <div className="mx-auto max-w-7xl px-6">
           <FadeIn>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center md:text-left">
+=======
+      <section className="py-16 bg-secondary/30">
+        <div className="mx-auto max-w-7xl px-6">
+          <FadeIn>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center md:text-left border-b border-border/40 pb-16">
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
               {[
                 { stat: "10+", label: "Projects Delivered", desc: "Crafted with absolute quality" },
                 { stat: "5+", label: "Industries Served", desc: "Versatile project categories" },
@@ -353,7 +481,11 @@ function WorkPage() {
                   <div className="font-serif text-4xl md:text-5xl lg:text-6xl text-coral tracking-tight">
                     {item.stat}
                   </div>
+<<<<<<< HEAD
                   <div className="font-semibold text-foreground text-sm uppercase tracking-wider">
+=======
+                  <div className="font-medium text-foreground text-sm uppercase tracking-wider">
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                     {item.label}
                   </div>
                   <div className="text-xs text-muted-foreground">
@@ -367,20 +499,31 @@ function WorkPage() {
       </section>
 
       {/* BUSINESS SOLUTIONS SECTION */}
+<<<<<<< HEAD
       <section className="py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <FadeIn className="mb-16">
+=======
+      <section className="py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <FadeIn className="mb-14">
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
             <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium mb-3">
               Scalable Systems
             </div>
             <h2 className="font-serif text-4xl md:text-5xl">
               Corporate & commerce solutions.
             </h2>
+<<<<<<< HEAD
             <p className="text-muted-foreground mt-4 max-w-xl text-sm md:text-base leading-relaxed">
+=======
+            <p className="text-muted-foreground mt-4 max-w-xl">
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
               Clean and highly performant custom systems engineered to optimize business workflows, conversion rates, and brand engagement.
             </p>
           </FadeIn>
 
+<<<<<<< HEAD
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* PROJECT 4 */}
             <FadeIn delay={100}>
@@ -413,17 +556,58 @@ function WorkPage() {
                       <span
                         key={t}
                         className="px-2.5 py-1 rounded-full text-[10px] font-semibold border border-border bg-background"
+=======
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            {/* PROJECT 4 */}
+            <FadeIn delay={100}>
+              <article className="group flex flex-col gap-4">
+                <div className="overflow-hidden rounded-2xl border border-border bg-secondary shadow-sm">
+                  <img
+                    src={optimusImg}
+                    alt="Optimus Manpower Recruitment Platform"
+                    className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                      Recruitment
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-border" />
+                    <span className="text-[10px] uppercase tracking-wider text-coral">
+                      Corporate
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-2xl group-hover:text-coral transition-colors">
+                    Optimus Manpower — Recruitment Platform
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    A corporate recruitment experience focused on service clarity, trust-building, and scalable lead generation.
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {["Corporate", "SEO", "Lead Gen"].map((t) => (
+                      <span
+                        key={t}
+                        className="px-2.5 py-1 rounded-full text-[10px] font-medium border border-border bg-background"
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                       >
                         {t}
                       </span>
                     ))}
                   </div>
+<<<<<<< HEAD
                 </article>
               </Tilt3D>
+=======
+                </div>
+              </article>
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
             </FadeIn>
 
             {/* PROJECT 5 */}
             <FadeIn delay={200}>
+<<<<<<< HEAD
               <Tilt3D maxTilt={6} scale={1.02} className="h-full">
                 <article className="group flex flex-col justify-between glass-card-3d p-6 rounded-3xl h-full preserve-3d">
                   <div>
@@ -453,17 +637,55 @@ function WorkPage() {
                       <span
                         key={t}
                         className="px-2.5 py-1 rounded-full text-[10px] font-semibold border border-border bg-background"
+=======
+              <article className="group flex flex-col gap-4">
+                <div className="overflow-hidden rounded-2xl border border-border bg-secondary shadow-sm">
+                  <img
+                    src={novaImg}
+                    alt="Nova Commerce Platform"
+                    className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                      E-Commerce
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-border" />
+                    <span className="text-[10px] uppercase tracking-wider text-coral">
+                      Product UI
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-2xl group-hover:text-coral transition-colors">
+                    Nova Commerce — E-Commerce Experience
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    A modern commerce platform designed for seamless product discovery, responsive shopping experiences, and scalable architecture.
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {["E-Commerce", "Product UI", "Responsive"].map((t) => (
+                      <span
+                        key={t}
+                        className="px-2.5 py-1 rounded-full text-[10px] font-medium border border-border bg-background"
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                       >
                         {t}
                       </span>
                     ))}
                   </div>
+<<<<<<< HEAD
                 </article>
               </Tilt3D>
+=======
+                </div>
+              </article>
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
             </FadeIn>
 
             {/* PROJECT 6 */}
             <FadeIn delay={300}>
+<<<<<<< HEAD
               <Tilt3D maxTilt={6} scale={1.02} className="h-full">
                 <article className="group flex flex-col justify-between glass-card-3d p-6 rounded-3xl h-full preserve-3d">
                   <div>
@@ -493,40 +715,94 @@ function WorkPage() {
                       <span
                         key={t}
                         className="px-2.5 py-1 rounded-full text-[10px] font-semibold border border-border bg-background"
+=======
+              <article className="group flex flex-col gap-4">
+                <div className="overflow-hidden rounded-2xl border border-border bg-secondary shadow-sm">
+                  <img
+                    src={work2}
+                    alt="Praxis Studio Portfolio"
+                    className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                      Portfolio
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-border" />
+                    <span className="text-[10px] uppercase tracking-wider text-coral">
+                      Branding
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-2xl group-hover:text-coral transition-colors">
+                    Praxis Studio — Creative Portfolio Experience
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    A minimalist portfolio crafted with refined typography, visual storytelling, and thoughtful interactions.
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {["Portfolio", "Branding", "Minimal"].map((t) => (
+                      <span
+                        key={t}
+                        className="px-2.5 py-1 rounded-full text-[10px] font-medium border border-border bg-background"
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                       >
                         {t}
                       </span>
                     ))}
                   </div>
+<<<<<<< HEAD
                 </article>
               </Tilt3D>
+=======
+                </div>
+              </article>
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
             </FadeIn>
           </div>
         </div>
       </section>
 
       {/* EXPERIMENTAL / PRODUCT UI SECTION */}
+<<<<<<< HEAD
       <section className="py-24 bg-secondary/20 border-t border-border/40 relative overflow-hidden">
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-coral/5 rounded-full blur-[100px] pointer-events-none" />
         <div className="mx-auto max-w-7xl px-6 relative z-10">
           <FadeIn>
             <div className="bg-card rounded-[2.5rem] border border-border p-6 sm:p-12 md:p-16 shadow-lg glass-card-3d">
+=======
+      <section className="py-20 bg-secondary/20 border-t border-border/40">
+        <div className="mx-auto max-w-7xl px-6">
+          <FadeIn>
+            <div className="bg-card rounded-[2.5rem] border border-border p-6 sm:p-12 md:p-16 shadow-sm">
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
               <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
                 <div className="lg:col-span-5 flex flex-col gap-6">
                   <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium">
                     <span className="h-px w-6 bg-coral" /> Experimental Lab
                   </div>
                   <h3 className="font-serif text-3xl md:text-5xl leading-tight">
+<<<<<<< HEAD
                     Zora - Product Showcase Experience
                   </h3>
                   <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+=======
+                    Zora — Product Showcase Experience
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                     A visually immersive landing page focused on interaction design, motion, and conversion-driven storytelling for high-end physical products.
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {["Product UI", "Landing Page", "Motion Design"].map((t) => (
                       <span
                         key={t}
+<<<<<<< HEAD
                         className="px-3.5 py-1.5 rounded-full text-xs font-semibold border border-border bg-background/60 backdrop-blur-sm"
+=======
+                        className="px-3.5 py-1.5 rounded-full text-xs font-medium border border-border bg-background"
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                       >
                         {t}
                       </span>
@@ -535,16 +811,30 @@ function WorkPage() {
                   <div className="pt-2">
                     <Link
                       to="/contact"
+<<<<<<< HEAD
                       className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-semibold hover:bg-foreground hover:text-background transition-colors"
+=======
+                      className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-medium hover:bg-foreground hover:text-background transition-colors"
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                     >
                       View Experiment details <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
                 </div>
+<<<<<<< HEAD
                 <div className="lg:col-span-7">
                   <Tilt3D maxTilt={4} scale={1.01} className="rounded-2xl overflow-hidden border border-border bg-secondary/50 shadow-md">
                     <ParallaxImage src={zoraImg} alt="Zora Futuristic UI Showcase" />
                   </Tilt3D>
+=======
+                <div className="lg:col-span-7 group overflow-hidden rounded-2xl border border-border bg-secondary shadow-sm">
+                  <img
+                    src={zoraImg}
+                    alt="Zora Futuristic UI Showcase"
+                    className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    loading="lazy"
+                  />
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
                 </div>
               </div>
             </div>
@@ -553,7 +843,11 @@ function WorkPage() {
       </section>
 
       {/* PROCESS SECTION */}
+<<<<<<< HEAD
       <section className="py-24 md:py-32 border-t border-border/40">
+=======
+      <section className="py-20 md:py-28 border-t border-border/40">
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
         <div className="mx-auto max-w-7xl px-6">
           <FadeIn className="text-center mb-16">
             <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium mb-3">
@@ -562,7 +856,11 @@ function WorkPage() {
             <h2 className="font-serif text-4xl md:text-5xl">
               Collaborative process, built on trust.
             </h2>
+<<<<<<< HEAD
             <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
+=======
+            <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
               Our structured workflow ensures predictable delivery, constant communication, and exceptional engineering outcomes.
             </p>
           </FadeIn>
@@ -570,6 +868,7 @@ function WorkPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {processSteps.map((step, idx) => (
               <FadeIn key={idx} delay={idx * 100}>
+<<<<<<< HEAD
                 <Tilt3D maxTilt={8} scale={1.03} className="h-full">
                   <div className="group h-full rounded-2xl glass-card-3d p-8 flex flex-col justify-between preserve-3d">
                     <div>
@@ -596,6 +895,24 @@ function WorkPage() {
                     </div>
                   </div>
                 </Tilt3D>
+=======
+                <div className="group h-full rounded-2xl border border-border bg-card p-8 hover:border-coral/50 hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-8">
+                      <span className="font-serif text-3xl text-coral/40 group-hover:text-coral transition-colors font-medium">
+                        {step.num}
+                      </span>
+                      <div className="h-10 w-10 rounded-xl bg-secondary text-foreground flex items-center justify-center group-hover:bg-coral group-hover:text-coral-foreground transition-all duration-300">
+                        <step.icon className="h-5 w-5" />
+                      </div>
+                    </div>
+                    <h3 className="font-serif text-2xl mb-3">{step.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
               </FadeIn>
             ))}
           </div>
@@ -603,7 +920,11 @@ function WorkPage() {
       </section>
 
       {/* WHY CHOOSE AFERO SECTION */}
+<<<<<<< HEAD
       <section className="py-24 md:py-32 bg-secondary/10 border-t border-border/40">
+=======
+      <section className="py-20 md:py-28 bg-secondary/30 border-t border-border/40">
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid lg:grid-cols-12 gap-12 items-start mb-16">
             <div className="lg:col-span-5">
@@ -624,6 +945,7 @@ function WorkPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {valueCards.map((card, idx) => (
               <FadeIn key={idx} delay={idx * 50}>
+<<<<<<< HEAD
                 <Tilt3D maxTilt={6} scale={1.02} className="h-full">
                   <div className="rounded-2xl glass-card-3d p-8 h-full preserve-3d">
                     <div
@@ -640,6 +962,17 @@ function WorkPage() {
                     </p>
                   </div>
                 </Tilt3D>
+=======
+                <div className="rounded-2xl border border-border bg-card p-8 h-full hover:shadow-sm hover:border-coral/30 transition-all">
+                  <div className="h-10 w-10 rounded-lg bg-coral/10 text-coral flex items-center justify-center mb-6">
+                    <card.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-serif text-xl mb-2">{card.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {card.description}
+                  </p>
+                </div>
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
               </FadeIn>
             ))}
           </div>
@@ -647,8 +980,13 @@ function WorkPage() {
       </section>
 
       {/* FINAL CTA SECTION */}
+<<<<<<< HEAD
       <section className="py-28 md:py-36 relative overflow-hidden bg-ink text-[#FAF8F5] border-t border-white/5">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(255,107,61,0.18),transparent_60%)] pointer-events-none" />
+=======
+      <section className="py-24 md:py-32 relative overflow-hidden bg-ink text-[#FAF8F5] border-t border-white/5">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(255,107,61,0.15),transparent_60%)] pointer-events-none" />
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
         <div className="mx-auto max-w-3xl px-6 text-center relative z-10">
           <FadeIn>
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium mb-6">
@@ -657,13 +995,21 @@ function WorkPage() {
             <h2 className="font-serif text-5xl md:text-7xl leading-tight">
               Have an idea <br /> in mind?
             </h2>
+<<<<<<< HEAD
             <p className="mt-6 text-white/70 max-w-xl mx-auto leading-relaxed text-sm md:text-base">
+=======
+            <p className="mt-6 text-white/70 max-w-xl mx-auto leading-relaxed">
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
               Let’s build something exceptional together. Tell us about your goals, timeline, and scope.
             </p>
             <div className="mt-10">
               <Link
                 to="/contact"
+<<<<<<< HEAD
                 className="inline-flex items-center gap-2 rounded-full bg-coral text-coral-foreground px-8 py-4 text-sm font-semibold hover:bg-white hover:text-ink transition-colors shadow-lg shadow-coral/10"
+=======
+                className="inline-flex items-center gap-2 rounded-full bg-coral text-coral-foreground px-8 py-4 text-sm font-semibold hover:bg-white hover:text-ink transition-all duration-300 shadow-lg shadow-coral/10"
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
               >
                 Start Your Project <ArrowRight className="h-4 w-4" />
               </Link>

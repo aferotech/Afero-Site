@@ -35,12 +35,20 @@ const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => rootRouteImport,
+<<<<<<< HEAD
 } as any).lazy(() => import('./routes/contact.lazy').then((d) => d.Route))
+=======
+} as any)
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
   getParentRoute: () => rootRouteImport,
+<<<<<<< HEAD
 } as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
+=======
+} as any)
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',

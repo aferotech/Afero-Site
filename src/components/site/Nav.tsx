@@ -30,7 +30,11 @@ export function Nav() {
 
   return (
     <header
+<<<<<<< HEAD
       className={`fixed top-0 left-0 right-0 z-50 border-b border-border/60 transition-all duration-500 ${
+=======
+      className={`sticky top-0 z-50 border-b border-border/60 transition-all duration-500 ${
+>>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
         scrolled
           ? "backdrop-blur-xl bg-background/85"
           : "backdrop-blur-md bg-background/70"
