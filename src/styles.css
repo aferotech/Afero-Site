@@ -1,0 +1,246 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://fonts.gstatic.com/s/instrumentserif/v4/jizDREVItHgc8qDIbSTKq4XKVjnDWJg.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  src: url("https://fonts.gstatic.com/s/instrumentserif/v4/jizBREVItHgc8qDIbSTKq4XKVjjUTHs5jOWZ.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 100 1000;
+  src: url("https://fonts.gstatic.com/s/dmsans/v15/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAop6E.woff2") format("woff2");
+  font-display: swap;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 14px);
+  --radius-3xl: calc(var(--radius) + 22px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-coral: var(--coral);
+  --color-coral-foreground: var(--coral-foreground);
+  --color-moss: var(--moss);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Brand: warm cream + deep ink + electric coral accent */
+  --cream: oklch(0.972 0.018 80);
+  --ink: oklch(0.18 0.02 60);
+  --coral: oklch(0.7 0.2 32);
+  --coral-foreground: oklch(0.98 0.01 80);
+  --moss: oklch(0.42 0.07 145);
+
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: oklch(0.99 0.008 80);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.99 0.008 80);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--cream);
+  --secondary: oklch(0.94 0.018 80);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.94 0.014 80);
+  --muted-foreground: oklch(0.45 0.02 60);
+  --accent: var(--coral);
+  --accent-foreground: var(--coral-foreground);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.98 0.003 80);
+  --border: oklch(0.88 0.014 70);
+  --input: oklch(0.88 0.014 70);
+  --ring: var(--coral);
+}
+
+.dark {
+  --background: oklch(0.16 0.015 60);
+  --foreground: oklch(0.96 0.012 80);
+  --card: oklch(0.2 0.018 60);
+  --card-foreground: oklch(0.96 0.012 80);
+  --popover: oklch(0.2 0.018 60);
+  --popover-foreground: oklch(0.96 0.012 80);
+  --primary: oklch(0.96 0.012 80);
+  --primary-foreground: oklch(0.18 0.02 60);
+  --secondary: oklch(0.24 0.02 60);
+  --secondary-foreground: oklch(0.96 0.012 80);
+  --muted: oklch(0.24 0.02 60);
+  --muted-foreground: oklch(0.7 0.02 70);
+  --accent: var(--coral);
+  --accent-foreground: var(--coral-foreground);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  .font-serif {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+
+  .grain {
+    position: relative;
+  }
+
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.6) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  .marquee {
+    display: flex;
+    gap: 4rem;
+    animation: marquee 38s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .glow-coral {
+    box-shadow: 0 20px 60px -20px color-mix(in oklab, var(--coral) 55%, transparent);
+  }
+
+  /* 3D and Parallax Redesign Helpers */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  /* Animated 3D Perspective Grid Background */
+  .grid-3d-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    perspective: 800px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .grid-3d-plane {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background-image: 
+      linear-gradient(to right, color-mix(in oklab, var(--coral) 8%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--coral) 8%, transparent) 1px, transparent 1px);
+    background-size: 50px 50px;
+    transform: rotateX(65deg) translateZ(-50px);
+    transform-origin: center center;
+    animation: grid-scroll-animation 30s linear infinite;
+  }
+
+  @keyframes grid-scroll-animation {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 1000px;
+    }
+  }
+
+  /* Premium Glassmorphic 3D Card */
+  .glass-card-3d {
+    background: color-mix(in oklab, var(--card) 60%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid color-mix(in oklab, var(--border) 25%, transparent);
+    box-shadow: 
+      0 10px 30px -10px rgba(0, 0, 0, 0.05),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+      0 0 0 1px color-mix(in oklab, var(--coral) 2%, transparent);
+    transform-style: preserve-3d;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+  }
+
+  .glass-card-3d:hover {
+    border-color: color-mix(in oklab, var(--coral) 30%, transparent);
+    box-shadow: 
+      0 20px 40px -15px rgba(0, 0, 0, 0.08),
+      0 0 30px -5px color-mix(in oklab, var(--coral) 12%, transparent),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  }
+
+  /* Custom Glow Accents */
+  .glow-coral-lg {
+    box-shadow: 0 15px 45px -10px color-mix(in oklab, var(--coral) 25%, transparent);
+  }
+}
