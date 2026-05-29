@@ -1,5 +1,5 @@
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { ArrowUpRight } from "lucide-react";
@@ -38,12 +38,13 @@ const phases = [
 
 function ProcessPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const activeLineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       const el = containerRef.current;
-      if (!el) return;
+      const line = activeLineRef.current;
+      if (!el || !line) return;
 
       const rect = el.getBoundingClientRect();
       const viewHeight = window.innerHeight;
@@ -52,7 +53,7 @@ function ProcessPage() {
       const start = rect.top - viewHeight / 2;
       const total = rect.height;
       const progress = Math.min(Math.max((-start / total) * 100, 0), 100);
-      setScrollProgress(progress);
+      line.style.height = `${progress}%`;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -85,8 +86,9 @@ function ProcessPage() {
 
         {/* Glowing scroll-based active line */}
         <div
+          ref={activeLineRef}
           className="absolute left-[26px] md:left-1/2 top-0 w-[2px] bg-coral -translate-x-1/2 rounded-full origin-top transition-all duration-150 shadow-[0_0_12px_var(--coral)]"
-          style={{ height: `${scrollProgress}%` }}
+          style={{ height: "0%" }}
         />
 
         <div className="space-y-16 relative z-10">
