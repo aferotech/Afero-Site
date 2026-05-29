@@ -8,7 +8,8 @@
   font-family: "Instrument Serif";
   font-style: normal;
   font-weight: 400;
-  src: url("https://fonts.gstatic.com/s/instrumentserif/v4/jizDREVItHgc8qDIbSTKq4XKVjnDWJg.woff2") format("woff2");
+  src: url("https://fonts.gstatic.com/s/instrumentserif/v4/jizDREVItHgc8qDIbSTKq4XKVjnDWJg.woff2")
+    format("woff2");
   font-display: swap;
 }
 
@@ -16,7 +17,8 @@
   font-family: "Instrument Serif";
   font-style: italic;
   font-weight: 400;
-  src: url("https://fonts.gstatic.com/s/instrumentserif/v4/jizBREVItHgc8qDIbSTKq4XKVjjUTHs5jOWZ.woff2") format("woff2");
+  src: url("https://fonts.gstatic.com/s/instrumentserif/v4/jizBREVItHgc8qDIbSTKq4XKVjjUTHs5jOWZ.woff2")
+    format("woff2");
   font-display: swap;
 }
 
@@ -24,7 +26,8 @@
   font-family: "DM Sans";
   font-style: normal;
   font-weight: 100 1000;
-  src: url("https://fonts.gstatic.com/s/dmsans/v15/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAop6E.woff2") format("woff2");
+  src: url("https://fonts.gstatic.com/s/dmsans/v15/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAop6E.woff2")
+    format("woff2");
   font-display: swap;
 }
 
@@ -169,17 +172,16 @@
   .glow-coral {
     box-shadow: 0 20px 60px -20px color-mix(in oklab, var(--coral) 55%, transparent);
   }
-<<<<<<< HEAD
 
   /* 3D and Parallax Redesign Helpers */
   .perspective-1000 {
     perspective: 1000px;
   }
-  
+
   .preserve-3d {
     transform-style: preserve-3d;
   }
-  
+
   .backface-hidden {
     backface-visibility: hidden;
   }
@@ -200,9 +202,17 @@
     height: 200%;
     top: -50%;
     left: -50%;
-    background-image: 
-      linear-gradient(to right, color-mix(in oklab, var(--coral) 8%, transparent) 1px, transparent 1px),
-      linear-gradient(to bottom, color-mix(in oklab, var(--coral) 8%, transparent) 1px, transparent 1px);
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in oklab, var(--coral) 8%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--coral) 8%, transparent) 1px,
+        transparent 1px
+      );
     background-size: 50px 50px;
     transform: rotateX(65deg) translateZ(-50px);
     transform-origin: center center;
@@ -224,17 +234,20 @@
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid color-mix(in oklab, var(--border) 25%, transparent);
-    box-shadow: 
+    box-shadow:
       0 10px 30px -10px rgba(0, 0, 0, 0.05),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
       0 0 0 1px color-mix(in oklab, var(--coral) 2%, transparent);
     transform-style: preserve-3d;
-    transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    transition:
+      box-shadow 0.3s ease,
+      border-color 0.3s ease,
+      background-color 0.3s ease;
   }
 
   .glass-card-3d:hover {
     border-color: color-mix(in oklab, var(--coral) 30%, transparent);
-    box-shadow: 
+    box-shadow:
       0 20px 40px -15px rgba(0, 0, 0, 0.08),
       0 0 30px -5px color-mix(in oklab, var(--coral) 12%, transparent),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
@@ -244,6 +257,4 @@
   .glow-coral-lg {
     box-shadow: 0 15px 45px -10px color-mix(in oklab, var(--coral) 25%, transparent);
   }
-=======
->>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
 }

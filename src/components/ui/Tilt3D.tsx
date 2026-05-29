@@ -38,7 +38,7 @@ export function Tilt3D({
     const rotY = xPct * maxTilt;
 
     setTransformStyle(
-      `perspective(${perspective}px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(${scale}, ${scale}, ${scale})`
+      `perspective(${perspective}px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(${scale}, ${scale}, ${scale})`,
     );
     setGlarePosition({
       x: (x / rect.width) * 100,
@@ -52,9 +52,7 @@ export function Tilt3D({
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-    setTransformStyle(
-      `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`
-    );
+    setTransformStyle(`perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`);
   };
 
   return (

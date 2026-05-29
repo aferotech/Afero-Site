@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, ReactNode } from "react";
 
 interface ParallaxTextProps {
-  children: string;
+  children: ReactNode;
   speed?: number; // Speed multiplier for translation
   className?: string;
   direction?: "left" | "right";
@@ -17,7 +17,7 @@ export function ParallaxText({
   direction = "left",
 }: ParallaxTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -37,7 +37,7 @@ export function ParallaxText({
         const elementCenter = rect.top + rect.height / 2;
         const screenCenter = viewHeight / 2;
         const offset = (elementCenter - screenCenter) * speed;
-        
+
         const sign = direction === "left" ? -1 : 1;
         el.style.transform = `translateX(${offset * sign}px)`;
       }

@@ -20,35 +20,27 @@ const WorkRoute = WorkRouteImport.update({
   id: '/work',
   path: '/work',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/work.lazy').then((d) => d.Route))
 const ProcessRoute = ProcessRouteImport.update({
   id: '/process',
   path: '/process',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/process.lazy').then((d) => d.Route))
 const JournalRoute = JournalRouteImport.update({
   id: '/journal',
   path: '/journal',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/journal.lazy').then((d) => d.Route))
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => rootRouteImport,
-<<<<<<< HEAD
 } as any).lazy(() => import('./routes/contact.lazy').then((d) => d.Route))
-=======
-} as any)
->>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
   getParentRoute: () => rootRouteImport,
-<<<<<<< HEAD
 } as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
-=======
-} as any)
->>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',

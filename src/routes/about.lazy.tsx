@@ -54,14 +54,12 @@ function AboutPage() {
 
         <div className="mt-10 grid md:grid-cols-2 gap-10 text-muted-foreground relative z-10 leading-relaxed text-base md:text-lg">
           <p>
-            Afero is a modern web development studio focused on creating scalable,
-            responsive, and high-performing digital products for startups,
-            businesses, and growing brands.
+            Afero is a modern web development studio focused on creating scalable, responsive, and
+            high-performing digital products for startups, businesses, and growing brands.
           </p>
           <p>
-            We combine design, development, and creative thinking to build clean,
-            functional experiences with strong attention to performance,
-            usability, and modern web standards.
+            We combine design, development, and creative thinking to build clean, functional
+            experiences with strong attention to performance, usability, and modern web standards.
           </p>
         </div>
       </section>
@@ -83,14 +81,14 @@ function AboutPage() {
                   />
                 </div>
                 <div className="mt-6">
-                  <div 
-                    className="font-serif text-xl text-foreground transform translate-z-10" 
+                  <div
+                    className="font-serif text-xl text-foreground transform translate-z-10"
                     style={{ transform: "translateZ(15px)" }}
                   >
                     {p.name}
                   </div>
-                  <div 
-                    className="text-[10px] text-muted-foreground mt-1.5 uppercase tracking-widest font-semibold transform translate-z-2" 
+                  <div
+                    className="text-[10px] text-muted-foreground mt-1.5 uppercase tracking-widest font-semibold transform translate-z-2"
                     style={{ transform: "translateZ(8px)" }}
                   >
                     {p.role}
@@ -104,8 +102,8 @@ function AboutPage() {
 
       <section className="mx-auto max-w-3xl px-6 pb-28 text-center relative z-10">
         <h2 className="font-serif text-4xl md:text-5xl">Want to work with us?</h2>
-        <Link 
-          to="/contact" 
+        <Link
+          to="/contact"
           className="mt-10 inline-flex items-center gap-2 rounded-full bg-coral text-coral-foreground px-8 py-4 text-sm font-semibold hover:bg-foreground hover:text-background transition-colors glow-coral shadow-lg"
         >
           Start a conversation <ArrowUpRight className="h-4 w-4" />

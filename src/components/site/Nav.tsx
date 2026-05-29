@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Menu } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+  SheetDescription,
+} from "@/components/ui/sheet";
 
 import navIcon from "@/assets/nav-icon.png";
 import navFull from "@/assets/nav-full.png";
@@ -30,14 +36,8 @@ export function Nav() {
 
   return (
     <header
-<<<<<<< HEAD
       className={`fixed top-0 left-0 right-0 z-50 border-b border-border/60 transition-all duration-500 ${
-=======
-      className={`sticky top-0 z-50 border-b border-border/60 transition-all duration-500 ${
->>>>>>> 3af5039355b7365a9be8d5d428a48433394e7781
-        scrolled
-          ? "backdrop-blur-xl bg-background/85"
-          : "backdrop-blur-md bg-background/70"
+        scrolled ? "backdrop-blur-xl bg-background/85" : "backdrop-blur-md bg-background/70"
       }`}
     >
       <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -151,4 +151,4 @@ export function Nav() {
       </nav>
     </header>
   );
-}
+}
