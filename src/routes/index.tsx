@@ -78,8 +78,7 @@ const services = [
       "AI Chatbots",
       "Customer Support Automation",
       "Knowledge Base Assistants",
-      "AI-Powered Website Experiences",
-      "Workflow Automation",
+      "AI-Powered Website Experiences"
     ],
   },
 
