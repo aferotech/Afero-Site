@@ -6,9 +6,9 @@ import {
   Layers,
   PenTool,
   Code2,
-  Sparkles,
   ShieldCheck,
   Quote,
+  Bot,
 } from "lucide-react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
@@ -71,11 +71,18 @@ const services = [
     points: ["Frontend", "Backend", "API integration", "Performance optimization"],
   },
   {
-    icon: Sparkles,
-    title: "Ongoing growth",
-    body: "Continuous improvements, feature updates, and long-term product enhancements.",
-    points: ["Feature updates", "Optimization", "UI improvements", "Scalability"],
+    icon: Bot,
+    title: "AI Integration",
+    body: "Integrating intelligent systems and automation to streamline workflows and create smarter user experiences.",
+    points: [
+      "AI Chatbots",
+      "Customer Support Automation",
+      "Knowledge Base Assistants",
+      "AI-Powered Website Experiences",
+      "Workflow Automation",
+    ],
   },
+
   {
     icon: ShieldCheck,
     title: "Support",
@@ -284,9 +291,9 @@ function Index() {
               From first idea to long after launch.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-              A complete offering, end-to-end. Every project includes the strategy, content, design
-              and development needed to launch a great website and the ongoing growth and support
-              that keeps it working for years.
+              A complete offering, end-to-end. Every project includes the strategy, content, design,
+              development, and AI integration needed to launch a great website, along with the
+              reliable support that keeps it working for years.
             </p>
           </div>
 
