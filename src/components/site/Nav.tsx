@@ -9,8 +9,8 @@ import {
   SheetDescription,
 } from "@/components/ui/sheet";
 
-import navIcon from "@/assets/nav-icon.png";
-import navFull from "@/assets/nav-full.png";
+import navIcon from "@/assets/nav-icon.webp";
+import navFull from "@/assets/nav-full.webp";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);

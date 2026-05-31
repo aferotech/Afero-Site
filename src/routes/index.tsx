@@ -14,7 +14,7 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { Tilt3D } from "@/components/ui/Tilt3D";
 import { ParallaxText } from "@/components/ui/ParallaxText";
-import ad from "@/assets/ad.mp4";
+import ad from "@/assets/ad.webp";
 import work2 from "@/assets/work-2.webp";
 import work3 from "@/assets/work-3.webp";
 import arc from "@/assets/arc.webp";
@@ -194,15 +194,13 @@ function Index() {
                 </Link>
               </div>
               <div className="overflow-hidden rounded-2xl border border-border bg-secondary/50 transform translate-z-6">
-                <video
+                <img
                   src={ad}
+                  alt="Afero featured project preview"
                   width={1280}
                   height={800}
                   className="w-full h-auto group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out object-cover"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                  loading="eager"
                 />
               </div>
             </article>

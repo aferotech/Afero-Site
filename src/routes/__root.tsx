@@ -9,7 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
-import favicon from "@/assets/favicon.png";
+import favicon from "@/assets/favicon.webp";
 
 function NotFoundComponent() {
   return (
@@ -126,7 +126,7 @@ export const Route = createRootRouteWithContext<{
     links: [
       {
         rel: "icon",
-        type: "image/png",
+        type: "image/webp",
         href: favicon,
       },
 
