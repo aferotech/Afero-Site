@@ -100,7 +100,7 @@ export const submitContactForm = createServerFn({ method: "POST" })
 
     // 4. Send email via Resend API
     const resendApiKey = process.env.RESEND_API_KEY;
-    const recipientEmail = process.env.CONTACT_RECIPIENT_EMAIL || "afero.tech@gmail.com";
+    const recipientEmail = process.env.CONTACT_RECIPIENT_EMAIL || "hello@afero.in";
     const senderEmail = process.env.CONTACT_SENDER_EMAIL || "onboarding@resend.dev";
 
     if (!resendApiKey || resendApiKey === "re_placeholder") {

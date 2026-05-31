@@ -59,8 +59,8 @@ export function Footer() {
 
           <ul className="space-y-2 text-sm">
             <li>
-              <a href="mailto:afero.tech@gmail.com" className="hover:text-coral transition-colors">
-                afero.tech@gmail.com
+              <a href="mailto:hello@afero.in" className="hover:text-coral transition-colors">
+                hello@afero.in
               </a>
             </li>
 

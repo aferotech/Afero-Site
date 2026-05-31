@@ -185,11 +185,7 @@ function Index() {
           <Tilt3D maxTilt={4} scale={1.01} className="w-full">
             <article className="group glass-card-3d p-6 md:p-8 rounded-3xl">
               <div className="flex items-baseline justify-between mb-4">
-                <div className="flex items-baseline gap-3">
-                  <h3 className="font-serif text-2xl md:text-3xl text-foreground transform translate-z-10">
-                    Tomato. - A Grocery Web App
-                  </h3>
-                </div>
+                <div className="flex items-baseline gap-3" />
                 <Link
                   to="/work"
                   className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"

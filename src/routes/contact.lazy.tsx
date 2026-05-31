@@ -95,10 +95,10 @@ function ContactPage() {
                 Email
               </div>
               <a
-                href="mailto:afero.tech@gmail.com"
+                href="mailto:hello@afero.in"
                 className="font-serif text-2xl md:text-3xl text-foreground hover:text-coral transition-colors"
               >
-                afero.tech@gmail.com
+                hello@afero.in
               </a>
             </div>
             <div>
