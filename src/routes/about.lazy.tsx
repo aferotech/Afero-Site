@@ -16,9 +16,11 @@ import {
   ShieldCheck,
   Users,
   Linkedin,
-  Github,
+  Instagram,
   Star,
   ExternalLink,
+  Compass,
+  Rocket,
 } from "lucide-react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
@@ -141,7 +143,7 @@ function MetricCard({
     >
       {/* Glow background indicator on hover */}
       <div className="absolute inset-0 bg-gradient-to-tr from-coral/2 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-      
+
       <span className="font-serif text-5xl md:text-6xl text-coral font-normal tracking-tight relative z-10">
         {count}
         {suffix}
@@ -156,7 +158,15 @@ function MetricCard({
 // ─── Custom Vector SVG Brand Logos (Tech Stack) ──────────────────────────────
 function HtmlLogo({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 2L2 5l1.5 14 8.5 3 8.5-3L22 5z" />
       <path d="M12 6v11M16 9h-4M8 13h4M8 9h2" />
     </svg>
@@ -165,7 +175,15 @@ function HtmlLogo({ className }: { className?: string }) {
 
 function CssLogo({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 2L2 5l1.5 14 8.5 3 8.5-3L22 5z" />
       <path d="M12 6v11M16 11h-4M8 8h4" />
     </svg>
@@ -174,7 +192,15 @@ function CssLogo({ className }: { className?: string }) {
 
 function JsLogo({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="3" y="3" width="18" height="18" rx="2" />
       <path d="M15 9h-2v4a2 2 0 0 0 4 0M10 15a2 2 0 0 0 2-2V9" />
     </svg>
@@ -183,7 +209,13 @@ function JsLogo({ className }: { className?: string }) {
 
 function ReactLogo({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <circle cx="12" cy="12" r="2" fill="currentColor" />
       <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)" />
       <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)" />
@@ -194,7 +226,15 @@ function ReactLogo({ className }: { className?: string }) {
 
 function TailwindLogo({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 3c-2.4 0-4 1.6-4 4 0 2.4 1.6 4 4 4 2.4 0 4-1.6 4-4 0-2.4-1.6-4-4-4z" />
       <path d="M8 12c-2.4 0-4 1.6-4 4 0 2.4 1.6 4 4 4 2.4 0 4-1.6 4-4 0-2.4-1.6-4-4-4z" />
       <path d="M16 12c-2.4 0-4 1.6-4 4 0 2.4 1.6 4 4 4 2.4 0 4-1.6 4-4 0-2.4-1.6-4-4-4z" />
@@ -204,7 +244,15 @@ function TailwindLogo({ className }: { className?: string }) {
 
 function NodeLogo({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 2L2 7l10 5 10-5z" />
       <path d="M2 17l10 5 10-5" />
       <path d="M2 12l10 5 10-5" />
@@ -214,7 +262,15 @@ function NodeLogo({ className }: { className?: string }) {
 
 function ExpressLogo({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="12" cy="12" r="10" />
       <path d="M8 12h8M12 8l4 4-4 4" />
     </svg>
@@ -223,7 +279,15 @@ function ExpressLogo({ className }: { className?: string }) {
 
 function MySqlLogo({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <ellipse cx="12" cy="5" rx="9" ry="3" />
       <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
       <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
@@ -233,7 +297,15 @@ function MySqlLogo({ className }: { className?: string }) {
 
 function GitLogo({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="18" cy="18" r="3" />
       <circle cx="6" cy="6" r="3" />
       <circle cx="6" cy="18" r="3" />
@@ -245,7 +317,15 @@ function GitLogo({ className }: { className?: string }) {
 
 function GitHubLogo({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
     </svg>
   );
@@ -253,7 +333,15 @@ function GitHubLogo({ className }: { className?: string }) {
 
 function FigmaLogo({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M5 5.5A2.5 2.5 0 0 1 7.5 3h3v5h-3A2.5 2.5 0 0 1 5 5.5z" />
       <path d="M13.5 3h3a2.5 2.5 0 0 1 0 5h-3V3z" />
       <path d="M5 12.5A2.5 2.5 0 0 1 7.5 10h3v5h-3A2.5 2.5 0 0 1 5 12.5z" />
@@ -265,7 +353,15 @@ function FigmaLogo({ className }: { className?: string }) {
 
 function VercelLogo({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 2L2 20h20L12 2z" />
     </svg>
   );
@@ -340,31 +436,37 @@ const processSteps = [
     num: "01",
     title: "Discover",
     desc: "Deep research into your target audience, business goals, and competitive space.",
+    icon: Compass,
   },
   {
     num: "02",
     title: "Strategy",
     desc: "Mapping out structure, technical architecture, and creating a crystal-clear execution roadmap.",
+    icon: Target,
   },
   {
     num: "03",
     title: "Design",
     desc: "Crafting beautiful high-fidelity interfaces that are responsive, modern, and tailored.",
+    icon: Sparkles,
   },
   {
     num: "04",
     title: "Development",
     desc: "Writing semantic, production-grade, highly performant custom code.",
+    icon: Code2,
   },
   {
     num: "05",
     title: "Launch",
     desc: "Rigorous system testing, visual QA, final optimizations, and seamless live hosting setup.",
+    icon: Rocket,
   },
   {
     num: "06",
     title: "Support",
     desc: "Constant health monitoring, version updates, and scaling optimizations.",
+    icon: ShieldCheck,
   },
 ];
 
@@ -374,32 +476,32 @@ const team = [
     role: "Lead Developer",
     expertise: "Frontend Development & UI Engineering",
     image: paulImg,
-    github: "https://github.com/paulbenjaminfelix",
-    linkedin: "https://linkedin.com",
+    instagram: "https://instagram.com/iamfelix.s",
+    linkedin: "https://www.linkedin.com/in/paul-benjamin-felix-b8b481249",
   },
   {
     name: "Mohammad Azarudeen",
     role: "Lead Developer",
     expertise: "Backend Architecture & API Systems",
     image: azarImg,
-    github: "https://github.com/mohammadazarudeen",
-    linkedin: "https://linkedin.com",
+    instagram: "https://instagram.com/call_me_chaco",
+    linkedin: "https://www.linkedin.com/in/mohammed-azarudeen-j-971940275",
   },
   {
     name: "Akash Vaishnudev",
     role: "HR / Tech Lead",
     expertise: "Performance Optimization & Team Leadership",
     image: akashImg,
-    github: "https://github.com/akashvaishnudev",
-    linkedin: "https://linkedin.com",
+    instagram: "https://instagram.com/vaishnu_1418",
+    linkedin: "https://www.linkedin.com/in/akash-vaishnu-dev-4431a1287",
   },
   {
     name: "Rohith Raj",
     role: "Editor & Content Strategist",
     expertise: "Content Strategy & Brand Communication",
     image: rohithImg,
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    instagram: "https://instagram.com/renz.avro",
+    linkedin: "https://www.linkedin.com/in/sgrohithraj",
   },
 ];
 
@@ -407,28 +509,88 @@ const techStack = [
   {
     category: "Frontend",
     items: [
-      { name: "HTML", logo: HtmlLogo, hoverColor: "group-hover:text-[#E34F26] group-hover:border-[#E34F26]/30 group-hover:bg-[#E34F26]/5" },
-      { name: "CSS", logo: CssLogo, hoverColor: "group-hover:text-[#1572B6] group-hover:border-[#1572B6]/30 group-hover:bg-[#1572B6]/5" },
-      { name: "JavaScript", logo: JsLogo, hoverColor: "group-hover:text-[#F7DF1E] group-hover:border-[#F7DF1E]/30 group-hover:bg-[#F7DF1E]/5" },
-      { name: "React", logo: ReactLogo, hoverColor: "group-hover:text-[#61DAFB] group-hover:border-[#61DAFB]/30 group-hover:bg-[#61DAFB]/5" },
-      { name: "Tailwind", logo: TailwindLogo, hoverColor: "group-hover:text-[#06B6D4] group-hover:border-[#06B6D4]/30 group-hover:bg-[#06B6D4]/5" },
+      {
+        name: "HTML",
+        logo: HtmlLogo,
+        hoverColor:
+          "group-hover:text-[#E34F26] group-hover:border-[#E34F26]/30 group-hover:bg-[#E34F26]/5",
+      },
+      {
+        name: "CSS",
+        logo: CssLogo,
+        hoverColor:
+          "group-hover:text-[#1572B6] group-hover:border-[#1572B6]/30 group-hover:bg-[#1572B6]/5",
+      },
+      {
+        name: "JavaScript",
+        logo: JsLogo,
+        hoverColor:
+          "group-hover:text-[#F7DF1E] group-hover:border-[#F7DF1E]/30 group-hover:bg-[#F7DF1E]/5",
+      },
+      {
+        name: "React",
+        logo: ReactLogo,
+        hoverColor:
+          "group-hover:text-[#61DAFB] group-hover:border-[#61DAFB]/30 group-hover:bg-[#61DAFB]/5",
+      },
+      {
+        name: "Tailwind",
+        logo: TailwindLogo,
+        hoverColor:
+          "group-hover:text-[#06B6D4] group-hover:border-[#06B6D4]/30 group-hover:bg-[#06B6D4]/5",
+      },
     ],
   },
   {
     category: "Backend",
     items: [
-      { name: "Node.js", logo: NodeLogo, hoverColor: "group-hover:text-[#339933] group-hover:border-[#339933]/30 group-hover:bg-[#339933]/5" },
-      { name: "Express", logo: ExpressLogo, hoverColor: "group-hover:text-foreground group-hover:border-foreground/30 group-hover:bg-foreground/5" },
-      { name: "MySQL", logo: MySqlLogo, hoverColor: "group-hover:text-[#4479A1] group-hover:border-[#4479A1]/30 group-hover:bg-[#4479A1]/5" },
+      {
+        name: "Node.js",
+        logo: NodeLogo,
+        hoverColor:
+          "group-hover:text-[#339933] group-hover:border-[#339933]/30 group-hover:bg-[#339933]/5",
+      },
+      {
+        name: "Express",
+        logo: ExpressLogo,
+        hoverColor:
+          "group-hover:text-foreground group-hover:border-foreground/30 group-hover:bg-foreground/5",
+      },
+      {
+        name: "MySQL",
+        logo: MySqlLogo,
+        hoverColor:
+          "group-hover:text-[#4479A1] group-hover:border-[#4479A1]/30 group-hover:bg-[#4479A1]/5",
+      },
     ],
   },
   {
     category: "Tools",
     items: [
-      { name: "Git", logo: GitLogo, hoverColor: "group-hover:text-[#F05032] group-hover:border-[#F05032]/30 group-hover:bg-[#F05032]/5" },
-      { name: "GitHub", logo: GitHubLogo, hoverColor: "group-hover:text-foreground group-hover:border-foreground/30 group-hover:bg-foreground/5" },
-      { name: "Figma", logo: FigmaLogo, hoverColor: "group-hover:text-[#F24E1E] group-hover:border-[#F24E1E]/30 group-hover:bg-[#F24E1E]/5" },
-      { name: "Vercel", logo: VercelLogo, hoverColor: "group-hover:text-foreground group-hover:border-foreground/30 group-hover:bg-foreground/5" },
+      {
+        name: "Git",
+        logo: GitLogo,
+        hoverColor:
+          "group-hover:text-[#F05032] group-hover:border-[#F05032]/30 group-hover:bg-[#F05032]/5",
+      },
+      {
+        name: "GitHub",
+        logo: GitHubLogo,
+        hoverColor:
+          "group-hover:text-foreground group-hover:border-foreground/30 group-hover:bg-foreground/5",
+      },
+      {
+        name: "Figma",
+        logo: FigmaLogo,
+        hoverColor:
+          "group-hover:text-[#F24E1E] group-hover:border-[#F24E1E]/30 group-hover:bg-[#F24E1E]/5",
+      },
+      {
+        name: "Vercel",
+        logo: VercelLogo,
+        hoverColor:
+          "group-hover:text-foreground group-hover:border-foreground/30 group-hover:bg-foreground/5",
+      },
     ],
   },
 ];
@@ -486,15 +648,12 @@ function AboutPage() {
                 </div>
                 <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight">
                   Building{" "}
-                  <em className="text-coral italic font-normal font-serif">
-                    digital products
-                  </em>{" "}
+                  <em className="text-coral italic font-normal font-serif">digital products</em>{" "}
                   that help businesses grow.
                 </h1>
                 <p className="mt-8 text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                  Afero is a modern web development studio helping startups,
-                  businesses, and growing brands create fast, scalable, and
-                  meaningful digital experiences.
+                  Afero is a modern web development studio helping startups, businesses, and growing
+                  brands create fast, scalable, and meaningful digital experiences.
                 </p>
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link
@@ -562,18 +721,20 @@ function AboutPage() {
               <FadeIn delay={150} direction="right">
                 <div className="space-y-6 text-muted-foreground leading-relaxed text-base md:text-lg">
                   <p>
-                    Afero was born out of a genuine passion for digital craftsmanship. We observed too many
-                    ambitious businesses struggling with generic templates, bloated code bases, and sluggish loading speeds
-                    that failed to convey their actual quality.
+                    Afero was born out of a genuine passion for digital craftsmanship. We observed
+                    too many ambitious businesses struggling with generic templates, bloated code
+                    bases, and sluggish loading speeds that failed to convey their actual quality.
                   </p>
                   <p>
-                    We set out to create a studio that places engineering excellence and user-oriented design at the center. 
-                    By prioritizing absolute performance and high-fidelity layouts, we build tools that elevate 
-                    startups and enterprises alike, turning clicks into customer relationships.
+                    We set out to create a studio that places engineering excellence and
+                    user-oriented design at the center. By prioritizing absolute performance and
+                    high-fidelity layouts, we build tools that elevate startups and enterprises
+                    alike, turning clicks into customer relationships.
                   </p>
                   <p>
-                    Every solution we deploy is built with a deep long-term partnership mindset. We believe that 
-                    transparency, collaboration, and continuous delivery are the pillars of digital success.
+                    Every solution we deploy is built with a deep long-term partnership mindset. We
+                    believe that transparency, collaboration, and continuous delivery are the
+                    pillars of digital success.
                   </p>
                 </div>
               </FadeIn>
@@ -591,7 +752,7 @@ function AboutPage() {
                   <div className="relative pl-6 md:pl-0 md:pt-12 md:text-center group">
                     {/* Animated dot indicator */}
                     <div className="absolute left-0 top-[6px] md:left-1/2 md:top-[-16px] md:-translate-x-1/2 h-4 w-4 rounded-full border-2 border-background bg-coral group-hover:scale-125 transition-transform duration-300 shadow-[0_0_12px_rgba(224,90,54,0.4)]" />
-                    
+
                     <span className="font-serif text-3xl md:text-4xl text-coral/80 block mb-3 font-normal">
                       {item.year}
                     </span>
@@ -626,7 +787,7 @@ function AboutPage() {
             {philosophy.map((item, idx) => {
               const Icon = item.icon;
               return (
-                <FadeIn key={idx} delay={idx * 100}>
+                <FadeIn key={idx} delay={idx * 100} className="h-full">
                   <Tilt3D maxTilt={5} scale={1.02} className="h-full">
                     <div className="group h-full rounded-2xl glass-card-3d p-8 flex flex-col justify-between preserve-3d">
                       <div>
@@ -670,7 +831,8 @@ function AboutPage() {
                 Why Businesses Choose Afero
               </h2>
               <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-xs">
-                Premium digital execution built on clarity, custom engineering, and transparent partnership.
+                Premium digital execution built on clarity, custom engineering, and transparent
+                partnership.
               </p>
             </div>
           </FadeIn>
@@ -679,7 +841,7 @@ function AboutPage() {
             {trustReasons.map((item, idx) => {
               const Icon = item.icon;
               return (
-                <FadeIn key={idx} delay={idx * 80}>
+                <FadeIn key={idx} delay={idx * 80} className="h-full">
                   <div className="group h-full rounded-2xl border border-border/40 bg-card p-8 hover:border-coral/30 hover:-translate-y-1 hover:shadow-lg hover:shadow-coral/[0.02] transition-all duration-500 flex flex-col gap-6 relative overflow-hidden">
                     {/* Floating watermarked backdrop number */}
                     <span className="absolute top-4 right-6 font-serif text-6xl text-border/20 select-none pointer-events-none group-hover:text-coral/8 group-hover:scale-110 transition-all duration-500">
@@ -689,7 +851,7 @@ function AboutPage() {
                     <div className="h-10 w-10 rounded-xl bg-coral/8 text-coral flex items-center justify-center group-hover:bg-coral group-hover:text-coral-foreground transition-all duration-300 shrink-0">
                       <Icon className="h-5 w-5" />
                     </div>
-                    
+
                     <div className="space-y-3 relative z-10">
                       <h3 className="font-serif text-xl text-foreground group-hover:text-coral transition-colors duration-300 font-normal">
                         {item.title}
@@ -712,7 +874,7 @@ function AboutPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(224,90,54,0.03),transparent_65%)] pointer-events-none" />
 
         <div className="mx-auto max-w-7xl px-6 relative z-10">
-          <FadeIn className="text-center mb-24">
+          <FadeIn className="text-center mb-20">
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-coral font-semibold mb-4">
               <span className="h-px w-6 bg-coral" /> Our Process{" "}
               <span className="h-px w-6 bg-coral" />
@@ -721,57 +883,47 @@ function AboutPage() {
               Our Process
             </h2>
             <p className="text-muted-foreground mt-4 max-w-md mx-auto text-sm md:text-base leading-relaxed">
-              A structured, highly communicative roadmap designed to eliminate uncertainty and deliver premium results.
+              A structured, highly communicative roadmap designed to eliminate uncertainty and
+              deliver premium results.
             </p>
           </FadeIn>
 
-          {/* Desktop Horizontal Roadmap */}
-          <div className="hidden lg:block relative max-w-6xl mx-auto px-4">
-            {/* Visual dashed connector path */}
-            <div className="absolute top-[28px] left-[6%] right-[6%] h-[2px] border-t-2 border-dashed border-border/60 z-0" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {processSteps.map((step, idx) => {
+              const Icon = step.icon;
+              return (
+                <FadeIn key={step.num} delay={idx * 100} className="h-full">
+                  <Tilt3D maxTilt={5} scale={1.02} className="h-full">
+                    <div className="group h-full rounded-2xl glass-card-3d p-8 md:p-10 flex flex-col justify-between preserve-3d relative overflow-hidden">
+                      {/* Floating watermarked backdrop number */}
+                      <span className="absolute top-4 right-6 font-serif text-7xl text-border/25 select-none pointer-events-none group-hover:text-coral/10 group-hover:scale-110 transition-all duration-500 font-normal">
+                        {step.num}
+                      </span>
 
-            <div className="grid grid-cols-6 gap-6 relative z-10">
-              {processSteps.map((step, idx) => (
-                <FadeIn key={idx} delay={idx * 100}>
-                  <div className="group flex flex-col items-center text-center">
-                    {/* Circle badge */}
-                    <div className="h-14 w-14 rounded-full bg-card border border-border flex items-center justify-center text-sm font-serif text-coral font-semibold group-hover:bg-coral group-hover:text-coral-foreground group-hover:border-coral group-hover:-translate-y-1 transition-all duration-400 shadow-sm mb-5">
-                      {step.num}
+                      <div>
+                        {/* Elegant Icon Badge */}
+                        <div
+                          className="h-12 w-12 rounded-xl bg-coral/10 text-coral flex items-center justify-center mb-8 group-hover:bg-coral group-hover:text-coral-foreground transition-all duration-300 shadow-md"
+                          style={{ transform: "translateZ(20px)" }}
+                        >
+                          <Icon className="h-5 w-5" />
+                        </div>
+
+                        {/* Title and Description */}
+                        <div className="space-y-3" style={{ transform: "translateZ(15px)" }}>
+                          <h3 className="font-serif text-2xl text-foreground group-hover:text-coral transition-colors duration-300 font-normal">
+                            {step.title}
+                          </h3>
+                          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                            {step.desc}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="font-serif text-lg text-foreground mb-3 group-hover:text-coral transition-colors duration-300 font-normal">
-                      {step.title}
-                    </h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      {step.desc}
-                    </p>
-                  </div>
+                  </Tilt3D>
                 </FadeIn>
-              ))}
-            </div>
-          </div>
-
-          {/* Tablet & Mobile: Vertical Process Roadmap */}
-          <div className="lg:hidden space-y-0 relative max-w-xl mx-auto">
-            {/* Tracking vertical line */}
-            <div className="absolute left-[27px] top-4 bottom-8 w-px bg-gradient-to-b from-border/80 via-border/50 to-transparent" />
-            
-            {processSteps.map((step, idx) => (
-              <FadeIn key={idx} delay={idx * 80}>
-                <div className="flex gap-6 pb-12 last:pb-0 group">
-                  <div className="h-[54px] w-[54px] shrink-0 rounded-full bg-card border border-border flex items-center justify-center text-sm font-serif text-coral font-semibold group-hover:bg-coral group-hover:text-coral-foreground group-hover:border-coral transition-all duration-300 relative z-10 shadow-sm">
-                    {step.num}
-                  </div>
-                  <div className="pt-3">
-                    <h3 className="font-serif text-xl text-foreground mb-2 font-normal">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                      {step.desc}
-                    </p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
+              );
+            })}
           </div>
 
           {/* CTA Link to complete interactive roadmap */}
@@ -798,26 +950,27 @@ function AboutPage() {
                 The People Behind Afero
               </h2>
               <p className="text-muted-foreground text-sm md:text-base max-w-xs leading-relaxed">
-                A highly aligned core team committed to absolute technical performance and creative brilliance.
+                A highly aligned core team committed to absolute technical performance and creative
+                brilliance.
               </p>
             </div>
           </FadeIn>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {team.map((member, idx) => (
-              <FadeIn key={member.name} delay={idx * 100}>
+              <FadeIn key={member.name} delay={idx * 100} className="h-full">
                 <Tilt3D maxTilt={6} scale={1.02} className="h-full">
                   <div className="group h-full rounded-2xl glass-card-3d p-6 flex flex-col justify-between preserve-3d overflow-hidden relative">
                     <div>
                       {/* Premium Portrait Wrap */}
                       <div
-                        className="overflow-hidden rounded-xl bg-secondary/40 border border-border/30 mb-6 relative aspect-[4/3]"
+                        className="overflow-hidden rounded-xl bg-secondary/40 border border-border/30 mb-6 relative aspect-[3/4]"
                         style={{ transform: "translateZ(10px)" }}
                       >
                         <img
                           src={member.image}
                           alt={member.name}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                         />
                         {/* Elegant overlay screen */}
@@ -833,24 +986,21 @@ function AboutPage() {
                           {member.role}
                         </div>
                       </div>
-                      
+
                       {/* Short expertise description */}
-                      <p className="text-xs text-muted-foreground leading-relaxed mb-6" style={{ transform: "translateZ(8px)" }}>
+                      <p
+                        className="text-xs text-muted-foreground leading-relaxed mb-6"
+                        style={{ transform: "translateZ(8px)" }}
+                      >
                         {member.expertise}
                       </p>
                     </div>
 
                     {/* Social connection handles */}
-                    <div className="flex items-center gap-2 border-t border-border/30 pt-4 mt-auto" style={{ transform: "translateZ(12px)" }}>
-                      <a
-                        href={member.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${member.name} GitHub`}
-                        className="h-8 w-8 rounded-lg border border-border/40 flex items-center justify-center text-muted-foreground hover:text-coral hover:bg-coral/5 transition-all duration-300"
-                      >
-                        <Github className="h-4 w-4" />
-                      </a>
+                    <div
+                      className="flex items-center gap-2 border-t border-border/30 pt-4 mt-auto"
+                      style={{ transform: "translateZ(12px)" }}
+                    >
                       <a
                         href={member.linkedin}
                         target="_blank"
@@ -859,6 +1009,15 @@ function AboutPage() {
                         className="h-8 w-8 rounded-lg border border-border/40 flex items-center justify-center text-muted-foreground hover:text-coral hover:bg-coral/5 transition-all duration-300"
                       >
                         <Linkedin className="h-4 w-4" />
+                      </a>
+                      <a
+                        href={member.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${member.name} Instagram`}
+                        className="h-8 w-8 rounded-lg border border-border/40 flex items-center justify-center text-muted-foreground hover:text-coral hover:bg-coral/5 transition-all duration-300"
+                      >
+                        <Instagram className="h-4 w-4" />
                       </a>
                     </div>
                   </div>
@@ -881,13 +1040,14 @@ function AboutPage() {
               Built With Modern Technology
             </h2>
             <p className="text-muted-foreground mt-4 max-w-md mx-auto text-sm md:text-base leading-relaxed">
-              Industry-standard developer languages and tools designed for high page speeds, rock-solid security, and seamless scaling.
+              Industry-standard developer languages and tools designed for high page speeds,
+              rock-solid security, and seamless scaling.
             </p>
           </FadeIn>
 
           <div className="grid md:grid-cols-3 gap-8">
             {techStack.map((stack, idx) => (
-              <FadeIn key={idx} delay={idx * 120}>
+              <FadeIn key={idx} delay={idx * 120} className="h-full">
                 <Tilt3D maxTilt={4} scale={1.02} className="h-full">
                   <div className="group h-full rounded-2xl glass-card-3d p-8 preserve-3d flex flex-col justify-between">
                     <div>
@@ -897,7 +1057,7 @@ function AboutPage() {
                       >
                         {stack.category}
                       </h3>
-                      
+
                       <div
                         className="grid grid-cols-2 gap-3"
                         style={{ transform: "translateZ(8px)" }}
@@ -944,7 +1104,8 @@ function AboutPage() {
                   What You Can Expect From Every Project
                 </h2>
                 <p className="mt-8 text-white/60 text-sm md:text-base leading-relaxed max-w-md">
-                  We maintain uncompromising quality standards across all projects. These eight pillars are built directly into our baseline delivery guidelines.
+                  We maintain uncompromising quality standards across all projects. These eight
+                  pillars are built directly into our baseline delivery guidelines.
                 </p>
               </FadeIn>
             </div>
@@ -996,7 +1157,8 @@ function AboutPage() {
                         className="font-serif text-2xl md:text-3xl text-foreground mb-8 leading-snug font-normal"
                         style={{ transform: "translateZ(15px)" }}
                       >
-                        "Every project receives the same rigorous attention to quality, direct communication, and pixel-perfect execution."
+                        "Every project receives the same rigorous attention to quality, direct
+                        communication, and pixel-perfect execution."
                       </h3>
 
                       {/* Growth & Quality Indicators */}
@@ -1049,10 +1211,14 @@ function AboutPage() {
                   More Than A Service Provider
                 </h2>
                 <p className="mt-8 text-muted-foreground text-sm md:text-base leading-relaxed">
-                  We believe successful digital applications are built through mutual alignment, constant updates, and clear architecture. Every project receives the exact same focus on detail and design logic.
+                  We believe successful digital applications are built through mutual alignment,
+                  constant updates, and clear architecture. Every project receives the exact same
+                  focus on detail and design logic.
                 </p>
                 <p className="mt-4 text-muted-foreground text-sm md:text-base leading-relaxed">
-                  When you work with Afero, you gain an active engineering team genuinely aligned with your commercial growth. We ensure smooth deployments, optimized pages, and technical clarity.
+                  When you work with Afero, you gain an active engineering team genuinely aligned
+                  with your commercial growth. We ensure smooth deployments, optimized pages, and
+                  technical clarity.
                 </p>
 
                 {/* Growth indicator list */}
@@ -1096,11 +1262,11 @@ function AboutPage() {
             </div>
             <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight">
               Let's Build Something Your{" "}
-              <em className="text-coral italic font-normal font-serif">Customers</em> Will
-              Remember.
+              <em className="text-coral italic font-normal font-serif">Customers</em> Will Remember.
             </h2>
             <p className="mt-8 text-muted-foreground text-sm md:text-lg leading-relaxed max-w-xl mx-auto">
-              Whether you're launching a startup, redesigning a website, or building a new digital product, we'd love to hear your vision.
+              Whether you're launching a startup, redesigning a website, or building a new digital
+              product, we'd love to hear your vision.
             </p>
 
             <div className="mt-12 flex flex-wrap justify-center gap-4">
@@ -1121,7 +1287,8 @@ function AboutPage() {
 
             {/* Direct communication support note */}
             <p className="mt-10 text-xs text-muted-foreground/60 tracking-wider">
-              No commitment required · Direct communication with lead engineers · Response within 24 hours
+              No commitment required · Direct communication with lead engineers · Response within 24
+              hours
             </p>
           </FadeIn>
         </div>

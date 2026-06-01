@@ -31,9 +31,10 @@ export function Footer() {
                 />
               </Link>
               <p className="text-sm leading-relaxed text-muted-foreground max-w-md">
-                Afero is a premium web development and digital product studio. We partner with ambitious
-                startups, growing brands, and established businesses to build lightning-fast, scalable,
-                and beautifully crafted digital experiences that eliminate friction and unlock business growth.
+                Afero is a premium web development and digital product studio. We partner with
+                ambitious startups, growing brands, and established businesses to build
+                lightning-fast, scalable, and beautifully crafted digital experiences that eliminate
+                friction and unlock business growth.
               </p>
             </div>
 
@@ -41,7 +42,11 @@ export function Footer() {
             <div className="flex items-center gap-3">
               {[
                 { icon: Github, href: "https://github.com/aferotech", label: "GitHub" },
-                { icon: Linkedin, href: "https://linkedin.com/company/aferotech", label: "LinkedIn" },
+                {
+                  icon: Linkedin,
+                  href: "https://linkedin.com/company/aferotech",
+                  label: "LinkedIn",
+                },
                 { icon: Twitter, href: "https://twitter.com/aferotech", label: "Twitter" },
               ].map((social) => {
                 const Icon = social.icon;
@@ -97,7 +102,7 @@ export function Footer() {
               <p className="text-sm text-muted-foreground">
                 Have an idea? Let's discuss how we can build it together.
               </p>
-              
+
               {/* Copyable Email UI */}
               <div className="flex items-center gap-2 p-1.5 rounded-xl border border-border/40 bg-card hover:border-coral/30 transition-all duration-300 group max-w-fit">
                 <div className="h-8 w-8 rounded-lg bg-coral/5 text-coral flex items-center justify-center shrink-0">

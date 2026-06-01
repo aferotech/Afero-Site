@@ -383,7 +383,7 @@ function WorkPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* PROJECT 4 */}
-            <FadeIn delay={100}>
+            <FadeIn delay={100} className="h-full">
               <Tilt3D maxTilt={6} scale={1.02} className="h-full">
                 <article className="group flex flex-col justify-between glass-card-3d p-6 rounded-3xl h-full preserve-3d">
                   <div>
@@ -430,7 +430,7 @@ function WorkPage() {
             </FadeIn>
 
             {/* PROJECT 5 */}
-            <FadeIn delay={200}>
+            <FadeIn delay={200} className="h-full">
               <Tilt3D maxTilt={6} scale={1.02} className="h-full">
                 <article className="group flex flex-col justify-between glass-card-3d p-6 rounded-3xl h-full preserve-3d">
                   <div>
@@ -477,7 +477,7 @@ function WorkPage() {
             </FadeIn>
 
             {/* PROJECT 6 */}
-            <FadeIn delay={300}>
+            <FadeIn delay={300} className="h-full">
               <Tilt3D maxTilt={6} scale={1.02} className="h-full">
                 <article className="group flex flex-col justify-between glass-card-3d p-6 rounded-3xl h-full preserve-3d">
                   <div>
@@ -596,7 +596,7 @@ function WorkPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {processSteps.map((step, idx) => (
-              <FadeIn key={idx} delay={idx * 100}>
+              <FadeIn key={idx} delay={idx * 100} className="h-full">
                 <Tilt3D maxTilt={8} scale={1.03} className="h-full">
                   <div className="group h-full rounded-2xl glass-card-3d p-8 flex flex-col justify-between preserve-3d">
                     <div>
@@ -658,7 +658,7 @@ function WorkPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {valueCards.map((card, idx) => (
-              <FadeIn key={idx} delay={idx * 50}>
+              <FadeIn key={idx} delay={idx * 50} className="h-full">
                 <Tilt3D maxTilt={6} scale={1.02} className="h-full">
                   <div className="rounded-2xl glass-card-3d p-8 h-full preserve-3d">
                     <div

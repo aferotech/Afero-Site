@@ -78,7 +78,7 @@ const services = [
       "AI Chatbots",
       "Customer Support Automation",
       "Knowledge Base Assistants",
-      "AI-Powered Website Experiences"
+      "AI-Powered Website Experiences",
     ],
   },
 
@@ -207,7 +207,7 @@ function Index() {
           </Tilt3D>
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-            <Tilt3D maxTilt={6} scale={1.02} className="w-full">
+            <Tilt3D maxTilt={6} scale={1.02} className="w-full h-full">
               <article className="group glass-card-3d p-6 rounded-3xl h-full flex flex-col justify-between">
                 <div className="flex items-baseline justify-between mb-4">
                   <div className="flex items-baseline gap-2 transform translate-z-10">
@@ -234,7 +234,7 @@ function Index() {
               </article>
             </Tilt3D>
 
-            <Tilt3D maxTilt={6} scale={1.02} className="w-full">
+            <Tilt3D maxTilt={6} scale={1.02} className="w-full h-full">
               <article className="group glass-card-3d p-6 rounded-3xl h-full flex flex-col justify-between">
                 <div className="flex items-baseline justify-between mb-4">
                   <div className="flex items-baseline gap-2 transform translate-z-10">
@@ -338,7 +338,7 @@ function Index() {
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {reasons.map((r) => (
-            <Tilt3D key={r.n} maxTilt={6} scale={1.02}>
+            <Tilt3D key={r.n} maxTilt={6} scale={1.02} className="h-full">
               <div className="rounded-2xl border border-border p-8 bg-card h-full glass-card-3d preserve-3d">
                 <div
                   className="font-serif text-coral text-4xl transform translate-z-10"
