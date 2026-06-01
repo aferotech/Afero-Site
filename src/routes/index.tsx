@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
         content:
           "Afero is a small, senior studio building websites and brands that move businesses forward. Strategy, design, and development under one roof.",
       },
-      { property: "og:title", content: "Afero — Websites that actually work" },
+      { property: "og:title", content: "Afero -Websites that actually work" },
       { property: "og:description", content: "Strategy, design, and development under one roof." },
     ],
   }),
@@ -211,7 +211,7 @@ function Index() {
               <article className="group glass-card-3d p-6 rounded-3xl h-full flex flex-col justify-between">
                 <div className="flex items-baseline justify-between mb-4">
                   <div className="flex items-baseline gap-2 transform translate-z-10">
-                    <span className="text-xs text-muted-foreground">02 — Architecture</span>
+                    <span className="text-xs text-muted-foreground">02 -Architecture</span>
                     <h3 className="font-serif text-xl md:text-2xl">Praxis Studio</h3>
                   </div>
                   <Link
@@ -238,7 +238,7 @@ function Index() {
               <article className="group glass-card-3d p-6 rounded-3xl h-full flex flex-col justify-between">
                 <div className="flex items-baseline justify-between mb-4">
                   <div className="flex items-baseline gap-2 transform translate-z-10">
-                    <span className="text-xs text-muted-foreground">03 — Editorial</span>
+                    <span className="text-xs text-muted-foreground">03 -Editorial</span>
                     <h3 className="font-serif text-xl md:text-2xl">Meridian Daily</h3>
                   </div>
                   <Link
@@ -376,7 +376,7 @@ function Index() {
             that's beautiful, strategic and obvious. They went above and beyond. Highly recommend.”
           </p>
           <div className="mt-10 text-xs uppercase tracking-[0.2em] text-background/60 font-medium">
-            Martin Richard — Director, Coast Enterprise
+            Martin Richard -Director, Coast Enterprise
           </div>
         </div>
       </section>

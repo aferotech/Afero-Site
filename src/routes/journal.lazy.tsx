@@ -91,7 +91,7 @@ const posts = [
     id: "4",
     title: "A small studio's pricing model, in full",
     excerpt:
-      "We share our exact pricing sheets, hourly scopes, and project sprint breakdowns. No secret rate cards, no corporate margins — just honest developer and designer values.",
+      "We share our exact pricing sheets, hourly scopes, and project sprint breakdowns. No secret rate cards, no corporate margins -just honest developer and designer values.",
     date: "Apr 2026",
     read: "9 min",
     tag: "Studio Notes",
@@ -711,11 +711,10 @@ function JournalPage() {
                 <Tilt3D key={topic.name} maxTilt={6} scale={1.02} className="h-full">
                   <button
                     onClick={() => handleCategorySelect(topic.name)}
-                    className={`group h-full text-left w-full rounded-2xl p-8 flex flex-col justify-between preserve-3d cursor-pointer transition-all duration-300 border ${
-                      isSelected
+                    className={`group h-full text-left w-full rounded-2xl p-8 flex flex-col justify-between preserve-3d cursor-pointer transition-all duration-300 border ${isSelected
                         ? "border-coral/50 shadow-md shadow-coral/[0.03] bg-background"
                         : `border-border/40 hover:border-coral/20 ${cardBg}`
-                    }`}
+                      }`}
                   >
                     <div>
                       <div className="flex items-center justify-between mb-6">

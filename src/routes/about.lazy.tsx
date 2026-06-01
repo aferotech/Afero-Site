@@ -75,9 +75,8 @@ function FadeIn({
   return (
     <div
       ref={ref}
-      className={`transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        direction !== "none" ? translateMap[direction] : ""
-      } ${visible ? "opacity-100" : "opacity-0"} ${className}`}
+      className={`transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${direction !== "none" ? translateMap[direction] : ""
+        } ${visible ? "opacity-100" : "opacity-0"} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -378,7 +377,7 @@ const philosophy = [
   {
     icon: Target,
     title: "Design With Purpose",
-    body: "Every visual decision serves a function. We design for people first — not just screens, ensuring utility goes hand-in-hand with luxury aesthetics.",
+    body: "Every visual decision serves a function. We design for people first -not just screens, ensuring utility goes hand-in-hand with luxury aesthetics.",
   },
   {
     icon: Gauge,

@@ -7,7 +7,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Afero is a small, senior studio in Lisbon. We make websites that work — for the people who use them and the people who run them.",
+          "Afero is a small, senior studio in Lisbon. We make websites that work -for the people who use them and the people who run them.",
       },
       { property: "og:title", content: "About - Afero Studio" },
     ],

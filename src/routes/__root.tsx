@@ -88,7 +88,7 @@ export const Route = createRootRouteWithContext<{
       },
 
       {
-        title: "Afero — Modern digital experiences",
+        title: "Afero -Modern digital experiences",
       },
 
       {
@@ -104,7 +104,7 @@ export const Route = createRootRouteWithContext<{
 
       {
         property: "og:title",
-        content: "Afero — Modern digital experiences",
+        content: "Afero -Modern digital experiences",
       },
 
       {
