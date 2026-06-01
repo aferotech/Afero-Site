@@ -400,7 +400,7 @@ function JournalPage() {
           <div className="flex justify-between items-center text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-4">
             <span>Edition: Vol. IV / Issue VI</span>
             <span className="hidden sm:inline">Price: Bespoke Code</span>
-            <span>Published in Kerala, IN</span>
+            <span>Published in Tamilnadu, IN</span>
           </div>
 
           <h1 className="font-serif text-5xl sm:text-7xl md:text-[5.5rem] tracking-[0.05em] uppercase leading-[0.95] text-foreground select-none font-normal">
@@ -712,8 +712,8 @@ function JournalPage() {
                   <button
                     onClick={() => handleCategorySelect(topic.name)}
                     className={`group h-full text-left w-full rounded-2xl p-8 flex flex-col justify-between preserve-3d cursor-pointer transition-all duration-300 border ${isSelected
-                        ? "border-coral/50 shadow-md shadow-coral/[0.03] bg-background"
-                        : `border-border/40 hover:border-coral/20 ${cardBg}`
+                      ? "border-coral/50 shadow-md shadow-coral/[0.03] bg-background"
+                      : `border-border/40 hover:border-coral/20 ${cardBg}`
                       }`}
                   >
                     <div>

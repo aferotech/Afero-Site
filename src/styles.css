@@ -257,4 +257,110 @@
   .glow-coral-lg {
     box-shadow: 0 15px 45px -10px color-mix(in oklab, var(--coral) 25%, transparent);
   }
+
+  /* Custom Redesign Animations */
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(0.5deg); }
+  }
+
+  @keyframes float-medium {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @keyframes float-fast {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
+  }
+
+  @keyframes radar-scan {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes dash-crawl {
+    to { stroke-dashoffset: -20; }
+  }
+
+  @keyframes draw-chart {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes focus-jump {
+    0%, 100% {
+      transform: translate(0, 0);
+      width: 48px;
+    }
+    33% {
+      transform: translate(52px, 0);
+      width: 48px;
+    }
+    66% {
+      transform: translate(104px, 0);
+      width: 60px;
+    }
+  }
+
+  @keyframes status-pulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes grid-glow {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.35; }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
+  .animate-float-medium {
+    animation: float-medium 4s ease-in-out infinite;
+  }
+
+  .animate-float-fast {
+    animation: float-fast 3s ease-in-out infinite;
+  }
+
+  .animate-radar-scan {
+    animation: radar-scan 4s linear infinite;
+  }
+
+  .animate-dash-crawl {
+    animation: dash-crawl 1s linear infinite;
+  }
+
+  .animate-focus-jump {
+    animation: focus-jump 6s ease-in-out infinite;
+  }
+
+  .animate-status-pulse {
+    animation: status-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-grid-glow {
+    animation: grid-glow 4s ease-in-out infinite;
+  }
+
+  /* 3D Stack Layer Styling */
+  .isometric-stack-container {
+    transform-style: preserve-3d;
+    perspective: 1200px;
+  }
+
+  .isometric-layer {
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: rotateX(50deg) rotateZ(-30deg) translateZ(var(--z-offset, 0px));
+    transform-style: preserve-3d;
+  }
+
+  .isometric-layer.active {
+    --z-offset: 45px !important;
+    border-color: color-mix(in oklab, var(--coral) 60%, transparent) !important;
+    box-shadow: 
+      -15px 25px 50px rgba(0, 0, 0, 0.15),
+      0 0 35px rgba(224, 90, 54, 0.3) !important;
+  }
 }
