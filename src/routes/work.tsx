@@ -11,7 +11,9 @@ export const Route = createFileRoute("/work")({
           "Explore selected case studies and digital experiences designed and engineered by Afero.",
       },
       { property: "og:title", content: "Selected Work - Afero Studio" },
+      { property: "og:url", content: "https://afero.in/work" },
       { property: "og:image", content: groomvyImg },
     ],
+    links: [{ rel: "canonical", href: "https://afero.in/work" }],
   }),
 });

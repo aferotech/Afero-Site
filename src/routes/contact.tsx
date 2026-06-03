@@ -11,7 +11,9 @@ export const Route = createFileRoute("/contact")({
         content: "Tell us about your project. We respond within one business day.",
       },
       { property: "og:title", content: "Contact - Afero Studio" },
+      { property: "og:url", content: "https://afero.in/contact" },
     ],
+    links: [{ rel: "canonical", href: "https://afero.in/contact" }],
   }),
 });
 
@@ -52,6 +54,7 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const submitContactForm = createServerFn({ method: "POST" })
   .inputValidator(
     (input: unknown) =>

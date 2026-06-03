@@ -52,6 +52,7 @@ function FadeIn({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const currentRef = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -61,11 +62,11 @@ function FadeIn({
       },
       { threshold: 0.05, rootMargin: "0px 0px -40px 0px" },
     );
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      if (currentRef) observer.unobserve(currentRef);
     };
   }, []);
 
@@ -845,7 +846,10 @@ function ProcessPage() {
               <Tilt3D maxTilt={4} scale={1.01} className="h-full">
                 <div className="group rounded-3xl glass-card-3d p-8 flex flex-col md:flex-row gap-6 justify-between h-full preserve-3d relative overflow-hidden border border-border/40 hover:border-coral/30 transition-all duration-500 shadow-sm min-h-[300px] md:min-h-[260px]">
                   <div className="flex flex-col justify-between z-10 preserve-3d max-w-[200px] md:max-w-[220px]">
-                    <div className="flex items-center gap-3 mb-4" style={{ transform: "translateZ(15px)" }}>
+                    <div
+                      className="flex items-center gap-3 mb-4"
+                      style={{ transform: "translateZ(15px)" }}
+                    >
                       <div className="h-10 w-10 rounded-xl bg-coral/10 text-coral flex items-center justify-center shadow-sm group-hover:bg-coral group-hover:text-coral-foreground transition-all duration-500 shrink-0">
                         <SmartphoneIcon className="h-5 w-5" />
                       </div>
@@ -854,11 +858,15 @@ function ProcessPage() {
                       </h3>
                     </div>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      Fluid, high-end layouts built to adapt perfectly to all viewport boundaries and pixel counts.
+                      Fluid, high-end layouts built to adapt perfectly to all viewport boundaries
+                      and pixel counts.
                     </p>
                   </div>
 
-                  <div className="flex-grow flex items-center justify-center relative min-h-[140px]" style={{ transform: "translateZ(10px)" }}>
+                  <div
+                    className="flex-grow flex items-center justify-center relative min-h-[140px]"
+                    style={{ transform: "translateZ(10px)" }}
+                  >
                     <div className="relative w-full h-[140px] flex items-center justify-center overflow-hidden">
                       {/* Desktop Mock */}
                       <div className="absolute w-[180px] h-[105px] border border-border/60 rounded-lg bg-background/50 backdrop-blur-sm shadow-sm flex flex-col p-1.5 transition-all duration-500 scale-90 group-hover:scale-95 translate-y-[-10px]">
@@ -868,7 +876,9 @@ function ProcessPage() {
                           <span className="w-1.5 h-1.5 rounded-full bg-border" />
                         </div>
                         <div className="grid grid-cols-3 gap-1 flex-grow">
-                          <div className="col-span-1 bg-coral/10 rounded flex items-center justify-center text-[7px] text-coral font-bold font-serif">A</div>
+                          <div className="col-span-1 bg-coral/10 rounded flex items-center justify-center text-[7px] text-coral font-bold font-serif">
+                            A
+                          </div>
                           <div className="col-span-2 flex flex-col gap-1">
                             <span className="h-1.5 bg-border/40 rounded w-4/5" />
                             <span className="h-1 bg-border/20 rounded w-full" />
@@ -881,7 +891,9 @@ function ProcessPage() {
                       <div className="absolute w-[100px] h-[75px] border border-coral/30 rounded-md bg-card shadow-md flex flex-col p-1.5 transition-all duration-500 translate-x-12 translate-y-8 group-hover:translate-x-8 group-hover:translate-y-6">
                         <div className="h-1 bg-coral/20 rounded w-1/3 mb-1.5" />
                         <div className="flex-grow flex flex-col gap-1">
-                          <div className="h-6 bg-border/30 rounded flex items-center justify-center text-[6px] text-muted-foreground">Image</div>
+                          <div className="h-6 bg-border/30 rounded flex items-center justify-center text-[6px] text-muted-foreground">
+                            Image
+                          </div>
                           <span className="h-1 bg-border/20 rounded w-full" />
                           <span className="h-1 bg-border/20 rounded w-4/5" />
                         </div>
@@ -890,7 +902,9 @@ function ProcessPage() {
                       <div className="absolute w-[50px] h-[80px] border border-coral/60 rounded-md bg-background shadow-lg flex flex-col p-1 transition-all duration-500 translate-x-24 translate-y-16 group-hover:translate-x-20 group-hover:translate-y-12">
                         <div className="w-1.5 h-1 bg-border/60 rounded-full mx-auto mb-1" />
                         <div className="flex-grow flex flex-col gap-1">
-                          <div className="h-6 bg-coral/10 rounded flex items-center justify-center text-[5px] text-coral font-bold font-serif">A</div>
+                          <div className="h-6 bg-coral/10 rounded flex items-center justify-center text-[5px] text-coral font-bold font-serif">
+                            A
+                          </div>
                           <span className="h-1 bg-border/20 rounded w-full" />
                           <span className="h-1 bg-border/20 rounded w-full" />
                           <span className="h-1 bg-border/20 rounded w-2/3" />
@@ -907,7 +921,10 @@ function ProcessPage() {
               <Tilt3D maxTilt={4} scale={1.01} className="h-full">
                 <div className="group rounded-3xl glass-card-3d p-8 flex flex-col md:flex-row gap-6 justify-between h-full preserve-3d relative overflow-hidden border border-border/40 hover:border-coral/30 transition-all duration-500 shadow-sm min-h-[300px] md:min-h-[260px]">
                   <div className="flex flex-col justify-between z-10 preserve-3d max-w-[200px] md:max-w-[220px]">
-                    <div className="flex items-center gap-3 mb-4" style={{ transform: "translateZ(15px)" }}>
+                    <div
+                      className="flex items-center gap-3 mb-4"
+                      style={{ transform: "translateZ(15px)" }}
+                    >
                       <div className="h-10 w-10 rounded-xl bg-coral/10 text-coral flex items-center justify-center shadow-sm group-hover:bg-coral group-hover:text-coral-foreground transition-all duration-500 shrink-0">
                         <Globe className="h-5 w-5" />
                       </div>
@@ -916,15 +933,21 @@ function ProcessPage() {
                       </h3>
                     </div>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      Semantic custom hierarchy structured perfectly for visibility, crawling indexing, and high ranking.
+                      Semantic custom hierarchy structured perfectly for visibility, crawling
+                      indexing, and high ranking.
                     </p>
                   </div>
 
-                  <div className="flex-grow flex items-center justify-center relative min-h-[140px]" style={{ transform: "translateZ(10px)" }}>
+                  <div
+                    className="flex-grow flex items-center justify-center relative min-h-[140px]"
+                    style={{ transform: "translateZ(10px)" }}
+                  >
                     <div className="relative w-full max-w-[220px] h-[120px] rounded-xl border border-border/40 bg-background/50 p-3 shadow-inner flex flex-col gap-2">
                       <div className="flex items-center gap-1.5">
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                        <span className="text-[9px] text-muted-foreground font-mono">https://aferotech.com</span>
+                        <span className="text-[9px] text-muted-foreground font-mono">
+                          https://aferotech.com
+                        </span>
                       </div>
                       <div className="h-[1px] bg-border/40 w-full" />
                       <div className="flex flex-col gap-1.5">
@@ -937,15 +960,59 @@ function ProcessPage() {
                           <span className="h-1 bg-border/20 rounded w-4/5" />
                         </div>
                       </div>
-                      
+
                       {/* SEO Radar Pulse Graphic */}
-                      <svg className="absolute inset-0 pointer-events-none w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="0" y="0" width="100%" height="100%" rx="12" fill="none" stroke="currentColor" strokeWidth="1" className="text-coral/10 animate-grid-glow" />
-                        <line x1="10%" y1="0" x2="10%" y2="100%" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" className="text-coral/10" />
-                        <line x1="90%" y1="0" x2="90%" y2="100%" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" className="text-coral/10" />
-                        <path d="M 10 90 L 100 90 L 130 50 L 210 50" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" className="text-coral/40 animate-dash-crawl" style={{ strokeDashoffset: 0 }} />
+                      <svg
+                        className="absolute inset-0 pointer-events-none w-full h-full"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          x="0"
+                          y="0"
+                          width="100%"
+                          height="100%"
+                          rx="12"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                          className="text-coral/10 animate-grid-glow"
+                        />
+                        <line
+                          x1="10%"
+                          y1="0"
+                          x2="10%"
+                          y2="100%"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                          strokeDasharray="3 3"
+                          className="text-coral/10"
+                        />
+                        <line
+                          x1="90%"
+                          y1="0"
+                          x2="90%"
+                          y2="100%"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                          strokeDasharray="3 3"
+                          className="text-coral/10"
+                        />
+                        <path
+                          d="M 10 90 L 100 90 L 130 50 L 210 50"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeDasharray="4 4"
+                          className="text-coral/40 animate-dash-crawl"
+                          style={{ strokeDashoffset: 0 }}
+                        />
                         <circle cx="130" cy="50" r="3" className="fill-coral" />
-                        <circle cx="130" cy="50" r="6" className="stroke-coral/60 fill-none animate-ping" />
+                        <circle
+                          cx="130"
+                          cy="50"
+                          r="6"
+                          className="stroke-coral/60 fill-none animate-ping"
+                        />
                       </svg>
                     </div>
                   </div>
@@ -958,7 +1025,10 @@ function ProcessPage() {
               <Tilt3D maxTilt={4} scale={1.01} className="h-full">
                 <div className="group rounded-3xl glass-card-3d p-8 flex flex-col sm:flex-row gap-6 justify-between h-full preserve-3d relative overflow-hidden border border-border/40 hover:border-coral/30 transition-all duration-500 shadow-sm min-h-[300px] md:min-h-[260px]">
                   <div className="flex flex-col justify-between z-10 preserve-3d max-w-[260px]">
-                    <div className="flex items-center gap-3 mb-4" style={{ transform: "translateZ(15px)" }}>
+                    <div
+                      className="flex items-center gap-3 mb-4"
+                      style={{ transform: "translateZ(15px)" }}
+                    >
                       <div className="h-10 w-10 rounded-xl bg-coral/10 text-coral flex items-center justify-center shadow-sm group-hover:bg-coral group-hover:text-coral-foreground transition-all duration-500 shrink-0">
                         <Gauge className="h-5 w-5" />
                       </div>
@@ -967,27 +1037,58 @@ function ProcessPage() {
                       </h3>
                     </div>
                     <p className="text-xs text-muted-foreground leading-relaxed mb-4">
-                      Ultra-fast page loads engineered using asset optimization, minified structures, and high-performance server delivery.
+                      Ultra-fast page loads engineered using asset optimization, minified
+                      structures, and high-performance server delivery.
                     </p>
                     <div className="flex gap-2">
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 font-semibold">FCP: 0.3s</span>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 font-semibold">TBT: 0ms</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 font-semibold">
+                        FCP: 0.3s
+                      </span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 font-semibold">
+                        TBT: 0ms
+                      </span>
                     </div>
                   </div>
 
-                  <div className="flex-grow flex items-center justify-center relative min-h-[140px]" style={{ transform: "translateZ(10px)" }}>
+                  <div
+                    className="flex-grow flex items-center justify-center relative min-h-[140px]"
+                    style={{ transform: "translateZ(10px)" }}
+                  >
                     <div className="relative w-28 h-28 flex items-center justify-center">
                       {/* SVG Gauge Background */}
                       <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="6" fill="transparent" className="text-border/30" />
-                        <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="6" fill="transparent" strokeDasharray="251.2" strokeDashoffset="0" className="text-coral transition-all duration-1000 ease-out" style={{ strokeDashoffset: 25.1 }} />
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r="40"
+                          stroke="currentColor"
+                          strokeWidth="6"
+                          fill="transparent"
+                          className="text-border/30"
+                        />
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r="40"
+                          stroke="currentColor"
+                          strokeWidth="6"
+                          fill="transparent"
+                          strokeDasharray="251.2"
+                          strokeDashoffset="0"
+                          className="text-coral transition-all duration-1000 ease-out"
+                          style={{ strokeDashoffset: 25.1 }}
+                        />
                       </svg>
                       {/* Text inside */}
                       <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="text-3xl font-serif font-normal text-foreground leading-none">100</span>
-                        <span className="text-[7px] tracking-widest uppercase font-semibold text-coral mt-1">Lighthouse</span>
+                        <span className="text-3xl font-serif font-normal text-foreground leading-none">
+                          100
+                        </span>
+                        <span className="text-[7px] tracking-widest uppercase font-semibold text-coral mt-1">
+                          Lighthouse
+                        </span>
                       </div>
-                      
+
                       {/* Particle lights */}
                       <div className="absolute -top-1 -left-1 w-2.5 h-2.5 bg-coral rounded-full blur-[2px] animate-ping" />
                       <div className="absolute -bottom-1 -right-1 w-1.5 h-1.5 bg-coral rounded-full blur-[1px] opacity-75" />
@@ -1002,7 +1103,10 @@ function ProcessPage() {
               <Tilt3D maxTilt={6} scale={1.02} className="h-full">
                 <div className="group rounded-3xl glass-card-3d p-8 flex flex-col justify-between h-full preserve-3d relative overflow-hidden border border-border/40 hover:border-coral/30 transition-all duration-500 shadow-sm min-h-[300px]">
                   <div className="flex flex-col z-10 preserve-3d">
-                    <div className="flex items-center gap-3 mb-4" style={{ transform: "translateZ(15px)" }}>
+                    <div
+                      className="flex items-center gap-3 mb-4"
+                      style={{ transform: "translateZ(15px)" }}
+                    >
                       <div className="h-10 w-10 rounded-xl bg-coral/10 text-coral flex items-center justify-center shadow-sm group-hover:bg-coral group-hover:text-coral-foreground transition-all duration-500 shrink-0">
                         <Accessibility className="h-5 w-5" />
                       </div>
@@ -1011,11 +1115,15 @@ function ProcessPage() {
                       </h3>
                     </div>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      Compliant with strict accessibility standards to ensure fully usable environments for everyone.
+                      Compliant with strict accessibility standards to ensure fully usable
+                      environments for everyone.
                     </p>
                   </div>
 
-                  <div className="flex-grow flex items-center justify-center relative min-h-[110px]" style={{ transform: "translateZ(10px)" }}>
+                  <div
+                    className="flex-grow flex items-center justify-center relative min-h-[110px]"
+                    style={{ transform: "translateZ(10px)" }}
+                  >
                     <div className="relative w-full max-w-[150px] py-3.5 px-4 bg-background/50 border border-border/40 rounded-xl flex items-center justify-center gap-3 overflow-hidden shadow-inner">
                       <span className="text-[10px] text-muted-foreground">Tabs:</span>
                       <div className="flex items-center gap-2 relative">
@@ -1023,7 +1131,10 @@ function ProcessPage() {
                         <span className="text-[10px] font-semibold text-foreground">About</span>
                         <span className="text-[10px] font-semibold text-foreground">FAQ</span>
                         {/* Keyboard Focus Highlight Border */}
-                        <div className="absolute top-[-4px] left-[-6px] height-[22px] border-2 border-coral rounded-md pointer-events-none animate-focus-jump" style={{ height: "22px", top: "-4px" }} />
+                        <div
+                          className="absolute top-[-4px] left-[-6px] height-[22px] border-2 border-coral rounded-md pointer-events-none animate-focus-jump"
+                          style={{ height: "22px", top: "-4px" }}
+                        />
                       </div>
                     </div>
                   </div>
@@ -1036,7 +1147,10 @@ function ProcessPage() {
               <Tilt3D maxTilt={6} scale={1.02} className="h-full">
                 <div className="group rounded-3xl glass-card-3d p-8 flex flex-col justify-between h-full preserve-3d relative overflow-hidden border border-border/40 hover:border-coral/30 transition-all duration-500 shadow-sm min-h-[300px]">
                   <div className="flex flex-col z-10 preserve-3d">
-                    <div className="flex items-center gap-3 mb-4" style={{ transform: "translateZ(15px)" }}>
+                    <div
+                      className="flex items-center gap-3 mb-4"
+                      style={{ transform: "translateZ(15px)" }}
+                    >
                       <div className="h-10 w-10 rounded-xl bg-coral/10 text-coral flex items-center justify-center shadow-sm group-hover:bg-coral group-hover:text-coral-foreground transition-all duration-500 shrink-0">
                         <Activity className="h-5 w-5" />
                       </div>
@@ -1045,20 +1159,37 @@ function ProcessPage() {
                       </h3>
                     </div>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      Custom configured funnel, event tracking, and metric dashboards for business monitoring.
+                      Custom configured funnel, event tracking, and metric dashboards for business
+                      monitoring.
                     </p>
                   </div>
 
-                  <div className="flex-grow flex items-center justify-center relative min-h-[110px]" style={{ transform: "translateZ(10px)" }}>
+                  <div
+                    className="flex-grow flex items-center justify-center relative min-h-[110px]"
+                    style={{ transform: "translateZ(10px)" }}
+                  >
                     <div className="relative w-full max-w-[160px] h-[75px] border border-border/40 bg-background/50 rounded-xl overflow-hidden p-2 flex flex-col justify-between shadow-inner">
                       <div className="flex items-center justify-between">
-                        <span className="text-[8px] font-mono text-muted-foreground">DAILY VISITS</span>
-                        <span className="text-[9px] font-mono font-bold text-coral flex items-center gap-0.5">+42.8%</span>
+                        <span className="text-[8px] font-mono text-muted-foreground">
+                          DAILY VISITS
+                        </span>
+                        <span className="text-[9px] font-mono font-bold text-coral flex items-center gap-0.5">
+                          +42.8%
+                        </span>
                       </div>
                       {/* SVG Line Graph */}
                       <svg className="w-full h-8 overflow-visible" viewBox="0 0 100 30" fill="none">
-                        <path d="M0,25 C15,22 25,5 40,18 C55,30 65,10 80,12 C95,14 98,2 100,4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-coral" />
-                        <path d="M0,25 C15,22 25,5 40,18 C55,30 65,10 80,12 C95,14 98,2 100,4 L100,30 L0,30 Z" fill="url(#analytics-grad)" />
+                        <path
+                          d="M0,25 C15,22 25,5 40,18 C55,30 65,10 80,12 C95,14 98,2 100,4"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          className="text-coral"
+                        />
+                        <path
+                          d="M0,25 C15,22 25,5 40,18 C55,30 65,10 80,12 C95,14 98,2 100,4 L100,30 L0,30 Z"
+                          fill="url(#analytics-grad)"
+                        />
                         <defs>
                           <linearGradient id="analytics-grad" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.12" />
@@ -1066,7 +1197,16 @@ function ProcessPage() {
                           </linearGradient>
                         </defs>
                         <circle cx="80" cy="12" r="2.5" className="fill-coral" />
-                        <line x1="80" y1="12" x2="80" y2="30" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2" className="text-muted-foreground/40" />
+                        <line
+                          x1="80"
+                          y1="12"
+                          x2="80"
+                          y2="30"
+                          stroke="currentColor"
+                          strokeWidth="0.5"
+                          strokeDasharray="2 2"
+                          className="text-muted-foreground/40"
+                        />
                       </svg>
                     </div>
                   </div>
@@ -1079,7 +1219,10 @@ function ProcessPage() {
               <Tilt3D maxTilt={6} scale={1.02} className="h-full">
                 <div className="group rounded-3xl glass-card-3d p-8 flex flex-col justify-between h-full preserve-3d relative overflow-hidden border border-border/40 hover:border-coral/30 transition-all duration-500 shadow-sm min-h-[300px]">
                   <div className="flex flex-col z-10 preserve-3d">
-                    <div className="flex items-center gap-3 mb-4" style={{ transform: "translateZ(15px)" }}>
+                    <div
+                      className="flex items-center gap-3 mb-4"
+                      style={{ transform: "translateZ(15px)" }}
+                    >
                       <div className="h-10 w-10 rounded-xl bg-coral/10 text-coral flex items-center justify-center shadow-sm group-hover:bg-coral group-hover:text-coral-foreground transition-all duration-500 shrink-0">
                         <Shield className="h-5 w-5" />
                       </div>
@@ -1088,19 +1231,23 @@ function ProcessPage() {
                       </h3>
                     </div>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      SSL configurations, strict security headers, and secure code practices protecting core assets.
+                      SSL configurations, strict security headers, and secure code practices
+                      protecting core assets.
                     </p>
                   </div>
 
-                  <div className="flex-grow flex items-center justify-center relative min-h-[110px]" style={{ transform: "translateZ(10px)" }}>
+                  <div
+                    className="flex-grow flex items-center justify-center relative min-h-[110px]"
+                    style={{ transform: "translateZ(10px)" }}
+                  >
                     <div className="relative w-20 h-20 flex items-center justify-center bg-background/50 border border-border/40 rounded-full shadow-inner">
                       {/* Radar circle scan */}
                       <div className="absolute inset-1.5 border border-dashed border-coral/30 rounded-full animate-radar-scan" />
                       <div className="absolute inset-4 border border-coral/10 rounded-full" />
-                      
+
                       {/* Shield Core */}
                       <Shield className="h-7 w-7 text-coral z-10 transition-transform duration-500 group-hover:scale-110" />
-                      
+
                       {/* Active Status Ring */}
                       <div className="absolute top-2.5 right-2.5 h-2 w-2 rounded-full bg-emerald-500 animate-status-pulse" />
                     </div>
@@ -1114,7 +1261,10 @@ function ProcessPage() {
               <Tilt3D maxTilt={6} scale={1.02} className="h-full">
                 <div className="group rounded-3xl glass-card-3d p-8 flex flex-col justify-between h-full preserve-3d relative overflow-hidden border border-border/40 hover:border-coral/30 transition-all duration-500 shadow-sm min-h-[300px]">
                   <div className="flex flex-col z-10 preserve-3d">
-                    <div className="flex items-center gap-3 mb-4" style={{ transform: "translateZ(15px)" }}>
+                    <div
+                      className="flex items-center gap-3 mb-4"
+                      style={{ transform: "translateZ(15px)" }}
+                    >
                       <div className="h-10 w-10 rounded-xl bg-coral/10 text-coral flex items-center justify-center shadow-sm group-hover:bg-coral group-hover:text-coral-foreground transition-all duration-500 shrink-0">
                         <Layers className="h-5 w-5" />
                       </div>
@@ -1123,16 +1273,22 @@ function ProcessPage() {
                       </h3>
                     </div>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      Pixel-perfect layouts validated across Apple, Android, Windows platforms and Chrome, Safari, Firefox.
+                      Pixel-perfect layouts validated across Apple, Android, Windows platforms and
+                      Chrome, Safari, Firefox.
                     </p>
                   </div>
 
-                  <div className="flex-grow flex items-center justify-center relative min-h-[110px]" style={{ transform: "translateZ(10px)" }}>
+                  <div
+                    className="flex-grow flex items-center justify-center relative min-h-[110px]"
+                    style={{ transform: "translateZ(10px)" }}
+                  >
                     <div className="relative w-full max-w-[140px] h-[75px] flex items-center justify-center">
                       {/* Layered Browser frames */}
                       <div className="absolute w-[100px] h-[55px] border border-border/40 rounded bg-background/60 shadow-sm flex items-center justify-start px-2 gap-1.5 transition-all duration-500 translate-x-[-15px] translate-y-[-10px] group-hover:translate-x-[-12px] group-hover:translate-y-[-8px]">
                         <span className="w-1.5 h-1.5 rounded-full bg-red-400/80" />
-                        <span className="text-[7px] font-mono text-muted-foreground/60">Chrome</span>
+                        <span className="text-[7px] font-mono text-muted-foreground/60">
+                          Chrome
+                        </span>
                       </div>
                       <div className="absolute w-[100px] h-[55px] border border-border/60 rounded bg-background/80 shadow flex items-center justify-start px-2 gap-1.5 transition-all duration-500 translate-x-[0px] translate-y-[0px] group-hover:scale-105 z-10">
                         <span className="w-1.5 h-1.5 rounded-full bg-blue-400/80" />
@@ -1140,7 +1296,9 @@ function ProcessPage() {
                       </div>
                       <div className="absolute w-[100px] h-[55px] border border-border/40 rounded bg-background/60 shadow-sm flex items-center justify-start px-2 gap-1.5 transition-all duration-500 translate-x-[15px] translate-y-[10px] group-hover:translate-x-[12px] group-hover:translate-y-[8px]">
                         <span className="w-1.5 h-1.5 rounded-full bg-orange-400/80" />
-                        <span className="text-[7px] font-mono text-muted-foreground/60">Firefox</span>
+                        <span className="text-[7px] font-mono text-muted-foreground/60">
+                          Firefox
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -1153,7 +1311,10 @@ function ProcessPage() {
               <Tilt3D maxTilt={2} scale={1.005} className="h-full">
                 <div className="group rounded-3xl glass-card-3d p-8 flex flex-col md:flex-row gap-6 justify-between h-full preserve-3d relative overflow-hidden border border-border/40 hover:border-coral/30 transition-all duration-500 shadow-sm min-h-[220px] md:min-h-[160px]">
                   <div className="flex flex-col justify-between z-10 preserve-3d max-w-[280px] md:max-w-[320px]">
-                    <div className="flex items-center gap-3 mb-3" style={{ transform: "translateZ(15px)" }}>
+                    <div
+                      className="flex items-center gap-3 mb-3"
+                      style={{ transform: "translateZ(15px)" }}
+                    >
                       <div className="h-10 w-10 rounded-xl bg-coral/10 text-coral flex items-center justify-center shadow-sm group-hover:bg-coral group-hover:text-coral-foreground transition-all duration-500 shrink-0">
                         <Rocket className="h-5 w-5" />
                       </div>
@@ -1162,27 +1323,45 @@ function ProcessPage() {
                       </h3>
                     </div>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      DNS mapping, SSL initialization, server settings setup, and release monitoring for a flawless transition.
+                      DNS mapping, SSL initialization, server settings setup, and release monitoring
+                      for a flawless transition.
                     </p>
                   </div>
 
-                  <div className="flex-grow flex items-center justify-center relative min-h-[90px]" style={{ transform: "translateZ(10px)" }}>
+                  <div
+                    className="flex-grow flex items-center justify-center relative min-h-[90px]"
+                    style={{ transform: "translateZ(10px)" }}
+                  >
                     <div className="relative w-full max-w-[380px] py-4 px-6 bg-background/50 border border-border/40 rounded-2xl flex flex-col justify-center gap-3 shadow-inner">
                       <div className="flex justify-between items-center text-[8px] font-mono text-muted-foreground">
                         <span>PIPELINE STATUS</span>
-                        <span className="text-coral font-bold animate-pulse">DEPLOYING TO PRODUCTION</span>
+                        <span className="text-coral font-bold animate-pulse">
+                          DEPLOYING TO PRODUCTION
+                        </span>
                       </div>
-                      
+
                       {/* Launch Pipeline Progress Slider */}
                       <div className="relative h-2 w-full bg-border/40 rounded-full overflow-hidden">
                         <div className="absolute inset-y-0 left-0 bg-coral w-4/5 rounded-full transition-all duration-1000 group-hover:w-full" />
                       </div>
-                      
+
                       <div className="flex justify-between text-[9px] font-semibold text-foreground">
-                        <span className="flex items-center gap-1"><span className="h-1.5 w-1.5 rounded-full bg-coral" />Build</span>
-                        <span className="flex items-center gap-1"><span className="h-1.5 w-1.5 rounded-full bg-coral" />Visual QA</span>
-                        <span className="flex items-center gap-1"><span className="h-1.5 w-1.5 rounded-full bg-coral" />Staging</span>
-                        <span className="flex items-center gap-1 transition-all duration-1000 group-hover:text-coral"><span className="h-1.5 w-1.5 rounded-full bg-border transition-all duration-1000 group-hover:bg-coral" />Live</span>
+                        <span className="flex items-center gap-1">
+                          <span className="h-1.5 w-1.5 rounded-full bg-coral" />
+                          Build
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <span className="h-1.5 w-1.5 rounded-full bg-coral" />
+                          Visual QA
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <span className="h-1.5 w-1.5 rounded-full bg-coral" />
+                          Staging
+                        </span>
+                        <span className="flex items-center gap-1 transition-all duration-1000 group-hover:text-coral">
+                          <span className="h-1.5 w-1.5 rounded-full bg-border transition-all duration-1000 group-hover:bg-coral" />
+                          Live
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -1213,36 +1392,47 @@ function ProcessPage() {
             {/* Left Pane: 3D Interactive Layer Stack (Desktop only) */}
             <div className="lg:col-span-5 hidden lg:flex items-center justify-center relative min-h-[500px]">
               <div className="isometric-stack-container relative w-full h-[400px] flex items-center justify-center">
-                
                 {/* Layer 0: Weekly Progress Calendar */}
-                <div 
+                <div
                   className={`absolute w-[290px] h-[190px] rounded-2xl glass-card-3d border p-5 flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
-                    activeCollabIndex === 0 ? "active text-foreground border-coral/30" : "text-muted-foreground border-border/40 opacity-70 scale-95"
+                    activeCollabIndex === 0
+                      ? "active text-foreground border-coral/30"
+                      : "text-muted-foreground border-border/40 opacity-70 scale-95"
                   }`}
                   style={{
-                    transform: activeCollabIndex === 0
-                      ? "rotateX(50deg) rotateZ(-30deg) translate3d(-10px, -65px, 60px)"
-                      : activeCollabIndex !== null
-                      ? "rotateX(50deg) rotateZ(-30deg) translate3d(0px, -55px, -60px)"
-                      : "rotateX(50deg) rotateZ(-30deg) translate3d(0px, -45px, -45px)",
-                    boxShadow: activeCollabIndex === 0
-                      ? "-15px 25px 50px rgba(0, 0, 0, 0.15), 0 0 35px rgba(224, 90, 54, 0.3)"
-                      : "-5px 10px 20px rgba(0, 0, 0, 0.05)"
+                    transform:
+                      activeCollabIndex === 0
+                        ? "rotateX(50deg) rotateZ(-30deg) translate3d(-10px, -65px, 60px)"
+                        : activeCollabIndex !== null
+                          ? "rotateX(50deg) rotateZ(-30deg) translate3d(0px, -55px, -60px)"
+                          : "rotateX(50deg) rotateZ(-30deg) translate3d(0px, -45px, -45px)",
+                    boxShadow:
+                      activeCollabIndex === 0
+                        ? "-15px 25px 50px rgba(0, 0, 0, 0.15), 0 0 35px rgba(224, 90, 54, 0.3)"
+                        : "-5px 10px 20px rgba(0, 0, 0, 0.05)",
                   }}
                 >
                   <div className="flex items-center justify-between border-b border-border/20 pb-2">
-                    <span className="text-[9px] font-mono tracking-widest uppercase font-semibold text-coral">WEEKLY PROGRESS</span>
-                    <span className="text-[8px] font-mono px-2 py-0.5 rounded-full bg-coral/10 text-coral font-sans font-semibold">UPCOMING</span>
+                    <span className="text-[9px] font-mono tracking-widest uppercase font-semibold text-coral">
+                      WEEKLY PROGRESS
+                    </span>
+                    <span className="text-[8px] font-mono px-2 py-0.5 rounded-full bg-coral/10 text-coral font-sans font-semibold">
+                      UPCOMING
+                    </span>
                   </div>
                   <div className="grid grid-cols-7 gap-1.5 py-3">
                     {["M", "T", "W", "T", "F", "S", "S"].map((d, i) => (
                       <div key={i} className="flex flex-col items-center gap-1.5">
-                        <span className="text-[8px] font-mono font-bold text-muted-foreground/60">{d}</span>
-                        <div className={`h-5 w-5 rounded-full flex items-center justify-center text-[8px] font-mono font-bold ${
-                          i === 1 || i === 3 
-                            ? "bg-coral text-coral-foreground shadow-sm shadow-coral/30 scale-105" 
-                            : "bg-border/20 text-muted-foreground/65"
-                        }`}>
+                        <span className="text-[8px] font-mono font-bold text-muted-foreground/60">
+                          {d}
+                        </span>
+                        <div
+                          className={`h-5 w-5 rounded-full flex items-center justify-center text-[8px] font-mono font-bold ${
+                            i === 1 || i === 3
+                              ? "bg-coral text-coral-foreground shadow-sm shadow-coral/30 scale-105"
+                              : "bg-border/20 text-muted-foreground/65"
+                          }`}
+                        >
                           {12 + i}
                         </div>
                       </div>
@@ -1255,23 +1445,29 @@ function ProcessPage() {
                 </div>
 
                 {/* Layer 1: Direct Communication */}
-                <div 
+                <div
                   className={`absolute w-[290px] h-[190px] rounded-2xl glass-card-3d border p-5 flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
-                    activeCollabIndex === 1 ? "active text-foreground border-coral/30" : "text-muted-foreground border-border/40 opacity-70 scale-95"
+                    activeCollabIndex === 1
+                      ? "active text-foreground border-coral/30"
+                      : "text-muted-foreground border-border/40 opacity-70 scale-95"
                   }`}
                   style={{
-                    transform: activeCollabIndex === 1
-                      ? "rotateX(50deg) rotateZ(-30deg) translate3d(-10px, -30px, 75px)"
-                      : activeCollabIndex !== null
-                      ? "rotateX(50deg) rotateZ(-30deg) translate3d(0px, -25px, -30px)"
-                      : "rotateX(50deg) rotateZ(-30deg) translate3d(0px, -15px, -15px)",
-                    boxShadow: activeCollabIndex === 1
-                      ? "-15px 25px 50px rgba(0, 0, 0, 0.15), 0 0 35px rgba(224, 90, 54, 0.3)"
-                      : "-5px 10px 20px rgba(0, 0, 0, 0.05)"
+                    transform:
+                      activeCollabIndex === 1
+                        ? "rotateX(50deg) rotateZ(-30deg) translate3d(-10px, -30px, 75px)"
+                        : activeCollabIndex !== null
+                          ? "rotateX(50deg) rotateZ(-30deg) translate3d(0px, -25px, -30px)"
+                          : "rotateX(50deg) rotateZ(-30deg) translate3d(0px, -15px, -15px)",
+                    boxShadow:
+                      activeCollabIndex === 1
+                        ? "-15px 25px 50px rgba(0, 0, 0, 0.15), 0 0 35px rgba(224, 90, 54, 0.3)"
+                        : "-5px 10px 20px rgba(0, 0, 0, 0.05)",
                   }}
                 >
                   <div className="flex items-center justify-between border-b border-border/20 pb-2">
-                    <span className="text-[9px] font-mono tracking-widest uppercase font-semibold text-coral">COLLABORATION CHANNEL</span>
+                    <span className="text-[9px] font-mono tracking-widest uppercase font-semibold text-coral">
+                      COLLABORATION CHANNEL
+                    </span>
                     <div className="flex items-center gap-1">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                       <span className="text-[8px] font-mono text-emerald-600">LIVE</span>
@@ -1279,7 +1475,9 @@ function ProcessPage() {
                   </div>
                   <div className="flex flex-col gap-3 py-2 flex-grow justify-center">
                     <div className="flex items-start gap-2.5">
-                      <div className="h-6 w-6 rounded-full bg-coral text-coral-foreground font-serif text-[9px] font-bold flex items-center justify-center shrink-0 shadow-sm">AF</div>
+                      <div className="h-6 w-6 rounded-full bg-coral text-coral-foreground font-serif text-[9px] font-bold flex items-center justify-center shrink-0 shadow-sm">
+                        AF
+                      </div>
                       <div className="bg-background/80 border border-border/30 rounded-r-xl rounded-bl-xl px-2.5 py-1.5 text-[9px] text-foreground leading-normal max-w-[190px]">
                         Just updated the interactive prototype. Check the visual qa phase!
                       </div>
@@ -1288,37 +1486,51 @@ function ProcessPage() {
                       <div className="bg-coral/5 border border-coral/20 rounded-l-xl rounded-tr-xl px-2.5 py-1.5 text-[9px] text-foreground leading-normal max-w-[190px]">
                         Outstanding. Leaving feedback markers now.
                       </div>
-                      <div className="h-6 w-6 rounded-full bg-ink text-cream font-serif text-[9px] font-bold flex items-center justify-center shrink-0 shadow-sm">CL</div>
+                      <div className="h-6 w-6 rounded-full bg-ink text-cream font-serif text-[9px] font-bold flex items-center justify-center shrink-0 shadow-sm">
+                        CL
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Layer 2: Focused Feedback */}
-                <div 
+                <div
                   className={`absolute w-[290px] h-[190px] rounded-2xl glass-card-3d border p-5 flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
-                    activeCollabIndex === 2 ? "active text-foreground border-coral/30" : "text-muted-foreground border-border/40 opacity-70 scale-95"
+                    activeCollabIndex === 2
+                      ? "active text-foreground border-coral/30"
+                      : "text-muted-foreground border-border/40 opacity-70 scale-95"
                   }`}
                   style={{
-                    transform: activeCollabIndex === 2
-                      ? "rotateX(50deg) rotateZ(-30deg) translate3d(-10px, 5px, 90px)"
-                      : activeCollabIndex !== null
-                      ? "rotateX(50deg) rotateZ(-30deg) translate3d(0px, 5px, 0px)"
-                      : "rotateX(50deg) rotateZ(-30deg) translate3d(0px, 15px, 15px)",
-                    boxShadow: activeCollabIndex === 2
-                      ? "-15px 25px 50px rgba(0, 0, 0, 0.15), 0 0 35px rgba(224, 90, 54, 0.3)"
-                      : "-5px 10px 20px rgba(0, 0, 0, 0.05)"
+                    transform:
+                      activeCollabIndex === 2
+                        ? "rotateX(50deg) rotateZ(-30deg) translate3d(-10px, 5px, 90px)"
+                        : activeCollabIndex !== null
+                          ? "rotateX(50deg) rotateZ(-30deg) translate3d(0px, 5px, 0px)"
+                          : "rotateX(50deg) rotateZ(-30deg) translate3d(0px, 15px, 15px)",
+                    boxShadow:
+                      activeCollabIndex === 2
+                        ? "-15px 25px 50px rgba(0, 0, 0, 0.15), 0 0 35px rgba(224, 90, 54, 0.3)"
+                        : "-5px 10px 20px rgba(0, 0, 0, 0.05)",
                   }}
                 >
                   <div className="flex items-center justify-between border-b border-border/20 pb-2">
-                    <span className="text-[9px] font-mono tracking-widest uppercase font-semibold text-coral">FEEDBACK CYCLE</span>
-                    <span className="text-[8px] font-mono text-muted-foreground/60">DESKTOP MOCKUP</span>
+                    <span className="text-[9px] font-mono tracking-widest uppercase font-semibold text-coral">
+                      FEEDBACK CYCLE
+                    </span>
+                    <span className="text-[8px] font-mono text-muted-foreground/60">
+                      DESKTOP MOCKUP
+                    </span>
                   </div>
                   <div className="relative border border-dashed border-border rounded-lg bg-background/30 p-2 flex flex-col gap-1.5 flex-grow justify-center my-1.5 overflow-hidden">
                     <div className="h-2 w-12 bg-border/60 rounded" />
                     <div className="grid grid-cols-2 gap-1.5">
                       <div className="h-10 bg-border/20 rounded relative flex items-center justify-center">
-                        <span className="text-[6px] text-muted-foreground/60 font-sans">Hero Image</span>
-                        <div className="absolute top-1 right-2 h-3.5 w-3.5 rounded-full bg-coral/20 border border-coral text-[7px] text-coral font-bold flex items-center justify-center animate-bounce">1</div>
+                        <span className="text-[6px] text-muted-foreground/60 font-sans">
+                          Hero Image
+                        </span>
+                        <div className="absolute top-1 right-2 h-3.5 w-3.5 rounded-full bg-coral/20 border border-coral text-[7px] text-coral font-bold flex items-center justify-center animate-bounce">
+                          1
+                        </div>
                       </div>
                       <div className="flex flex-col gap-1">
                         <span className="h-1.5 bg-border/40 rounded w-full" />
@@ -1334,41 +1546,52 @@ function ProcessPage() {
                 </div>
 
                 {/* Layer 3: Transparent Tracking */}
-                <div 
+                <div
                   className={`absolute w-[290px] h-[190px] rounded-2xl glass-card-3d border p-5 flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
-                    activeCollabIndex === 3 ? "active text-foreground border-coral/30" : "text-muted-foreground border-border/40 opacity-70 scale-95"
+                    activeCollabIndex === 3
+                      ? "active text-foreground border-coral/30"
+                      : "text-muted-foreground border-border/40 opacity-70 scale-95"
                   }`}
                   style={{
-                    transform: activeCollabIndex === 3
-                      ? "rotateX(50deg) rotateZ(-30deg) translate3d(-10px, 40px, 105px)"
-                      : activeCollabIndex !== null
-                      ? "rotateX(50deg) rotateZ(-30deg) translate3d(0px, 35px, 30px)"
-                      : "rotateX(50deg) rotateZ(-30deg) translate3d(0px, 45px, 45px)",
-                    boxShadow: activeCollabIndex === 3
-                      ? "-15px 25px 50px rgba(0, 0, 0, 0.15), 0 0 35px rgba(224, 90, 54, 0.3)"
-                      : "-5px 10px 20px rgba(0, 0, 0, 0.05)"
+                    transform:
+                      activeCollabIndex === 3
+                        ? "rotateX(50deg) rotateZ(-30deg) translate3d(-10px, 40px, 105px)"
+                        : activeCollabIndex !== null
+                          ? "rotateX(50deg) rotateZ(-30deg) translate3d(0px, 35px, 30px)"
+                          : "rotateX(50deg) rotateZ(-30deg) translate3d(0px, 45px, 45px)",
+                    boxShadow:
+                      activeCollabIndex === 3
+                        ? "-15px 25px 50px rgba(0, 0, 0, 0.15), 0 0 35px rgba(224, 90, 54, 0.3)"
+                        : "-5px 10px 20px rgba(0, 0, 0, 0.05)",
                   }}
                 >
                   <div className="flex items-center justify-between border-b border-border/20 pb-2">
-                    <span className="text-[9px] font-mono tracking-widest uppercase font-semibold text-coral">PROJECT TRACKING</span>
+                    <span className="text-[9px] font-mono tracking-widest uppercase font-semibold text-coral">
+                      PROJECT TRACKING
+                    </span>
                     <span className="text-[8px] font-mono font-bold text-coral">85% COMPLETE</span>
                   </div>
                   <div className="flex flex-col gap-2.5 py-3 flex-grow justify-center font-sans">
                     <div className="flex items-center gap-2 text-[9px] text-foreground font-semibold">
-                      <span className="h-3.5 w-3.5 rounded-full bg-coral/10 text-coral flex items-center justify-center text-[8px]">✓</span>
+                      <span className="h-3.5 w-3.5 rounded-full bg-coral/10 text-coral flex items-center justify-center text-[8px]">
+                        ✓
+                      </span>
                       <span>Discovery & Strategy Roadmap</span>
                     </div>
                     <div className="flex items-center gap-2 text-[9px] text-foreground font-semibold">
-                      <span className="h-3.5 w-3.5 rounded-full bg-coral/10 text-coral flex items-center justify-center text-[8px]">✓</span>
+                      <span className="h-3.5 w-3.5 rounded-full bg-coral/10 text-coral flex items-center justify-center text-[8px]">
+                        ✓
+                      </span>
                       <span>Visual Identity & Architecture Blueprint</span>
                     </div>
                     <div className="flex items-center gap-2 text-[9px] text-muted-foreground">
-                      <span className="h-3.5 w-3.5 rounded-full bg-border/20 text-muted-foreground/60 flex items-center justify-center text-[7px] animate-spin">⟳</span>
+                      <span className="h-3.5 w-3.5 rounded-full bg-border/20 text-muted-foreground/60 flex items-center justify-center text-[7px] animate-spin">
+                        ⟳
+                      </span>
                       <span>Interactive Engineering & Final Visual QA</span>
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
 
@@ -1468,7 +1691,7 @@ function ProcessPage() {
                         </div>
 
                         {/* Interactive Widget Container */}
-                        <div 
+                        <div
                           className="w-full flex items-center justify-center py-2 relative min-h-[90px] border-t border-border/20 mt-auto"
                           style={{ transform: "translateZ(12px)" }}
                         >
@@ -1498,9 +1721,18 @@ function ProcessPage() {
                                 { text: "Visual Mockups Approved", checked: true },
                                 { text: "Staging Site Validated", checked: false },
                               ].map((item, keyIdx) => (
-                                <div key={keyIdx} className="flex items-center justify-between bg-background/50 border border-border/20 rounded-md px-2 py-1">
-                                  <span className={`text-[8px] font-medium ${item.checked ? "text-foreground" : "text-muted-foreground"}`}>{item.text}</span>
-                                  <span className={`text-[8px] font-bold ${item.checked ? "text-coral" : "text-border"}`}>
+                                <div
+                                  key={keyIdx}
+                                  className="flex items-center justify-between bg-background/50 border border-border/20 rounded-md px-2 py-1"
+                                >
+                                  <span
+                                    className={`text-[8px] font-medium ${item.checked ? "text-foreground" : "text-muted-foreground"}`}
+                                  >
+                                    {item.text}
+                                  </span>
+                                  <span
+                                    className={`text-[8px] font-bold ${item.checked ? "text-coral" : "text-border"}`}
+                                  >
                                     {item.checked ? "✓" : "○"}
                                   </span>
                                 </div>
@@ -1516,18 +1748,26 @@ function ProcessPage() {
                               </div>
                               <div className="flex flex-col gap-1.5">
                                 <div className="flex items-center gap-2">
-                                  <span className="text-[7px] font-mono w-10 text-muted-foreground/60">Standard:</span>
+                                  <span className="text-[7px] font-mono w-10 text-muted-foreground/60">
+                                    Standard:
+                                  </span>
                                   <div className="h-2 bg-border/30 rounded w-full overflow-hidden">
                                     <div className="h-full bg-border/60 w-5/6" />
                                   </div>
-                                  <span className="text-[8px] font-mono text-muted-foreground/60">5</span>
+                                  <span className="text-[8px] font-mono text-muted-foreground/60">
+                                    5
+                                  </span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <span className="text-[7px] font-mono w-10 text-coral font-semibold">Afero:</span>
+                                  <span className="text-[7px] font-mono w-10 text-coral font-semibold">
+                                    Afero:
+                                  </span>
                                   <div className="h-2 bg-coral/10 rounded w-full overflow-hidden">
                                     <div className="h-full bg-coral w-1/5 transition-all duration-700 group-hover:scale-x-110 origin-left" />
                                   </div>
-                                  <span className="text-[8px] font-mono text-coral font-bold">1</span>
+                                  <span className="text-[8px] font-mono text-coral font-bold">
+                                    1
+                                  </span>
                                 </div>
                               </div>
                             </div>
@@ -1536,18 +1776,20 @@ function ProcessPage() {
                           {idx === 3 && (
                             /* Better Communication - Sound/chat waves */
                             <div className="w-full max-w-[200px] h-[65px] flex items-center justify-center gap-1.5">
-                              {[0.4, 0.7, 0.9, 0.5, 0.8, 0.6, 0.8, 0.9, 0.7, 0.4].map((height, barIdx) => (
-                                <span 
-                                  key={barIdx} 
-                                  className="w-1 bg-coral rounded-full transition-all duration-300"
-                                  style={{
-                                    height: `${height * 36}px`,
-                                    opacity: 0.3 + height * 0.7,
-                                    transform: `scaleY(${activeCollabIndex !== null ? 1.2 : 1})`,
-                                    animation: `status-pulse ${1 + barIdx * 0.15}s ease-in-out infinite`
-                                  }}
-                                />
-                              ))}
+                              {[0.4, 0.7, 0.9, 0.5, 0.8, 0.6, 0.8, 0.9, 0.7, 0.4].map(
+                                (height, barIdx) => (
+                                  <span
+                                    key={barIdx}
+                                    className="w-1 bg-coral rounded-full transition-all duration-300"
+                                    style={{
+                                      height: `${height * 36}px`,
+                                      opacity: 0.3 + height * 0.7,
+                                      transform: `scaleY(${activeCollabIndex !== null ? 1.2 : 1})`,
+                                      animation: `status-pulse ${1 + barIdx * 0.15}s ease-in-out infinite`,
+                                    }}
+                                  />
+                                ),
+                              )}
                             </div>
                           )}
 
@@ -1573,9 +1815,22 @@ function ProcessPage() {
                                 <span>SCALABILITY TRAJECTORY</span>
                                 <span className="text-coral font-bold">OPTIMIZED</span>
                               </div>
-                              <svg className="w-full h-8 overflow-visible" viewBox="0 0 100 30" fill="none">
-                                <path d="M0,28 Q20,28 35,22 T70,10 T100,2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-coral" />
-                                <path d="M0,28 Q20,28 35,22 T70,10 T100,2 L100,30 L0,30 Z" fill="url(#benefits-grad)" />
+                              <svg
+                                className="w-full h-8 overflow-visible"
+                                viewBox="0 0 100 30"
+                                fill="none"
+                              >
+                                <path
+                                  d="M0,28 Q20,28 35,22 T70,10 T100,2"
+                                  stroke="currentColor"
+                                  strokeWidth="1.5"
+                                  strokeLinecap="round"
+                                  className="text-coral"
+                                />
+                                <path
+                                  d="M0,28 Q20,28 35,22 T70,10 T100,2 L100,30 L0,30 Z"
+                                  fill="url(#benefits-grad)"
+                                />
                                 <defs>
                                   <linearGradient id="benefits-grad" x1="0" y1="0" x2="0" y2="1">
                                     <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.12" />

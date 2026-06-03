@@ -88,7 +88,7 @@ export const Route = createRootRouteWithContext<{
       },
 
       {
-        title: "Afero -Modern digital experiences",
+        title: "Afero - Modern digital experiences",
       },
 
       {
@@ -104,7 +104,7 @@ export const Route = createRootRouteWithContext<{
 
       {
         property: "og:title",
-        content: "Afero -Modern digital experiences",
+        content: "Afero - Modern digital experiences",
       },
 
       {
@@ -118,8 +118,28 @@ export const Route = createRootRouteWithContext<{
       },
 
       {
+        property: "og:url",
+        content: "https://afero.in",
+      },
+
+      {
+        property: "og:site_name",
+        content: "Afero Studio",
+      },
+
+      {
         name: "twitter:card",
         content: "summary",
+      },
+
+      {
+        name: "twitter:site",
+        content: "@aferostudio",
+      },
+
+      {
+        name: "twitter:creator",
+        content: "@aferostudio",
       },
     ],
 
@@ -131,8 +151,45 @@ export const Route = createRootRouteWithContext<{
       },
 
       {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
+
+      {
         rel: "stylesheet",
         href: appCss,
+      },
+
+      {
+        rel: "canonical",
+        href: "https://afero.in",
+      },
+    ],
+
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "Afero Studio",
+          url: "https://afero.in",
+          logo: "https://afero.in" + favicon,
+          description:
+            "Bespoke digital design and web engineering studio building high-performance websites and AI solutions.",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Lisbon",
+            addressCountry: "Portugal",
+          },
+          sameAs: ["https://x.com/aferostudio", "https://github.com/aferostudio"],
+        }),
       },
     ],
   }),

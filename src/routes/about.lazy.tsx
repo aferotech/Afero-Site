@@ -50,6 +50,7 @@ function FadeIn({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const currentRef = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -59,9 +60,9 @@ function FadeIn({
       },
       { threshold: 0.05, rootMargin: "0px 0px -50px 0px" },
     );
-    if (ref.current) observer.observe(ref.current);
+    if (currentRef) observer.observe(currentRef);
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      if (currentRef) observer.unobserve(currentRef);
     };
   }, []);
 
@@ -75,8 +76,9 @@ function FadeIn({
   return (
     <div
       ref={ref}
-      className={`transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${direction !== "none" ? translateMap[direction] : ""
-        } ${visible ? "opacity-100" : "opacity-0"} ${className}`}
+      className={`transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        direction !== "none" ? translateMap[direction] : ""
+      } ${visible ? "opacity-100" : "opacity-0"} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -119,6 +121,7 @@ function MetricCard({
   const count = useCounter(value, 1600, started);
 
   useEffect(() => {
+    const currentRef = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -128,9 +131,9 @@ function MetricCard({
       },
       { threshold: 0.2 },
     );
-    if (ref.current) observer.observe(ref.current);
+    if (currentRef) observer.observe(currentRef);
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      if (currentRef) observer.unobserve(currentRef);
     };
   }, []);
 

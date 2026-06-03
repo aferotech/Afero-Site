@@ -31,10 +31,12 @@ function ParallaxImage({
   src,
   alt,
   className = "",
+  fetchPriority = "auto",
 }: {
   src: string;
   alt: string;
   className?: string;
+  fetchPriority?: "high" | "low" | "auto";
 }) {
   const imgRef = useScrollParallax(0.06, "up");
   return (
@@ -44,7 +46,8 @@ function ParallaxImage({
           src={src}
           alt={alt}
           className={`w-full h-full object-cover ${className}`}
-          loading="lazy"
+          loading={fetchPriority === "high" ? "eager" : "lazy"}
+          {...(fetchPriority !== "auto" ? { fetchPriority } : {})}
         />
       </div>
     </div>
@@ -69,6 +72,7 @@ function FadeIn({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const currentRef = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -78,11 +82,11 @@ function FadeIn({
       },
       { threshold: 0.05, rootMargin: "0px 0px -40px 0px" },
     );
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      if (currentRef) observer.unobserve(currentRef);
     };
   }, []);
 
@@ -207,7 +211,11 @@ function WorkPage() {
                   scale={1.01}
                   className="rounded-[2rem] overflow-hidden border border-border bg-secondary/50 shadow-lg"
                 >
-                  <ParallaxImage src={groomvyImg} alt="Groomvy Platform Preview" />
+                  <ParallaxImage
+                    src={groomvyImg}
+                    alt="Groomvy Platform Preview"
+                    fetchPriority="high"
+                  />
                 </Tilt3D>
               </div>
               <div className="md:col-span-5 flex flex-col gap-6">

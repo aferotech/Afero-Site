@@ -10,6 +10,8 @@ export const Route = createFileRoute("/process")({
           "Our four-phase process: Discover, Design, Build, Grow. Predictable, transparent, and on time.",
       },
       { property: "og:title", content: "Process - Afero Studio" },
+      { property: "og:url", content: "https://afero.in/process" },
     ],
+    links: [{ rel: "canonical", href: "https://afero.in/process" }],
   }),
 });

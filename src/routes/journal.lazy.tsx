@@ -711,10 +711,11 @@ function JournalPage() {
                 <Tilt3D key={topic.name} maxTilt={6} scale={1.02} className="h-full">
                   <button
                     onClick={() => handleCategorySelect(topic.name)}
-                    className={`group h-full text-left w-full rounded-2xl p-8 flex flex-col justify-between preserve-3d cursor-pointer transition-all duration-300 border ${isSelected
-                      ? "border-coral/50 shadow-md shadow-coral/[0.03] bg-background"
-                      : `border-border/40 hover:border-coral/20 ${cardBg}`
-                      }`}
+                    className={`group h-full text-left w-full rounded-2xl p-8 flex flex-col justify-between preserve-3d cursor-pointer transition-all duration-300 border ${
+                      isSelected
+                        ? "border-coral/50 shadow-md shadow-coral/[0.03] bg-background"
+                        : `border-border/40 hover:border-coral/20 ${cardBg}`
+                    }`}
                   >
                     <div>
                       <div className="flex items-center justify-between mb-6">
