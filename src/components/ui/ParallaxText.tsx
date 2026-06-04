@@ -17,6 +17,9 @@ export function ParallaxText({
   direction = "left",
 }: ParallaxTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
+  const elementTopRef = useRef(0);
+  const elementHeightRef = useRef(0);
+  const viewHeightRef = useRef(0);
 
   useEffect(() => {
     const el = ref.current;
@@ -28,18 +31,31 @@ export function ParallaxText({
 
     let frameId: number;
 
-    const handleScroll = () => {
+    const measure = () => {
       const rect = el.getBoundingClientRect();
-      const viewHeight = window.innerHeight;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      elementTopRef.current = rect.top + scrollTop;
+      elementHeightRef.current = rect.height;
+      viewHeightRef.current = window.innerHeight;
+    };
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const elementTop = elementTopRef.current;
+      const elementHeight = elementHeightRef.current;
+      const viewHeight = viewHeightRef.current;
+
+      const relativeTop = elementTop - scrollTop;
+      const relativeBottom = relativeTop + elementHeight;
 
       // Only shift if the text is inside the visible viewport
-      if (rect.top < viewHeight && rect.bottom > 0) {
-        const elementCenter = rect.top + rect.height / 2;
+      if (relativeTop < viewHeight && relativeBottom > 0) {
+        const elementCenter = relativeTop + elementHeight / 2;
         const screenCenter = viewHeight / 2;
         const offset = (elementCenter - screenCenter) * speed;
 
         const sign = direction === "left" ? -1 : 1;
-        el.style.transform = `translateX(${offset * sign}px)`;
+        el.style.transform = `translate3d(${offset * sign}px, 0, 0)`;
       }
     };
 
@@ -48,32 +64,42 @@ export function ParallaxText({
       frameId = requestAnimationFrame(handleScroll);
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
+    const handleResize = () => {
+      measure();
+      handleScroll();
+    };
+
+    // Initial measurement
+    measure();
     handleScroll();
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", handleResize, { passive: true });
 
     const listener = (e: MediaQueryListEvent) => {
       if (e.matches) {
         el.style.transform = "";
         window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", handleResize);
       } else {
-        window.addEventListener("scroll", onScroll, { passive: true });
+        measure();
         handleScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", handleResize, { passive: true });
       }
     };
     mediaQuery.addEventListener("change", listener);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", handleResize);
       mediaQuery.removeEventListener("change", listener);
       cancelAnimationFrame(frameId);
     };
   }, [speed, direction]);
 
   return (
-    <span
-      ref={ref}
-      className={`inline-block transition-transform duration-300 ease-out will-change-transform ${className}`}
-    >
+    <span ref={ref} className={`inline-block will-change-transform ${className}`}>
       {children}
     </span>
   );

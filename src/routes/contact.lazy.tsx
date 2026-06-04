@@ -1,6 +1,6 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Nav } from "@/components/site/Nav";
+// Nav imported globally in __root.tsx
 import { Footer } from "@/components/site/Footer";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { Tilt3D } from "@/components/ui/Tilt3D";
@@ -70,8 +70,6 @@ function ContactPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <Nav />
-
       {/* Ambient Glows */}
       <div className="absolute top-1/3 left-1/4 -translate-x-1/2 w-96 h-96 bg-coral/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 translate-x-1/2 w-96 h-96 bg-coral/5 rounded-full blur-[100px] pointer-events-none" />

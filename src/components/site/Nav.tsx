@@ -17,7 +17,8 @@ export function Nav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      const isScrolled = window.scrollY > 40;
+      setScrolled((prev) => (prev === isScrolled ? prev : isScrolled));
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -36,7 +37,7 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b border-border/60 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 border-b border-border/60 transition-[background-color,border-color,backdrop-filter] duration-500 ${
         scrolled ? "backdrop-blur-xl bg-background/85" : "backdrop-blur-md bg-background/70"
       }`}
     >
@@ -48,7 +49,7 @@ export function Nav() {
             <img
               src={navIcon}
               alt="Afero"
-              className={`absolute left-0 top-1/2 -translate-y-1/2 h-6 w-auto transition-all duration-500 ease-in-out ${
+              className={`absolute left-0 top-1/2 -translate-y-1/2 h-6 w-auto transition-[opacity,transform] duration-500 ease-in-out ${
                 scrolled ? "opacity-0 scale-95" : "opacity-100 scale-100"
               }`}
             />
@@ -57,7 +58,7 @@ export function Nav() {
             <img
               src={navFull}
               alt="Afero"
-              className={`absolute left-0 top-1/2 -translate-y-1/2 h-6 w-auto transition-all duration-500 ease-in-out ${
+              className={`absolute left-0 top-1/2 -translate-y-1/2 h-6 w-auto transition-[opacity,transform] duration-500 ease-in-out ${
                 scrolled ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
             />

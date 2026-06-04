@@ -36,7 +36,7 @@ import {
   Calendar,
   CheckCircle,
 } from "lucide-react";
-import { Nav } from "@/components/site/Nav";
+// Nav imported globally in __root.tsx
 import { Footer } from "@/components/site/Footer";
 import { Tilt3D } from "@/components/ui/Tilt3D";
 import { ParallaxText } from "@/components/ui/ParallaxText";
@@ -44,6 +44,27 @@ import ad from "@/assets/ad.webp";
 import work2 from "@/assets/work-2.webp";
 import work3 from "@/assets/work-3.webp";
 import arc from "@/assets/arc.webp";
+
+function useInView(options?: IntersectionObserverInit) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setInView(entry.isIntersecting);
+    }, options);
+
+    observer.observe(el);
+    return () => {
+      observer.unobserve(el);
+    };
+  }, [options]);
+
+  return [ref, inView] as const;
+}
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -253,7 +274,8 @@ function VercelLogo({ className }: { className?: string }) {
 }
 
 // ─── AI Solutions Grid Simulations ─────────────────────────────────────────
-function ChatBotSimulation() {
+// ─── AI Solutions Grid Simulations ─────────────────────────────────────────
+function ChatBotSimulation({ inView }: { inView: boolean }) {
   const [messages, setMessages] = useState<Array<{ sender: "user" | "bot"; text: string }>>([
     { sender: "user", text: "Hey! What is your pricing?" },
   ]);
@@ -261,6 +283,8 @@ function ChatBotSimulation() {
   const isReset = messages.length === 1;
 
   useEffect(() => {
+    if (!inView) return;
+
     const timer1 = setTimeout(() => {
       setMessages((prev) => [
         ...prev,
@@ -289,7 +313,7 @@ function ChatBotSimulation() {
       clearTimeout(timer3);
       clearTimeout(resetTimer);
     };
-  }, [isReset]);
+  }, [isReset, inView]);
 
   return (
     <div className="w-full bg-gradient-to-br from-[#14100e] to-[#0a0807] rounded-xl p-4 border border-border/25 font-mono text-[9px] text-left space-y-2 h-[120px] overflow-y-auto scrollbar-none flex flex-col justify-end select-none shadow-[inset_0_1px_1px_rgba(255,255,255,0.02),0_8px_24px_rgba(0,0,0,0.5)]">
@@ -312,13 +336,15 @@ function ChatBotSimulation() {
   );
 }
 
-function SupportAutomationSimulation() {
+function SupportAutomationSimulation({ inView }: { inView: boolean }) {
   const [tickets, setTickets] = useState([
     { id: "TK-402", desc: "API sync error", status: "Active", time: "2m ago" },
     { id: "TK-401", desc: "Stripe hook fix", status: "Resolved", time: "15m ago" },
   ]);
 
   useEffect(() => {
+    if (!inView) return;
+
     const timer = setInterval(() => {
       setTickets((prev) =>
         prev.map((t) =>
@@ -327,7 +353,7 @@ function SupportAutomationSimulation() {
       );
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [inView]);
 
   return (
     <div className="w-full bg-gradient-to-br from-[#14100e] to-[#0a0807] rounded-xl p-3 border border-border/25 font-mono text-[9px] text-left space-y-2 h-[120px] select-none shadow-[inset_0_1px_1px_rgba(255,255,255,0.02),0_8px_24px_rgba(0,0,0,0.5)]">
@@ -359,14 +385,16 @@ function SupportAutomationSimulation() {
   );
 }
 
-function LeadQualificationSimulation() {
+function LeadQualificationSimulation({ inView }: { inView: boolean }) {
   const [score, setScore] = useState(65);
   useEffect(() => {
+    if (!inView) return;
+
     const timer = setInterval(() => {
       setScore((prev) => (prev >= 98 ? 65 : prev + 11));
     }, 1500);
     return () => clearInterval(timer);
-  }, []);
+  }, [inView]);
 
   return (
     <div className="w-full bg-gradient-to-br from-[#14100e] to-[#0a0807] rounded-xl p-3 border border-border/25 font-mono text-[9px] text-left space-y-2.5 h-[120px] select-none flex flex-col justify-between shadow-[inset_0_1px_1px_rgba(255,255,255,0.02),0_8px_24px_rgba(0,0,0,0.5)]">
@@ -415,15 +443,17 @@ const knowledgeQueries = [
   { q: "Synthesis response...", res: "Drafted pricing schema with 98% accuracy." },
 ];
 
-function KnowledgeSimulation() {
+function KnowledgeSimulation({ inView }: { inView: boolean }) {
   const [queryIndex, setQueryIndex] = useState(0);
 
   useEffect(() => {
+    if (!inView) return;
+
     const interval = setInterval(() => {
       setQueryIndex((prev) => (prev + 1) % knowledgeQueries.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [inView]);
 
   return (
     <div className="w-full bg-gradient-to-br from-[#14100e] to-[#0a0807] rounded-xl p-3 border border-border/25 font-mono text-[8px] text-left space-y-2 h-[120px] select-none flex flex-col justify-between shadow-[inset_0_1px_1px_rgba(255,255,255,0.02),0_8px_24px_rgba(0,0,0,0.5)]">
@@ -449,14 +479,16 @@ function KnowledgeSimulation() {
   );
 }
 
-function WorkflowSimulation() {
+function WorkflowSimulation({ inView }: { inView: boolean }) {
   const [activeStep, setActiveStep] = useState(0);
   useEffect(() => {
+    if (!inView) return;
+
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % 4);
     }, 1200);
     return () => clearInterval(interval);
-  }, []);
+  }, [inView]);
 
   const steps = [
     { label: "User Form Submit" },
@@ -495,14 +527,16 @@ function WorkflowSimulation() {
   );
 }
 
-function ToolsSimulation() {
+function ToolsSimulation({ inView }: { inView: boolean }) {
   const [val, setVal] = useState(5);
   useEffect(() => {
+    if (!inView) return;
+
     const interval = setInterval(() => {
       setVal((prev) => (prev >= 10 ? 3 : prev + 1));
     }, 1500);
     return () => clearInterval(interval);
-  }, []);
+  }, [inView]);
 
   return (
     <div className="w-full bg-gradient-to-br from-[#14100e] to-[#0a0807] rounded-xl p-3 border border-border/25 font-mono text-[9px] text-left space-y-2 h-[120px] select-none flex flex-col justify-between shadow-[inset_0_1px_1px_rgba(255,255,255,0.02),0_8px_24px_rgba(0,0,0,0.5)]">
@@ -529,23 +563,32 @@ function ToolsSimulation() {
   );
 }
 
-function RenderAiSimulation({ type }: { type: string }) {
+function RenderAiSimulation({ type, inView }: { type: string; inView: boolean }) {
   switch (type) {
     case "chatbot":
-      return <ChatBotSimulation />;
+      return <ChatBotSimulation inView={inView} />;
     case "support":
-      return <SupportAutomationSimulation />;
+      return <SupportAutomationSimulation inView={inView} />;
     case "leads":
-      return <LeadQualificationSimulation />;
+      return <LeadQualificationSimulation inView={inView} />;
     case "knowledge":
-      return <KnowledgeSimulation />;
+      return <KnowledgeSimulation inView={inView} />;
     case "workflows":
-      return <WorkflowSimulation />;
+      return <WorkflowSimulation inView={inView} />;
     case "tools":
-      return <ToolsSimulation />;
+      return <ToolsSimulation inView={inView} />;
     default:
       return null;
   }
+}
+
+function AiSimulationWrapper({ type }: { type: string }) {
+  const [ref, inView] = useInView({ threshold: 0.05, rootMargin: "100px" });
+  return (
+    <div ref={ref} style={{ transform: "translateZ(15px)" }}>
+      <RenderAiSimulation type={type} inView={inView} />
+    </div>
+  );
 }
 
 // ─── Impact Statistics Counter ───────────────────────────────────────────────
@@ -905,14 +948,454 @@ const industries = [
   },
 ];
 
+function FeaturedProductsCarousel() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const card0Ref = useRef<HTMLDivElement>(null);
+  const card1Ref = useRef<HTMLDivElement>(null);
+  const card2Ref = useRef<HTMLDivElement>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [sectionHeight, setSectionHeight] = useState("260vh");
+
+  const layoutMetricsRef = useRef({
+    containerTop: 0,
+    containerHeight: 0,
+    stickyHeight: 0,
+    stickyTopOffset: 0,
+  });
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
+    const listener = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+    mediaQuery.addEventListener("change", listener);
+    return () => mediaQuery.removeEventListener("change", listener);
+  }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    const handleResize = () => {
+      const vh = window.innerHeight;
+      const numTransitions = 2;
+      const scrollDistancePerCard = vh * 0.9;
+      const isMobile = window.innerWidth < 768;
+      const isTablet = window.innerWidth >= 768 && window.innerWidth < 1280;
+      const stickyHeight = isMobile ? vh * 0.75 : isTablet ? vh * 0.85 : vh * 0.9;
+      const totalHeight = stickyHeight + numTransitions * scrollDistancePerCard;
+      setSectionHeight(`${totalHeight}px`);
+
+      // Defer to allow DOM height update to resolve
+      setTimeout(() => {
+        const container = containerRef.current;
+        if (!container) return;
+        const rect = container.getBoundingClientRect();
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const stickyWrapper = container.firstElementChild as HTMLElement;
+        let sHeight = 0;
+        let sTopOffset = 0;
+        if (stickyWrapper) {
+          const stickyRect = stickyWrapper.getBoundingClientRect();
+          sHeight = stickyRect.height;
+          const style = window.getComputedStyle(stickyWrapper);
+          sTopOffset = parseFloat(style.top) || 0;
+        }
+        layoutMetricsRef.current = {
+          containerTop: rect.top + scrollTop,
+          containerHeight: totalHeight,
+          stickyHeight: sHeight,
+          stickyTopOffset: sTopOffset,
+        };
+      }, 0);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [prefersReducedMotion]);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    const handleScroll = () => {
+      const container = containerRef.current;
+      const card0 = card0Ref.current;
+      const card1 = card1Ref.current;
+      const card2 = card2Ref.current;
+      if (!container || !card0 || !card1 || !card2) return;
+
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const { containerTop, containerHeight, stickyHeight, stickyTopOffset } =
+        layoutMetricsRef.current;
+
+      const startScroll = containerTop - stickyTopOffset;
+      const endScroll = containerTop + containerHeight - stickyTopOffset - stickyHeight;
+
+      let progress = (scrollTop - startScroll) / (endScroll - startScroll);
+      progress = Math.max(0, Math.min(1, progress));
+
+      // Determine active slide index (0, 1, or 2)
+      let currentActive = 0;
+      if (progress > 0.33 && progress <= 0.66) {
+        currentActive = 1;
+      } else if (progress > 0.66) {
+        currentActive = 2;
+      }
+      setActiveSlide(currentActive);
+
+      const entryOffset = stickyHeight;
+
+      // Card 0 (Featured Project)
+      let c0Y = 0;
+      let c0Scale = 1;
+      let c0Opacity = 1;
+      let c0Blur = 0;
+
+      if (progress <= 0.5) {
+        const t = progress / 0.5;
+        const ease = t * t * (3 - 2 * t);
+        c0Y = ease * -50;
+        c0Scale = 1 - ease * 0.08;
+        c0Opacity = 1 - ease * 0.6;
+        c0Blur = ease * 4;
+      } else {
+        c0Y = -50;
+        c0Scale = 0.92;
+        c0Opacity = 0.4;
+        c0Blur = 4;
+      }
+      card0.style.transform = `translate3d(0, ${c0Y}px, 0) scale(${c0Scale})`;
+      card0.style.opacity = `${c0Opacity}`;
+      card0.style.filter = c0Blur > 0 ? `blur(${c0Blur}px)` : "none";
+      card0.style.pointerEvents = progress > 0.45 ? "none" : "auto";
+
+      // Card 1 (Praxis Studio)
+      let c1Y = entryOffset;
+      let c1Scale = 0.95;
+      let c1Opacity = 0;
+      let c1Blur = 0;
+
+      if (progress <= 0.5) {
+        const t = progress / 0.5;
+        const ease = t * t * (3 - 2 * t);
+        c1Y = (1 - ease) * entryOffset;
+        c1Opacity = ease;
+        c1Scale = 0.95 + ease * 0.05;
+      } else {
+        const t = (progress - 0.5) / 0.5;
+        const ease = t * t * (3 - 2 * t);
+        c1Y = ease * -50;
+        c1Scale = 1 - ease * 0.08;
+        c1Opacity = 1 - ease * 0.6;
+        c1Blur = ease * 4;
+      }
+      card1.style.transform = `translate3d(0, ${c1Y}px, 0) scale(${c1Scale})`;
+      card1.style.opacity = `${c1Opacity}`;
+      card1.style.filter = c1Blur > 0 ? `blur(${c1Blur}px)` : "none";
+      card1.style.pointerEvents = progress < 0.4 || progress > 0.95 ? "none" : "auto";
+
+      // Card 2 (Meridian Daily)
+      let c2Y = entryOffset;
+      let c2Scale = 0.95;
+      let c2Opacity = 0;
+
+      if (progress > 0.5) {
+        const t = (progress - 0.5) / 0.5;
+        const ease = t * t * (3 - 2 * t);
+        c2Y = (1 - ease) * entryOffset;
+        c2Opacity = ease;
+        c2Scale = 0.95 + ease * 0.05;
+      }
+      card2.style.transform = `translate3d(0, ${c2Y}px, 0) scale(${c2Scale})`;
+      card2.style.opacity = `${c2Opacity}`;
+      card2.style.pointerEvents = progress < 0.9 ? "none" : "auto";
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+    const initTimer = setTimeout(handleScroll, 50);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      clearTimeout(initTimer);
+    };
+  }, [prefersReducedMotion]);
+
+  const scrollToSlide = (index: number) => {
+    const { containerTop, containerHeight, stickyHeight, stickyTopOffset } =
+      layoutMetricsRef.current;
+    if (containerTop === 0) return;
+
+    const startScroll = containerTop - stickyTopOffset;
+    const endScroll = containerTop + containerHeight - stickyTopOffset - stickyHeight;
+
+    const targetProgress = index === 0 ? 0 : index === 1 ? 0.5 : 1.0;
+    const targetScroll = startScroll + targetProgress * (endScroll - startScroll);
+
+    window.scrollTo({
+      top: targetScroll,
+      behavior: "smooth",
+    });
+  };
+
+  if (prefersReducedMotion) {
+    return (
+      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+        <div className="text-center mb-16 select-none">
+          <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium">
+            Selected Works
+          </div>
+          <h2 className="font-serif text-3xl md:text-5xl mt-2 text-foreground">
+            Featured Products & Showcase
+          </h2>
+        </div>
+        <div className="grid gap-12 max-w-5xl mx-auto">
+          {/* Card 0 */}
+          <Tilt3D maxTilt={4} scale={1.01} className="w-full">
+            <article className="group glass-card-3d p-6 md:p-8 rounded-3xl h-[320px] sm:h-[420px] md:h-[520px] lg:h-[600px] xl:h-[650px] 2xl:h-[700px] flex flex-col justify-between">
+              <div className="flex items-baseline justify-between mb-4">
+                <div className="flex items-baseline gap-2 transform translate-z-10">
+                  <span className="text-xs text-coral font-bold uppercase tracking-wider">
+                    01 - Featured
+                  </span>
+                  <h3 className="font-serif text-xl md:text-2xl text-foreground">Afero Engine</h3>
+                </div>
+                <Link
+                  to="/work"
+                  className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
+                >
+                  View project <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+              <div className="overflow-hidden rounded-2xl border border-border bg-secondary/50 transform translate-z-6 flex-1 flex items-center justify-center">
+                <img
+                  src={ad}
+                  alt="Afero featured project preview"
+                  width={1280}
+                  height={800}
+                  className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+              </div>
+            </article>
+          </Tilt3D>
+
+          {/* Card 1 */}
+          <Tilt3D maxTilt={6} scale={1.02} className="w-full">
+            <article className="group glass-card-3d p-6 md:p-8 rounded-3xl h-[320px] sm:h-[420px] md:h-[520px] lg:h-[600px] xl:h-[650px] 2xl:h-[700px] flex flex-col justify-between">
+              <div className="flex items-baseline justify-between mb-4">
+                <div className="flex items-baseline gap-2 transform translate-z-10">
+                  <span className="text-xs text-muted-foreground">02 - Architecture</span>
+                  <h3 className="font-serif text-xl md:text-2xl text-foreground">Praxis Studio</h3>
+                </div>
+                <Link
+                  to="/work"
+                  className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
+                >
+                  View <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+              <div className="overflow-hidden rounded-xl border border-border bg-secondary/50 transform translate-z-6 flex-1 flex items-center justify-center">
+                <img
+                  src={work2}
+                  alt="Praxis Studio website"
+                  width={1024}
+                  height={768}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out"
+                />
+              </div>
+            </article>
+          </Tilt3D>
+
+          {/* Card 2 */}
+          <Tilt3D maxTilt={6} scale={1.02} className="w-full">
+            <article className="group glass-card-3d p-6 md:p-8 rounded-3xl h-[320px] sm:h-[420px] md:h-[520px] lg:h-[600px] xl:h-[650px] 2xl:h-[700px] flex flex-col justify-between">
+              <div className="flex items-baseline justify-between mb-4">
+                <div className="flex items-baseline gap-2 transform translate-z-10">
+                  <span className="text-xs text-muted-foreground">03 - Editorial</span>
+                  <h3 className="font-serif text-xl md:text-2xl text-foreground">Meridian Daily</h3>
+                </div>
+                <Link
+                  to="/work"
+                  className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
+                >
+                  View <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+              <div className="overflow-hidden rounded-xl border border-border bg-secondary/50 transform translate-z-6 flex-1 flex items-center justify-center">
+                <img
+                  src={work3}
+                  alt="Meridian Daily website"
+                  width={1024}
+                  height={768}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out"
+                />
+              </div>
+            </article>
+          </Tilt3D>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section
+      ref={containerRef}
+      style={{ height: sectionHeight }}
+      className="relative w-full bg-background mt-20 md:mt-32"
+    >
+      <div className="sticky top-20 md:top-24 h-[75vh] md:h-[85vh] xl:h-[90vh] w-full flex flex-col justify-center items-center overflow-hidden">
+        <div className="text-center mb-6 md:mb-8 select-none relative z-30">
+          <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium">
+            Selected Works
+          </div>
+          <h2 className="font-serif text-3xl md:text-5xl mt-2 text-foreground">
+            Featured Products & Showcase
+          </h2>
+        </div>
+
+        <div className="w-full h-[320px] sm:h-[420px] md:h-[520px] lg:h-[600px] xl:h-[650px] 2xl:h-[700px] max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-[85vw] relative px-6 md:px-12 flex justify-center items-center">
+          {/* Card 0: Featured Project */}
+          <div
+            ref={card0Ref}
+            className="absolute inset-x-6 md:inset-x-12 h-full flex flex-col justify-center will-change-[transform,opacity,filter]"
+          >
+            <Tilt3D maxTilt={4} scale={1.01} className="w-full h-full">
+              <article className="group glass-card-3d p-6 md:p-8 rounded-3xl h-full flex flex-col justify-between">
+                <div className="flex items-baseline justify-between mb-4">
+                  <div className="flex items-baseline gap-2 transform translate-z-10">
+                    <span className="text-xs text-coral font-bold uppercase tracking-wider">
+                      01 - Featured
+                    </span>
+                    <h3 className="font-serif text-xl md:text-2xl text-foreground">Afero Engine</h3>
+                  </div>
+                  <Link
+                    to="/work"
+                    className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
+                  >
+                    View project <ArrowUpRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+                <div className="overflow-hidden rounded-2xl border border-border bg-secondary/50 transform translate-z-6 flex-1 flex items-center justify-center">
+                  <img
+                    src={ad}
+                    alt="Afero featured project preview"
+                    width={1280}
+                    height={800}
+                    className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out"
+                    loading="eager"
+                    fetchPriority="high"
+                  />
+                </div>
+              </article>
+            </Tilt3D>
+          </div>
+
+          {/* Card 1: Praxis Studio */}
+          <div
+            ref={card1Ref}
+            className="absolute inset-x-6 md:inset-x-12 h-full flex flex-col justify-center opacity-0 will-change-[transform,opacity,filter]"
+          >
+            <Tilt3D maxTilt={6} scale={1.02} className="w-full h-full">
+              <article className="group glass-card-3d p-6 md:p-8 rounded-3xl h-full flex flex-col justify-between">
+                <div className="flex items-baseline justify-between mb-4">
+                  <div className="flex items-baseline gap-2 transform translate-z-10">
+                    <span className="text-xs text-muted-foreground">02 - Architecture</span>
+                    <h3 className="font-serif text-xl md:text-2xl text-foreground">
+                      Praxis Studio
+                    </h3>
+                  </div>
+                  <Link
+                    to="/work"
+                    className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
+                  >
+                    View <ArrowUpRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+                <div className="overflow-hidden rounded-xl border border-border bg-secondary/50 transform translate-z-6 flex-1 flex items-center justify-center">
+                  <img
+                    src={work2}
+                    alt="Praxis Studio website"
+                    width={1024}
+                    height={768}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out"
+                  />
+                </div>
+              </article>
+            </Tilt3D>
+          </div>
+
+          {/* Card 2: Meridian Daily */}
+          <div
+            ref={card2Ref}
+            className="absolute inset-x-6 md:inset-x-12 h-full flex flex-col justify-center opacity-0 will-change-[transform,opacity,filter]"
+          >
+            <Tilt3D maxTilt={6} scale={1.02} className="w-full h-full">
+              <article className="group glass-card-3d p-6 md:p-8 rounded-3xl h-full flex flex-col justify-between">
+                <div className="flex items-baseline justify-between mb-4">
+                  <div className="flex items-baseline gap-2 transform translate-z-10">
+                    <span className="text-xs text-muted-foreground">03 - Editorial</span>
+                    <h3 className="font-serif text-xl md:text-2xl text-foreground">
+                      Meridian Daily
+                    </h3>
+                  </div>
+                  <Link
+                    to="/work"
+                    className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
+                  >
+                    View <ArrowUpRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+                <div className="overflow-hidden rounded-xl border border-border bg-secondary/50 transform translate-z-6 flex-1 flex items-center justify-center">
+                  <img
+                    src={work3}
+                    alt="Meridian Daily website"
+                    width={1024}
+                    height={768}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out"
+                  />
+                </div>
+              </article>
+            </Tilt3D>
+          </div>
+        </div>
+
+        {/* Side Indicator Dots */}
+        <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-30">
+          {[0, 1, 2].map((idx) => (
+            <button
+              key={idx}
+              onClick={() => scrollToSlide(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`h-2.5 w-2.5 rounded-full cursor-pointer transition-all duration-300 ${
+                activeSlide === idx
+                  ? "bg-coral scale-125 shadow-[0_0_8px_var(--coral)]"
+                  : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   const [activeIndustry, setActiveIndustry] = useState("startups");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <Nav />
-
+    <div className="min-h-screen bg-background text-foreground overflow-x-clip">
       {/* HERO */}
       <section className="relative overflow-hidden min-h-[85vh] flex flex-col justify-center border-b border-border/40">
         {/* 3D wireframe mesh background */}
@@ -979,99 +1462,16 @@ function Index() {
         </div>
       </section>
 
-      {/* WORK */}
-      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <div className="grid gap-12">
-          <Tilt3D maxTilt={4} scale={1.01} className="w-full">
-            <article className="group glass-card-3d p-6 md:p-8 rounded-3xl">
-              <div className="flex items-baseline justify-between mb-4">
-                <div className="flex items-baseline gap-3" />
-                <Link
-                  to="/work"
-                  className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
-                >
-                  View project <ArrowUpRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-              <div className="overflow-hidden rounded-2xl border border-border bg-secondary/50 transform translate-z-6">
-                <img
-                  src={ad}
-                  alt="Afero featured project preview"
-                  width={1280}
-                  height={800}
-                  className="w-full h-auto group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out object-cover"
-                  loading="eager"
-                  fetchPriority="high"
-                />
-              </div>
-            </article>
-          </Tilt3D>
+      {/* WORK / FEATURED PRODUCTS CAROUSEL */}
+      <FeaturedProductsCarousel />
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-            <Tilt3D maxTilt={6} scale={1.02} className="w-full h-full">
-              <article className="group glass-card-3d p-6 rounded-3xl h-full flex flex-col justify-between">
-                <div className="flex items-baseline justify-between mb-4">
-                  <div className="flex items-baseline gap-2 transform translate-z-10">
-                    <span className="text-xs text-muted-foreground">02 -Architecture</span>
-                    <h3 className="font-serif text-xl md:text-2xl">Praxis Studio</h3>
-                  </div>
-                  <Link
-                    to="/work"
-                    className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
-                  >
-                    View <ArrowUpRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-                <div className="overflow-hidden rounded-xl border border-border bg-secondary/50 transform translate-z-6">
-                  <img
-                    src={work2}
-                    alt="Praxis Studio website"
-                    width={1024}
-                    height={768}
-                    loading="lazy"
-                    className="w-full h-auto group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out"
-                  />
-                </div>
-              </article>
-            </Tilt3D>
-
-            <Tilt3D maxTilt={6} scale={1.02} className="w-full h-full">
-              <article className="group glass-card-3d p-6 rounded-3xl h-full flex flex-col justify-between">
-                <div className="flex items-baseline justify-between mb-4">
-                  <div className="flex items-baseline gap-2 transform translate-z-10">
-                    <span className="text-xs text-muted-foreground">03 -Editorial</span>
-                    <h3 className="font-serif text-xl md:text-2xl">Meridian Daily</h3>
-                  </div>
-                  <Link
-                    to="/work"
-                    className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
-                  >
-                    View <ArrowUpRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-                <div className="overflow-hidden rounded-xl border border-border bg-secondary/50 transform translate-z-6">
-                  <img
-                    src={work3}
-                    alt="Meridian Daily website"
-                    width={1024}
-                    height={768}
-                    loading="lazy"
-                    className="w-full h-auto group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out"
-                  />
-                </div>
-              </article>
-            </Tilt3D>
-          </div>
-
-          <div className="text-center mt-6">
-            <Link
-              to="/work"
-              className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-7 py-3.5 text-sm font-semibold hover:bg-foreground hover:text-background transition-colors"
-            >
-              View more work <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
+      <section className="mx-auto max-w-7xl px-6 pt-16 md:pt-24 pb-24 md:pb-32 text-center relative z-20">
+        <Link
+          to="/work"
+          className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-7 py-3.5 text-sm font-semibold hover:bg-foreground hover:text-background transition-colors"
+        >
+          View more work <ArrowRight className="h-4 w-4" />
+        </Link>
       </section>
 
       {/* SERVICES */}
@@ -1171,9 +1571,7 @@ function Index() {
                   </p>
                 </div>
                 {/* Active Micro-Simulation Widget */}
-                <div style={{ transform: "translateZ(15px)" }}>
-                  <RenderAiSimulation type={sol.interactiveType} />
-                </div>
+                <AiSimulationWrapper type={sol.interactiveType} />
               </div>
             </Tilt3D>
           ))}

@@ -18,6 +18,7 @@ export function Tilt3D({
 }: Tilt3DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const glareRef = useRef<HTMLDivElement>(null);
+  const rectRef = useRef<DOMRect | null>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = containerRef.current;
@@ -25,7 +26,12 @@ export function Tilt3D({
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const rect = el.getBoundingClientRect();
+    let rect = rectRef.current;
+    if (!rect) {
+      rect = el.getBoundingClientRect();
+      rectRef.current = rect;
+    }
+
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
@@ -47,6 +53,11 @@ export function Tilt3D({
 
   const handleMouseEnter = () => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = containerRef.current;
+    if (el) {
+      rectRef.current = el.getBoundingClientRect();
+      el.style.transition = "none";
+    }
     const glare = glareRef.current;
     if (glare) {
       glare.style.opacity = "0.25";
@@ -54,8 +65,10 @@ export function Tilt3D({
   };
 
   const handleMouseLeave = () => {
+    rectRef.current = null;
     const el = containerRef.current;
     if (el) {
+      el.style.transition = "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)";
       el.style.transform = `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
     }
     const glare = glareRef.current;

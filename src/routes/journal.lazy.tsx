@@ -1,6 +1,6 @@
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
 import { useState, useRef } from "react";
-import { Nav } from "@/components/site/Nav";
+// Nav imported globally in __root.tsx
 import { Footer } from "@/components/site/Footer";
 import { Tilt3D } from "@/components/ui/Tilt3D";
 import {
@@ -392,8 +392,6 @@ function JournalPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-coral selection:text-coral-foreground">
-      <Nav />
-
       <main className="mx-auto max-w-7xl px-6 pt-24 pb-20 md:pt-32">
         {/* ── NEWSPAPER NAMEPLATE HEADER ────────────────────────────────────── */}
         <header className="border-t-2 border-b-2 border-foreground py-6 my-10 text-center">

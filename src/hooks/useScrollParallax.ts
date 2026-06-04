@@ -9,6 +9,9 @@ import { useEffect, useRef } from "react";
  */
 export function useScrollParallax(speed = 0.2, direction: "up" | "down" = "up") {
   const ref = useRef<HTMLDivElement>(null);
+  const elementTopRef = useRef(0);
+  const elementHeightRef = useRef(0);
+  const viewHeightRef = useRef(0);
 
   useEffect(() => {
     const el = ref.current;
@@ -20,19 +23,32 @@ export function useScrollParallax(speed = 0.2, direction: "up" | "down" = "up") 
 
     let frameId: number;
 
-    const handleScroll = () => {
+    const measure = () => {
       const rect = el.getBoundingClientRect();
-      const viewHeight = window.innerHeight;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      elementTopRef.current = rect.top + scrollTop;
+      elementHeightRef.current = rect.height;
+      viewHeightRef.current = window.innerHeight;
+    };
 
-      // Only recalculate if the element is visible in the viewport
-      if (rect.top < viewHeight && rect.bottom > 0) {
-        const elementCenter = rect.top + rect.height / 2;
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const elementTop = elementTopRef.current;
+      const elementHeight = elementHeightRef.current;
+      const viewHeight = viewHeightRef.current;
+
+      const relativeTop = elementTop - scrollTop;
+      const relativeBottom = relativeTop + elementHeight;
+
+      // Only shift if the element is visible in the viewport
+      if (relativeTop < viewHeight && relativeBottom > 0) {
+        const elementCenter = relativeTop + elementHeight / 2;
         const screenCenter = viewHeight / 2;
         // Calculate offset based on scroll position relative to screen center
         const offset = (elementCenter - screenCenter) * speed;
 
         const sign = direction === "up" ? -1 : 1;
-        el.style.transform = `translateY(${offset * sign}px)`;
+        el.style.transform = `translate3d(0, ${offset * sign}px, 0)`;
       }
     };
 
@@ -41,23 +57,36 @@ export function useScrollParallax(speed = 0.2, direction: "up" | "down" = "up") 
       frameId = requestAnimationFrame(handleScroll);
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
+    const handleResize = () => {
+      measure();
+      handleScroll();
+    };
+
+    // Initial measurement
+    measure();
     handleScroll();
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", handleResize, { passive: true });
 
     // Re-check on media query change
     const listener = (e: MediaQueryListEvent) => {
       if (e.matches) {
         el.style.transform = "";
         window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", handleResize);
       } else {
-        window.addEventListener("scroll", onScroll, { passive: true });
+        measure();
         handleScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", handleResize, { passive: true });
       }
     };
     mediaQuery.addEventListener("change", listener);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", handleResize);
       mediaQuery.removeEventListener("change", listener);
       cancelAnimationFrame(frameId);
     };

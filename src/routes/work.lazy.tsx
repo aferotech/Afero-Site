@@ -13,7 +13,7 @@ import {
   Shield,
   Sparkles,
 } from "lucide-react";
-import { Nav } from "@/components/site/Nav";
+// Nav imported globally in __root.tsx
 import { Footer } from "@/components/site/Footer";
 import { Tilt3D } from "@/components/ui/Tilt3D";
 import { useScrollParallax } from "@/hooks/useScrollParallax";
@@ -170,8 +170,6 @@ function WorkPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-coral selection:text-coral-foreground">
-      <Nav />
-
       {/* HERO SECTION */}
       <section className="relative overflow-hidden pt-24 pb-20 md:pt-36 md:pb-28">
         <div className="mx-auto max-w-7xl px-6">

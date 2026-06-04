@@ -30,7 +30,7 @@ import {
   PenTool,
   Code,
 } from "lucide-react";
-import { Nav } from "@/components/site/Nav";
+// Nav imported globally in __root.tsx
 import { Footer } from "@/components/site/Footer";
 import { Tilt3D } from "@/components/ui/Tilt3D";
 
@@ -392,8 +392,6 @@ function ProcessPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-coral selection:text-coral-foreground">
-      <Nav />
-
       {/* HERO SECTION */}
       <section className="relative pt-32 pb-24 md:pt-40 md:pb-36 overflow-hidden border-b border-border/40">
         {/* Animated 3D Grid Plane */}

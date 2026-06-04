@@ -22,7 +22,7 @@ import {
   Compass,
   Rocket,
 } from "lucide-react";
-import { Nav } from "@/components/site/Nav";
+// Nav imported globally in __root.tsx
 import { Footer } from "@/components/site/Footer";
 import { Tilt3D } from "@/components/ui/Tilt3D";
 import paulImg from "@/assets/team/paul.webp";
@@ -627,8 +627,6 @@ const timeline = [
 function AboutPage() {
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-coral selection:text-coral-foreground overflow-x-hidden">
-      <Nav />
-
       {/* ── SECTION 01: ABOUT HERO ───────────────────────────────────────── */}
       <section className="relative pt-32 pb-24 md:pt-44 md:pb-36 border-b border-border/40 overflow-hidden">
         {/* Animated 3D Perspective Grid Background */}
