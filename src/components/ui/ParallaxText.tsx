@@ -1,4 +1,5 @@
-import { useEffect, useRef, ReactNode } from "react";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { useRef, ReactNode } from "react";
 
 interface ParallaxTextProps {
   children: ReactNode;
@@ -8,7 +9,8 @@ interface ParallaxTextProps {
 }
 
 /**
- * Splits lines/words/headings and slides them horizontally relative to the window scroll.
+ * Splits lines/headings and slides them horizontally relative to the window scroll.
+ * Uses Framer Motion hooks for high-performance compositor thread rendering.
  */
 export function ParallaxText({
   children,
@@ -17,90 +19,23 @@ export function ParallaxText({
   direction = "left",
 }: ParallaxTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const elementTopRef = useRef(0);
-  const elementHeightRef = useRef(0);
-  const viewHeightRef = useRef(0);
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    // Respect reduced motion settings
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mediaQuery.matches) return;
-
-    let frameId: number;
-
-    const measure = () => {
-      const rect = el.getBoundingClientRect();
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      elementTopRef.current = rect.top + scrollTop;
-      elementHeightRef.current = rect.height;
-      viewHeightRef.current = window.innerHeight;
-    };
-
-    const handleScroll = () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const elementTop = elementTopRef.current;
-      const elementHeight = elementHeightRef.current;
-      const viewHeight = viewHeightRef.current;
-
-      const relativeTop = elementTop - scrollTop;
-      const relativeBottom = relativeTop + elementHeight;
-
-      // Only shift if the text is inside the visible viewport
-      if (relativeTop < viewHeight && relativeBottom > 0) {
-        const elementCenter = relativeTop + elementHeight / 2;
-        const screenCenter = viewHeight / 2;
-        const offset = (elementCenter - screenCenter) * speed;
-
-        const sign = direction === "left" ? -1 : 1;
-        el.style.transform = `translate3d(${offset * sign}px, 0, 0)`;
-      }
-    };
-
-    const onScroll = () => {
-      cancelAnimationFrame(frameId);
-      frameId = requestAnimationFrame(handleScroll);
-    };
-
-    const handleResize = () => {
-      measure();
-      handleScroll();
-    };
-
-    // Initial measurement
-    measure();
-    handleScroll();
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", handleResize, { passive: true });
-
-    const listener = (e: MediaQueryListEvent) => {
-      if (e.matches) {
-        el.style.transform = "";
-        window.removeEventListener("scroll", onScroll);
-        window.removeEventListener("resize", handleResize);
-      } else {
-        measure();
-        handleScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
-        window.addEventListener("resize", handleResize, { passive: true });
-      }
-    };
-    mediaQuery.addEventListener("change", listener);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", handleResize);
-      mediaQuery.removeEventListener("change", listener);
-      cancelAnimationFrame(frameId);
-    };
-  }, [speed, direction]);
+  // Map scrollY to horizontal translation offset (direct mapping without reflow measurements)
+  const x = useTransform(scrollY, (latest) => {
+    if (shouldReduceMotion) return "0px";
+    const sign = direction === "left" ? -1 : 1;
+    return `${latest * speed * sign}px`;
+  });
 
   return (
-    <span ref={ref} className={`inline-block will-change-transform ${className}`}>
+    <motion.span
+      ref={ref}
+      style={{ x }}
+      className={`inline-block will-change-transform ${className}`}
+    >
       {children}
-    </span>
+    </motion.span>
   );
 }

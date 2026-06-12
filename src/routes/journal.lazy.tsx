@@ -367,8 +367,10 @@ function JournalPage() {
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
-    // Smooth scroll to feed
-    if (articleFeedRef.current) {
+    // Smooth scroll to feed or top of page if clearing filter
+    if (category === "All") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (articleFeedRef.current) {
       articleFeedRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
@@ -391,7 +393,7 @@ function JournalPage() {
   const trendingPosts = posts.filter((p) => p.trending);
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-coral selection:text-coral-foreground">
+    <div className="min-h-screen bg-background text-foreground overflow-x-clip selection:bg-coral selection:text-coral-foreground">
       <main className="mx-auto max-w-7xl px-6 pt-24 pb-20 md:pt-32">
         {/* ── NEWSPAPER NAMEPLATE HEADER ────────────────────────────────────── */}
         <header className="border-t-2 border-b-2 border-foreground py-6 my-10 text-center">
@@ -418,8 +420,31 @@ function JournalPage() {
 
         {/* ── EDITORIAL GRID LAYOUT ─────────────────────────────────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mt-12">
-          {/* LEFT AREA: MAIN CONTENT (9 Columns) */}
-          <div className="lg:col-span-9 space-y-12">
+          {/* LEFT AREA: MAIN CONTENT (8 Columns) */}
+          <div className="lg:col-span-8 space-y-12">
+            {/* Mobile Sticky Category Navigation */}
+            <div className="lg:hidden sticky top-[57px] z-30 bg-background/95 backdrop-blur-md py-3 -mx-6 px-6 border-b border-border/20 overflow-x-auto scrollbar-none flex gap-2 mb-6">
+              {["All", ...topics.map((t) => t.name)].map((cat) => {
+                const count =
+                  cat === "All" ? posts.length : posts.filter((p) => p.tag === cat).length;
+                const isSelected = selectedCategory === cat;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => handleCategorySelect(cat)}
+                    className={`shrink-0 px-4 py-2 rounded-full text-xs uppercase tracking-widest font-semibold border transition-all duration-200 cursor-pointer min-h-[44px] flex items-center justify-center gap-1.5 ${
+                      isSelected
+                        ? "bg-coral text-coral-foreground border-coral"
+                        : "bg-secondary/40 text-muted-foreground border-border/40 hover:text-foreground hover:border-border"
+                    }`}
+                  >
+                    <span>{cat}</span>
+                    <span className="text-[10px] opacity-60 font-mono">({count})</span>
+                  </button>
+                );
+              })}
+            </div>
+
             {/* Category Filter Banner */}
             {selectedCategory !== "All" && (
               <div className="flex items-center justify-between bg-coral/5 border border-coral/20 rounded-xl px-5 py-3 mb-6">
@@ -544,7 +569,7 @@ function JournalPage() {
             )}
 
             {/* MAIN ARTICLE FEED */}
-            <section ref={articleFeedRef} className="scroll-mt-24">
+            <section ref={articleFeedRef} className="scroll-mt-32 lg:scroll-mt-24">
               <div className="flex items-center gap-3 border-b border-foreground pb-2 mb-8">
                 <h2 className="font-serif text-2xl font-normal text-foreground uppercase tracking-wider">
                   {selectedCategory === "All" ? "Dispatches" : `${selectedCategory} Articles`}
@@ -609,24 +634,33 @@ function JournalPage() {
             </section>
           </div>
 
-          {/* RIGHT AREA: EDITORIAL SIDEBAR (3 Columns) */}
-          <aside className="lg:col-span-3 lg:border-l lg:border-border/60 lg:pl-8 space-y-12">
-            {/* STUDIO BRIEFS (Print-Style Column) */}
-            <section className="bg-secondary/20 border border-border/40 rounded-2xl p-6">
-              <h2 className="font-serif text-lg font-normal uppercase tracking-wider text-foreground border-b border-foreground pb-2 mb-4">
-                Studio Briefs
+          {/* RIGHT AREA: EDITORIAL SIDEBAR (4 Columns, Sticky on scroll) */}
+          <aside className="lg:col-span-4 lg:border-l lg:border-border/60 lg:pl-8 space-y-12 sticky top-28 self-start">
+            {/* EDITORIAL DESKS */}
+            <section className="hidden md:block">
+              <h2 className="font-serif text-lg font-normal uppercase tracking-wider text-foreground border-b border-foreground pb-2 mb-6">
+                Editorial Desks
               </h2>
-
-              <div className="divide-y divide-border/30">
-                {studioBriefs.map((brief, idx) => (
-                  <div key={idx} className="py-3 first:pt-0 last:pb-0">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-coral mb-1">
-                      {brief.title}
-                    </h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{brief.desc}</p>
-                  </div>
-                ))}
-              </div>
+              <ul className="space-y-3">
+                {["All", ...topics.map((t) => t.name)].map((cat) => {
+                  const count =
+                    cat === "All" ? posts.length : posts.filter((p) => p.tag === cat).length;
+                  const isSelected = selectedCategory === cat;
+                  return (
+                    <li key={cat}>
+                      <button
+                        onClick={() => handleCategorySelect(cat)}
+                        className={`w-full flex items-center justify-between text-left py-3 md:py-1.5 border-b border-border/10 text-sm hover:text-coral transition-colors duration-200 cursor-pointer ${
+                          isSelected ? "text-coral font-bold" : "text-muted-foreground"
+                        }`}
+                      >
+                        <span className="uppercase tracking-wider text-xs">{cat}</span>
+                        <span className="text-[10px] font-mono opacity-60">({count})</span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
             </section>
 
             {/* TRENDING ARTICLES */}
@@ -660,89 +694,25 @@ function JournalPage() {
               </div>
             </section>
 
-            {/* QUICK READS */}
-            <section className="border-t border-border/60 pt-8">
+            {/* STUDIO BRIEFS (Print-Style Column) */}
+            <section className="bg-secondary/20 border border-border/40 rounded-2xl p-6">
               <h2 className="font-serif text-lg font-normal uppercase tracking-wider text-foreground border-b border-foreground pb-2 mb-4">
-                Quick Reads
+                Studio Briefs
               </h2>
-              <ul className="space-y-4">
-                {posts
-                  .filter((p) => p.read === "4 min" || p.read === "5 min")
-                  .slice(0, 4)
-                  .map((p) => (
-                    <li
-                      key={p.id}
-                      className="group flex items-baseline justify-between gap-3 text-sm"
-                    >
-                      <Link
-                        to="/journal"
-                        className="text-muted-foreground group-hover:text-coral transition-colors font-serif text-base font-normal leading-tight"
-                      >
-                        {p.title}
-                      </Link>
-                      <ArrowUpRight className="h-3 w-3 text-muted-foreground/30 group-hover:text-coral group-hover:opacity-100 transition shrink-0" />
-                    </li>
-                  ))}
-              </ul>
+
+              <div className="divide-y divide-border/30">
+                {studioBriefs.map((brief, idx) => (
+                  <div key={idx} className="py-3 first:pt-0 last:pb-0">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-coral mb-1">
+                      {brief.title}
+                    </h3>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{brief.desc}</p>
+                  </div>
+                ))}
+              </div>
             </section>
           </aside>
         </div>
-
-        {/* ── BROWSE BY TOPIC SECTION ──────────────────────────────────────── */}
-        <section className="my-24 border-t border-b border-foreground/60 py-16">
-          <div className="text-center mb-12">
-            <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium mb-3">
-              Browse by Topic
-            </div>
-            <h2 className="font-serif text-4xl md:text-5xl text-foreground font-normal">
-              Select an Editorial Desk
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {topics.map((topic, idx) => {
-              const Icon = topic.icon;
-              const isSelected = selectedCategory === topic.name;
-              // Add subtle card color matching the topic card grid
-              const cardBg = colors[idx % colors.length];
-              return (
-                <Tilt3D key={topic.name} maxTilt={6} scale={1.02} className="h-full">
-                  <button
-                    onClick={() => handleCategorySelect(topic.name)}
-                    className={`group h-full text-left w-full rounded-2xl p-8 flex flex-col justify-between preserve-3d cursor-pointer transition-all duration-300 border ${
-                      isSelected
-                        ? "border-coral/50 shadow-md shadow-coral/[0.03] bg-background"
-                        : `border-border/40 hover:border-coral/20 ${cardBg}`
-                    }`}
-                  >
-                    <div>
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="h-10 w-10 rounded-xl bg-coral/10 text-coral flex items-center justify-center shadow-sm">
-                          <Icon className="h-5 w-5" />
-                        </div>
-                        <span className="text-xs text-muted-foreground bg-secondary/60 border border-border/40 px-2 py-0.5 rounded font-bold">
-                          {topic.count} Articles
-                        </span>
-                      </div>
-
-                      <h3 className="font-serif text-2xl font-normal text-foreground group-hover:text-coral transition-colors duration-300 mb-2">
-                        {topic.name}
-                      </h3>
-                      <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                        {topic.desc}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-1.5 text-xs font-bold text-coral uppercase tracking-wider mt-6 border-t border-border/20 pt-4 w-full">
-                      Open desk{" "}
-                      <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </button>
-                </Tilt3D>
-              );
-            })}
-          </div>
-        </section>
 
         {/* ── VINTAGE NEWSLETTER SUBSCRIPTION SLIP ──────────────────────────── */}
         <section className="max-w-4xl mx-auto my-24 border border-dashed border-foreground/45 bg-card/45 p-8 md:p-12 rounded-3xl relative overflow-hidden backdrop-blur-sm">

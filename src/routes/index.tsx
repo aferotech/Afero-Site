@@ -43,7 +43,17 @@ import { ParallaxText } from "@/components/ui/ParallaxText";
 import ad from "@/assets/ad.webp";
 import work2 from "@/assets/work-2.webp";
 import work3 from "@/assets/work-3.webp";
-import arc from "@/assets/arc.webp";
+import tomato from "@/assets/tomato.webp";
+import zizzle from "@/assets/zizzle.webp";
+import { AnimatePresence, motion } from "framer-motion";
+import startupsSec from "@/assets/sectors/startups.webp";
+import localSec from "@/assets/sectors/local.webp";
+import ecommerceSec from "@/assets/sectors/ecommerce.webp";
+import ngoSec from "@/assets/sectors/ngo.webp";
+import personalSec from "@/assets/sectors/personal.webp";
+import servicesSec from "@/assets/sectors/services.webp";
+import educationSec from "@/assets/sectors/education.webp";
+import healthcareSec from "@/assets/sectors/healthcare.webp";
 
 function useInView(options?: IntersectionObserverInit) {
   const ref = useRef<HTMLDivElement>(null);
@@ -70,14 +80,20 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Afero - A studio for websites that actually work" },
+      { title: "Afero | Custom Web Development, Design & AI Automation Studio" },
       {
         name: "description",
         content:
-          "Afero is a small, senior studio building websites and brands that move businesses forward. Strategy, design, and development under one roof.",
+          "Afero is a premium digital design and web development studio building custom websites, software, and AI automation workflows that move businesses forward.",
       },
-      { property: "og:title", content: "Afero -Websites that actually work" },
-      { property: "og:description", content: "Strategy, design, and development under one roof." },
+      {
+        property: "og:title",
+        content: "Afero | Custom Web Development, Design & AI Automation Studio",
+      },
+      {
+        property: "og:description",
+        content: "Premium design, custom development, and AI workflows under one roof.",
+      },
     ],
   }),
 });
@@ -647,195 +663,56 @@ function ImpactCounter({
   );
 }
 
-// ─── Industries We Serve Live Preview ────────────────────────────────────────
+const sectorImages: Record<string, string> = {
+  startups: startupsSec,
+  local: localSec,
+  ecommerce: ecommerceSec,
+  ngo: ngoSec,
+  personal: personalSec,
+  services: servicesSec,
+  education: educationSec,
+  healthcare: healthcareSec,
+};
+
 function IndustryPreview({ industryId }: { industryId: string }) {
+  const imgSrc = sectorImages[industryId];
+
   return (
-    <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-[#14100e] to-[#0a0807] border border-border/25 p-6 flex flex-col justify-between font-mono text-[9px] relative overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.02),0_12px_36px_rgba(0,0,0,0.6)]">
+    <div className="w-full aspect-[4/3] rounded-2xl bg-[#0d0a08] border border-border/20 relative overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.02),0_12px_36px_rgba(0,0,0,0.6)] flex flex-col justify-between">
+      {/* Ambient Glow */}
       <div className="absolute -top-10 -right-10 w-44 h-44 bg-coral/10 rounded-full blur-[50px] pointer-events-none" />
 
-      <div className="flex justify-between items-center border-b border-border/20 pb-3">
-        <div className="flex items-center gap-1.5 font-mono">
-          <span className="h-2 w-2 rounded-full bg-coral animate-pulse" />
-          <span className="text-foreground font-bold uppercase tracking-wider">
-            Afero Engine v1.0
+      {/* Header */}
+      <div className="flex justify-between items-center border-b border-border/15 p-4 select-none">
+        <div className="flex items-center gap-1.5 font-mono text-[9px]">
+          <span className="h-1.5 w-1.5 rounded-full bg-coral animate-pulse" />
+          <span className="text-foreground/90 font-bold uppercase tracking-wider">
+            Afero Console v1.2
           </span>
         </div>
-        <span className="text-muted-foreground/60 text-[8px]">App Status: ACTIVE</span>
+        <span className="text-muted-foreground/50 font-mono text-[8px]">App Status: ACTIVE</span>
       </div>
 
-      <div className="flex-1 py-4 flex flex-col justify-center font-mono">
-        {industryId === "startups" && (
-          <div className="space-y-3">
-            <div className="grid grid-cols-2 gap-3">
-              <div className="bg-[#1c1815]/80 p-2.5 rounded-xl border border-border/25 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]">
-                <span className="text-[7px] text-muted-foreground uppercase font-bold tracking-wider">
-                  API Requests
-                </span>
-                <div className="text-lg font-serif text-coral mt-0.5 font-semibold">842.5k</div>
-              </div>
-              <div className="bg-[#1c1815]/80 p-2.5 rounded-xl border border-border/25 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]">
-                <span className="text-[7px] text-muted-foreground uppercase font-bold tracking-wider">
-                  Server Load
-                </span>
-                <div className="text-lg font-serif text-[#fbfaf8] mt-0.5 font-semibold">14%</div>
-              </div>
-            </div>
-            <div className="bg-[#0e0c0a]/90 p-2.5 rounded-lg border border-border/25 text-[7px] text-[#fbfaf8]/90">
-              &gt; npm run dev --mode production
-              <div className="text-green-400 mt-1 font-mono font-semibold drop-shadow-[0_0_6px_rgba(74,222,128,0.2)]">
-                ✓ Server running on port 443 with Edge distribution.
-              </div>
-            </div>
-          </div>
-        )}
-
-        {industryId === "local" && (
-          <div className="space-y-2.5">
-            <span className="text-[8px] text-muted-foreground uppercase block mb-1 font-bold tracking-wider">
-              Today's Appointment Slots
-            </span>
-            <div className="space-y-1.5">
-              <div className="flex justify-between bg-coral/[0.08] border border-coral/25 px-2.5 py-1.5 rounded-lg text-coral shadow-[inset_0_1px_0_rgba(255,255,255,0.02),0_2px_8px_rgba(224,90,54,0.05)]">
-                <span>09:00 AM - Discovery Audit</span>
-                <span className="font-bold">Booked</span>
-              </div>
-              <div className="flex justify-between bg-[#1c1815]/60 border border-border/20 px-2.5 py-1.5 rounded-lg text-muted-foreground/80">
-                <span>11:30 AM - Design Handover</span>
-                <span className="font-semibold">Open</span>
-              </div>
-              <div className="flex justify-between bg-coral/[0.08] border border-coral/25 px-2.5 py-1.5 rounded-lg text-coral shadow-[inset_0_1px_0_rgba(255,255,255,0.02),0_2px_8px_rgba(224,90,54,0.05)]">
-                <span>02:00 PM - Tech Strategy Session</span>
-                <span className="font-bold">Booked</span>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {industryId === "ecommerce" && (
-          <div className="space-y-3">
-            <div className="flex justify-between items-center bg-[#1c1815]/80 p-3 rounded-xl border border-border/25 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02),0_4px_12px_rgba(0,0,0,0.2)]">
-              <div className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-lg bg-coral/10 text-coral border border-coral/20 flex items-center justify-center font-bold">
-                  ⚡
-                </div>
-                <div className="flex flex-col text-left">
-                  <span className="font-serif text-xs text-[#fbfaf8] font-semibold">
-                    Optimus Prime Tee
-                  </span>
-                  <span className="text-[7px] text-muted-foreground">Size L - Black</span>
-                </div>
-              </div>
-              <span className="font-bold text-coral text-xs">₹2,999.00</span>
-            </div>
-            <div className="flex justify-between items-center text-[8px] border-t border-border/20 pt-2.5">
-              <span className="text-muted-foreground font-medium">Checkout Latency:</span>
-              <span className="text-green-400 font-bold drop-shadow-[0_0_6px_rgba(74,222,128,0.25)]">
-                142ms (Instant Stripe Check)
-              </span>
-            </div>
-          </div>
-        )}
-
-        {industryId === "ngo" && (
-          <div className="space-y-3 text-left">
-            <div className="bg-[#1c1815]/80 p-3 rounded-xl border border-border/25 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]">
-              <div className="flex justify-between items-center">
-                <span className="text-[8px] uppercase tracking-wider text-muted-foreground font-bold">
-                  Donation Campaign
-                </span>
-                <span className="text-[10px] text-coral font-bold drop-shadow-[0_0_6px_rgba(224,90,54,0.25)]">
-                  85% Goal
-                </span>
-              </div>
-              <div className="w-full bg-black/40 border border-border/10 h-2 rounded-full mt-2 overflow-hidden">
-                <div className="bg-gradient-to-r from-coral/70 to-coral h-full w-[85%] shadow-[0_0_8px_rgba(224,90,54,0.4)]" />
-              </div>
-            </div>
-            <div className="text-[7px] text-muted-foreground/60 leading-relaxed">
-              * WCAG 2.1 AA Compliant and Screen-Reader friendly donation pipelines built natively.
-            </div>
-          </div>
-        )}
-
-        {industryId === "personal" && (
-          <div className="space-y-2 text-left">
-            <span className="text-[8px] uppercase text-muted-foreground block font-bold tracking-wider">
-              Newsletter Feed
-            </span>
-            <div className="p-3 bg-[#1c1815]/80 border border-border/25 rounded-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]">
-              <h4 className="font-serif text-xs text-[#fbfaf8] leading-tight font-semibold">
-                Curation as the Ultimate Edge
-              </h4>
-              <p className="text-[7px] text-muted-foreground/80 mt-1 leading-relaxed">
-                In an era of noise, building a curated personal brand is the ultimate tool...
-              </p>
-            </div>
-          </div>
-        )}
-
-        {industryId === "services" && (
-          <div className="space-y-2">
-            <span className="text-[8px] uppercase text-muted-foreground block text-left font-bold tracking-wider">
-              Direct Client Booking Portal
-            </span>
-            <div className="bg-[#1c1815]/80 p-3 rounded-xl border border-border/25 space-y-1.5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]">
-              <div className="flex justify-between text-[7px] text-muted-foreground/60 border-b border-border/10 pb-1 font-bold">
-                <span>CONSULTANT</span>
-                <span>AVAILABILITY</span>
-              </div>
-              <div className="flex justify-between text-[#fbfaf8]">
-                <span className="font-semibold">Rohith (Lead Dev)</span>
-                <span className="text-green-400 font-bold drop-shadow-[0_0_6px_rgba(74,222,128,0.2)]">
-                  Available today
-                </span>
-              </div>
-              <div className="flex justify-between text-[#fbfaf8]">
-                <span className="font-semibold">Azar (Creative Dir)</span>
-                <span className="text-green-400 font-bold drop-shadow-[0_0_6px_rgba(74,222,128,0.2)]">
-                  Available tomorrow
-                </span>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {industryId === "education" && (
-          <div className="space-y-2.5 text-left">
-            <span className="text-[8px] uppercase text-muted-foreground block font-bold tracking-wider">
-              Module Outline
-            </span>
-            <div className="space-y-1.5">
-              <div className="flex items-center gap-1.5 p-1.5 bg-coral/[0.08] border border-coral/25 rounded-lg text-[8px] text-coral shadow-[0_2px_8px_rgba(224,90,54,0.05)]">
-                <span className="text-[6px]">▶</span>
-                <span className="font-medium">Module 01: Setup typescript & vite environments</span>
-              </div>
-              <div className="flex items-center gap-1.5 p-1.5 bg-[#1c1815]/60 border border-border/20 rounded-lg text-[8px] text-muted-foreground/80">
-                <span className="text-[6px]">🔒</span>
-                <span>Module 02: Advanced routing schemas & Tanstack Start</span>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {industryId === "healthcare" && (
-          <div className="space-y-2 text-left">
-            <div className="bg-[#1c1815]/80 p-3 rounded-xl border border-border/25 space-y-2.5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]">
-              <span className="text-[7px] text-muted-foreground uppercase block font-bold tracking-wider">
-                Patient Booking Form
-              </span>
-              <div className="h-3 bg-border/10 border border-border/5 rounded w-full" />
-              <div className="h-3 bg-border/10 border border-border/5 rounded w-5/6" />
-            </div>
-            <div className="text-[6px] text-muted-foreground/60 leading-normal">
-              * Secure client communication pipelines with zero-data retention policies.
-            </div>
+      {/* Main Image Area */}
+      <div className="flex-1 overflow-hidden relative bg-[#120f0d]/35 flex items-center justify-center">
+        {imgSrc ? (
+          <img
+            src={imgSrc}
+            alt={`${industryId} Platform Preview`}
+            className="w-full h-full object-cover select-none animate-[fade-in-quick_0.4s_ease-out]"
+            loading="lazy"
+          />
+        ) : (
+          <div className="text-muted-foreground/40 font-mono text-[9px] animate-pulse">
+            Loading preview console...
           </div>
         )}
       </div>
 
-      <div className="flex justify-between text-[7px] text-muted-foreground/50 border-t border-border/10 pt-2.5">
-        <span>GRID SYSTEM ACTIVE</span>
-        <span>LATENCY: 42ms</span>
+      {/* Footer */}
+      <div className="flex justify-between items-center border-t border-border/15 p-4 font-mono text-[8px] text-muted-foreground/40 select-none">
+        <span>PREVIEW ACTIVE</span>
+        <span>LATENCY: 18ms</span>
       </div>
     </div>
   );
@@ -949,441 +826,172 @@ const industries = [
 ];
 
 function FeaturedProductsCarousel() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const card0Ref = useRef<HTMLDivElement>(null);
-  const card1Ref = useRef<HTMLDivElement>(null);
-  const card2Ref = useRef<HTMLDivElement>(null);
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const [sectionHeight, setSectionHeight] = useState("260vh");
-
-  const layoutMetricsRef = useRef({
-    containerTop: 0,
-    containerHeight: 0,
-    stickyHeight: 0,
-    stickyTopOffset: 0,
-  });
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-    const listener = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches);
-    };
-    mediaQuery.addEventListener("change", listener);
-    return () => mediaQuery.removeEventListener("change", listener);
-  }, []);
-
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-
-    const handleResize = () => {
-      const vh = window.innerHeight;
-      const numTransitions = 2;
-      const scrollDistancePerCard = vh * 0.9;
-      const isMobile = window.innerWidth < 768;
-      const isTablet = window.innerWidth >= 768 && window.innerWidth < 1280;
-      const stickyHeight = isMobile ? vh * 0.75 : isTablet ? vh * 0.85 : vh * 0.9;
-      const totalHeight = stickyHeight + numTransitions * scrollDistancePerCard;
-      setSectionHeight(`${totalHeight}px`);
-
-      // Defer to allow DOM height update to resolve
-      setTimeout(() => {
-        const container = containerRef.current;
-        if (!container) return;
-        const rect = container.getBoundingClientRect();
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const stickyWrapper = container.firstElementChild as HTMLElement;
-        let sHeight = 0;
-        let sTopOffset = 0;
-        if (stickyWrapper) {
-          const stickyRect = stickyWrapper.getBoundingClientRect();
-          sHeight = stickyRect.height;
-          const style = window.getComputedStyle(stickyWrapper);
-          sTopOffset = parseFloat(style.top) || 0;
-        }
-        layoutMetricsRef.current = {
-          containerTop: rect.top + scrollTop,
-          containerHeight: totalHeight,
-          stickyHeight: sHeight,
-          stickyTopOffset: sTopOffset,
-        };
-      }, 0);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [prefersReducedMotion]);
-
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-
-    const handleScroll = () => {
-      const container = containerRef.current;
-      const card0 = card0Ref.current;
-      const card1 = card1Ref.current;
-      const card2 = card2Ref.current;
-      if (!container || !card0 || !card1 || !card2) return;
-
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const { containerTop, containerHeight, stickyHeight, stickyTopOffset } =
-        layoutMetricsRef.current;
-
-      const startScroll = containerTop - stickyTopOffset;
-      const endScroll = containerTop + containerHeight - stickyTopOffset - stickyHeight;
-
-      let progress = (scrollTop - startScroll) / (endScroll - startScroll);
-      progress = Math.max(0, Math.min(1, progress));
-
-      // Determine active slide index (0, 1, or 2)
-      let currentActive = 0;
-      if (progress > 0.33 && progress <= 0.66) {
-        currentActive = 1;
-      } else if (progress > 0.66) {
-        currentActive = 2;
-      }
-      setActiveSlide(currentActive);
-
-      const entryOffset = stickyHeight;
-
-      // Card 0 (Featured Project)
-      let c0Y = 0;
-      let c0Scale = 1;
-      let c0Opacity = 1;
-      let c0Blur = 0;
-
-      if (progress <= 0.5) {
-        const t = progress / 0.5;
-        const ease = t * t * (3 - 2 * t);
-        c0Y = ease * -50;
-        c0Scale = 1 - ease * 0.08;
-        c0Opacity = 1 - ease * 0.6;
-        c0Blur = ease * 4;
-      } else {
-        c0Y = -50;
-        c0Scale = 0.92;
-        c0Opacity = 0.4;
-        c0Blur = 4;
-      }
-      card0.style.transform = `translate3d(0, ${c0Y}px, 0) scale(${c0Scale})`;
-      card0.style.opacity = `${c0Opacity}`;
-      card0.style.filter = c0Blur > 0 ? `blur(${c0Blur}px)` : "none";
-      card0.style.pointerEvents = progress > 0.45 ? "none" : "auto";
-
-      // Card 1 (Praxis Studio)
-      let c1Y = entryOffset;
-      let c1Scale = 0.95;
-      let c1Opacity = 0;
-      let c1Blur = 0;
-
-      if (progress <= 0.5) {
-        const t = progress / 0.5;
-        const ease = t * t * (3 - 2 * t);
-        c1Y = (1 - ease) * entryOffset;
-        c1Opacity = ease;
-        c1Scale = 0.95 + ease * 0.05;
-      } else {
-        const t = (progress - 0.5) / 0.5;
-        const ease = t * t * (3 - 2 * t);
-        c1Y = ease * -50;
-        c1Scale = 1 - ease * 0.08;
-        c1Opacity = 1 - ease * 0.6;
-        c1Blur = ease * 4;
-      }
-      card1.style.transform = `translate3d(0, ${c1Y}px, 0) scale(${c1Scale})`;
-      card1.style.opacity = `${c1Opacity}`;
-      card1.style.filter = c1Blur > 0 ? `blur(${c1Blur}px)` : "none";
-      card1.style.pointerEvents = progress < 0.4 || progress > 0.95 ? "none" : "auto";
-
-      // Card 2 (Meridian Daily)
-      let c2Y = entryOffset;
-      let c2Scale = 0.95;
-      let c2Opacity = 0;
-
-      if (progress > 0.5) {
-        const t = (progress - 0.5) / 0.5;
-        const ease = t * t * (3 - 2 * t);
-        c2Y = (1 - ease) * entryOffset;
-        c2Opacity = ease;
-        c2Scale = 0.95 + ease * 0.05;
-      }
-      card2.style.transform = `translate3d(0, ${c2Y}px, 0) scale(${c2Scale})`;
-      card2.style.opacity = `${c2Opacity}`;
-      card2.style.pointerEvents = progress < 0.9 ? "none" : "auto";
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll, { passive: true });
-    const initTimer = setTimeout(handleScroll, 50);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-      clearTimeout(initTimer);
-    };
-  }, [prefersReducedMotion]);
-
-  const scrollToSlide = (index: number) => {
-    const { containerTop, containerHeight, stickyHeight, stickyTopOffset } =
-      layoutMetricsRef.current;
-    if (containerTop === 0) return;
-
-    const startScroll = containerTop - stickyTopOffset;
-    const endScroll = containerTop + containerHeight - stickyTopOffset - stickyHeight;
-
-    const targetProgress = index === 0 ? 0 : index === 1 ? 0.5 : 1.0;
-    const targetScroll = startScroll + targetProgress * (endScroll - startScroll);
-
-    window.scrollTo({
-      top: targetScroll,
-      behavior: "smooth",
-    });
-  };
-
-  if (prefersReducedMotion) {
-    return (
-      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <div className="text-center mb-16 select-none">
-          <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium">
-            Selected Works
-          </div>
-          <h2 className="font-serif text-3xl md:text-5xl mt-2 text-foreground">
-            Featured Products & Showcase
-          </h2>
-        </div>
-        <div className="grid gap-12 max-w-5xl mx-auto">
-          {/* Card 0 */}
-          <Tilt3D maxTilt={4} scale={1.01} className="w-full">
-            <article className="group glass-card-3d p-6 md:p-8 rounded-3xl h-[320px] sm:h-[420px] md:h-[520px] lg:h-[600px] xl:h-[650px] 2xl:h-[700px] flex flex-col justify-between">
-              <div className="flex items-baseline justify-between mb-4">
-                <div className="flex items-baseline gap-2 transform translate-z-10">
-                  <span className="text-xs text-coral font-bold uppercase tracking-wider">
-                    01 - Featured
-                  </span>
-                  <h3 className="font-serif text-xl md:text-2xl text-foreground">Afero Engine</h3>
-                </div>
-                <Link
-                  to="/work"
-                  className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
-                >
-                  View project <ArrowUpRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-              <div className="overflow-hidden rounded-2xl border border-border bg-secondary/50 transform translate-z-6 flex-1 flex items-center justify-center">
-                <img
-                  src={ad}
-                  alt="Afero featured project preview"
-                  width={1280}
-                  height={800}
-                  className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out"
-                  loading="eager"
-                  fetchPriority="high"
-                />
-              </div>
-            </article>
-          </Tilt3D>
-
-          {/* Card 1 */}
-          <Tilt3D maxTilt={6} scale={1.02} className="w-full">
-            <article className="group glass-card-3d p-6 md:p-8 rounded-3xl h-[320px] sm:h-[420px] md:h-[520px] lg:h-[600px] xl:h-[650px] 2xl:h-[700px] flex flex-col justify-between">
-              <div className="flex items-baseline justify-between mb-4">
-                <div className="flex items-baseline gap-2 transform translate-z-10">
-                  <span className="text-xs text-muted-foreground">02 - Architecture</span>
-                  <h3 className="font-serif text-xl md:text-2xl text-foreground">Praxis Studio</h3>
-                </div>
-                <Link
-                  to="/work"
-                  className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
-                >
-                  View <ArrowUpRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-              <div className="overflow-hidden rounded-xl border border-border bg-secondary/50 transform translate-z-6 flex-1 flex items-center justify-center">
-                <img
-                  src={work2}
-                  alt="Praxis Studio website"
-                  width={1024}
-                  height={768}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out"
-                />
-              </div>
-            </article>
-          </Tilt3D>
-
-          {/* Card 2 */}
-          <Tilt3D maxTilt={6} scale={1.02} className="w-full">
-            <article className="group glass-card-3d p-6 md:p-8 rounded-3xl h-[320px] sm:h-[420px] md:h-[520px] lg:h-[600px] xl:h-[650px] 2xl:h-[700px] flex flex-col justify-between">
-              <div className="flex items-baseline justify-between mb-4">
-                <div className="flex items-baseline gap-2 transform translate-z-10">
-                  <span className="text-xs text-muted-foreground">03 - Editorial</span>
-                  <h3 className="font-serif text-xl md:text-2xl text-foreground">Meridian Daily</h3>
-                </div>
-                <Link
-                  to="/work"
-                  className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
-                >
-                  View <ArrowUpRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-              <div className="overflow-hidden rounded-xl border border-border bg-secondary/50 transform translate-z-6 flex-1 flex items-center justify-center">
-                <img
-                  src={work3}
-                  alt="Meridian Daily website"
-                  width={1024}
-                  height={768}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out"
-                />
-              </div>
-            </article>
-          </Tilt3D>
-        </div>
-      </section>
-    );
-  }
-
   return (
-    <section
-      ref={containerRef}
-      style={{ height: sectionHeight }}
-      className="relative w-full bg-background mt-20 md:mt-32"
-    >
-      <div className="sticky top-20 md:top-24 h-[75vh] md:h-[85vh] xl:h-[90vh] w-full flex flex-col justify-center items-center overflow-hidden">
-        <div className="text-center mb-6 md:mb-8 select-none relative z-30">
-          <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium">
-            Selected Works
-          </div>
-          <h2 className="font-serif text-3xl md:text-5xl mt-2 text-foreground">
-            Featured Products & Showcase
-          </h2>
+    <section className="mx-auto max-w-7xl px-6 py-24 md:py-32 border-b border-border/40 relative">
+      {/* Ambient Glows */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-coral/5 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Section Header */}
+      <div className="mb-16 md:mb-24 text-left select-none">
+        <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium mb-4">
+          <span className="h-px w-6 bg-coral" /> Featured Projects
         </div>
+        <h2 className="font-serif text-4xl md:text-5xl mt-2 text-foreground">Flagship Showcase</h2>
+      </div>
 
-        <div className="w-full h-[320px] sm:h-[420px] md:h-[520px] lg:h-[600px] xl:h-[650px] 2xl:h-[700px] max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-[85vw] relative px-6 md:px-12 flex justify-center items-center">
-          {/* Card 0: Featured Project */}
-          <div
-            ref={card0Ref}
-            className="absolute inset-x-6 md:inset-x-12 h-full flex flex-col justify-center will-change-[transform,opacity,filter]"
-          >
-            <Tilt3D maxTilt={4} scale={1.01} className="w-full h-full">
-              <article className="group glass-card-3d p-6 md:p-8 rounded-3xl h-full flex flex-col justify-between">
-                <div className="flex items-baseline justify-between mb-4">
-                  <div className="flex items-baseline gap-2 transform translate-z-10">
-                    <span className="text-xs text-coral font-bold uppercase tracking-wider">
-                      01 - Featured
-                    </span>
-                    <h3 className="font-serif text-xl md:text-2xl text-foreground">Afero Engine</h3>
-                  </div>
-                  <Link
-                    to="/work"
-                    className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
-                  >
-                    View project <ArrowUpRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-                <div className="overflow-hidden rounded-2xl border border-border bg-secondary/50 transform translate-z-6 flex-1 flex items-center justify-center">
-                  <img
-                    src={ad}
-                    alt="Afero featured project preview"
-                    width={1280}
-                    height={800}
-                    className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out"
-                    loading="eager"
-                    fetchPriority="high"
-                  />
-                </div>
-              </article>
-            </Tilt3D>
-          </div>
-
-          {/* Card 1: Praxis Studio */}
-          <div
-            ref={card1Ref}
-            className="absolute inset-x-6 md:inset-x-12 h-full flex flex-col justify-center opacity-0 will-change-[transform,opacity,filter]"
-          >
-            <Tilt3D maxTilt={6} scale={1.02} className="w-full h-full">
-              <article className="group glass-card-3d p-6 md:p-8 rounded-3xl h-full flex flex-col justify-between">
-                <div className="flex items-baseline justify-between mb-4">
-                  <div className="flex items-baseline gap-2 transform translate-z-10">
-                    <span className="text-xs text-muted-foreground">02 - Architecture</span>
-                    <h3 className="font-serif text-xl md:text-2xl text-foreground">
-                      Praxis Studio
-                    </h3>
-                  </div>
-                  <Link
-                    to="/work"
-                    className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
-                  >
-                    View <ArrowUpRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-                <div className="overflow-hidden rounded-xl border border-border bg-secondary/50 transform translate-z-6 flex-1 flex items-center justify-center">
-                  <img
-                    src={work2}
-                    alt="Praxis Studio website"
-                    width={1024}
-                    height={768}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out"
-                  />
-                </div>
-              </article>
-            </Tilt3D>
-          </div>
-
-          {/* Card 2: Meridian Daily */}
-          <div
-            ref={card2Ref}
-            className="absolute inset-x-6 md:inset-x-12 h-full flex flex-col justify-center opacity-0 will-change-[transform,opacity,filter]"
-          >
-            <Tilt3D maxTilt={6} scale={1.02} className="w-full h-full">
-              <article className="group glass-card-3d p-6 md:p-8 rounded-3xl h-full flex flex-col justify-between">
-                <div className="flex items-baseline justify-between mb-4">
-                  <div className="flex items-baseline gap-2 transform translate-z-10">
-                    <span className="text-xs text-muted-foreground">03 - Editorial</span>
-                    <h3 className="font-serif text-xl md:text-2xl text-foreground">
-                      Meridian Daily
-                    </h3>
-                  </div>
-                  <Link
-                    to="/work"
-                    className="text-xs uppercase tracking-widest text-coral hover:underline inline-flex items-center gap-1"
-                  >
-                    View <ArrowUpRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-                <div className="overflow-hidden rounded-xl border border-border bg-secondary/50 transform translate-z-6 flex-1 flex items-center justify-center">
-                  <img
-                    src={work3}
-                    alt="Meridian Daily website"
-                    width={1024}
-                    height={768}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-[1.2s] ease-out"
-                  />
-                </div>
-              </article>
-            </Tilt3D>
-          </div>
-        </div>
-
-        {/* Side Indicator Dots */}
-        <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-30">
-          {[0, 1, 2].map((idx) => (
-            <button
-              key={idx}
-              onClick={() => scrollToSlide(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              className={`h-2.5 w-2.5 rounded-full cursor-pointer transition-all duration-300 ${
-                activeSlide === idx
-                  ? "bg-coral scale-125 shadow-[0_0_8px_var(--coral)]"
-                  : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-              }`}
+      {/* Flagship Showcases */}
+      <div className="space-y-24 md:space-y-36">
+        {/* Project 01: Tomato. (Flagship Case Study) */}
+        <div className="grid md:grid-cols-12 gap-8 md:gap-16 items-center group">
+          {/* Image Column */}
+          <div className="md:col-span-7 overflow-hidden rounded-3xl border border-border/30 bg-secondary/20 aspect-[16/10] relative">
+            <img
+              src={tomato}
+              alt="Tomato. Grocery E-Commerce Platform Showcase"
+              className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+              loading="eager"
+              fetchPriority="high"
             />
-          ))}
+          </div>
+
+          {/* Content Column */}
+          <div className="md:col-span-5 space-y-6">
+            <div className="flex items-center gap-3 text-xs tracking-wider">
+              <span className="text-coral font-bold font-mono text-sm">01</span>
+              <span className="h-3 w-px bg-border/40" />
+              <span className="text-muted-foreground uppercase font-semibold tracking-wider">
+                Flagship Case Study
+              </span>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-serif text-4xl md:text-5xl text-foreground group-hover:text-coral transition-colors duration-300">
+                Tomato.
+              </h3>
+              <p className="text-coral/90 text-sm font-medium italic tracking-wide">
+                Rethinking grocery delivery for the modern era.
+              </p>
+            </div>
+
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              Tomato. is a next-generation online grocery store that pairs high-fidelity visual
+              catalogs with real-time stock routing engines. Built as a headless architecture, it
+              achieves sub-second page loads, instant add-to-cart operations, and a unified
+              administrative dashboard for local inventory hubs.
+            </p>
+
+            {/* Project Specs */}
+            <div className="grid grid-cols-2 gap-4 border-t border-b border-border/20 py-4 font-mono text-[10px] text-muted-foreground">
+              <div>
+                <span className="block font-bold text-foreground mb-1 uppercase tracking-wider">
+                  Core Tech
+                </span>
+                <span>TanStack Start, Cloudflare Workers, Redis</span>
+              </div>
+              <div>
+                <span className="block font-bold text-foreground mb-1 uppercase tracking-wider">
+                  Performance
+                </span>
+                <span>Sub-200ms LCP & Instant Cart Sync</span>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2 pt-2">
+              {["Headless Commerce", "Real-Time Stock", "Edge Caching"].map((feature) => (
+                <span
+                  key={feature}
+                  className="px-3 py-1 rounded-full text-[10px] font-semibold border border-border/30 bg-secondary/10 text-muted-foreground"
+                >
+                  {feature}
+                </span>
+              ))}
+            </div>
+
+            <div className="pt-4">
+              <Link
+                to="/work"
+                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-semibold hover:bg-foreground hover:text-background transition-colors"
+              >
+                View Project <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Project 02: Zizzle (Secondary Showcase) */}
+        <div className="grid md:grid-cols-12 gap-8 md:gap-16 items-center group">
+          {/* Content Column */}
+          <div className="md:col-span-5 space-y-6 md:order-1 order-2">
+            <div className="flex items-center gap-3 text-xs tracking-wider">
+              <span className="text-coral font-bold font-mono text-sm">02</span>
+              <span className="h-3 w-px bg-border/40" />
+              <span className="text-muted-foreground uppercase font-semibold tracking-wider">
+                Secondary Showcase
+              </span>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-serif text-4xl md:text-5xl text-foreground group-hover:text-coral transition-colors duration-300">
+                Zizzle
+              </h3>
+              <p className="text-coral/90 text-sm font-medium italic tracking-wide">
+                Fluid team conversation, simplified.
+              </p>
+            </div>
+
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              Zizzle is a fast, responsive chat workspace inspired by modern messaging pipelines.
+              Engineered using edge-synced WebSocket channels, Zizzle synchronizes thread state and
+              file shares across active chat rooms with sub-50ms propagation, offering high-speed
+              conversations without visual bloat.
+            </p>
+
+            {/* Project Specs */}
+            <div className="grid grid-cols-2 gap-4 border-t border-b border-border/20 py-4 font-mono text-[10px] text-muted-foreground">
+              <div>
+                <span className="block font-bold text-foreground mb-1 uppercase tracking-wider">
+                  Core Tech
+                </span>
+                <span>Vite, Socket.io, Node.js, Express</span>
+              </div>
+              <div>
+                <span className="block font-bold text-foreground mb-1 uppercase tracking-wider">
+                  Message Sync
+                </span>
+                <span>Sub-50ms Message Delivery Propagation</span>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2 pt-2">
+              {["WebSockets", "Glassmorphic UI", "Edge Synchronization"].map((feature) => (
+                <span
+                  key={feature}
+                  className="px-3 py-1 rounded-full text-[10px] font-semibold border border-border/30 bg-secondary/10 text-muted-foreground"
+                >
+                  {feature}
+                </span>
+              ))}
+            </div>
+
+            <div className="pt-4">
+              <Link
+                to="/work"
+                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-semibold hover:bg-foreground hover:text-background transition-colors"
+              >
+                View Project <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Image Column */}
+          <div className="md:col-span-7 overflow-hidden rounded-3xl border border-border/30 bg-secondary/20 aspect-[16/10] relative md:order-2 order-1">
+            <img
+              src={zizzle}
+              alt="Zizzle Real-Time Chat Workspace Showcase"
+              className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -1409,8 +1017,8 @@ function Index() {
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24 pb-16 md:pt-32 md:pb-24 text-center">
           <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium mb-6">
-            <span className="h-px w-8 bg-coral" /> Modern websites for growing brands{" "}
-            <span className="h-px w-8 bg-coral" />
+            <span className="h-px w-8 bg-coral" /> Custom Web Development & Digital Design for
+            Growing Brands <span className="h-px w-8 bg-coral" />
           </div>
 
           <h1 className="font-serif mt-4 text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight flex flex-col items-center select-none">
@@ -1465,7 +1073,7 @@ function Index() {
       {/* WORK / FEATURED PRODUCTS CAROUSEL */}
       <FeaturedProductsCarousel />
 
-      <section className="mx-auto max-w-7xl px-6 pt-16 md:pt-24 pb-24 md:pb-32 text-center relative z-20">
+      <section className="mx-auto max-w-7xl px-6 pt-8 md:pt-12 pb-12 md:pb-16 text-center relative z-20">
         <Link
           to="/work"
           className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-7 py-3.5 text-sm font-semibold hover:bg-foreground hover:text-background transition-colors"
@@ -1482,7 +1090,7 @@ function Index() {
               What we do
             </div>
             <h2 className="font-serif text-4xl md:text-5xl mt-4">
-              From first idea to long after launch.
+              Full-Cycle Digital Services: Design, Development & Strategy.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
               A complete offering, end-to-end. Every project includes the strategy, content, design,
@@ -1534,7 +1142,7 @@ function Index() {
         <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-coral/5 rounded-full blur-[100px] pointer-events-none" />
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium">
-            <span className="h-px w-6 bg-coral" /> AI Capabilities
+            <span className="h-px w-6 bg-coral" /> Custom Software & AI Capabilities
           </div>
           <h2 className="font-serif text-4xl md:text-5xl mt-4">
             Next-gen AI Solutions & Automation.
@@ -2016,60 +1624,215 @@ function Index() {
         </div>
       </section>
 
-      {/* TEAM / STATS */}
-      <section className="relative overflow-hidden mx-auto max-w-7xl px-6 py-24 md:py-32 text-center">
-        {/* Arc Image */}
-        <img
-          src={arc}
-          alt=""
-          role="presentation"
-          loading="lazy"
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] opacity-80 pointer-events-none select-none"
-        />
+      {/* TEAM / PHILOSOPHY REDESIGN */}
+      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32 border-b border-border/40 relative overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-coral/5 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="relative z-10 mt-16 md:mt-24">
-          <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium">About us</div>
+        <div className="grid lg:grid-cols-12 gap-12 items-center max-w-6xl mx-auto">
+          {/* Left Column: Context, Stats & CTA */}
+          <div className="lg:col-span-5 space-y-8 text-left">
+            <div>
+              <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium mb-4">
+                About us · Studio Philosophy
+              </div>
+              <h2 className="font-serif text-4xl md:text-5xl tracking-tight text-foreground leading-[1.15]">
+                Meet the crew.
+              </h2>
+              <p className="mt-6 text-sm md:text-base text-muted-foreground leading-relaxed">
+                Afero is a small team of developers and designers focused on building modern,
+                scalable, and high-performing digital experiences for growing businesses and
+                startups.
+              </p>
+            </div>
 
-          <h2 className="font-serif text-4xl md:text-5xl mt-4">Meet the crew.</h2>
-
-          <p className="mx-auto mt-4 max-w-xl text-muted-foreground leading-relaxed">
-            Afero is a small team of developers and designers focused on building modern, scalable,
-            and high-performing digital experiences for growing businesses and startups.
-          </p>
-
-          <div className="mt-8">
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-semibold hover:bg-foreground hover:text-background transition-colors"
-            >
-              More about us <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          <Tilt3D maxTilt={4} scale={1.01} className="mt-16 max-w-3xl mx-auto">
-            <div className="grid grid-cols-3 gap-6 rounded-2xl glass-card-3d p-8 md:p-10 backdrop-blur-md">
+            {/* Minimalist statistics stack */}
+            <div className="grid grid-cols-3 gap-4 border-t border-b border-border/20 py-6 font-mono">
               {[
                 { n: "10+", l: "Projects Built" },
-                { n: "24/7", l: "Technical Support" },
-                { n: "100%", l: "On-time delivery" },
+                { n: "24/7", l: "Tech Support" },
+                { n: "100%", l: "On-Time Done" },
               ].map((s) => (
-                <div key={s.l} className="preserve-3d">
-                  <div
-                    className="font-serif text-4xl md:text-5xl text-coral transform translate-z-10"
-                    style={{ transform: "translateZ(20px)" }}
-                  >
+                <div key={s.l}>
+                  <div className="text-2xl md:text-3xl text-coral font-serif leading-none mb-1.5">
                     {s.n}
                   </div>
-                  <div
-                    className="mt-2 text-xs md:text-sm text-muted-foreground uppercase tracking-wider font-medium transform translate-z-2"
-                    style={{ transform: "translateZ(10px)" }}
-                  >
+                  <div className="text-[9px] text-muted-foreground/80 uppercase tracking-wider font-semibold leading-tight">
                     {s.l}
                   </div>
                 </div>
               ))}
             </div>
-          </Tilt3D>
+
+            <div>
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-semibold hover:bg-foreground hover:text-background transition-colors cursor-pointer"
+              >
+                More about us <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Column: 3-Pillar Interactive Cards */}
+          <div className="lg:col-span-7 flex flex-col gap-5">
+            {[
+              {
+                title: "Designers' Eye",
+                tagline: "Aesthetic Precision",
+                desc: "We design visual systems that prioritize functional minimalism, typographic hierarchy, and responsive canvas alignments.",
+                badge: "UX/UI System",
+                animationComp: (
+                  <div className="h-20 w-full rounded-xl border border-border/15 bg-background/30 relative overflow-hidden flex items-center justify-center p-3 select-none">
+                    {/* Visual alignment grid mockup */}
+                    <div className="absolute inset-0 grid grid-cols-6 grid-rows-3 gap-2 p-3 opacity-25">
+                      {Array.from({ length: 18 }).map((_, i) => (
+                        <div
+                          key={i}
+                          className="border border-dashed border-muted-foreground/35 rounded"
+                        />
+                      ))}
+                    </div>
+                    {/* Animated layout box guides */}
+                    <div className="w-11/12 h-8 border border-coral/30 rounded relative flex items-center justify-between px-3">
+                      <span className="h-2.5 w-8 bg-coral/20 rounded" />
+                      <span className="h-1.5 w-12 bg-muted-foreground/30 rounded" />
+                      <div className="flex gap-1.5">
+                        <span className="h-2 w-2 rounded-full bg-coral animate-ping" />
+                        <span className="h-2 w-2 rounded-full bg-coral" />
+                      </div>
+                      {/* Responsive ruler line */}
+                      <div className="absolute -bottom-1 left-0 right-0 h-px bg-coral/40" />
+                      <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 font-mono text-[7px] text-coral/80 uppercase">
+                        375px
+                      </div>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                title: "Engineers' Code",
+                tagline: "Technical Rigor",
+                desc: "Pure TypeScript, optimized serverless edge runtimes, and handmade style files. No templates, no code bloat.",
+                badge: "Edge Architecture",
+                animationComp: (
+                  <div className="h-20 w-full rounded-xl border border-border/15 bg-[#0d0a08] relative overflow-hidden p-3 text-left font-mono text-[9px] select-none flex flex-col justify-between">
+                    <div className="flex justify-between items-center text-muted-foreground/45 border-b border-border/10 pb-1.5 mb-1">
+                      <span>bash ~ afero-runner</span>
+                      <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
+                    </div>
+                    <div className="flex-1 space-y-0.5 text-foreground/80 overflow-hidden font-mono">
+                      <div>$ npm run build --optimize</div>
+                      <div className="text-coral/90 font-semibold flex items-center gap-1">
+                        <span>✓ Bundler completed in 12.4ms</span>
+                      </div>
+                      <div className="text-muted-foreground/50 font-mono text-[8px]">
+                        $ FPS: 60 · LCP: 0.12s · TTFB: 8ms
+                      </div>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                title: "Strategists' Path",
+                tagline: "Business Outcome",
+                desc: "Aligning interface flows directly with conversion triggers, organic SEO schema structures, and business performance.",
+                badge: "Conversion Engine",
+                animationComp: (
+                  <div className="h-20 w-full rounded-xl border border-border/15 bg-background/30 relative overflow-hidden flex items-center justify-center p-3 select-none">
+                    {/* SVG Line Chart drawing animation */}
+                    <svg className="w-11/12 h-12 overflow-visible" viewBox="0 0 200 50">
+                      {/* Grid guidelines */}
+                      <line
+                        x1="0"
+                        y1="45"
+                        x2="200"
+                        y2="45"
+                        stroke="var(--color-border)"
+                        strokeWidth="0.5"
+                        strokeDasharray="2 2"
+                      />
+                      <line
+                        x1="0"
+                        y1="25"
+                        x2="200"
+                        y2="25"
+                        stroke="var(--color-border)"
+                        strokeWidth="0.5"
+                        strokeDasharray="2 2"
+                      />
+                      <line
+                        x1="0"
+                        y1="5"
+                        x2="200"
+                        y2="5"
+                        stroke="var(--color-border)"
+                        strokeWidth="0.5"
+                        strokeDasharray="2 2"
+                      />
+                      {/* Trajectory Path */}
+                      <path
+                        d="M0,40 Q40,35 80,25 T160,10 L200,5"
+                        fill="none"
+                        stroke="var(--color-coral)"
+                        strokeWidth="1.5"
+                        strokeDasharray="400"
+                        strokeDashoffset="400"
+                        className="animate-[draw-chart_3s_ease-out_forwards_infinite]"
+                      />
+                      {/* Glowing pointer dot */}
+                      <circle
+                        cx="200"
+                        cy="5"
+                        r="2.5"
+                        fill="var(--color-coral)"
+                        className="animate-pulse"
+                      />
+                      <text
+                        x="145"
+                        y="22"
+                        fill="var(--color-coral)"
+                        fontSize="6"
+                        className="font-mono font-bold tracking-widest uppercase"
+                      >
+                        CONVERSION +140%
+                      </text>
+                    </svg>
+                  </div>
+                ),
+              },
+            ].map((pillar, idx) => (
+              <div
+                key={pillar.title}
+                className="group flex flex-col md:flex-row gap-5 items-stretch p-5 rounded-2xl border border-border/30 bg-card/45 backdrop-blur-md hover:border-coral/35 hover:shadow-[0_8px_30px_-12px_rgba(224,90,54,0.08)] transition-all duration-300 text-left"
+              >
+                {/* Content */}
+                <div className="flex-1 flex flex-col justify-between gap-3">
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-bold text-coral/80 font-mono tracking-widest uppercase">
+                        0{idx + 1} · {pillar.tagline}
+                      </span>
+                      <span className="inline-block px-2.5 py-0.5 rounded-full bg-secondary border border-border/40 text-[9px] text-foreground/70 font-mono font-semibold">
+                        {pillar.badge}
+                      </span>
+                    </div>
+                    <h3 className="font-serif text-xl md:text-2xl text-foreground mt-2">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mt-2">
+                      {pillar.desc}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Animated Visual Module Area */}
+                <div className="w-full md:w-[220px] shrink-0 self-center">
+                  {pillar.animationComp}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -2082,7 +1845,7 @@ function Index() {
             <span className="h-px w-6 bg-coral" /> Sectors We Support
           </div>
           <h2 className="font-serif text-4xl md:text-5xl mt-4">
-            Tailored digital platforms for every industry.
+            Tailored Web & Software Platforms for Every Industry.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground text-sm md:text-base">
             We don't build generic websites. We design workflows and visual systems specific to your
@@ -2091,9 +1854,10 @@ function Index() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-8 items-start max-w-6xl mx-auto">
+        {/* Desktop grid layout */}
+        <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-stretch max-w-6xl mx-auto">
           {/* Left vertical industry selector */}
-          <div className="lg:col-span-5 flex flex-col gap-2.5 max-h-[500px] overflow-y-auto pr-2 scrollbar-thin text-left">
+          <div className="lg:col-span-5 flex flex-col justify-between gap-3 text-left lg:h-full">
             {industries.map((ind) => {
               const IconComp = ind.icon;
               const isSelected = activeIndustry === ind.id;
@@ -2102,7 +1866,7 @@ function Index() {
                   key={ind.id}
                   onClick={() => setActiveIndustry(ind.id)}
                   onMouseEnter={() => setActiveIndustry(ind.id)}
-                  className={`flex items-center gap-4 text-left p-4 rounded-xl border transition-all duration-300 group cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-coral ${
+                  className={`flex items-center gap-4 text-left p-4 rounded-xl border transition-all duration-300 group cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-coral flex-1 ${
                     isSelected
                       ? "bg-card border-coral/30 shadow-[0_4px_20px_-10px_rgba(224,90,54,0.15)]"
                       : "bg-transparent border-transparent hover:bg-card/45 hover:border-border/30"
@@ -2138,52 +1902,162 @@ function Index() {
 
           {/* Right visual 3D preview console */}
           <div className="lg:col-span-7 h-full">
-            {industries.map((ind) => {
-              if (ind.id !== activeIndustry) return null;
-              return (
-                <div key={ind.id} className="animate-fade-in-up">
-                  <Tilt3D maxTilt={3} scale={1.005}>
-                    <div className="glass-card-3d rounded-3xl p-6 md:p-8 preserve-3d border border-border/30 flex flex-col gap-6">
-                      <div className="text-left">
-                        <div className="inline-block px-3 py-1 rounded-full bg-coral/10 text-coral text-[10px] font-semibold uppercase tracking-wider mb-3">
-                          Featured Blueprint
+            <AnimatePresence mode="wait">
+              {industries.map((ind) => {
+                if (ind.id !== activeIndustry) return null;
+                return (
+                  <motion.div
+                    key={ind.id}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.25, ease: [0.25, 1, 0.5, 1] }}
+                    className="h-full"
+                  >
+                    <Tilt3D maxTilt={3} scale={1.005} className="h-full">
+                      <div className="glass-card-3d rounded-3xl p-6 md:p-8 preserve-3d border border-border/30 flex flex-col justify-between h-full gap-6">
+                        <div className="text-left">
+                          <div className="inline-block px-3 py-1 rounded-full bg-coral/10 text-coral text-[10px] font-semibold uppercase tracking-wider mb-3">
+                            Featured Blueprint
+                          </div>
+                          <h3 className="font-serif text-2xl md:text-3xl text-foreground">
+                            {ind.name} Platforms
+                          </h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed mt-2">
+                            {ind.desc}
+                          </p>
                         </div>
-                        <h3 className="font-serif text-2xl md:text-3xl text-foreground">
-                          {ind.name} Platforms
-                        </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed mt-2">
-                          {ind.desc}
-                        </p>
-                      </div>
 
-                      {/* Mockup Dashboard Preview Component */}
-                      <div className="relative z-10" style={{ transform: "translateZ(10px)" }}>
-                        <IndustryPreview industryId={ind.id} />
-                      </div>
+                        {/* Mockup Dashboard Preview Component */}
+                        <div className="relative z-10" style={{ transform: "translateZ(10px)" }}>
+                          <IndustryPreview industryId={ind.id} />
+                        </div>
 
-                      {/* Industry Core Deliverables list */}
-                      <div className="border-t border-border/20 pt-5 text-left">
-                        <div className="text-[9px] uppercase tracking-widest text-muted-foreground/50 font-bold mb-3">
-                          Core Integration Features
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                          {ind.features.map((f, fIdx) => (
-                            <span
-                              key={fIdx}
-                              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary border border-border/40 text-xs text-foreground/80 font-medium font-mono"
-                            >
-                              <span className="h-1.5 w-1.5 rounded-full bg-coral" />
-                              {f}
-                            </span>
-                          ))}
+                        {/* Industry Core Deliverables list */}
+                        <div className="border-t border-border/20 pt-5 text-left">
+                          <div className="text-[9px] uppercase tracking-widest text-muted-foreground/50 font-bold mb-3">
+                            Core Integration Features
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {ind.features.map((f, fIdx) => (
+                              <span
+                                key={fIdx}
+                                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary border border-border/40 text-xs text-foreground/80 font-medium font-mono"
+                              >
+                                <span className="h-1.5 w-1.5 rounded-full bg-coral" />
+                                {f}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Tilt3D>
-                </div>
-              );
-            })}
+                    </Tilt3D>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
           </div>
+        </div>
+
+        {/* Mobile Accordion Layout */}
+        <div className="lg:hidden flex flex-col gap-4 max-w-xl mx-auto">
+          {industries.map((ind) => {
+            const IconComp = ind.icon;
+            const isSelected = activeIndustry === ind.id;
+            return (
+              <div
+                key={ind.id}
+                className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
+                  isSelected
+                    ? "bg-card border-coral/30 shadow-[0_4px_20px_-10px_rgba(224,90,54,0.15)]"
+                    : "bg-card/30 border-border/20 hover:bg-card/45 hover:border-border/30"
+                }`}
+              >
+                <button
+                  onClick={() => setActiveIndustry(ind.id)}
+                  className="w-full flex items-center justify-between text-left p-4 focus:outline-none min-h-[44px] cursor-pointer"
+                >
+                  <div className="flex items-center gap-4">
+                    <div
+                      className={`h-9 w-9 rounded-lg flex items-center justify-center transition-colors duration-300 ${
+                        isSelected
+                          ? "bg-coral text-coral-foreground"
+                          : "bg-secondary text-muted-foreground"
+                      }`}
+                    >
+                      <IconComp className="h-4.5 w-4.5" />
+                    </div>
+                    <div>
+                      <span
+                        className={`font-serif text-lg block transition-colors ${
+                          isSelected ? "text-foreground font-bold" : "text-muted-foreground"
+                        }`}
+                      >
+                        {ind.name}
+                      </span>
+                      <span className="text-[10px] text-muted-foreground/60 block mt-0.5 font-medium uppercase tracking-wider">
+                        {ind.tagline}
+                      </span>
+                    </div>
+                  </div>
+                  <ChevronDown
+                    className={`h-5 w-5 text-muted-foreground/60 transition-transform duration-300 shrink-0 ${
+                      isSelected ? "rotate-180 text-coral" : ""
+                    }`}
+                  />
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isSelected && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="p-5 border-t border-border/20 flex flex-col gap-6 bg-secondary/10">
+                        <div>
+                          <div className="inline-block px-3 py-1 rounded-full bg-coral/10 text-coral text-[10px] font-semibold uppercase tracking-wider mb-3">
+                            Featured Blueprint
+                          </div>
+                          <h3 className="font-serif text-2xl text-foreground">
+                            {ind.name} Platforms
+                          </h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed mt-2">
+                            {ind.desc}
+                          </p>
+                        </div>
+
+                        {/* Mockup Dashboard Preview Component */}
+                        <div className="relative z-10">
+                          <IndustryPreview industryId={ind.id} />
+                        </div>
+
+                        {/* Industry Core Deliverables list */}
+                        <div className="border-t border-border/20 pt-5 text-left">
+                          <div className="text-[9px] uppercase tracking-widest text-muted-foreground/50 font-bold mb-3">
+                            Core Integration Features
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {ind.features.map((f, fIdx) => (
+                              <span
+                                key={fIdx}
+                                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary border border-border/40 text-xs text-foreground/80 font-medium font-mono"
+                              >
+                                <span className="h-1.5 w-1.5 rounded-full bg-coral" />
+                                {f}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
       </section>
 

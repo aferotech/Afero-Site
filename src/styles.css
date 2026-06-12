@@ -124,6 +124,13 @@
   html {
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 
   body {
@@ -411,5 +418,14 @@
 
   .animate-fade-in-up {
     animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Utility class to hide scrollbars */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
