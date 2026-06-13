@@ -103,8 +103,23 @@ export const submitContactForm = createServerFn({ method: "POST" })
 
     // 4. Send email via Resend API
     const resendApiKey = process.env.RESEND_API_KEY;
-    const recipientEmail = process.env.CONTACT_RECIPIENT_EMAIL || "hello@afero.in";
+    const recipientEmail = process.env.CONTACT_RECIPIENT_EMAIL || "afero.tech@gmail.com";
     const senderEmail = process.env.CONTACT_SENDER_EMAIL || "onboarding@resend.dev";
+
+    console.log("[DEBUG] submitContactForm starting:", {
+      name,
+      email,
+      company,
+      hasMessage: !!message,
+      clientIp,
+    });
+    console.log("[DEBUG] Resend configuration:", {
+      hasApiKey: !!resendApiKey,
+      apiKeyLength: resendApiKey?.length || 0,
+      apiKeyPrefix: resendApiKey ? resendApiKey.substring(0, 7) : "none",
+      recipientEmail,
+      senderEmail,
+    });
 
     if (!resendApiKey || resendApiKey === "re_placeholder") {
       console.error("Resend API key is not configured.");
@@ -145,13 +160,24 @@ export const submitContactForm = createServerFn({ method: "POST" })
 
       if (!response.ok) {
         const errorDetails = await response.json().catch(() => ({}));
-        console.error("Resend API call failed:", errorDetails);
-        return { success: false, error: "Failed to send message. Please try again later." };
+        console.error("[DEBUG] Resend API call failed:", {
+          status: response.status,
+          statusText: response.statusText,
+          errorDetails,
+        });
+        const errorMsg =
+          errorDetails?.message || errorDetails?.error?.message || JSON.stringify(errorDetails);
+        return {
+          success: false,
+          error: `Email service failed: ${errorMsg} (HTTP ${response.status})`,
+        };
       }
 
+      console.log("[DEBUG] Resend API call succeeded!");
       return { success: true };
     } catch (error) {
-      console.error("Failed to execute Resend email send:", error);
-      return { success: false, error: "An unexpected error occurred. Please try again later." };
+      console.error("[DEBUG] Failed to execute Resend email send:", error);
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      return { success: false, error: `Unexpected error: ${errorMessage}` };
     }
   });

@@ -2204,7 +2204,7 @@ function Index() {
               </Link>
 
               <a
-                href="mailto:hello@afero.in"
+                href="mailto:afero.tech@gmail.com"
                 className="group p-5 rounded-2xl bg-card border border-border/30 hover:border-coral/40 transition-all duration-300 flex flex-col justify-between h-[120px]"
               >
                 <div className="flex justify-between items-center text-muted-foreground/60 group-hover:text-coral transition-colors">
@@ -2216,7 +2216,7 @@ function Index() {
                 <div>
                   <h3 className="font-serif text-xl text-foreground">Email Us</h3>
                   <p className="text-[10px] text-muted-foreground mt-1 leading-normal">
-                    Drop us a line directly at hello@afero.in.
+                    Drop us a line directly at afero.tech@gmail.com.
                   </p>
                 </div>
               </a>

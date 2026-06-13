@@ -1,3 +1,4 @@
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -218,6 +219,55 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+const scrollCache: Record<string, number> = {};
+const currentPathRef = { current: typeof window !== "undefined" ? window.location.pathname : "" };
+let isPopState = false;
+
+if (typeof window !== "undefined") {
+  window.addEventListener("popstate", () => {
+    isPopState = true;
+  });
+}
+
+function ScrollManager({ pathname }: { pathname: string }) {
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
+
+  useLayoutEffect(() => {
+    const prevPath = currentPathRef.current;
+
+    // Cache outgoing scroll position
+    if (prevPath && prevPath !== pathname) {
+      scrollCache[prevPath] = window.scrollY;
+    }
+
+    let targetScroll = 0;
+    if (isPopState) {
+      targetScroll = scrollCache[pathname] || 0;
+      isPopState = false;
+    }
+
+    // Handle hash anchors
+    if (window.location.hash) {
+      const id = decodeURIComponent(window.location.hash.substring(1));
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView();
+        currentPathRef.current = pathname;
+        return;
+      }
+    }
+
+    window.scrollTo(0, targetScroll);
+    currentPathRef.current = pathname;
+  }, [pathname]);
+
+  return null;
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const location = useLocation();
@@ -233,6 +283,7 @@ function RootComponent() {
           exit={{ opacity: 0, y: -15 }}
           transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
         >
+          <ScrollManager pathname={location.pathname} />
           <Outlet />
         </motion.div>
       </AnimatePresence>

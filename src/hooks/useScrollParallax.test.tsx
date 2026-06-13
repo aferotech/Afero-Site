@@ -88,13 +88,20 @@ describe("useScrollParallax", () => {
       width: 100,
     });
 
+    // Measure at scrollY = 0 first
+    Object.defineProperty(window, "scrollY", {
+      value: 0,
+      writable: true,
+      configurable: true,
+    });
+    window.dispatchEvent(new Event("resize"));
+
+    // Scroll to 100
     Object.defineProperty(window, "scrollY", {
       value: 100,
       writable: true,
       configurable: true,
     });
-
-    window.dispatchEvent(new Event("resize"));
     window.dispatchEvent(new Event("scroll"));
 
     // offset = (400 - 500) * 0.2 = -20
