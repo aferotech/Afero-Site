@@ -1021,7 +1021,7 @@ function Index() {
             Growing Brands <span className="h-px w-8 bg-coral" />
           </div>
 
-          <h1 className="font-serif mt-4 text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight flex flex-col items-center select-none">
+          <h1 className="font-serif mt-4 text-[2rem] min-[360px]:text-[2.5rem] min-[410px]:text-[2.75rem] sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight flex flex-col items-center select-none">
             <ParallaxText speed={0.12} direction="left" className="font-normal whitespace-nowrap">
               A studio for websites
             </ParallaxText>
@@ -1195,7 +1195,7 @@ function Index() {
               <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium mb-4">
                 <span className="h-px w-6 bg-coral" /> Stack & Standards
               </div>
-              <h2 className="font-serif text-4xl md:text-5xl leading-tight">
+              <h2 className="font-serif text-3xl md:text-5xl leading-tight">
                 Modern tools. <br />
                 Uncompromising <br />
                 <span className="text-coral italic font-normal">performance.</span>
@@ -1223,265 +1223,267 @@ function Index() {
             </div>
 
             {/* Right stack visualization */}
-            <div className="lg:col-span-7 flex justify-center items-center relative min-h-[360px] md:min-h-[440px]">
-              {/* Ambient radial glow backdrop behind the core */}
-              <div className="absolute h-80 w-80 rounded-full bg-coral/[0.04] blur-3xl pointer-events-none z-0" />
+            <div className="lg:col-span-7 flex justify-center items-center relative min-h-[360px] md:min-h-[440px] overflow-visible">
+              <div className="relative w-[440px] h-[380px] md:w-[500px] md:h-[440px] flex items-center justify-center scale-[0.68] min-[360px]:scale-[0.78] min-[390px]:scale-[0.84] min-[414px]:scale-[0.88] md:scale-100 origin-center shrink-0">
+                {/* Ambient radial glow backdrop behind the core */}
+                <div className="absolute h-80 w-80 rounded-full bg-coral/[0.04] blur-3xl pointer-events-none z-0" />
 
-              {/* Spinning orbital background wireframe circles */}
-              <div className="absolute h-72 w-72 border border-border/15 rounded-full animate-[spin_50s_linear_infinite] pointer-events-none z-0" />
-              <div className="absolute h-96 w-96 border border-border/10 rounded-full animate-[spin_70s_linear_infinite_reverse] pointer-events-none z-0" />
+                {/* Spinning orbital background wireframe circles */}
+                <div className="absolute h-72 w-72 border border-border/15 rounded-full animate-[spin_50s_linear_infinite] pointer-events-none z-0" />
+                <div className="absolute h-96 w-96 border border-border/10 rounded-full animate-[spin_70s_linear_infinite_reverse] pointer-events-none z-0" />
 
-              {/* Ecosystem Energy Beams Connecting Core to orbiting cards */}
-              <svg
-                className="absolute inset-0 w-full h-full pointer-events-none z-0"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <defs>
-                  <linearGradient id="beam-grad-node" x1="50%" y1="50%" x2="50%" y2="8%">
-                    <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#5fa04e" stopOpacity="0.1" />
-                  </linearGradient>
-                  <linearGradient id="beam-grad-react" x1="50%" y1="50%" x2="10%" y2="8%">
-                    <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#61dafb" stopOpacity="0.1" />
-                  </linearGradient>
-                  <linearGradient id="beam-grad-ts" x1="50%" y1="50%" x2="88%" y2="18%">
-                    <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#3178c6" stopOpacity="0.1" />
-                  </linearGradient>
-                  <linearGradient id="beam-grad-tailwind" x1="50%" y1="50%" x2="20%" y2="88%">
-                    <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.1" />
-                  </linearGradient>
-                  <linearGradient id="beam-grad-vite" x1="50%" y1="50%" x2="85%" y2="88%">
-                    <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#bd34fe" stopOpacity="0.1" />
-                  </linearGradient>
-                  <linearGradient id="beam-grad-openai" x1="50%" y1="50%" x2="5%" y2="50%">
-                    <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="var(--coral)" stopOpacity="0.1" />
-                  </linearGradient>
-                  <linearGradient id="beam-grad-vercel" x1="50%" y1="50%" x2="95%" y2="50%">
-                    <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0.1" />
-                  </linearGradient>
-                </defs>
+                {/* Ecosystem Energy Beams Connecting Core to orbiting cards */}
+                <svg
+                  className="absolute inset-0 w-full h-full pointer-events-none z-0"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <defs>
+                    <linearGradient id="beam-grad-node" x1="50%" y1="50%" x2="50%" y2="8%">
+                      <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="#5fa04e" stopOpacity="0.1" />
+                    </linearGradient>
+                    <linearGradient id="beam-grad-react" x1="50%" y1="50%" x2="10%" y2="8%">
+                      <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="#61dafb" stopOpacity="0.1" />
+                    </linearGradient>
+                    <linearGradient id="beam-grad-ts" x1="50%" y1="50%" x2="88%" y2="18%">
+                      <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="#3178c6" stopOpacity="0.1" />
+                    </linearGradient>
+                    <linearGradient id="beam-grad-tailwind" x1="50%" y1="50%" x2="20%" y2="88%">
+                      <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.1" />
+                    </linearGradient>
+                    <linearGradient id="beam-grad-vite" x1="50%" y1="50%" x2="85%" y2="88%">
+                      <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="#bd34fe" stopOpacity="0.1" />
+                    </linearGradient>
+                    <linearGradient id="beam-grad-openai" x1="50%" y1="50%" x2="5%" y2="50%">
+                      <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="var(--coral)" stopOpacity="0.1" />
+                    </linearGradient>
+                    <linearGradient id="beam-grad-vercel" x1="50%" y1="50%" x2="95%" y2="50%">
+                      <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="#ffffff" stopOpacity="0.1" />
+                    </linearGradient>
+                  </defs>
 
-                {/* Beams */}
-                <line
-                  x1="50%"
-                  y1="50%"
-                  x2="50%"
-                  y2="8%"
-                  stroke="url(#beam-grad-node)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[dash-crawl_1.5s_linear_infinite]"
-                />
-                <line
-                  x1="50%"
-                  y1="50%"
-                  x2="10%"
-                  y2="8%"
-                  stroke="url(#beam-grad-react)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[dash-crawl_2s_linear_infinite]"
-                />
-                <line
-                  x1="50%"
-                  y1="50%"
-                  x2="88%"
-                  y2="18%"
-                  stroke="url(#beam-grad-ts)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[dash-crawl_1.8s_linear_infinite]"
-                />
-                <line
-                  x1="50%"
-                  y1="50%"
-                  x2="20%"
-                  y2="88%"
-                  stroke="url(#beam-grad-tailwind)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[dash-crawl_2.2s_linear_infinite]"
-                />
-                <line
-                  x1="50%"
-                  y1="50%"
-                  x2="85%"
-                  y2="88%"
-                  stroke="url(#beam-grad-vite)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[dash-crawl_1.6s_linear_infinite]"
-                />
-                <line
-                  x1="50%"
-                  y1="50%"
-                  x2="5%"
-                  y2="50%"
-                  stroke="url(#beam-grad-openai)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[dash-crawl_1.4s_linear_infinite]"
-                />
-                <line
-                  x1="50%"
-                  y1="50%"
-                  x2="95%"
-                  y2="50%"
-                  stroke="url(#beam-grad-vercel)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[dash-crawl_2.5s_linear_infinite]"
-                />
-              </svg>
+                  {/* Beams */}
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2="50%"
+                    y2="8%"
+                    stroke="url(#beam-grad-node)"
+                    strokeWidth="1"
+                    strokeDasharray="4 8"
+                    className="animate-[dash-crawl_1.5s_linear_infinite]"
+                  />
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2="10%"
+                    y2="8%"
+                    stroke="url(#beam-grad-react)"
+                    strokeWidth="1"
+                    strokeDasharray="4 8"
+                    className="animate-[dash-crawl_2s_linear_infinite]"
+                  />
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2="88%"
+                    y2="18%"
+                    stroke="url(#beam-grad-ts)"
+                    strokeWidth="1"
+                    strokeDasharray="4 8"
+                    className="animate-[dash-crawl_1.8s_linear_infinite]"
+                  />
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2="20%"
+                    y2="88%"
+                    stroke="url(#beam-grad-tailwind)"
+                    strokeWidth="1"
+                    strokeDasharray="4 8"
+                    className="animate-[dash-crawl_2.2s_linear_infinite]"
+                  />
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2="85%"
+                    y2="88%"
+                    stroke="url(#beam-grad-vite)"
+                    strokeWidth="1"
+                    strokeDasharray="4 8"
+                    className="animate-[dash-crawl_1.6s_linear_infinite]"
+                  />
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2="5%"
+                    y2="50%"
+                    stroke="url(#beam-grad-openai)"
+                    strokeWidth="1"
+                    strokeDasharray="4 8"
+                    className="animate-[dash-crawl_1.4s_linear_infinite]"
+                  />
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2="95%"
+                    y2="50%"
+                    stroke="url(#beam-grad-vercel)"
+                    strokeWidth="1"
+                    strokeDasharray="4 8"
+                    className="animate-[dash-crawl_2.5s_linear_infinite]"
+                  />
+                </svg>
 
-              {/* Central Core (Afero Engine centerpiece) */}
-              <div className="relative z-10 h-32 w-32 md:h-36 md:w-36 flex items-center justify-center select-none preserve-3d">
-                {/* Ring 1: Outer dashed neon indicator */}
-                <div className="absolute inset-0 border-2 border-dashed border-coral/30 rounded-full animate-[spin_45s_linear_infinite]" />
+                {/* Central Core (Afero Engine centerpiece) */}
+                <div className="relative z-10 h-32 w-32 md:h-36 md:w-36 flex items-center justify-center select-none preserve-3d">
+                  {/* Ring 1: Outer dashed neon indicator */}
+                  <div className="absolute inset-0 border-2 border-dashed border-coral/30 rounded-full animate-[spin_45s_linear_infinite]" />
 
-                {/* Ring 2: Core scanner line */}
-                <div className="absolute inset-2 border border-coral/15 rounded-full animate-[spin_12s_linear_infinite_reverse] pointer-events-none">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 h-1.5 w-1.5 bg-coral rounded-full shadow-[0_0_8px_var(--coral)]" />
-                </div>
+                  {/* Ring 2: Core scanner line */}
+                  <div className="absolute inset-2 border border-coral/15 rounded-full animate-[spin_12s_linear_infinite_reverse] pointer-events-none">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 h-1.5 w-1.5 bg-coral rounded-full shadow-[0_0_8px_var(--coral)]" />
+                  </div>
 
-                {/* Ring 3: Holographic backdrop glow */}
-                <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-black via-[#120d0a] to-[#201009] border border-coral/25 flex flex-col justify-center items-center shadow-[inset_0_2px_4px_rgba(255,255,255,0.05),0_0_50px_rgba(224,90,54,0.18)]">
-                  {/* Subtle pulsing background power core */}
-                  <div className="absolute inset-6 rounded-full bg-coral/5 animate-pulse blur-sm pointer-events-none" />
+                  {/* Ring 3: Holographic backdrop glow */}
+                  <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-black via-[#120d0a] to-[#201009] border border-coral/25 flex flex-col justify-center items-center shadow-[inset_0_2px_4px_rgba(255,255,255,0.05),0_0_50px_rgba(224,90,54,0.18)]">
+                    {/* Subtle pulsing background power core */}
+                    <div className="absolute inset-6 rounded-full bg-coral/5 animate-pulse blur-sm pointer-events-none" />
 
-                  <span className="text-[10px] uppercase tracking-[0.25em] text-coral font-extrabold font-mono drop-shadow-[0_0_8px_rgba(224,90,54,0.4)]">
-                    AFERO
-                  </span>
-                  <span className="text-[7px] uppercase tracking-[0.2em] text-muted-foreground mt-0.5 font-bold font-mono">
-                    ENGINE
-                  </span>
-                  {/* Pulsing state indicator */}
-                  <div className="flex items-center gap-1 mt-1.5">
-                    <span className="h-1 w-1 rounded-full bg-green-400 animate-ping" />
-                    <span className="text-[5.5px] uppercase tracking-wider text-green-400 font-bold font-mono">
-                      SYS ACTIVE
+                    <span className="text-[10px] uppercase tracking-[0.25em] text-coral font-extrabold font-mono drop-shadow-[0_0_8px_rgba(224,90,54,0.4)]">
+                      AFERO
                     </span>
+                    <span className="text-[7px] uppercase tracking-[0.2em] text-muted-foreground mt-0.5 font-bold font-mono">
+                      ENGINE
+                    </span>
+                    {/* Pulsing state indicator */}
+                    <div className="flex items-center gap-1 mt-1.5">
+                      <span className="h-1 w-1 rounded-full bg-green-400 animate-ping" />
+                      <span className="text-[5.5px] uppercase tracking-wider text-green-400 font-bold font-mono">
+                        SYS ACTIVE
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Floating Orbiting Cards with Parallax Layering */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 animate-[float-slow_9s_ease-in-out_infinite_0.8s] perspective-1000">
-                <Tilt3D maxTilt={15} scale={1.08}>
-                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#5fa04e]/30 hover:border-[#5fa04e]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(95,160,78,0.08)] hover:shadow-[0_4px_24px_rgba(95,160,78,0.25)] transition-all duration-300 select-none group preserve-3d">
-                    <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
-                      <NodeLogo className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
-                    </span>
-                    <span
-                      className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#83cd6d] transition-colors duration-300"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
-                      Node.js
-                    </span>
-                  </div>
-                </Tilt3D>
-              </div>
+                {/* Floating Orbiting Cards with Parallax Layering */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 animate-[float-slow_9s_ease-in-out_infinite_0.8s] perspective-1000">
+                  <Tilt3D maxTilt={15} scale={1.08}>
+                    <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#5fa04e]/30 hover:border-[#5fa04e]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(95,160,78,0.08)] hover:shadow-[0_4px_24px_rgba(95,160,78,0.25)] transition-all duration-300 select-none group preserve-3d">
+                      <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
+                        <NodeLogo className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+                      </span>
+                      <span
+                        className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#83cd6d] transition-colors duration-300"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        Node.js
+                      </span>
+                    </div>
+                  </Tilt3D>
+                </div>
 
-              <div className="absolute top-2 left-6 z-20 animate-[float-slow_6s_ease-in-out_infinite] perspective-1000">
-                <Tilt3D maxTilt={15} scale={1.08}>
-                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#61dafb]/30 hover:border-[#61dafb]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(97,218,251,0.08)] hover:shadow-[0_4px_24px_rgba(97,218,251,0.25)] transition-all duration-300 select-none group preserve-3d">
-                    <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
-                      <ReactLogo className="h-6 w-6 transition-transform duration-300 group-hover:rotate-[20deg] group-hover:scale-110" />
-                    </span>
-                    <span
-                      className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#9be7fc] transition-colors duration-300"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
-                      React
-                    </span>
-                  </div>
-                </Tilt3D>
-              </div>
+                <div className="absolute top-2 left-6 z-20 animate-[float-slow_6s_ease-in-out_infinite] perspective-1000">
+                  <Tilt3D maxTilt={15} scale={1.08}>
+                    <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#61dafb]/30 hover:border-[#61dafb]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(97,218,251,0.08)] hover:shadow-[0_4px_24px_rgba(97,218,251,0.25)] transition-all duration-300 select-none group preserve-3d">
+                      <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
+                        <ReactLogo className="h-6 w-6 transition-transform duration-300 group-hover:rotate-[20deg] group-hover:scale-110" />
+                      </span>
+                      <span
+                        className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#9be7fc] transition-colors duration-300"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        React
+                      </span>
+                    </div>
+                  </Tilt3D>
+                </div>
 
-              <div className="absolute top-10 right-6 z-20 animate-[float-medium_7s_ease-in-out_infinite_1s] perspective-1000">
-                <Tilt3D maxTilt={15} scale={1.08}>
-                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#3178c6]/30 hover:border-[#3178c6]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(49,120,198,0.08)] hover:shadow-[0_4px_24px_rgba(49,120,198,0.25)] transition-all duration-300 select-none group preserve-3d">
-                    <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
-                      <TsLogo className="h-6 w-6 rounded-sm overflow-hidden transition-transform duration-300 group-hover:scale-110" />
-                    </span>
-                    <span
-                      className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#7fb5f5] transition-colors duration-300"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
-                      TypeScript
-                    </span>
-                  </div>
-                </Tilt3D>
-              </div>
+                <div className="absolute top-10 right-6 z-20 animate-[float-medium_7s_ease-in-out_infinite_1s] perspective-1000">
+                  <Tilt3D maxTilt={15} scale={1.08}>
+                    <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#3178c6]/30 hover:border-[#3178c6]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(49,120,198,0.08)] hover:shadow-[0_4px_24px_rgba(49,120,198,0.25)] transition-all duration-300 select-none group preserve-3d">
+                      <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
+                        <TsLogo className="h-6 w-6 rounded-sm overflow-hidden transition-transform duration-300 group-hover:scale-110" />
+                      </span>
+                      <span
+                        className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#7fb5f5] transition-colors duration-300"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        TypeScript
+                      </span>
+                    </div>
+                  </Tilt3D>
+                </div>
 
-              <div className="absolute bottom-6 left-10 z-20 animate-[float-medium_8s_ease-in-out_infinite_2s] perspective-1000">
-                <Tilt3D maxTilt={15} scale={1.08}>
-                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#38bdf8]/30 hover:border-[#38bdf8]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(56,189,248,0.08)] hover:shadow-[0_4px_24px_rgba(56,189,248,0.25)] transition-all duration-300 select-none group preserve-3d">
-                    <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
-                      <TailwindLogo className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
-                    </span>
-                    <span
-                      className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#7dd3fc] transition-colors duration-300"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
-                      Tailwind CSS
-                    </span>
-                  </div>
-                </Tilt3D>
-              </div>
+                <div className="absolute bottom-6 left-10 z-20 animate-[float-medium_8s_ease-in-out_infinite_2s] perspective-1000">
+                  <Tilt3D maxTilt={15} scale={1.08}>
+                    <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#38bdf8]/30 hover:border-[#38bdf8]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(56,189,248,0.08)] hover:shadow-[0_4px_24px_rgba(56,189,248,0.25)] transition-all duration-300 select-none group preserve-3d">
+                      <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
+                        <TailwindLogo className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+                      </span>
+                      <span
+                        className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#7dd3fc] transition-colors duration-300"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        Tailwind CSS
+                      </span>
+                    </div>
+                  </Tilt3D>
+                </div>
 
-              <div className="absolute bottom-10 right-10 z-20 animate-[float-fast_5s_ease-in-out_infinite_1.5s] perspective-1000">
-                <Tilt3D maxTilt={15} scale={1.08}>
-                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#bd34fe]/30 hover:border-[#ffd600]/30 backdrop-blur-md shadow-[0_4px_20px_rgba(189,52,254,0.08)] hover:shadow-[0_4px_24px_rgba(189,52,254,0.25)] transition-all duration-300 select-none group preserve-3d">
-                    <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
-                      <ViteLogo className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
-                    </span>
-                    <span
-                      className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#d382ff] transition-colors duration-300"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
-                      Vite
-                    </span>
-                  </div>
-                </Tilt3D>
-              </div>
+                <div className="absolute bottom-10 right-10 z-20 animate-[float-fast_5s_ease-in-out_infinite_1.5s] perspective-1000">
+                  <Tilt3D maxTilt={15} scale={1.08}>
+                    <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#bd34fe]/30 hover:border-[#ffd600]/30 backdrop-blur-md shadow-[0_4px_20px_rgba(189,52,254,0.08)] hover:shadow-[0_4px_24px_rgba(189,52,254,0.25)] transition-all duration-300 select-none group preserve-3d">
+                      <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
+                        <ViteLogo className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+                      </span>
+                      <span
+                        className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#d382ff] transition-colors duration-300"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        Vite
+                      </span>
+                    </div>
+                  </Tilt3D>
+                </div>
 
-              <div className="absolute top-1/2 left-2 z-20 -translate-y-1/2 animate-[float-fast_7s_ease-in-out_infinite_0.5s] perspective-1000">
-                <Tilt3D maxTilt={15} scale={1.08}>
-                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-coral/30 hover:border-coral/60 backdrop-blur-md shadow-[0_4px_20px_rgba(224,90,54,0.08)] hover:shadow-[0_4px_24px_rgba(224,90,54,0.25)] transition-all duration-300 select-none group preserve-3d">
-                    <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
-                      <OpenaiLogo className="h-6 w-6 transition-transform duration-300 group-hover:rotate-[45deg] group-hover:scale-110" />
-                    </span>
-                    <span
-                      className="text-xs font-semibold text-[#fbfaf8] group-hover:text-coral transition-colors duration-300"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
-                      OpenAI
-                    </span>
-                  </div>
-                </Tilt3D>
-              </div>
+                <div className="absolute top-1/2 left-2 z-20 -translate-y-1/2 animate-[float-fast_7s_ease-in-out_infinite_0.5s] perspective-1000">
+                  <Tilt3D maxTilt={15} scale={1.08}>
+                    <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-coral/30 hover:border-coral/60 backdrop-blur-md shadow-[0_4px_20px_rgba(224,90,54,0.08)] hover:shadow-[0_4px_24px_rgba(224,90,54,0.25)] transition-all duration-300 select-none group preserve-3d">
+                      <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
+                        <OpenaiLogo className="h-6 w-6 transition-transform duration-300 group-hover:rotate-[45deg] group-hover:scale-110" />
+                      </span>
+                      <span
+                        className="text-xs font-semibold text-[#fbfaf8] group-hover:text-coral transition-colors duration-300"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        OpenAI
+                      </span>
+                    </div>
+                  </Tilt3D>
+                </div>
 
-              <div className="absolute top-1/2 right-2 z-20 -translate-y-1/2 animate-[float-slow_8s_ease-in-out_infinite_1.2s] perspective-1000">
-                <Tilt3D maxTilt={15} scale={1.08}>
-                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-white/10 hover:border-white/30 backdrop-blur-md shadow-[0_4px_20px_rgba(255,255,255,0.04)] hover:shadow-[0_4px_24px_rgba(255,255,255,0.12)] transition-all duration-300 select-none group preserve-3d">
-                    <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
-                      <VercelLogo className="h-5 w-5 text-white transition-transform duration-300 group-hover:scale-110" />
-                    </span>
-                    <span
-                      className="text-xs font-semibold text-[#fbfaf8] group-hover:text-white transition-colors duration-300"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
-                      Vercel
-                    </span>
-                  </div>
-                </Tilt3D>
+                <div className="absolute top-1/2 right-2 z-20 -translate-y-1/2 animate-[float-slow_8s_ease-in-out_infinite_1.2s] perspective-1000">
+                  <Tilt3D maxTilt={15} scale={1.08}>
+                    <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-white/10 hover:border-white/30 backdrop-blur-md shadow-[0_4px_20px_rgba(255,255,255,0.04)] hover:shadow-[0_4px_24px_rgba(255,255,255,0.12)] transition-all duration-300 select-none group preserve-3d">
+                      <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
+                        <VercelLogo className="h-5 w-5 text-white transition-transform duration-300 group-hover:scale-110" />
+                      </span>
+                      <span
+                        className="text-xs font-semibold text-[#fbfaf8] group-hover:text-white transition-colors duration-300"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        Vercel
+                      </span>
+                    </div>
+                  </Tilt3D>
+                </div>
               </div>
             </div>
           </div>
@@ -2144,9 +2146,9 @@ function Index() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-coral/10 rounded-full blur-[140px] pointer-events-none" />
 
         <Tilt3D maxTilt={2} scale={1.002}>
-          <div className="rounded-[2.5rem] glass-card-3d p-8 md:p-16 border border-border/40 backdrop-blur-md relative overflow-hidden preserve-3d">
+          <div className="rounded-3xl sm:rounded-[2.5rem] glass-card-3d p-6 sm:p-8 md:p-16 border border-border/40 backdrop-blur-md relative overflow-hidden preserve-3d">
             <h2
-              className="font-serif text-4xl md:text-6xl leading-tight text-foreground select-none"
+              className="font-serif text-[1.75rem] min-[360px]:text-[2.2rem] min-[410px]:text-[2.5rem] sm:text-5xl md:text-6xl leading-tight text-foreground select-none"
               style={{ transform: "translateZ(30px)" }}
             >
               Ready for a website <br /> that{" "}

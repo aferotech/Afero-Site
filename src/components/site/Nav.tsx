@@ -43,8 +43,8 @@ export function Nav() {
     >
       <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <div className="flex items-center w-[220px]">
-          <Link to="/" className="relative flex items-center h-6 w-[340px]">
+        <div className="flex items-center w-auto md:w-[220px]">
+          <Link to="/" className="relative flex items-center h-6 w-32 md:w-[340px]">
             {/* Default Icon */}
             <img
               src={navIcon}
@@ -83,7 +83,7 @@ export function Nav() {
         </ul>
 
         {/* CTA & Mobile Trigger */}
-        <div className="flex items-center justify-end gap-4 w-[220px]">
+        <div className="flex items-center justify-end gap-2 md:gap-4 w-auto md:w-[220px]">
           {/* Desktop CTA */}
           <Link
             to="/contact"
