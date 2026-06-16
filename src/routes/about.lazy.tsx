@@ -22,9 +22,9 @@ import {
   Compass,
   Rocket,
 } from "lucide-react";
-// Nav imported globally in __root.tsx
 import { Footer } from "@/components/site/Footer";
 import { Tilt3D } from "@/components/ui/Tilt3D";
+import { FadeIn } from "@/components/ui/FadeIn";
 import paulImg from "@/assets/team/paul.webp";
 import azarImg from "@/assets/team/azar.webp";
 import akashImg from "@/assets/team/akash.webp";
@@ -33,58 +33,6 @@ import rohithImg from "@/assets/team/rohith.webp";
 export const Route = createLazyFileRoute("/about")({
   component: AboutPage,
 });
-
-// ─── FadeIn Scroll Reveal Helper ─────────────────────────────────────────────
-function FadeIn({
-  children,
-  delay = 0,
-  className = "",
-  direction = "up",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-  direction?: "up" | "left" | "right" | "none";
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const currentRef = ref.current;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.05, rootMargin: "0px 0px -50px 0px" },
-    );
-    if (currentRef) observer.observe(currentRef);
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
-  }, []);
-
-  const translateMap = {
-    up: visible ? "translate-y-0" : "translate-y-12",
-    left: visible ? "translate-x-0" : "-translate-x-12",
-    right: visible ? "translate-x-0" : "translate-x-12",
-    none: "",
-  };
-
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        direction !== "none" ? translateMap[direction] : ""
-      } ${visible ? "opacity-100" : "opacity-0"} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      {children}
-    </div>
-  );
-}
 
 // ─── Counter Animation Hook ───────────────────────────────────────────────────
 function useCounter(target: number, duration = 1800, start = false) {

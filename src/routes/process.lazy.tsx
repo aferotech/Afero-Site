@@ -30,58 +30,21 @@ import {
   PenTool,
   Code,
 } from "lucide-react";
-// Nav imported globally in __root.tsx
 import { Footer } from "@/components/site/Footer";
 import { Tilt3D } from "@/components/ui/Tilt3D";
+import { FadeIn } from "@/components/ui/FadeIn";
+
+// Process Carousel Stage Visuals
+import discoveryImg from "@/assets/process/discovery_strategy.webp";
+import planningImg from "@/assets/process/planning_architecture.webp";
+import designImg from "@/assets/process/design_ux.webp";
+import engineeringImg from "@/assets/process/dev_engineering.webp";
+import testingImg from "@/assets/process/testing_refinement.webp";
+import launchImg from "@/assets/process/launch_growth.webp";
 
 export const Route = createLazyFileRoute("/process")({
   component: ProcessPage,
 });
-
-// A lightweight, performant intersection observer wrapper for entrance animations
-function FadeIn({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const currentRef = ref.current;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.05, rootMargin: "0px 0px -40px 0px" },
-    );
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      } ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      {children}
-    </div>
-  );
-}
 
 // Custom FAQ Accordion Item component with support for smooth height animation and accessibility
 function AccordionItem({
@@ -169,7 +132,21 @@ function ProcessPage() {
   const scrollToCard = (num: string) => {
     const element = document.getElementById(`phase-card-${num}`);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const lenis = (
+        window as unknown as {
+          lenis?: {
+            scrollTo: (
+              target: HTMLElement | number | string,
+              options?: { duration?: number },
+            ) => void;
+          };
+        }
+      ).lenis;
+      if (lenis && typeof lenis.scrollTo === "function") {
+        lenis.scrollTo(element, { duration: 1.2 });
+      } else {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
       setActivePhase(num); // Set immediately for instant response feel
     }
   };
@@ -301,22 +278,22 @@ function ProcessPage() {
     {
       icon: MessageSquare,
       title: "Transparent Communication",
-      body: "You always know what is happening, what comes next, and why.",
+      body: "Stay informed at every stage with clear updates, milestone reviews, and open communication. You'll always know what is happening, what comes next, and why decisions are being made.",
     },
     {
       icon: Layers,
       title: "Clear Deliverables",
-      body: "Every phase ends with tangible outcomes and review points.",
+      body: "Every phase is structured around defined goals, measurable outcomes, and documented deliverables, ensuring progress is visible and expectations remain aligned throughout the project.",
     },
     {
       icon: Zap,
       title: "Efficient Collaboration",
-      body: "Focused feedback cycles that keep projects moving forward.",
+      body: "Streamlined feedback cycles, focused discussions, and rapid iteration help eliminate bottlenecks, keeping momentum high and projects moving forward with confidence.",
     },
     {
       icon: TrendingUp,
       title: "Long-Term Partnership",
-      body: "We stay involved beyond launch to support future growth.",
+      body: "Launch is only the beginning. We continue to provide guidance, improvements, and ongoing support to help your platform grow alongside your business.",
     },
   ];
 
@@ -572,39 +549,97 @@ function ProcessPage() {
             </div>
           </FadeIn>
 
-          {/* Premium Feature Trust Strip */}
-          <FadeIn delay={200}>
-            <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 border-t border-border/30 pt-16 max-w-6xl mx-auto">
-              {[
-                {
-                  title: "Clarity at Every Step",
-                  desc: "You always know what's happening and what's next.",
-                },
-                {
-                  title: "Collaborative Approach",
-                  desc: "Your feedback shapes the project throughout the journey.",
-                },
-                {
-                  title: "Quality Built In",
-                  desc: "Best practices, performance, and reliability from day one.",
-                },
-                {
-                  title: "Results That Grow",
-                  desc: "Built for long-term business success, not short-term launches.",
-                },
-              ].map((item, idx) => (
-                <div
-                  key={idx}
-                  className="bg-card p-6 rounded-2xl border border-border/40 shadow-[0_4px_12px_-10px_rgba(0,0,0,0.03)] hover:border-border/80 transition-all duration-300 group hover:-translate-y-0.5"
-                >
-                  <h4 className="font-serif text-lg font-normal text-foreground mb-2 group-hover:text-coral transition-colors">
-                    {item.title}
-                  </h4>
-                  <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
+          {/* Premium Feature Trust Strip - Panoramic Horizontal Carousel */}
+          <FadeIn
+            delay={200}
+            className="w-full mt-24 border-t border-border/30 pt-16 overflow-hidden"
+          >
+            <div className="text-center mb-10 max-w-xl mx-auto px-6">
+              <span className="text-[10px] uppercase tracking-[0.25em] text-coral font-semibold bg-coral/10 px-3 py-1 rounded-full border border-coral/20">
+                Workflow Panoramic
+              </span>
+              <h3 className="font-serif text-2xl md:text-3xl mt-4 text-foreground">
+                Our Standards & Creative Process
+              </h3>
+            </div>
+
+            <div className="marquee-container w-full py-4 select-none">
+              <div className="marquee-track flex">
+                {[...Array(2)].map((_, groupIdx) => (
+                  <div key={groupIdx} className="flex">
+                    {[
+                      {
+                        title: "Discovery & Strategy",
+                        step: "01",
+                        desc: "Uncovering user insights, defining business goals, and framing the product opportunity.",
+                        img: discoveryImg,
+                      },
+                      {
+                        title: "Planning & Architecture",
+                        step: "02",
+                        desc: "Structuring technical frameworks, mapping user journeys, and outlining database design.",
+                        img: planningImg,
+                      },
+                      {
+                        title: "Design & User Experience",
+                        step: "03",
+                        desc: "Crafting beautiful interfaces, fluid animations, and premium visual design systems.",
+                        img: designImg,
+                      },
+                      {
+                        title: "Development & Engineering",
+                        step: "04",
+                        desc: "Writing production-grade code, configuring edge runtimes, and ensuring fast load times.",
+                        img: engineeringImg,
+                      },
+                      {
+                        title: "Testing & Refinement",
+                        step: "05",
+                        desc: "Rigorous quality check, end-to-end testing, speed optimization, and cross-device polish.",
+                        img: testingImg,
+                      },
+                      {
+                        title: "Launch & Growth",
+                        step: "06",
+                        desc: "Seamless zero-downtime deployment, continuous analytics monitoring, and iteration.",
+                        img: launchImg,
+                      },
+                    ].map((item, idx) => (
+                      <div
+                        key={`${groupIdx}-${idx}`}
+                        className="w-[280px] sm:w-[360px] md:w-[400px] shrink-0 pr-6 group flex flex-col justify-between"
+                      >
+                        <div className="rounded-2xl border border-border/30 bg-card/40 backdrop-blur-sm transition-all duration-500 hover:border-border/60 overflow-hidden h-full flex flex-col">
+                          {/* Image visual */}
+                          <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
+                            <img
+                              src={item.img}
+                              alt={item.title}
+                              loading="lazy"
+                              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent opacity-85" />
+                            <span className="absolute top-4 left-4 text-[10px] font-mono uppercase tracking-widest bg-background/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-border/20 text-muted-foreground">
+                              Phase {item.step}
+                            </span>
+                          </div>
+                          {/* Description */}
+                          <div className="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                              <h4 className="font-serif text-base md:text-lg font-normal text-foreground mb-1.5 group-hover:text-coral transition-colors">
+                                {item.title}
+                              </h4>
+                              <p className="text-[11px] md:text-xs text-muted-foreground leading-relaxed">
+                                {item.desc}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
           </FadeIn>
         </div>

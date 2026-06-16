@@ -13,4 +13,3 @@ if (!existsSync(sourceDir)) {
 
 rmSync(targetDir, { recursive: true, force: true });
 cpSync(sourceDir, targetDir, { recursive: true });
-

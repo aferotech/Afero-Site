@@ -14,6 +14,7 @@ import navFull from "@/assets/nav-full.webp";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +45,16 @@ export function Nav() {
       <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <div className="flex items-center w-auto md:w-[220px]">
-          <Link to="/" className="relative flex items-center h-6 w-32 md:w-[340px]">
+          <Link
+            to="/"
+            onClick={(e) => {
+              if (typeof window !== "undefined" && window.location.pathname === "/") {
+                e.preventDefault();
+                window.lenis?.scrollTo(0, { duration: 1.2 });
+              }
+            }}
+            className="relative flex items-center h-6 w-32 md:w-[340px]"
+          >
             {/* Default Icon */}
             <img
               src={navIcon}
@@ -71,12 +81,21 @@ export function Nav() {
             <li key={l.to}>
               <Link
                 to={l.to}
-                className="text-foreground/70 hover:text-foreground transition-colors"
+                className="nav-link text-foreground/70 hover:text-foreground transition-colors"
                 activeProps={{
-                  className: "text-foreground font-medium",
+                  className: "nav-link-active text-foreground font-medium",
                 }}
               >
-                {l.label}
+                <span className="relative z-10">{l.label}</span>
+                <svg
+                  className="nav-strike-through absolute left-[-8px] right-[-8px] top-[52%] -translate-y-1/2 h-[10px] w-[calc(100%+16px)] pointer-events-none z-0"
+                  viewBox="0 0 100 12"
+                  preserveAspectRatio="none"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M -4,7.5 C 15,3 35,6 55,3.5 C 75,2.5 90,4.5 104,4 C 90,6.5 70,8 50,6 T -4,9.5 Z" />
+                </svg>
               </Link>
             </li>
           ))}
@@ -100,7 +119,7 @@ export function Nav() {
             >
               Contact <ArrowUpRight className="h-3 w-3" />
             </Link>
-            <Sheet>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <button
                   className="p-2 -mr-2 text-foreground/80 hover:text-foreground outline-none cursor-pointer"
@@ -126,6 +145,7 @@ export function Nav() {
                       <li key={l.to}>
                         <Link
                           to={l.to}
+                          onClick={() => setIsOpen(false)}
                           className="block text-foreground/75 hover:text-coral transition-colors"
                           activeProps={{
                             className: "text-coral font-medium",
@@ -140,6 +160,7 @@ export function Nav() {
                 <div className="pt-8 border-t border-border/40">
                   <Link
                     to="/contact"
+                    onClick={() => setIsOpen(false)}
                     className="flex items-center justify-center gap-2 w-full rounded-full bg-coral text-coral-foreground px-6 py-3 text-sm font-medium hover:bg-foreground hover:text-background transition-colors"
                   >
                     Start a Project <ArrowUpRight className="h-4 w-4" />

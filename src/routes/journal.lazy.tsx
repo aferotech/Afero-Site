@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 // Nav imported globally in __root.tsx
 import { Footer } from "@/components/site/Footer";
 import { Tilt3D } from "@/components/ui/Tilt3D";
+import { FadeIn } from "@/components/ui/FadeIn";
 import {
   ArrowUpRight,
   ArrowRight,
@@ -368,10 +369,28 @@ function JournalPage() {
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
     // Smooth scroll to feed or top of page if clearing filter
+    const lenis = (
+      window as unknown as {
+        lenis?: {
+          scrollTo: (
+            target: HTMLElement | number | string,
+            options?: { duration?: number },
+          ) => void;
+        };
+      }
+    ).lenis;
     if (category === "All") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (lenis && typeof lenis.scrollTo === "function") {
+        lenis.scrollTo(0, { duration: 1.2 });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     } else if (articleFeedRef.current) {
-      articleFeedRef.current.scrollIntoView({ behavior: "smooth" });
+      if (lenis && typeof lenis.scrollTo === "function") {
+        lenis.scrollTo(articleFeedRef.current, { duration: 1.2 });
+      } else {
+        articleFeedRef.current.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -396,32 +415,34 @@ function JournalPage() {
     <div className="min-h-screen bg-background text-foreground overflow-x-clip selection:bg-coral selection:text-coral-foreground">
       <main className="mx-auto max-w-7xl px-6 pt-24 pb-20 md:pt-32">
         {/* ── NEWSPAPER NAMEPLATE HEADER ────────────────────────────────────── */}
-        <header className="border-t-2 border-b-2 border-foreground py-6 my-10 text-center">
-          <div className="flex justify-between items-center text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-4">
-            <span>Edition: Vol. IV / Issue VI</span>
-            <span className="hidden sm:inline">Price: Bespoke Code</span>
-            <span>Published in Tamilnadu, IN</span>
-          </div>
+        <FadeIn>
+          <header className="border-t-2 border-b-2 border-foreground py-6 my-10 text-center">
+            <div className="flex justify-between items-center text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-4">
+              <span>Edition: Vol. IV / Issue VI</span>
+              <span className="hidden sm:inline">Price: Bespoke Code</span>
+              <span>Published in Tamilnadu, IN</span>
+            </div>
 
-          <h1 className="font-serif text-5xl sm:text-7xl md:text-[5.5rem] tracking-[0.05em] uppercase leading-[0.95] text-foreground select-none font-normal">
-            The Afero Journal
-          </h1>
+            <h1 className="font-serif text-5xl sm:text-7xl md:text-[5.5rem] tracking-[0.05em] uppercase leading-[0.95] text-foreground select-none font-normal">
+              The Afero Journal
+            </h1>
 
-          <div className="border-t border-border mt-6 pt-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-muted-foreground">
-            <span className="font-serif italic font-normal">
-              "Websites and brands that move businesses forward."
-            </span>
-            <span className="uppercase tracking-[0.15em] font-semibold">
-              Latest Release:{" "}
-              {new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}
-            </span>
-          </div>
-        </header>
+            <div className="border-t border-border mt-6 pt-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-muted-foreground">
+              <span className="font-serif italic font-normal">
+                "Websites and brands that move businesses forward."
+              </span>
+              <span className="uppercase tracking-[0.15em] font-semibold">
+                Latest Release:{" "}
+                {new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+              </span>
+            </div>
+          </header>
+        </FadeIn>
 
         {/* ── EDITORIAL GRID LAYOUT ─────────────────────────────────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mt-12">
           {/* LEFT AREA: MAIN CONTENT (8 Columns) */}
-          <div className="lg:col-span-8 space-y-12">
+          <FadeIn className="lg:col-span-8 space-y-12">
             {/* Mobile Sticky Category Navigation */}
             <div className="lg:hidden sticky top-[57px] z-30 bg-background/95 backdrop-blur-md py-3 -mx-6 px-6 border-b border-border/20 overflow-x-auto scrollbar-none flex gap-2 mb-6">
               {["All", ...topics.map((t) => t.name)].map((cat) => {
@@ -632,10 +653,13 @@ function JournalPage() {
                   })}
               </div>
             </section>
-          </div>
+          </FadeIn>
 
           {/* RIGHT AREA: EDITORIAL SIDEBAR (4 Columns, Sticky on scroll) */}
-          <aside className="lg:col-span-4 lg:border-l lg:border-border/60 lg:pl-8 space-y-12 sticky top-28 self-start">
+          <FadeIn
+            direction="right"
+            className="lg:col-span-4 lg:border-l lg:border-border/60 lg:pl-8 space-y-12 sticky top-28 self-start"
+          >
             {/* EDITORIAL DESKS */}
             <section className="hidden md:block">
               <h2 className="font-serif text-lg font-normal uppercase tracking-wider text-foreground border-b border-foreground pb-2 mb-6">
@@ -711,56 +735,58 @@ function JournalPage() {
                 ))}
               </div>
             </section>
-          </aside>
+          </FadeIn>
         </div>
 
         {/* ── VINTAGE NEWSLETTER SUBSCRIPTION SLIP ──────────────────────────── */}
-        <section className="max-w-4xl mx-auto my-24 border border-dashed border-foreground/45 bg-card/45 p-8 md:p-12 rounded-3xl relative overflow-hidden backdrop-blur-sm">
-          {/* Luminous accent lights */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-coral/5 rounded-full blur-[80px] pointer-events-none" />
+        <FadeIn>
+          <section className="max-w-4xl mx-auto my-24 border border-dashed border-foreground/45 bg-card/45 p-8 md:p-12 rounded-3xl relative overflow-hidden backdrop-blur-sm">
+            {/* Luminous accent lights */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-coral/5 rounded-full blur-[80px] pointer-events-none" />
 
-          <div className="relative z-10 max-w-xl mx-auto text-center">
-            <Mail className="h-12 w-12 text-coral mx-auto mb-6" />
-            <h2 className="font-serif text-3xl md:text-5xl leading-tight text-foreground font-normal">
-              Subscribe to the Journal
-            </h2>
-            <p className="mt-4 text-xs md:text-sm text-muted-foreground leading-relaxed max-w-sm mx-auto">
-              Get print-style dispatches, design breakdowns, and technical telemetry summaries
-              delivered to your inbox monthly.
-            </p>
+            <div className="relative z-10 max-w-xl mx-auto text-center">
+              <Mail className="h-12 w-12 text-coral mx-auto mb-6" />
+              <h2 className="font-serif text-3xl md:text-5xl leading-tight text-foreground font-normal">
+                Subscribe to the Journal
+              </h2>
+              <p className="mt-4 text-xs md:text-sm text-muted-foreground leading-relaxed max-w-sm mx-auto">
+                Get print-style dispatches, design breakdowns, and technical telemetry summaries
+                delivered to your inbox monthly.
+              </p>
 
-            {subscribed ? (
-              <div className="mt-8 p-4 rounded-xl border border-coral/20 bg-coral/[0.02] flex items-center justify-center gap-2 text-sm text-foreground animate-fadeIn font-semibold">
-                <Check className="h-4 w-4 text-coral shrink-0" />
-                <span>Subscription recorded. Thank you.</span>
-              </div>
-            ) : (
-              <form
-                onSubmit={handleSubscribe}
-                className="mt-8 flex flex-col sm:flex-row gap-4 items-end sm:items-center"
-              >
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full border-b border-foreground/80 bg-transparent text-foreground placeholder:text-muted-foreground/45 py-3 text-sm focus:outline-none focus:border-coral transition-colors flex-1"
-                />
-                <button
-                  type="submit"
-                  className="w-full sm:w-auto bg-coral hover:bg-foreground hover:text-background text-coral-foreground px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-colors shrink-0 cursor-pointer shadow-sm"
+              {subscribed ? (
+                <div className="mt-8 p-4 rounded-xl border border-coral/20 bg-coral/[0.02] flex items-center justify-center gap-2 text-sm text-foreground animate-fadeIn font-semibold">
+                  <Check className="h-4 w-4 text-coral shrink-0" />
+                  <span>Subscription recorded. Thank you.</span>
+                </div>
+              ) : (
+                <form
+                  onSubmit={handleSubscribe}
+                  className="mt-8 flex flex-col sm:flex-row gap-4 items-end sm:items-center"
                 >
-                  Subscribe
-                </button>
-              </form>
-            )}
+                  <input
+                    type="email"
+                    required
+                    placeholder="Enter your email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full border-b border-foreground/80 bg-transparent text-foreground placeholder:text-muted-foreground/45 py-3 text-sm focus:outline-none focus:border-coral transition-colors flex-1"
+                  />
+                  <button
+                    type="submit"
+                    className="w-full sm:w-auto bg-coral hover:bg-foreground hover:text-background text-coral-foreground px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-colors shrink-0 cursor-pointer shadow-sm"
+                  >
+                    Subscribe
+                  </button>
+                </form>
+              )}
 
-            <div className="mt-6 text-[10px] text-muted-foreground uppercase tracking-widest">
-              Zero spam · Opt out anytime
+              <div className="mt-6 text-[10px] text-muted-foreground uppercase tracking-widest">
+                Zero spam · Opt out anytime
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </FadeIn>
       </main>
 
       <Footer />
