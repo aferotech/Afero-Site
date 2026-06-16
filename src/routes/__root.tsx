@@ -11,6 +11,14 @@ import {
 } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { Nav } from "@/components/site/Nav";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+import Lenis from "lenis";
+
+declare global {
+  interface Window {
+    lenis?: Lenis;
+  }
+}
 
 import appCss from "../styles.css?url";
 import favicon from "@/assets/favicon.webp";
@@ -231,12 +239,13 @@ if (typeof window !== "undefined") {
 
 function ScrollManager({ pathname }: { pathname: string }) {
   useEffect(() => {
-    if ("scrollRestoration" in window.history) {
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
   }, []);
 
   useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
     const prevPath = currentPathRef.current;
 
     // Cache outgoing scroll position
@@ -255,13 +264,21 @@ function ScrollManager({ pathname }: { pathname: string }) {
       const id = decodeURIComponent(window.location.hash.substring(1));
       const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView();
+        if (window.lenis) {
+          window.lenis.scrollTo(element, { duration: 1.2 });
+        } else {
+          element.scrollIntoView();
+        }
         currentPathRef.current = pathname;
         return;
       }
     }
 
-    window.scrollTo(0, targetScroll);
+    if (window.lenis) {
+      window.lenis.scrollTo(targetScroll, { immediate: true });
+    } else {
+      window.scrollTo(0, targetScroll);
+    }
     currentPathRef.current = pathname;
   }, [pathname]);
 
@@ -272,8 +289,36 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const location = useLocation();
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const lenis = new Lenis({
+      duration: 1.4,
+      easing: (t) => 1 - Math.pow(1 - t, 4), // Quartic Out
+      smoothWheel: true,
+      normalizeWheel: true, // Consistent speed across trackpads/notched wheels
+    });
+
+    window.lenis = lenis;
+
+    let rafId: number;
+    function raf(time: number) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    }
+
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+      window.lenis = undefined;
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
+      <CustomCursor />
       <Nav />
       <AnimatePresence mode="wait" initial={false}>
         <motion.div

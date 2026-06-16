@@ -40,11 +40,10 @@ import {
 import { Footer } from "@/components/site/Footer";
 import { Tilt3D } from "@/components/ui/Tilt3D";
 import { ParallaxText } from "@/components/ui/ParallaxText";
-import ad from "@/assets/ad.webp";
 import work2 from "@/assets/work-2.webp";
-import work3 from "@/assets/work-3.webp";
 import tomato from "@/assets/tomato.webp";
 import zizzle from "@/assets/zizzle.webp";
+import { FadeIn } from "@/components/ui/FadeIn";
 import { AnimatePresence, motion } from "framer-motion";
 import startupsSec from "@/assets/sectors/startups.webp";
 import localSec from "@/assets/sectors/local.webp";
@@ -1016,16 +1015,25 @@ function Index() {
         <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 w-96 h-96 bg-coral/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24 pb-16 md:pt-32 md:pb-24 text-center">
-          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium mb-6">
-            <span className="h-px w-8 bg-coral" /> Custom Web Development & Digital Design for
-            Growing Brands <span className="h-px w-8 bg-coral" />
+          <div className="flex flex-wrap justify-center items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium mb-6 px-4">
+            <span className="hidden sm:inline-block h-px w-8 bg-coral" /> Custom Web Development &
+            Digital Design for Growing Brands{" "}
+            <span className="hidden sm:inline-block h-px w-8 bg-coral" />
           </div>
 
-          <h1 className="font-serif mt-4 text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight flex flex-col items-center select-none">
-            <ParallaxText speed={0.12} direction="left" className="font-normal whitespace-nowrap">
+          <h1 className="font-serif mt-4 text-[1.6rem] min-[360px]:text-[1.8rem] min-[390px]:text-[2rem] min-[412px]:text-[2.15rem] min-[430px]:text-[2.3rem] sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight flex flex-col items-center select-none">
+            <ParallaxText
+              speed={0.12}
+              direction="left"
+              className="font-normal whitespace-nowrap max-w-full text-center"
+            >
               A studio for websites
             </ParallaxText>
-            <ParallaxText speed={0.12} direction="right" className="mt-2 whitespace-nowrap">
+            <ParallaxText
+              speed={0.12}
+              direction="right"
+              className="mt-2 whitespace-nowrap max-w-full text-center"
+            >
               that <em className="text-coral italic font-normal">actually</em> work.
             </ParallaxText>
           </h1>
@@ -1085,7 +1093,7 @@ function Index() {
       {/* SERVICES */}
       <section className="bg-secondary/20 border-y border-border/40 relative">
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-          <div className="text-center mb-16">
+          <FadeIn className="text-center mb-16">
             <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium">
               What we do
             </div>
@@ -1097,9 +1105,9 @@ function Index() {
               development, and AI integration needed to launch a great website, along with the
               reliable support that keeps it working for years.
             </p>
-          </div>
+          </FadeIn>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <FadeIn delay={100} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s) => (
               <Tilt3D key={s.title} maxTilt={8} scale={1.03} className="h-full">
                 <div className="group h-full rounded-2xl glass-card-3d p-8 flex flex-col justify-between preserve-3d">
@@ -1133,14 +1141,14 @@ function Index() {
                 </div>
               </Tilt3D>
             ))}
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* AI SOLUTIONS & AUTOMATION */}
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32 border-b border-border/40 relative">
         <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-coral/5 rounded-full blur-[100px] pointer-events-none" />
-        <div className="text-center mb-16">
+        <FadeIn className="text-center mb-16">
           <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium">
             <span className="h-px w-6 bg-coral" /> Custom Software & AI Capabilities
           </div>
@@ -1152,9 +1160,9 @@ function Index() {
             automated database pipelines that capture leads, answer tickets, and streamline your
             operations.
           </p>
-        </div>
+        </FadeIn>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <FadeIn delay={100} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {aiSolutions.map((sol) => (
             <Tilt3D key={sol.title} maxTilt={6} scale={1.02} className="h-full">
               <div className="group h-full rounded-2xl glass-card-3d p-6 md:p-8 flex flex-col justify-between preserve-3d border border-border/30 hover:border-coral/25 transition-colors">
@@ -1183,7 +1191,7 @@ function Index() {
               </div>
             </Tilt3D>
           ))}
-        </div>
+        </FadeIn>
       </section>
 
       {/* TECHNOLOGY & INNOVATION */}
@@ -1191,11 +1199,11 @@ function Index() {
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
           <div className="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
             {/* Left text */}
-            <div className="lg:col-span-5 mb-16 lg:mb-0 text-left">
+            <FadeIn direction="left" className="lg:col-span-5 mb-16 lg:mb-0 text-left">
               <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium mb-4">
                 <span className="h-px w-6 bg-coral" /> Stack & Standards
               </div>
-              <h2 className="font-serif text-4xl md:text-5xl leading-tight">
+              <h2 className="font-serif text-3xl md:text-5xl leading-tight">
                 Modern tools. <br />
                 Uncompromising <br />
                 <span className="text-coral italic font-normal">performance.</span>
@@ -1220,390 +1228,405 @@ function Index() {
                   <div className="text-coral font-serif text-2xl mt-1">Perfect</div>
                 </div>
               </div>
-            </div>
+            </FadeIn>
 
             {/* Right stack visualization */}
-            <div className="lg:col-span-7 flex justify-center items-center relative min-h-[360px] md:min-h-[440px]">
-              {/* Ambient radial glow backdrop behind the core */}
-              <div className="absolute h-80 w-80 rounded-full bg-coral/[0.04] blur-3xl pointer-events-none z-0" />
+            <FadeIn
+              direction="right"
+              className="lg:col-span-7 flex justify-center items-center relative min-h-[360px] md:min-h-[440px] overflow-visible"
+            >
+              <div className="relative w-[440px] h-[380px] md:w-[500px] md:h-[440px] flex items-center justify-center scale-[0.68] min-[360px]:scale-[0.78] min-[390px]:scale-[0.84] min-[414px]:scale-[0.88] md:scale-100 origin-center shrink-0">
+                {/* Ambient radial glow backdrop behind the core */}
+                <div className="absolute h-80 w-80 rounded-full bg-coral/[0.04] blur-3xl pointer-events-none z-0" />
 
-              {/* Spinning orbital background wireframe circles */}
-              <div className="absolute h-72 w-72 border border-border/15 rounded-full animate-[spin_50s_linear_infinite] pointer-events-none z-0" />
-              <div className="absolute h-96 w-96 border border-border/10 rounded-full animate-[spin_70s_linear_infinite_reverse] pointer-events-none z-0" />
+                {/* Spinning orbital background wireframe circles */}
+                <div className="absolute h-72 w-72 border border-border/15 rounded-full animate-[spin_50s_linear_infinite] pointer-events-none z-0" />
+                <div className="absolute h-96 w-96 border border-border/10 rounded-full animate-[spin_70s_linear_infinite_reverse] pointer-events-none z-0" />
 
-              {/* Ecosystem Energy Beams Connecting Core to orbiting cards */}
-              <svg
-                className="absolute inset-0 w-full h-full pointer-events-none z-0"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <defs>
-                  <linearGradient id="beam-grad-node" x1="50%" y1="50%" x2="50%" y2="8%">
-                    <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#5fa04e" stopOpacity="0.1" />
-                  </linearGradient>
-                  <linearGradient id="beam-grad-react" x1="50%" y1="50%" x2="10%" y2="8%">
-                    <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#61dafb" stopOpacity="0.1" />
-                  </linearGradient>
-                  <linearGradient id="beam-grad-ts" x1="50%" y1="50%" x2="88%" y2="18%">
-                    <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#3178c6" stopOpacity="0.1" />
-                  </linearGradient>
-                  <linearGradient id="beam-grad-tailwind" x1="50%" y1="50%" x2="20%" y2="88%">
-                    <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.1" />
-                  </linearGradient>
-                  <linearGradient id="beam-grad-vite" x1="50%" y1="50%" x2="85%" y2="88%">
-                    <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#bd34fe" stopOpacity="0.1" />
-                  </linearGradient>
-                  <linearGradient id="beam-grad-openai" x1="50%" y1="50%" x2="5%" y2="50%">
-                    <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="var(--coral)" stopOpacity="0.1" />
-                  </linearGradient>
-                  <linearGradient id="beam-grad-vercel" x1="50%" y1="50%" x2="95%" y2="50%">
-                    <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0.1" />
-                  </linearGradient>
-                </defs>
+                {/* Ecosystem Energy Beams Connecting Core to orbiting cards */}
+                <svg
+                  className="absolute inset-0 w-full h-full pointer-events-none z-0"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <defs>
+                    <linearGradient id="beam-grad-node" x1="50%" y1="50%" x2="50%" y2="8%">
+                      <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="#5fa04e" stopOpacity="0.1" />
+                    </linearGradient>
+                    <linearGradient id="beam-grad-react" x1="50%" y1="50%" x2="10%" y2="8%">
+                      <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="#61dafb" stopOpacity="0.1" />
+                    </linearGradient>
+                    <linearGradient id="beam-grad-ts" x1="50%" y1="50%" x2="88%" y2="18%">
+                      <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="#3178c6" stopOpacity="0.1" />
+                    </linearGradient>
+                    <linearGradient id="beam-grad-tailwind" x1="50%" y1="50%" x2="20%" y2="88%">
+                      <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.1" />
+                    </linearGradient>
+                    <linearGradient id="beam-grad-vite" x1="50%" y1="50%" x2="85%" y2="88%">
+                      <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="#bd34fe" stopOpacity="0.1" />
+                    </linearGradient>
+                    <linearGradient id="beam-grad-openai" x1="50%" y1="50%" x2="5%" y2="50%">
+                      <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="var(--coral)" stopOpacity="0.1" />
+                    </linearGradient>
+                    <linearGradient id="beam-grad-vercel" x1="50%" y1="50%" x2="95%" y2="50%">
+                      <stop offset="0%" stopColor="var(--coral)" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="#ffffff" stopOpacity="0.1" />
+                    </linearGradient>
+                  </defs>
 
-                {/* Beams */}
-                <line
-                  x1="50%"
-                  y1="50%"
-                  x2="50%"
-                  y2="8%"
-                  stroke="url(#beam-grad-node)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[dash-crawl_1.5s_linear_infinite]"
-                />
-                <line
-                  x1="50%"
-                  y1="50%"
-                  x2="10%"
-                  y2="8%"
-                  stroke="url(#beam-grad-react)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[dash-crawl_2s_linear_infinite]"
-                />
-                <line
-                  x1="50%"
-                  y1="50%"
-                  x2="88%"
-                  y2="18%"
-                  stroke="url(#beam-grad-ts)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[dash-crawl_1.8s_linear_infinite]"
-                />
-                <line
-                  x1="50%"
-                  y1="50%"
-                  x2="20%"
-                  y2="88%"
-                  stroke="url(#beam-grad-tailwind)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[dash-crawl_2.2s_linear_infinite]"
-                />
-                <line
-                  x1="50%"
-                  y1="50%"
-                  x2="85%"
-                  y2="88%"
-                  stroke="url(#beam-grad-vite)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[dash-crawl_1.6s_linear_infinite]"
-                />
-                <line
-                  x1="50%"
-                  y1="50%"
-                  x2="5%"
-                  y2="50%"
-                  stroke="url(#beam-grad-openai)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[dash-crawl_1.4s_linear_infinite]"
-                />
-                <line
-                  x1="50%"
-                  y1="50%"
-                  x2="95%"
-                  y2="50%"
-                  stroke="url(#beam-grad-vercel)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[dash-crawl_2.5s_linear_infinite]"
-                />
-              </svg>
+                  {/* Beams */}
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2="50%"
+                    y2="8%"
+                    stroke="url(#beam-grad-node)"
+                    strokeWidth="1"
+                    strokeDasharray="4 8"
+                    className="animate-[dash-crawl_1.5s_linear_infinite]"
+                  />
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2="10%"
+                    y2="8%"
+                    stroke="url(#beam-grad-react)"
+                    strokeWidth="1"
+                    strokeDasharray="4 8"
+                    className="animate-[dash-crawl_2s_linear_infinite]"
+                  />
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2="88%"
+                    y2="18%"
+                    stroke="url(#beam-grad-ts)"
+                    strokeWidth="1"
+                    strokeDasharray="4 8"
+                    className="animate-[dash-crawl_1.8s_linear_infinite]"
+                  />
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2="20%"
+                    y2="88%"
+                    stroke="url(#beam-grad-tailwind)"
+                    strokeWidth="1"
+                    strokeDasharray="4 8"
+                    className="animate-[dash-crawl_2.2s_linear_infinite]"
+                  />
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2="85%"
+                    y2="88%"
+                    stroke="url(#beam-grad-vite)"
+                    strokeWidth="1"
+                    strokeDasharray="4 8"
+                    className="animate-[dash-crawl_1.6s_linear_infinite]"
+                  />
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2="5%"
+                    y2="50%"
+                    stroke="url(#beam-grad-openai)"
+                    strokeWidth="1"
+                    strokeDasharray="4 8"
+                    className="animate-[dash-crawl_1.4s_linear_infinite]"
+                  />
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2="95%"
+                    y2="50%"
+                    stroke="url(#beam-grad-vercel)"
+                    strokeWidth="1"
+                    strokeDasharray="4 8"
+                    className="animate-[dash-crawl_2.5s_linear_infinite]"
+                  />
+                </svg>
 
-              {/* Central Core (Afero Engine centerpiece) */}
-              <div className="relative z-10 h-32 w-32 md:h-36 md:w-36 flex items-center justify-center select-none preserve-3d">
-                {/* Ring 1: Outer dashed neon indicator */}
-                <div className="absolute inset-0 border-2 border-dashed border-coral/30 rounded-full animate-[spin_45s_linear_infinite]" />
+                {/* Central Core (Afero Engine centerpiece) */}
+                <div className="relative z-10 h-32 w-32 md:h-36 md:w-36 flex items-center justify-center select-none preserve-3d">
+                  {/* Ring 1: Outer dashed neon indicator */}
+                  <div className="absolute inset-0 border-2 border-dashed border-coral/30 rounded-full animate-[spin_45s_linear_infinite]" />
 
-                {/* Ring 2: Core scanner line */}
-                <div className="absolute inset-2 border border-coral/15 rounded-full animate-[spin_12s_linear_infinite_reverse] pointer-events-none">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 h-1.5 w-1.5 bg-coral rounded-full shadow-[0_0_8px_var(--coral)]" />
-                </div>
+                  {/* Ring 2: Core scanner line */}
+                  <div className="absolute inset-2 border border-coral/15 rounded-full animate-[spin_12s_linear_infinite_reverse] pointer-events-none">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 h-1.5 w-1.5 bg-coral rounded-full shadow-[0_0_8px_var(--coral)]" />
+                  </div>
 
-                {/* Ring 3: Holographic backdrop glow */}
-                <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-black via-[#120d0a] to-[#201009] border border-coral/25 flex flex-col justify-center items-center shadow-[inset_0_2px_4px_rgba(255,255,255,0.05),0_0_50px_rgba(224,90,54,0.18)]">
-                  {/* Subtle pulsing background power core */}
-                  <div className="absolute inset-6 rounded-full bg-coral/5 animate-pulse blur-sm pointer-events-none" />
+                  {/* Ring 3: Holographic backdrop glow */}
+                  <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-black via-[#120d0a] to-[#201009] border border-coral/25 flex flex-col justify-center items-center shadow-[inset_0_2px_4px_rgba(255,255,255,0.05),0_0_50px_rgba(224,90,54,0.18)]">
+                    {/* Subtle pulsing background power core */}
+                    <div className="absolute inset-6 rounded-full bg-coral/5 animate-pulse blur-sm pointer-events-none" />
 
-                  <span className="text-[10px] uppercase tracking-[0.25em] text-coral font-extrabold font-mono drop-shadow-[0_0_8px_rgba(224,90,54,0.4)]">
-                    AFERO
-                  </span>
-                  <span className="text-[7px] uppercase tracking-[0.2em] text-muted-foreground mt-0.5 font-bold font-mono">
-                    ENGINE
-                  </span>
-                  {/* Pulsing state indicator */}
-                  <div className="flex items-center gap-1 mt-1.5">
-                    <span className="h-1 w-1 rounded-full bg-green-400 animate-ping" />
-                    <span className="text-[5.5px] uppercase tracking-wider text-green-400 font-bold font-mono">
-                      SYS ACTIVE
+                    <span className="text-[10px] uppercase tracking-[0.25em] text-coral font-extrabold font-mono drop-shadow-[0_0_8px_rgba(224,90,54,0.4)]">
+                      AFERO
                     </span>
+                    <span className="text-[7px] uppercase tracking-[0.2em] text-muted-foreground mt-0.5 font-bold font-mono">
+                      ENGINE
+                    </span>
+                    {/* Pulsing state indicator */}
+                    <div className="flex items-center gap-1 mt-1.5">
+                      <span className="h-1 w-1 rounded-full bg-green-400 animate-ping" />
+                      <span className="text-[5.5px] uppercase tracking-wider text-green-400 font-bold font-mono">
+                        SYS ACTIVE
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Floating Orbiting Cards with Parallax Layering */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 animate-[float-slow_9s_ease-in-out_infinite_0.8s] perspective-1000">
-                <Tilt3D maxTilt={15} scale={1.08}>
-                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#5fa04e]/30 hover:border-[#5fa04e]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(95,160,78,0.08)] hover:shadow-[0_4px_24px_rgba(95,160,78,0.25)] transition-all duration-300 select-none group preserve-3d">
-                    <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
-                      <NodeLogo className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
-                    </span>
-                    <span
-                      className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#83cd6d] transition-colors duration-300"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
-                      Node.js
-                    </span>
-                  </div>
-                </Tilt3D>
-              </div>
+                {/* Floating Orbiting Cards with Parallax Layering */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 animate-[float-slow_9s_ease-in-out_infinite_0.8s] perspective-1000">
+                  <Tilt3D maxTilt={15} scale={1.08}>
+                    <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#5fa04e]/30 hover:border-[#5fa04e]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(95,160,78,0.08)] hover:shadow-[0_4px_24px_rgba(95,160,78,0.25)] transition-all duration-300 select-none group preserve-3d">
+                      <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
+                        <NodeLogo className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+                      </span>
+                      <span
+                        className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#83cd6d] transition-colors duration-300"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        Node.js
+                      </span>
+                    </div>
+                  </Tilt3D>
+                </div>
 
-              <div className="absolute top-2 left-6 z-20 animate-[float-slow_6s_ease-in-out_infinite] perspective-1000">
-                <Tilt3D maxTilt={15} scale={1.08}>
-                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#61dafb]/30 hover:border-[#61dafb]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(97,218,251,0.08)] hover:shadow-[0_4px_24px_rgba(97,218,251,0.25)] transition-all duration-300 select-none group preserve-3d">
-                    <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
-                      <ReactLogo className="h-6 w-6 transition-transform duration-300 group-hover:rotate-[20deg] group-hover:scale-110" />
-                    </span>
-                    <span
-                      className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#9be7fc] transition-colors duration-300"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
-                      React
-                    </span>
-                  </div>
-                </Tilt3D>
-              </div>
+                <div className="absolute top-2 left-6 z-20 animate-[float-slow_6s_ease-in-out_infinite] perspective-1000">
+                  <Tilt3D maxTilt={15} scale={1.08}>
+                    <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#61dafb]/30 hover:border-[#61dafb]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(97,218,251,0.08)] hover:shadow-[0_4px_24px_rgba(97,218,251,0.25)] transition-all duration-300 select-none group preserve-3d">
+                      <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
+                        <ReactLogo className="h-6 w-6 transition-transform duration-300 group-hover:rotate-[20deg] group-hover:scale-110" />
+                      </span>
+                      <span
+                        className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#9be7fc] transition-colors duration-300"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        React
+                      </span>
+                    </div>
+                  </Tilt3D>
+                </div>
 
-              <div className="absolute top-10 right-6 z-20 animate-[float-medium_7s_ease-in-out_infinite_1s] perspective-1000">
-                <Tilt3D maxTilt={15} scale={1.08}>
-                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#3178c6]/30 hover:border-[#3178c6]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(49,120,198,0.08)] hover:shadow-[0_4px_24px_rgba(49,120,198,0.25)] transition-all duration-300 select-none group preserve-3d">
-                    <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
-                      <TsLogo className="h-6 w-6 rounded-sm overflow-hidden transition-transform duration-300 group-hover:scale-110" />
-                    </span>
-                    <span
-                      className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#7fb5f5] transition-colors duration-300"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
-                      TypeScript
-                    </span>
-                  </div>
-                </Tilt3D>
-              </div>
+                <div className="absolute top-10 right-6 z-20 animate-[float-medium_7s_ease-in-out_infinite_1s] perspective-1000">
+                  <Tilt3D maxTilt={15} scale={1.08}>
+                    <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#3178c6]/30 hover:border-[#3178c6]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(49,120,198,0.08)] hover:shadow-[0_4px_24px_rgba(49,120,198,0.25)] transition-all duration-300 select-none group preserve-3d">
+                      <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
+                        <TsLogo className="h-6 w-6 rounded-sm overflow-hidden transition-transform duration-300 group-hover:scale-110" />
+                      </span>
+                      <span
+                        className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#7fb5f5] transition-colors duration-300"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        TypeScript
+                      </span>
+                    </div>
+                  </Tilt3D>
+                </div>
 
-              <div className="absolute bottom-6 left-10 z-20 animate-[float-medium_8s_ease-in-out_infinite_2s] perspective-1000">
-                <Tilt3D maxTilt={15} scale={1.08}>
-                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#38bdf8]/30 hover:border-[#38bdf8]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(56,189,248,0.08)] hover:shadow-[0_4px_24px_rgba(56,189,248,0.25)] transition-all duration-300 select-none group preserve-3d">
-                    <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
-                      <TailwindLogo className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
-                    </span>
-                    <span
-                      className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#7dd3fc] transition-colors duration-300"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
-                      Tailwind CSS
-                    </span>
-                  </div>
-                </Tilt3D>
-              </div>
+                <div className="absolute bottom-6 left-10 z-20 animate-[float-medium_8s_ease-in-out_infinite_2s] perspective-1000">
+                  <Tilt3D maxTilt={15} scale={1.08}>
+                    <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#38bdf8]/30 hover:border-[#38bdf8]/60 backdrop-blur-md shadow-[0_4px_20px_rgba(56,189,248,0.08)] hover:shadow-[0_4px_24px_rgba(56,189,248,0.25)] transition-all duration-300 select-none group preserve-3d">
+                      <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
+                        <TailwindLogo className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+                      </span>
+                      <span
+                        className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#7dd3fc] transition-colors duration-300"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        Tailwind CSS
+                      </span>
+                    </div>
+                  </Tilt3D>
+                </div>
 
-              <div className="absolute bottom-10 right-10 z-20 animate-[float-fast_5s_ease-in-out_infinite_1.5s] perspective-1000">
-                <Tilt3D maxTilt={15} scale={1.08}>
-                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#bd34fe]/30 hover:border-[#ffd600]/30 backdrop-blur-md shadow-[0_4px_20px_rgba(189,52,254,0.08)] hover:shadow-[0_4px_24px_rgba(189,52,254,0.25)] transition-all duration-300 select-none group preserve-3d">
-                    <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
-                      <ViteLogo className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
-                    </span>
-                    <span
-                      className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#d382ff] transition-colors duration-300"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
-                      Vite
-                    </span>
-                  </div>
-                </Tilt3D>
-              </div>
+                <div className="absolute bottom-10 right-10 z-20 animate-[float-fast_5s_ease-in-out_infinite_1.5s] perspective-1000">
+                  <Tilt3D maxTilt={15} scale={1.08}>
+                    <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-[#bd34fe]/30 hover:border-[#ffd600]/30 backdrop-blur-md shadow-[0_4px_20px_rgba(189,52,254,0.08)] hover:shadow-[0_4px_24px_rgba(189,52,254,0.25)] transition-all duration-300 select-none group preserve-3d">
+                      <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
+                        <ViteLogo className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+                      </span>
+                      <span
+                        className="text-xs font-semibold text-[#fbfaf8] group-hover:text-[#d382ff] transition-colors duration-300"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        Vite
+                      </span>
+                    </div>
+                  </Tilt3D>
+                </div>
 
-              <div className="absolute top-1/2 left-2 z-20 -translate-y-1/2 animate-[float-fast_7s_ease-in-out_infinite_0.5s] perspective-1000">
-                <Tilt3D maxTilt={15} scale={1.08}>
-                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-coral/30 hover:border-coral/60 backdrop-blur-md shadow-[0_4px_20px_rgba(224,90,54,0.08)] hover:shadow-[0_4px_24px_rgba(224,90,54,0.25)] transition-all duration-300 select-none group preserve-3d">
-                    <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
-                      <OpenaiLogo className="h-6 w-6 transition-transform duration-300 group-hover:rotate-[45deg] group-hover:scale-110" />
-                    </span>
-                    <span
-                      className="text-xs font-semibold text-[#fbfaf8] group-hover:text-coral transition-colors duration-300"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
-                      OpenAI
-                    </span>
-                  </div>
-                </Tilt3D>
-              </div>
+                <div className="absolute top-1/2 left-2 z-20 -translate-y-1/2 animate-[float-fast_7s_ease-in-out_infinite_0.5s] perspective-1000">
+                  <Tilt3D maxTilt={15} scale={1.08}>
+                    <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-coral/30 hover:border-coral/60 backdrop-blur-md shadow-[0_4px_20px_rgba(224,90,54,0.08)] hover:shadow-[0_4px_24px_rgba(224,90,54,0.25)] transition-all duration-300 select-none group preserve-3d">
+                      <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
+                        <OpenaiLogo className="h-6 w-6 transition-transform duration-300 group-hover:rotate-[45deg] group-hover:scale-110" />
+                      </span>
+                      <span
+                        className="text-xs font-semibold text-[#fbfaf8] group-hover:text-coral transition-colors duration-300"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        OpenAI
+                      </span>
+                    </div>
+                  </Tilt3D>
+                </div>
 
-              <div className="absolute top-1/2 right-2 z-20 -translate-y-1/2 animate-[float-slow_8s_ease-in-out_infinite_1.2s] perspective-1000">
-                <Tilt3D maxTilt={15} scale={1.08}>
-                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-white/10 hover:border-white/30 backdrop-blur-md shadow-[0_4px_20px_rgba(255,255,255,0.04)] hover:shadow-[0_4px_24px_rgba(255,255,255,0.12)] transition-all duration-300 select-none group preserve-3d">
-                    <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
-                      <VercelLogo className="h-5 w-5 text-white transition-transform duration-300 group-hover:scale-110" />
-                    </span>
-                    <span
-                      className="text-xs font-semibold text-[#fbfaf8] group-hover:text-white transition-colors duration-300"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
-                      Vercel
-                    </span>
-                  </div>
-                </Tilt3D>
+                <div className="absolute top-1/2 right-2 z-20 -translate-y-1/2 animate-[float-slow_8s_ease-in-out_infinite_1.2s] perspective-1000">
+                  <Tilt3D maxTilt={15} scale={1.08}>
+                    <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#0c0a09]/80 border border-white/10 hover:border-white/30 backdrop-blur-md shadow-[0_4px_20px_rgba(255,255,255,0.04)] hover:shadow-[0_4px_24px_rgba(255,255,255,0.12)] transition-all duration-300 select-none group preserve-3d">
+                      <span style={{ transform: "translateZ(18px)" }} className="inline-flex">
+                        <VercelLogo className="h-5 w-5 text-white transition-transform duration-300 group-hover:scale-110" />
+                      </span>
+                      <span
+                        className="text-xs font-semibold text-[#fbfaf8] group-hover:text-white transition-colors duration-300"
+                        style={{ transform: "translateZ(10px)" }}
+                      >
+                        Vercel
+                      </span>
+                    </div>
+                  </Tilt3D>
+                </div>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* REASONS */}
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <div className="text-center mb-16">
-          <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium">Why Afero</div>
-          <h2 className="font-serif text-4xl md:text-5xl mt-4">
-            Three reasons clients stay with us.
-          </h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {reasons.map((r) => (
-            <Tilt3D key={r.n} maxTilt={6} scale={1.02} className="h-full">
-              <div className="rounded-2xl border border-border p-8 bg-card h-full glass-card-3d preserve-3d">
-                <div
-                  className="font-serif text-coral text-4xl transform translate-z-10"
-                  style={{ transform: "translateZ(25px)" }}
-                >
-                  {r.n}
-                </div>
-                <h3
-                  className="font-serif text-2xl mt-4 transform translate-z-6"
-                  style={{ transform: "translateZ(15px)" }}
-                >
-                  {r.title}
-                </h3>
-                <p
-                  className="mt-3 text-sm text-muted-foreground leading-relaxed transform translate-z-2"
-                  style={{ transform: "translateZ(8px)" }}
-                >
-                  {r.body}
-                </p>
-              </div>
-            </Tilt3D>
-          ))}
-        </div>
-      </section>
-
-      {/* RESULTS & IMPACT */}
-      <section className="bg-secondary/10 border-y border-border/40 relative">
-        <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+        <FadeIn>
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium">
-              <span className="h-px w-6 bg-coral" /> Measured Outcomes
+            <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium">
+              Why Afero
             </div>
             <h2 className="font-serif text-4xl md:text-5xl mt-4">
-              Real metrics. Real business growth.
+              Three reasons clients stay with us.
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground text-sm md:text-base">
-              A premium user experience is nothing without numbers to back it up. We design with
-              intent, building products that drastically improve conversion paths and load speeds.
-            </p>
           </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Lighthouse Score",
-                val: 98,
-                suffix: "+",
-                desc: "Instant loading, optimized core web vitals, and search engine preference.",
-              },
-              {
-                title: "Average Latency",
-                val: 100,
-                prefix: "<",
-                suffix: "ms",
-                desc: "Global CDN edge-rendered deployments for lightning-fast asset delivery.",
-              },
-              {
-                title: "Traffic Uplift",
-                val: 3.2,
-                suffix: "x",
-                desc: "Average increase in organic search impressions and traffic in 90 days.",
-              },
-              {
-                title: "Conversion Uplift",
-                val: 45,
-                suffix: "%",
-                desc: "Intuitive UX layouts and fast checkout processes turn traffic into sales.",
-              },
-              {
-                title: "Mobile Optimization",
-                val: 100,
-                suffix: "%",
-                desc: "Flawless mobile UX scores verified by continuous automation scripts.",
-              },
-              {
-                title: "Platform Uptime",
-                val: 99.9,
-                suffix: "%",
-                desc: "Serverless distributions with self-healing deployments for zero maintenance.",
-              },
-            ].map((metric) => (
-              <Tilt3D key={metric.title} maxTilt={6} scale={1.02} className="h-full">
-                <div className="group h-full rounded-2xl glass-card-3d p-8 flex flex-col justify-between preserve-3d">
-                  <div>
-                    <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-6">
-                      {metric.title}
-                    </h3>
-                    <div
-                      className="font-serif text-5xl md:text-6xl text-coral font-normal tracking-tight select-none mb-3"
-                      style={{ transform: "translateZ(20px)" }}
-                    >
-                      {metric.prefix}
-                      <ImpactCounter value={metric.val} suffix={metric.suffix} />
-                    </div>
+        </FadeIn>
+        <FadeIn delay={100}>
+          <div className="grid md:grid-cols-3 gap-6">
+            {reasons.map((r) => (
+              <Tilt3D key={r.n} maxTilt={6} scale={1.02} className="h-full">
+                <div className="rounded-2xl border border-border p-8 bg-card h-full glass-card-3d preserve-3d">
+                  <div
+                    className="font-serif text-coral text-4xl transform translate-z-10"
+                    style={{ transform: "translateZ(25px)" }}
+                  >
+                    {r.n}
                   </div>
+                  <h3
+                    className="font-serif text-2xl mt-4 transform translate-z-6"
+                    style={{ transform: "translateZ(15px)" }}
+                  >
+                    {r.title}
+                  </h3>
                   <p
-                    className="text-sm text-muted-foreground leading-relaxed mt-4"
+                    className="mt-3 text-sm text-muted-foreground leading-relaxed transform translate-z-2"
                     style={{ transform: "translateZ(8px)" }}
                   >
-                    {metric.desc}
+                    {r.body}
                   </p>
                 </div>
               </Tilt3D>
             ))}
           </div>
+        </FadeIn>
+      </section>
+
+      {/* RESULTS & IMPACT */}
+      <section className="bg-secondary/10 border-y border-border/40 relative">
+        <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+          <FadeIn>
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium">
+                <span className="h-px w-6 bg-coral" /> Measured Outcomes
+              </div>
+              <h2 className="font-serif text-4xl md:text-5xl mt-4">
+                Real metrics. Real business growth.
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-muted-foreground text-sm md:text-base">
+                A premium user experience is nothing without numbers to back it up. We design with
+                intent, building products that drastically improve conversion paths and load speeds.
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={100}>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Lighthouse Score",
+                  val: 98,
+                  suffix: "+",
+                  desc: "Instant loading, optimized core web vitals, and search engine preference.",
+                },
+                {
+                  title: "Average Latency",
+                  val: 100,
+                  prefix: "<",
+                  suffix: "ms",
+                  desc: "Global CDN edge-rendered deployments for lightning-fast asset delivery.",
+                },
+                {
+                  title: "Traffic Uplift",
+                  val: 3.2,
+                  suffix: "x",
+                  desc: "Average increase in organic search impressions and traffic in 90 days.",
+                },
+                {
+                  title: "Conversion Uplift",
+                  val: 45,
+                  suffix: "%",
+                  desc: "Intuitive UX layouts and fast checkout processes turn traffic into sales.",
+                },
+                {
+                  title: "Mobile Optimization",
+                  val: 100,
+                  suffix: "%",
+                  desc: "Flawless mobile UX scores verified by continuous automation scripts.",
+                },
+                {
+                  title: "Platform Uptime",
+                  val: 99.9,
+                  suffix: "%",
+                  desc: "Serverless distributions with self-healing deployments for zero maintenance.",
+                },
+              ].map((metric) => (
+                <Tilt3D key={metric.title} maxTilt={6} scale={1.02} className="h-full">
+                  <div className="group h-full rounded-2xl glass-card-3d p-8 flex flex-col justify-between preserve-3d">
+                    <div>
+                      <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-6">
+                        {metric.title}
+                      </h3>
+                      <div
+                        className="font-serif text-5xl md:text-6xl text-coral font-normal tracking-tight select-none mb-3"
+                        style={{ transform: "translateZ(20px)" }}
+                      >
+                        {metric.prefix}
+                        <ImpactCounter value={metric.val} suffix={metric.suffix} />
+                      </div>
+                    </div>
+                    <p
+                      className="text-sm text-muted-foreground leading-relaxed mt-4"
+                      style={{ transform: "translateZ(8px)" }}
+                    >
+                      {metric.desc}
+                    </p>
+                  </div>
+                </Tilt3D>
+              ))}
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -1612,16 +1635,16 @@ function Index() {
         {/* Glow behind testimonial */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-coral/15 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="mx-auto max-w-4xl px-6 py-24 md:py-32 text-center relative z-10">
+        <FadeIn className="mx-auto max-w-4xl px-6 py-24 md:py-32 text-center relative z-10">
           <Quote className="h-12 w-12 text-coral mx-auto" />
           <p className="font-serif text-3xl md:text-4xl leading-tight mt-8 tracking-tight max-w-3xl mx-auto">
             “Afero understood our business and our audience in days, then turned it into a site
             that's beautiful, strategic and obvious. They went above and beyond. Highly recommend.”
           </p>
           <div className="mt-10 text-xs uppercase tracking-[0.2em] text-background/60 font-medium">
-            Martin Richard -Director, Coast Enterprise
+            Richard Selvan -Director, Coast Enterprise
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       {/* TEAM / PHILOSOPHY REDESIGN */}
@@ -1631,7 +1654,7 @@ function Index() {
 
         <div className="grid lg:grid-cols-12 gap-12 items-center max-w-6xl mx-auto">
           {/* Left Column: Context, Stats & CTA */}
-          <div className="lg:col-span-5 space-y-8 text-left">
+          <FadeIn direction="left" className="lg:col-span-5 space-y-8 text-left">
             <div>
               <div className="text-xs uppercase tracking-[0.2em] text-coral font-medium mb-4">
                 About us · Studio Philosophy
@@ -1672,10 +1695,10 @@ function Index() {
                 More about us <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-          </div>
+          </FadeIn>
 
           {/* Right Column: 3-Pillar Interactive Cards */}
-          <div className="lg:col-span-7 flex flex-col gap-5">
+          <FadeIn direction="right" className="lg:col-span-7 flex flex-col gap-5">
             {[
               {
                 title: "Designers' Eye",
@@ -1832,7 +1855,7 @@ function Index() {
                 </div>
               </div>
             ))}
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -1840,149 +1863,46 @@ function Index() {
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32 border-b border-border/40 relative">
         <div className="absolute top-1/3 left-1/3 w-[450px] h-[450px] bg-coral/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium">
-            <span className="h-px w-6 bg-coral" /> Sectors We Support
+        <FadeIn>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium">
+              <span className="h-px w-6 bg-coral" /> Sectors We Support
+            </div>
+            <h2 className="font-serif text-4xl md:text-5xl mt-4">
+              Tailored Web & Software Platforms for Every Industry.
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground text-sm md:text-base">
+              We don't build generic websites. We design workflows and visual systems specific to
+              your business model, ensuring your platform addresses the unique expectations of your
+              target audience.
+            </p>
           </div>
-          <h2 className="font-serif text-4xl md:text-5xl mt-4">
-            Tailored Web & Software Platforms for Every Industry.
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground text-sm md:text-base">
-            We don't build generic websites. We design workflows and visual systems specific to your
-            business model, ensuring your platform addresses the unique expectations of your target
-            audience.
-          </p>
-        </div>
+        </FadeIn>
 
-        {/* Desktop grid layout */}
-        <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-stretch max-w-6xl mx-auto">
-          {/* Left vertical industry selector */}
-          <div className="lg:col-span-5 flex flex-col justify-between gap-3 text-left lg:h-full">
-            {industries.map((ind) => {
-              const IconComp = ind.icon;
-              const isSelected = activeIndustry === ind.id;
-              return (
-                <button
-                  key={ind.id}
-                  onClick={() => setActiveIndustry(ind.id)}
-                  onMouseEnter={() => setActiveIndustry(ind.id)}
-                  className={`flex items-center gap-4 text-left p-4 rounded-xl border transition-all duration-300 group cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-coral flex-1 ${
-                    isSelected
-                      ? "bg-card border-coral/30 shadow-[0_4px_20px_-10px_rgba(224,90,54,0.15)]"
-                      : "bg-transparent border-transparent hover:bg-card/45 hover:border-border/30"
-                  }`}
-                >
-                  <div
-                    className={`h-9 w-9 rounded-lg flex items-center justify-center transition-colors duration-300 ${
+        <FadeIn delay={100}>
+          {/* Desktop grid layout */}
+          <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-stretch max-w-6xl mx-auto">
+            {/* Left vertical industry selector */}
+            <div className="lg:col-span-5 flex flex-col justify-between gap-3 text-left lg:h-full">
+              {industries.map((ind) => {
+                const IconComp = ind.icon;
+                const isSelected = activeIndustry === ind.id;
+                return (
+                  <button
+                    key={ind.id}
+                    onClick={() => setActiveIndustry(ind.id)}
+                    onMouseEnter={() => setActiveIndustry(ind.id)}
+                    className={`flex items-center gap-4 text-left p-4 rounded-xl border transition-all duration-300 group cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-coral flex-1 ${
                       isSelected
-                        ? "bg-coral text-coral-foreground"
-                        : "bg-secondary text-muted-foreground group-hover:bg-coral/10 group-hover:text-coral"
+                        ? "bg-card border-coral/30 shadow-[0_4px_20px_-10px_rgba(224,90,54,0.15)]"
+                        : "bg-transparent border-transparent hover:bg-card/45 hover:border-border/30"
                     }`}
                   >
-                    <IconComp className="h-4.5 w-4.5" />
-                  </div>
-                  <div>
-                    <span
-                      className={`font-serif text-lg block transition-colors ${
-                        isSelected
-                          ? "text-foreground"
-                          : "text-muted-foreground group-hover:text-foreground"
-                      }`}
-                    >
-                      {ind.name}
-                    </span>
-                    <span className="text-[10px] text-muted-foreground/60 block mt-0.5 font-medium uppercase tracking-wider">
-                      {ind.tagline}
-                    </span>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right visual 3D preview console */}
-          <div className="lg:col-span-7 h-full">
-            <AnimatePresence mode="wait">
-              {industries.map((ind) => {
-                if (ind.id !== activeIndustry) return null;
-                return (
-                  <motion.div
-                    key={ind.id}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -12 }}
-                    transition={{ duration: 0.25, ease: [0.25, 1, 0.5, 1] }}
-                    className="h-full"
-                  >
-                    <Tilt3D maxTilt={3} scale={1.005} className="h-full">
-                      <div className="glass-card-3d rounded-3xl p-6 md:p-8 preserve-3d border border-border/30 flex flex-col justify-between h-full gap-6">
-                        <div className="text-left">
-                          <div className="inline-block px-3 py-1 rounded-full bg-coral/10 text-coral text-[10px] font-semibold uppercase tracking-wider mb-3">
-                            Featured Blueprint
-                          </div>
-                          <h3 className="font-serif text-2xl md:text-3xl text-foreground">
-                            {ind.name} Platforms
-                          </h3>
-                          <p className="text-sm text-muted-foreground leading-relaxed mt-2">
-                            {ind.desc}
-                          </p>
-                        </div>
-
-                        {/* Mockup Dashboard Preview Component */}
-                        <div className="relative z-10" style={{ transform: "translateZ(10px)" }}>
-                          <IndustryPreview industryId={ind.id} />
-                        </div>
-
-                        {/* Industry Core Deliverables list */}
-                        <div className="border-t border-border/20 pt-5 text-left">
-                          <div className="text-[9px] uppercase tracking-widest text-muted-foreground/50 font-bold mb-3">
-                            Core Integration Features
-                          </div>
-                          <div className="flex flex-wrap gap-2">
-                            {ind.features.map((f, fIdx) => (
-                              <span
-                                key={fIdx}
-                                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary border border-border/40 text-xs text-foreground/80 font-medium font-mono"
-                              >
-                                <span className="h-1.5 w-1.5 rounded-full bg-coral" />
-                                {f}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </Tilt3D>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </div>
-        </div>
-
-        {/* Mobile Accordion Layout */}
-        <div className="lg:hidden flex flex-col gap-4 max-w-xl mx-auto">
-          {industries.map((ind) => {
-            const IconComp = ind.icon;
-            const isSelected = activeIndustry === ind.id;
-            return (
-              <div
-                key={ind.id}
-                className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
-                  isSelected
-                    ? "bg-card border-coral/30 shadow-[0_4px_20px_-10px_rgba(224,90,54,0.15)]"
-                    : "bg-card/30 border-border/20 hover:bg-card/45 hover:border-border/30"
-                }`}
-              >
-                <button
-                  onClick={() => setActiveIndustry(ind.id)}
-                  className="w-full flex items-center justify-between text-left p-4 focus:outline-none min-h-[44px] cursor-pointer"
-                >
-                  <div className="flex items-center gap-4">
                     <div
                       className={`h-9 w-9 rounded-lg flex items-center justify-center transition-colors duration-300 ${
                         isSelected
                           ? "bg-coral text-coral-foreground"
-                          : "bg-secondary text-muted-foreground"
+                          : "bg-secondary text-muted-foreground group-hover:bg-coral/10 group-hover:text-coral"
                       }`}
                     >
                       <IconComp className="h-4.5 w-4.5" />
@@ -1990,7 +1910,9 @@ function Index() {
                     <div>
                       <span
                         className={`font-serif text-lg block transition-colors ${
-                          isSelected ? "text-foreground font-bold" : "text-muted-foreground"
+                          isSelected
+                            ? "text-foreground"
+                            : "text-muted-foreground group-hover:text-foreground"
                         }`}
                       >
                         {ind.name}
@@ -1999,143 +1921,252 @@ function Index() {
                         {ind.tagline}
                       </span>
                     </div>
-                  </div>
-                  <ChevronDown
-                    className={`h-5 w-5 text-muted-foreground/60 transition-transform duration-300 shrink-0 ${
-                      isSelected ? "rotate-180 text-coral" : ""
-                    }`}
-                  />
-                </button>
+                  </button>
+                );
+              })}
+            </div>
 
-                <AnimatePresence initial={false}>
-                  {isSelected && (
+            {/* Right visual 3D preview console */}
+            <div className="lg:col-span-7 h-full">
+              <AnimatePresence mode="wait">
+                {industries.map((ind) => {
+                  if (ind.id !== activeIndustry) return null;
+                  return (
                     <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: "easeInOut" }}
-                      className="overflow-hidden"
+                      key={ind.id}
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -12 }}
+                      transition={{ duration: 0.25, ease: [0.25, 1, 0.5, 1] }}
+                      className="h-full"
                     >
-                      <div className="p-5 border-t border-border/20 flex flex-col gap-6 bg-secondary/10">
-                        <div>
-                          <div className="inline-block px-3 py-1 rounded-full bg-coral/10 text-coral text-[10px] font-semibold uppercase tracking-wider mb-3">
-                            Featured Blueprint
+                      <Tilt3D maxTilt={3} scale={1.005} className="h-full">
+                        <div className="glass-card-3d rounded-3xl p-6 md:p-8 preserve-3d border border-border/30 flex flex-col justify-between h-full gap-6">
+                          <div className="text-left">
+                            <div className="inline-block px-3 py-1 rounded-full bg-coral/10 text-coral text-[10px] font-semibold uppercase tracking-wider mb-3">
+                              Featured Blueprint
+                            </div>
+                            <h3 className="font-serif text-2xl md:text-3xl text-foreground">
+                              {ind.name} Platforms
+                            </h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed mt-2">
+                              {ind.desc}
+                            </p>
                           </div>
-                          <h3 className="font-serif text-2xl text-foreground">
-                            {ind.name} Platforms
-                          </h3>
-                          <p className="text-sm text-muted-foreground leading-relaxed mt-2">
-                            {ind.desc}
-                          </p>
-                        </div>
 
-                        {/* Mockup Dashboard Preview Component */}
-                        <div className="relative z-10">
-                          <IndustryPreview industryId={ind.id} />
-                        </div>
+                          {/* Mockup Dashboard Preview Component */}
+                          <div className="relative z-10" style={{ transform: "translateZ(10px)" }}>
+                            <IndustryPreview industryId={ind.id} />
+                          </div>
 
-                        {/* Industry Core Deliverables list */}
-                        <div className="border-t border-border/20 pt-5 text-left">
-                          <div className="text-[9px] uppercase tracking-widest text-muted-foreground/50 font-bold mb-3">
-                            Core Integration Features
-                          </div>
-                          <div className="flex flex-wrap gap-2">
-                            {ind.features.map((f, fIdx) => (
-                              <span
-                                key={fIdx}
-                                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary border border-border/40 text-xs text-foreground/80 font-medium font-mono"
-                              >
-                                <span className="h-1.5 w-1.5 rounded-full bg-coral" />
-                                {f}
-                              </span>
-                            ))}
+                          {/* Industry Core Deliverables list */}
+                          <div className="border-t border-border/20 pt-5 text-left">
+                            <div className="text-[9px] uppercase tracking-widest text-muted-foreground/50 font-bold mb-3">
+                              Core Integration Features
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {ind.features.map((f, fIdx) => (
+                                <span
+                                  key={fIdx}
+                                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary border border-border/40 text-xs text-foreground/80 font-medium font-mono"
+                                >
+                                  <span className="h-1.5 w-1.5 rounded-full bg-coral" />
+                                  {f}
+                                </span>
+                              ))}
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </Tilt3D>
                     </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
-        </div>
+                  );
+                })}
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Mobile Accordion Layout */}
+          <div className="lg:hidden flex flex-col gap-4 max-w-xl mx-auto">
+            {industries.map((ind) => {
+              const IconComp = ind.icon;
+              const isSelected = activeIndustry === ind.id;
+              return (
+                <div
+                  key={ind.id}
+                  className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
+                    isSelected
+                      ? "bg-card border-coral/30 shadow-[0_4px_20px_-10px_rgba(224,90,54,0.15)]"
+                      : "bg-card/30 border-border/20 hover:bg-card/45 hover:border-border/30"
+                  }`}
+                >
+                  <button
+                    onClick={() => setActiveIndustry(ind.id)}
+                    className="w-full flex items-center justify-between text-left p-4 focus:outline-none min-h-[44px] cursor-pointer"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div
+                        className={`h-9 w-9 rounded-lg flex items-center justify-center transition-colors duration-300 ${
+                          isSelected
+                            ? "bg-coral text-coral-foreground"
+                            : "bg-secondary text-muted-foreground"
+                        }`}
+                      >
+                        <IconComp className="h-4.5 w-4.5" />
+                      </div>
+                      <div>
+                        <span
+                          className={`font-serif text-lg block transition-colors ${
+                            isSelected ? "text-foreground font-bold" : "text-muted-foreground"
+                          }`}
+                        >
+                          {ind.name}
+                        </span>
+                        <span className="text-[10px] text-muted-foreground/60 block mt-0.5 font-medium uppercase tracking-wider">
+                          {ind.tagline}
+                        </span>
+                      </div>
+                    </div>
+                    <ChevronDown
+                      className={`h-5 w-5 text-muted-foreground/60 transition-transform duration-300 shrink-0 ${
+                        isSelected ? "rotate-180 text-coral" : ""
+                      }`}
+                    />
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isSelected && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="p-5 border-t border-border/20 flex flex-col gap-6 bg-secondary/10">
+                          <div>
+                            <div className="inline-block px-3 py-1 rounded-full bg-coral/10 text-coral text-[10px] font-semibold uppercase tracking-wider mb-3">
+                              Featured Blueprint
+                            </div>
+                            <h3 className="font-serif text-2xl text-foreground">
+                              {ind.name} Platforms
+                            </h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed mt-2">
+                              {ind.desc}
+                            </p>
+                          </div>
+
+                          {/* Mockup Dashboard Preview Component */}
+                          <div className="relative z-10">
+                            <IndustryPreview industryId={ind.id} />
+                          </div>
+
+                          {/* Industry Core Deliverables list */}
+                          <div className="border-t border-border/20 pt-5 text-left">
+                            <div className="text-[9px] uppercase tracking-widest text-muted-foreground/50 font-bold mb-3">
+                              Core Integration Features
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {ind.features.map((f, fIdx) => (
+                                <span
+                                  key={fIdx}
+                                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary border border-border/40 text-xs text-foreground/80 font-medium font-mono"
+                                >
+                                  <span className="h-1.5 w-1.5 rounded-full bg-coral" />
+                                  {f}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
+        </FadeIn>
       </section>
 
       {/* FAQ SECTION */}
       <section className="mx-auto max-w-4xl px-6 py-24 md:py-32 border-b border-border/40 relative">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium">
-            <span className="h-px w-6 bg-coral" /> Common Inquiries
+        <FadeIn>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-coral font-medium">
+              <span className="h-px w-6 bg-coral" /> Common Inquiries
+            </div>
+            <h2 className="font-serif text-4xl md:text-5xl mt-4">Frequently Asked Questions.</h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground text-sm md:text-base">
+              Everything you need to know about our custom build process, timeline integrations, and
+              care support channels.
+            </p>
           </div>
-          <h2 className="font-serif text-4xl md:text-5xl mt-4">Frequently Asked Questions.</h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted-foreground text-sm md:text-base">
-            Everything you need to know about our custom build process, timeline integrations, and
-            care support channels.
-          </p>
-        </div>
+        </FadeIn>
 
-        <div className="space-y-4 max-w-3xl mx-auto">
-          {[
-            {
-              q: "How much do your custom websites cost?",
-              a: "Afero works on a project basis. Website projects typically start from ₹15,000 and can exceed ₹50,000+ depending on complexity, features, integrations, content requirements, and project scope. We outline complete transparent budgets before beginning any development.",
-            },
-            {
-              q: "How long does a website take to build?",
-              a: "Most custom websites are designed, developed, and deployed within 4 to 8 weeks. Projects requiring complex API structures, SaaS dashboard systems, or custom AI chatbots may take slightly longer, but every milestone is delivered strictly on time.",
-            },
-            {
-              q: "What kind of AI chatbot integrations can you build?",
-              a: "We develop custom conversational agents and database assistants trained directly on your business documents. They qualify leads, trigger automations, route customer tickets, or send data instantly to Slack channels or CRMs.",
-            },
-            {
-              q: "Can you redesign our existing site?",
-              a: "Yes. We audit your existing analytics first to see what works and what doesn't. We then redesign the visuals, optimize load times for search engines, and improve conversion paths while preserving all of your search ranking structures.",
-            },
-            {
-              q: "Where will our website be hosted?",
-              a: "We deploy websites on ultra-fast, serverless global edge networks like Vercel, Netlify, or Cloudflare Pages. This guarantees sub-100ms global speeds, 99.9% uptime, and absolute security with zero recurring maintenance fees.",
-            },
-            {
-              q: "What happens after the site is launched?",
-              a: "Every project launch includes 30 days of comprehensive QA and maintenance support. Following that, we offer flat-rate monthly Care Packages covering security updates, custom feature adjustments, and performance tuning.",
-            },
-          ].map((faq, idx) => {
-            const isFaqOpen = openFaq === idx;
-            return (
-              <div
-                key={idx}
-                className="rounded-2xl border border-border/30 bg-card/45 backdrop-blur-md overflow-hidden transition-all duration-300"
-              >
-                <button
-                  onClick={() => setOpenFaq(isFaqOpen ? null : idx)}
-                  aria-expanded={isFaqOpen}
-                  className="flex w-full items-center justify-between p-6 text-left font-serif text-lg md:text-xl text-foreground hover:text-coral transition-colors focus:outline-none cursor-pointer"
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    className={`h-5 w-5 text-muted-foreground/60 transition-transform duration-300 shrink-0 ${
-                      isFaqOpen ? "rotate-180 text-coral" : ""
-                    }`}
-                  />
-                </button>
+        <FadeIn delay={100}>
+          <div className="space-y-4 max-w-3xl mx-auto">
+            {[
+              {
+                q: "How much do your custom websites cost?",
+                a: "Afero works on a project basis. Website projects typically start from ₹15,000 and can exceed ₹50,000+ depending on complexity, features, integrations, content requirements, and project scope. We outline complete transparent budgets before beginning any development.",
+              },
+              {
+                q: "How long does a website take to build?",
+                a: "Most custom websites are designed, developed, and deployed within 4 to 8 weeks. Projects requiring complex API structures, SaaS dashboard systems, or custom AI chatbots may take slightly longer, but every milestone is delivered strictly on time.",
+              },
+              {
+                q: "What kind of AI chatbot integrations can you build?",
+                a: "We develop custom conversational agents and database assistants trained directly on your business documents. They qualify leads, trigger automations, route customer tickets, or send data instantly to Slack channels or CRMs.",
+              },
+              {
+                q: "Can you redesign our existing site?",
+                a: "Yes. We audit your existing analytics first to see what works and what doesn't. We then redesign the visuals, optimize load times for search engines, and improve conversion paths while preserving all of your search ranking structures.",
+              },
+              {
+                q: "Where will our website be hosted?",
+                a: "We deploy websites on ultra-fast, serverless global edge networks like Vercel, Netlify, or Cloudflare Pages. This guarantees sub-100ms global speeds, 99.9% uptime, and absolute security with zero recurring maintenance fees.",
+              },
+              {
+                q: "What happens after the site is launched?",
+                a: "Every project launch includes 30 days of comprehensive QA and maintenance support. Following that, we offer flat-rate monthly Care Packages covering security updates, custom feature adjustments, and performance tuning.",
+              },
+            ].map((faq, idx) => {
+              const isFaqOpen = openFaq === idx;
+              return (
                 <div
-                  className={`grid transition-all duration-300 ease-in-out ${
-                    isFaqOpen
-                      ? "grid-rows-[1fr] opacity-100 py-6 px-6 border-t border-border/25 text-left"
-                      : "grid-rows-[0fr] opacity-0"
-                  }`}
+                  key={idx}
+                  className="rounded-2xl border border-border/30 bg-card/45 backdrop-blur-md overflow-hidden transition-all duration-300"
                 >
-                  <div className="overflow-hidden">
-                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                      {faq.a}
-                    </p>
+                  <button
+                    onClick={() => setOpenFaq(isFaqOpen ? null : idx)}
+                    aria-expanded={isFaqOpen}
+                    className="flex w-full items-center justify-between p-6 text-left font-serif text-lg md:text-xl text-foreground hover:text-coral transition-colors focus:outline-none cursor-pointer"
+                  >
+                    <span>{faq.q}</span>
+                    <ChevronDown
+                      className={`h-5 w-5 text-muted-foreground/60 transition-transform duration-300 shrink-0 ${
+                        isFaqOpen ? "rotate-180 text-coral" : ""
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`grid transition-all duration-300 ease-in-out ${
+                      isFaqOpen
+                        ? "grid-rows-[1fr] opacity-100 py-6 px-6 border-t border-border/25 text-left"
+                        : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                        {faq.a}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </FadeIn>
       </section>
 
       {/* PREMIUM FINAL CTA */}
@@ -2143,104 +2174,106 @@ function Index() {
         {/* Glowing background nebula */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-coral/10 rounded-full blur-[140px] pointer-events-none" />
 
-        <Tilt3D maxTilt={2} scale={1.002}>
-          <div className="rounded-[2.5rem] glass-card-3d p-8 md:p-16 border border-border/40 backdrop-blur-md relative overflow-hidden preserve-3d">
-            <h2
-              className="font-serif text-4xl md:text-6xl leading-tight text-foreground select-none"
-              style={{ transform: "translateZ(30px)" }}
-            >
-              Ready for a website <br /> that{" "}
-              <em className="text-coral italic font-normal">actually</em> works?
-            </h2>
-            <p
-              className="mt-6 text-muted-foreground max-w-xl mx-auto leading-relaxed text-sm md:text-base"
-              style={{ transform: "translateZ(20px)" }}
-            >
-              Whether you need to capture premium leads, build custom SaaS workflows, or integrate
-              automated customer support channels, Afero delivers. Let's work together.
-            </p>
-
-            {/* Premium CTA grid actions */}
-            <div
-              className="grid sm:grid-cols-2 gap-4 mt-12 max-w-3xl mx-auto text-left"
-              style={{ transform: "translateZ(15px)" }}
-            >
-              <Link
-                to="/contact"
-                className="group p-5 rounded-2xl bg-coral/10 hover:bg-coral transition-all duration-300 border border-coral/30 hover:border-coral flex flex-col justify-between h-[120px]"
+        <FadeIn>
+          <Tilt3D maxTilt={2} scale={1.002}>
+            <div className="rounded-3xl sm:rounded-[2.5rem] glass-card-3d p-6 sm:p-8 md:p-16 border border-border/40 backdrop-blur-md relative overflow-hidden preserve-3d">
+              <h2
+                className="font-serif text-[1.75rem] min-[360px]:text-[2.2rem] min-[410px]:text-[2.5rem] sm:text-5xl md:text-6xl leading-tight text-foreground select-none"
+                style={{ transform: "translateZ(30px)" }}
               >
-                <div className="flex justify-between items-center text-coral group-hover:text-coral-foreground transition-colors">
-                  <span className="text-xs uppercase tracking-widest font-semibold font-mono">
-                    Inquiry form
-                  </span>
-                  <ArrowUpRight className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-xl text-foreground group-hover:text-coral-foreground transition-colors">
-                    Start a Project
-                  </h3>
-                  <p className="text-[10px] text-muted-foreground group-hover:text-coral-foreground/80 mt-1 leading-normal">
-                    Fill in our project brief. Responds in 24 hours.
-                  </p>
-                </div>
-              </Link>
-
-              <Link
-                to="/contact"
-                className="group p-5 rounded-2xl bg-card border border-border/30 hover:border-coral/40 transition-all duration-300 flex flex-col justify-between h-[120px]"
+                Ready for a website <br /> that{" "}
+                <em className="text-coral italic font-normal">actually</em> works?
+              </h2>
+              <p
+                className="mt-6 text-muted-foreground max-w-xl mx-auto leading-relaxed text-sm md:text-base"
+                style={{ transform: "translateZ(20px)" }}
               >
-                <div className="flex justify-between items-center text-muted-foreground/60 group-hover:text-coral transition-colors">
-                  <span className="text-xs uppercase tracking-widest font-semibold font-mono">
-                    Consultation
-                  </span>
-                  <Calendar className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-xl text-foreground">Book a Discovery Call</h3>
-                  <p className="text-[10px] text-muted-foreground mt-1 leading-normal">
-                    Discuss strategy, scopes, and estimates directly with developers.
-                  </p>
-                </div>
-              </Link>
+                Whether you need to capture premium leads, build custom SaaS workflows, or integrate
+                automated customer support channels, Afero delivers. Let's work together.
+              </p>
 
-              <a
-                href="mailto:afero.tech@gmail.com"
-                className="group p-5 rounded-2xl bg-card border border-border/30 hover:border-coral/40 transition-all duration-300 flex flex-col justify-between h-[120px]"
+              {/* Premium CTA grid actions */}
+              <div
+                className="grid sm:grid-cols-2 gap-4 mt-12 max-w-3xl mx-auto text-left"
+                style={{ transform: "translateZ(15px)" }}
               >
-                <div className="flex justify-between items-center text-muted-foreground/60 group-hover:text-coral transition-colors">
-                  <span className="text-xs uppercase tracking-widest font-semibold font-mono">
-                    Direct mail
-                  </span>
-                  <Mail className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-xl text-foreground">Email Us</h3>
-                  <p className="text-[10px] text-muted-foreground mt-1 leading-normal">
-                    Drop us a line directly at afero.tech@gmail.com.
-                  </p>
-                </div>
-              </a>
+                <Link
+                  to="/contact"
+                  className="group p-5 rounded-2xl bg-coral/10 hover:bg-coral transition-all duration-300 border border-coral/30 hover:border-coral flex flex-col justify-between h-[120px]"
+                >
+                  <div className="flex justify-between items-center text-coral group-hover:text-coral-foreground transition-colors">
+                    <span className="text-xs uppercase tracking-widest font-semibold font-mono">
+                      Inquiry form
+                    </span>
+                    <ArrowUpRight className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-xl text-foreground group-hover:text-coral-foreground transition-colors">
+                      Start a Project
+                    </h3>
+                    <p className="text-[10px] text-muted-foreground group-hover:text-coral-foreground/80 mt-1 leading-normal">
+                      Fill in our project brief. Responds in 24 hours.
+                    </p>
+                  </div>
+                </Link>
 
-              <a
-                href="https://wa.me/#+917397102011"
-                className="group p-5 rounded-2xl bg-card border border-border/30 hover:border-coral/40 transition-all duration-300 flex flex-col justify-between h-[120px]"
-              >
-                <div className="flex justify-between items-center text-muted-foreground/60 group-hover:text-coral transition-colors">
-                  <span className="text-xs uppercase tracking-widest font-semibold font-mono">
-                    Instant Chat
-                  </span>
-                  <MessageCircle className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-xl text-foreground">WhatsApp Us</h3>
-                  <p className="text-[10px] text-muted-foreground mt-1 leading-normal">
-                    Connect instantly with our team for quick text conversations.
-                  </p>
-                </div>
-              </a>
+                <Link
+                  to="/contact"
+                  className="group p-5 rounded-2xl bg-card border border-border/30 hover:border-coral/40 transition-all duration-300 flex flex-col justify-between h-[120px]"
+                >
+                  <div className="flex justify-between items-center text-muted-foreground/60 group-hover:text-coral transition-colors">
+                    <span className="text-xs uppercase tracking-widest font-semibold font-mono">
+                      Consultation
+                    </span>
+                    <Calendar className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-xl text-foreground">Book a Discovery Call</h3>
+                    <p className="text-[10px] text-muted-foreground mt-1 leading-normal">
+                      Discuss strategy, scopes, and estimates directly with developers.
+                    </p>
+                  </div>
+                </Link>
+
+                <a
+                  href="mailto:afero.tech@gmail.com"
+                  className="group p-5 rounded-2xl bg-card border border-border/30 hover:border-coral/40 transition-all duration-300 flex flex-col justify-between h-[120px]"
+                >
+                  <div className="flex justify-between items-center text-muted-foreground/60 group-hover:text-coral transition-colors">
+                    <span className="text-xs uppercase tracking-widest font-semibold font-mono">
+                      Direct mail
+                    </span>
+                    <Mail className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-xl text-foreground">Email Us</h3>
+                    <p className="text-[10px] text-muted-foreground mt-1 leading-normal">
+                      Drop us a line directly at afero.tech@gmail.com.
+                    </p>
+                  </div>
+                </a>
+
+                <a
+                  href="https://wa.me/#+917397102011"
+                  className="group p-5 rounded-2xl bg-card border border-border/30 hover:border-coral/40 transition-all duration-300 flex flex-col justify-between h-[120px]"
+                >
+                  <div className="flex justify-between items-center text-muted-foreground/60 group-hover:text-coral transition-colors">
+                    <span className="text-xs uppercase tracking-widest font-semibold font-mono">
+                      Instant Chat
+                    </span>
+                    <MessageCircle className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-xl text-foreground">WhatsApp Us</h3>
+                    <p className="text-[10px] text-muted-foreground mt-1 leading-normal">
+                      Connect instantly with our team for quick text conversations.
+                    </p>
+                  </div>
+                </a>
+              </div>
             </div>
-          </div>
-        </Tilt3D>
+          </Tilt3D>
+        </FadeIn>
       </section>
 
       <Footer />

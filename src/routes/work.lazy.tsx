@@ -13,10 +13,10 @@ import {
   Shield,
   Sparkles,
 } from "lucide-react";
-// Nav imported globally in __root.tsx
 import { Footer } from "@/components/site/Footer";
 import { Tilt3D } from "@/components/ui/Tilt3D";
 import { useScrollParallax } from "@/hooks/useScrollParallax";
+import { FadeIn } from "@/components/ui/FadeIn";
 
 // Import pre-generated assets
 import groomvyImg from "@/assets/groomvy.webp";
@@ -57,51 +57,6 @@ function ParallaxImage({
 export const Route = createLazyFileRoute("/work")({
   component: WorkPage,
 });
-
-// A lightweight, highly performant intersection observer wrapper for Framer Motion-like entrance animations
-function FadeIn({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const currentRef = ref.current;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.05, rootMargin: "0px 0px -40px 0px" },
-    );
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      } ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      {children}
-    </div>
-  );
-}
 
 function WorkPage() {
   const processSteps = [
