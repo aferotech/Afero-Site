@@ -27,7 +27,6 @@ import { Tilt3D } from "@/components/ui/Tilt3D";
 import { FadeIn } from "@/components/ui/FadeIn";
 import paulImg from "@/assets/team/paul.webp";
 import azarImg from "@/assets/team/azar.webp";
-import akashImg from "@/assets/team/akash.webp";
 import rohithImg from "@/assets/team/rohith.webp";
 
 export const Route = createLazyFileRoute("/about")({
@@ -436,14 +435,6 @@ const team = [
     image: azarImg,
     instagram: "https://instagram.com/call_me_chaco",
     linkedin: "https://www.linkedin.com/in/mohammed-azarudeen-j-971940275",
-  },
-  {
-    name: "Akash Vaishnudev",
-    role: "HR / Tech Lead",
-    expertise: "Performance Optimization & Team Leadership",
-    image: akashImg,
-    instagram: "https://instagram.com/vaishnu_1418",
-    linkedin: "https://www.linkedin.com/in/akash-vaishnu-dev-4431a1287",
   },
   {
     name: "Rohith Raj",

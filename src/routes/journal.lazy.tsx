@@ -96,7 +96,7 @@ const posts = [
     date: "Apr 2026",
     read: "9 min",
     tag: "Studio Notes",
-    author: "Akash Vaishnudev",
+    author: "Paul Benjamin Felix",
     featured: false,
     pick: false,
     trending: true,
@@ -152,7 +152,7 @@ const posts = [
     date: "Feb 2026",
     read: "5 min",
     tag: "Strategy",
-    author: "Akash Vaishnudev",
+    author: "Rohith Raj",
     featured: false,
     pick: false,
     trending: false,
@@ -208,7 +208,7 @@ const posts = [
     date: "Dec 2025",
     read: "11 min",
     tag: "AI & Automation",
-    author: "Akash Vaishnudev",
+    author: "Mohammad Azarudeen",
     featured: false,
     pick: false,
     trending: false,
@@ -250,7 +250,7 @@ const posts = [
     date: "Oct 2025",
     read: "9 min",
     tag: "Case Studies",
-    author: "Akash Vaishnudev",
+    author: "Paul Benjamin Felix",
     featured: false,
     pick: false,
     trending: false,
@@ -352,7 +352,6 @@ const topics = [
 
 const studioBriefs = [
   { title: "Vite 7 Testing", desc: "Currently testing Vite 7 release candidate on edge builds." },
-  { title: "Staff Expansion", desc: "Akash Vaishnudev steps into Tech Lead position." },
   { title: "Afero Journal Issue VI", desc: "Issue VI print release is set for launch next month." },
   {
     title: "Cloudflare Deployments",
