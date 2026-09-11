@@ -1040,7 +1040,7 @@ function Index() {
 
           <p className="mx-auto mt-10 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
             Afero helps ambitious businesses and nonprofits launch websites that move them forward.
-            Strategy-led, hand-built by experts, delivered on time. 2 years and many projects of
+            Strategy-led, hand-built by experts, delivered on time. 2+ years and many projects of
             doing it well.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4 relative z-20">
