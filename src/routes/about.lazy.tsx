@@ -963,6 +963,63 @@ function AboutPage() {
                 </Tilt3D>
               </FadeIn>
             ))}
+
+            {/* 4th Frame: Join The Studio Card */}
+            <FadeIn delay={300} className="h-full">
+              <Tilt3D maxTilt={6} scale={1.02} className="h-full">
+                <div className="group h-full rounded-2xl glass-card-3d p-6 flex flex-col justify-between preserve-3d overflow-hidden relative border border-dashed border-coral/30 hover:border-coral/60 transition-colors duration-500">
+                  <div>
+                    {/* Frame Aspect Placeholder */}
+                    <div
+                      className="overflow-hidden rounded-xl bg-gradient-to-br from-coral/10 via-secondary/40 to-coral/5 border border-border/30 mb-6 relative aspect-[3/4] flex flex-col items-center justify-center p-6 text-center"
+                      style={{ transform: "translateZ(10px)" }}
+                    >
+                      <div className="h-14 w-14 rounded-2xl bg-coral/10 border border-coral/30 flex items-center justify-center text-coral mb-4 group-hover:scale-110 group-hover:bg-coral group-hover:text-white transition-all duration-500 shadow-md shadow-coral/10">
+                        <Sparkles className="h-7 w-7" />
+                      </div>
+                      <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-coral bg-coral/10 px-3 py-1 rounded-full border border-coral/20">
+                        Join The Team
+                      </span>
+                      <p className="text-xs text-muted-foreground mt-3 leading-relaxed max-w-[180px]">
+                        We are looking for creative minds & talent
+                      </p>
+                    </div>
+
+                    {/* Title & Role */}
+                    <div className="space-y-1 mb-3" style={{ transform: "translateZ(15px)" }}>
+                      <h3 className="font-serif text-xl text-foreground group-hover:text-coral transition-colors duration-300 font-normal">
+                        Work With Us
+                      </h3>
+                      <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground font-bold">
+                        Open Opportunities
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p
+                      className="text-xs text-muted-foreground leading-relaxed mb-6"
+                      style={{ transform: "translateZ(8px)" }}
+                    >
+                      Collaborate with our core team on high-performance digital systems.
+                    </p>
+                  </div>
+
+                  {/* Action button */}
+                  <div
+                    className="flex items-center gap-2 border-t border-border/30 pt-4 mt-auto"
+                    style={{ transform: "translateZ(12px)" }}
+                  >
+                    <Link
+                      to="/contact"
+                      className="w-full h-9 rounded-lg border border-coral/30 bg-coral/5 text-coral hover:bg-coral hover:text-white font-medium text-xs flex items-center justify-center gap-2 transition-all duration-300"
+                    >
+                      <span>Get In Touch</span>
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              </Tilt3D>
+            </FadeIn>
           </div>
         </div>
       </section>
