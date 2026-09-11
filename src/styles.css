@@ -546,7 +546,7 @@ html.lenis body {
     }
 
     /* Hovering project cards / media elements */
-    .custom-cursor.is-hovering-card {
+    /* .custom-cursor.is-hovering-card {
       width: 76px;
       height: 76px;
       background-color: var(--color-coral, #e05a36);
@@ -558,7 +558,7 @@ html.lenis body {
     }
     .custom-cursor-dot.is-hovering-card {
       opacity: 0;
-    }
+    } */
 
     /* Hovering inputs/forms */
     .custom-cursor.is-hovering-input {

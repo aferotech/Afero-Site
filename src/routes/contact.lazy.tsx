@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Footer } from "@/components/site/Footer";
 import { ArrowUpRight, Check } from "lucide-react";
 import { Tilt3D } from "@/components/ui/Tilt3D";
-import { submitContactForm } from "@/routes/contact";
 
 export const Route = createLazyFileRoute("/contact")({
   component: ContactPage,
@@ -56,17 +55,25 @@ function ContactPage() {
           ? `[Project Types: ${selectedTypes.join(", ")}]\n\n${message}`
           : message;
 
-      const response = await submitContactForm({
-        data: {
+      const response = await fetch("/.netlify/functions/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
           name,
           email,
           company,
           message: finalMessage,
           honeypot,
-        },
+        }),
       });
+      const result = await response.json().catch(() => ({
+        success: false,
+        error: "An error occurred. Please try again.",
+      }));
 
-      if (response.success) {
+      if (response.ok && result.success) {
         setSuccess(true);
         setName("");
         setEmail("");
@@ -75,7 +82,7 @@ function ContactPage() {
         setHoneypot("");
         setSelectedTypes([]);
       } else {
-        setError(response.error || "An error occurred. Please try again.");
+        setError(result.error || "An error occurred. Please try again.");
       }
     } catch (err) {
       console.error("Form submission failed:", err);
